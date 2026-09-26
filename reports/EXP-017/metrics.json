@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "model": "TomTrades CBR",
+    "grid": "bias_h x dxy x sweep x tp"
+  },
+  "results": {
+    "b3_eurusd_sw0_1.5R": {
+      "label": "b3_eurusd_sw0_1.5R",
+      "from": "2024-12-04",
+      "to": "2026-09-25",
+      "trades": 38,
+      "trades_per_week": 0.4,
+      "win_rate": 0.474,
+      "avg_R": 0.172,
+      "profit_factor": 1.343,
+      "net_pct": 3.15,
+      "cagr_pct": 1.73,
+      "sharpe": 0.721,
+      "sortino": 0.894,
+      "max_total_dd_pct": 2.37,
+      "max_daily_dd_pct": 0.72,
+      "worst_day_pct": -0.51,
+      "avg_hold_min": 23.9,
+      "exit_reasons": {
+        "TP": 18,
+        "SL": 18,
+        "TIME": 2
+      },
+      "mc_dd50_pct": 2.57,
+      "mc_dd95_pct": 4.09
+    },
+    "b3_eurusd_sw1_1.5R": {
+      "label": "b3_eurusd_sw1_1.5R",
+      "from": "2024-12-04",
+      "to": "2026-09-25",
+      "trades": 34,
+      "trades_per_week": 0.36,
+      "win_rate": 0.471,
+      "avg_R": 0.17,
+      "profit_factor": 1.346,
+      "net_pct": 2.81,
+      "cagr_pct": 1.55,
+      "sharpe": 0.692,
+      "sortino": 0.759,
+      "max_total_dd_pct": 2.38,
+      "max_daily_dd_pct": 0.73,
+      "worst_day_pct": -0.51,
+      "avg_hold_min": 25.5,
+      "exit_reasons": {
+        "TP": 16,
+        "SL": 16,
+        "TIME": 2
+      },
+      "mc_dd50_pct": 2.51,
+      "mc_dd95_pct": 3.97
+    },
+    "b1_usdx_sw0_1.5R": {
+      "label": "b1_usdx_sw0_1.5R",
+      "from": "2024-12-04",
+      "to": "2026-09-25",
+      "trades": 35,
+      "trades_per_week": 0.37,
+      "win_rate": 0.486,
+      "avg_R": 0.144,
+      "profit_factor": 1.274,
+      "net_pct": 2.38,
+      "cagr_pct": 1.31,
+      "sharpe": 0.58,
+      "sortino": 4.741,
+      "max_total_dd_pct": 1.8,
+      "max_daily_dd_pct": 0.73,
+      "worst_day_pct": -0.5,
+      "avg_hold_min": 21.0,
+      "exit_reasons": {
+        "SL": 18,
+        "TP": 16,
+        "TIME": 1
+      },
+      "mc_dd50_pct": 2.59,
+      "mc_dd95_pct": 4.07
+    }
+  }
+}

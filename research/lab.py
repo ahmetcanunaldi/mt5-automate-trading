@@ -25,6 +25,9 @@ PERIODS = {
     "DEV": ("2022-07-05", "2024-11-30", "M15"),
     "VAL": ("2024-12-04", "2025-09-30", "M1"),
     "OOS": ("2025-10-01", "2026-09-26", "M1"),
+    # tick-era split for M5-signal research (both inside the old VAL window; OOS untouched)
+    "TDEV": ("2024-12-04", "2025-06-30", "M1"),
+    "TVAL": ("2025-07-01", "2025-09-30", "M1"),
 }
 _cache = {}
 
@@ -85,20 +88,14 @@ def save_experiment(exp_id, meta: dict, results: dict, res_objs: dict | None = N
     (d / "metrics.json").write_text(json.dumps({"meta": meta, "results": results}, indent=2, default=str),
                                     encoding="utf-8")
     if res_objs:
-        import matplotlib
-        matplotlib.use("Agg")
-        import matplotlib.pyplot as plt
-        fig, ax = plt.subplots(len(res_objs), 1, figsize=(10, 3 * len(res_objs)), squeeze=False)
-        for k, (per, r) in enumerate(res_objs.items()):
+        from research.plots import equity_report
+        for per, r in res_objs.items():
             safe = "".join(ch if ch.isalnum() or ch in "-_." else "_" for ch in per)
             r.trades.to_csv(d / f"trades_{safe}.csv", index=False)
-            daily_eq = r.daily["end"]
-            ax[k, 0].plot(daily_eq.index, daily_eq.values)
-            ax[k, 0].set_title(f"{exp_id} {per}")
-            ax[k, 0].axhline(10_000, color="grey", lw=0.5)
-        fig.tight_layout()
-        fig.savefig(d / "equity.png", dpi=90)
-        plt.close(fig)
+            m = results.get(per, {})
+            ttl = (f"{exp_id} {per} | n={m.get('trades')} SR={m.get('sharpe')} PF={m.get('profit_factor')} "
+                   f"net={m.get('net_pct')}% DD={m.get('max_total_dd_pct')}% dDD={m.get('max_daily_dd_pct')}%")
+            equity_report(r, ttl, d / f"equity_{safe}.png")
 
 
 def fmt(m):

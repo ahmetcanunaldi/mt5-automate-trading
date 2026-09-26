@@ -111,3 +111,26 @@ def test_trailing_stop_locks_profit():
     res = run(prepare_exec(bars, 1, costs=ZERO), s, Guards(), ZERO)
     t = res.trades.iloc[0]
     assert t.reason == "SL" and t.exit == pytest.approx(107.0) and t.pnl > 0
+
+
+def test_multi_position_same_direction_only():
+    bars = make_bars([(100, 100.2, 99.8, 100)] * 10)
+    s = pd.concat([sig("2025-03-04 10:00", d=1), sig("2025-03-04 10:02", d=1), sig("2025-03-04 10:04", d=-1)])
+    res = run(prepare_exec(bars, 1, costs=ZERO), s, Guards(max_positions=3, max_open_risk_pct=1.5), ZERO)
+    assert list(res.trades.dir) == [1, 1]          # the short is rejected while longs are open (no hedge)
+
+
+def test_open_risk_cap():
+    bars = make_bars([(100, 100.2, 99.8, 100)] * 10)
+    s = pd.concat([sig(f"2025-03-04 10:0{k}", d=1) for k in range(4)])
+    res = run(prepare_exec(bars, 1, costs=ZERO), s, Guards(max_positions=4, max_open_risk_pct=1.0), ZERO)
+    assert len(res.trades) == 2 and res.trades.risk_usd.sum() <= 100.0 + 1e-9
+
+
+def test_daily_hard_guard_multi():
+    # two longs of 0.5% each, then a crash: guard must cap the day loss at 3% max (here SLs hit first at -1%)
+    bars = make_bars([(100, 100, 100, 100), (100, 100, 100, 100), (100, 100, 80, 80)])
+    s = pd.concat([sig("2025-03-04 10:00", d=1), sig("2025-03-04 10:01", d=1)])
+    res = run(prepare_exec(bars, 1, costs=ZERO), s, Guards(max_positions=2), ZERO)
+    assert res.trades.pnl.sum() >= -300.0 - 1e-6
+    assert summarize(res)["max_daily_dd_pct"] <= 3.0 + 1e-6

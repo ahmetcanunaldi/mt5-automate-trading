@@ -1,4 +1,4 @@
-"""Event-driven single-position backtest engine with FundingPips-style risk guards.
+"""Event-driven backtest engine (up to K same-direction positions) with FundingPips-style risk guards.
 
 Execution model (conservative):
 - Bars are BID prices (MT5 convention). Ask = bid + spread.
@@ -6,13 +6,15 @@ Execution model (conservative):
 - SL/TP are checked on each execution bar; if both are touched in the same bar, SL wins (pessimistic).
   Gaps through SL fill at the bar open.
 - Commission is charged per lot round-turn.
-- One position at a time, never opposite positions (no hedging), no averaging/grid/martingale.
+- Up to `max_positions` positions, ALL in the same direction (never opposite positions = no hedging).
+  Every position has its own server-side SL sized to risk_pct; no averaging-down/grid/martingale logic.
 
 Guards (internal limits, stricter than FundingPips):
 - risk per trade = risk_pct * balance, lot rounded DOWN to 0.01; trade skipped if < min lot.
+- total open risk (sum of SL risk of open positions) <= max_open_risk_pct * balance.
 - daily: day reference = balance at the first bar of the server day (we are flat overnight by design).
-  new entries stop once day P&L <= -daily_soft_pct; open position force-closed if
-  day P&L incl. floating <= -daily_hard_pct.
+  New entries stop once realized day P&L <= -daily_soft_pct. A new trade's risk plus the open risk must fit
+  inside the hard daily room. All positions are force-closed if day P&L incl. worst floating <= -daily_hard_pct.
 - total: risk halves below total_derisk_pct drawdown; trading stops for good at total_stop_pct.
 - intraday: no entries after `last_entry_min` (minute of server day), flatten at `flatten_min`,
   Friday flatten at `fri_flatten_min`; news masks from calendar_news.blackout_masks.
@@ -25,6 +27,7 @@ from numba import njit
 
 POINT = 0.01
 CONTRACT = 100.0  # oz per lot -> $1 move = $100 per lot
+MAXK = 8
 
 
 @dataclass
@@ -48,37 +51,49 @@ class Guards:
     last_entry_min: int = 22 * 60      # 22:00 server
     flatten_min: int = 23 * 60 + 45    # 23:45 server
     fri_flatten_min: int = 22 * 60 + 30
+    max_positions: int = 1
+    max_open_risk_pct: float = 1.0
 
 
 @njit(cache=True)
 def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
          s_idx, s_dir, s_sl, s_tp, s_hold, s_be, s_trail,
          init_bal, risk_pct, soft, hard, derisk, tstop, max_td, first_m, last_m, flat_m, fri_m,
-         comm, slip):
+         comm, slip, max_pos, max_open_risk):
     n = len(o)
     ns = len(s_idx)
     max_tr = ns + 1
     tr_ei = np.full(max_tr, -1, np.int64); tr_xi = np.full(max_tr, -1, np.int64)
     tr_dir = np.zeros(max_tr, np.int64); tr_ep = np.zeros(max_tr); tr_xp = np.zeros(max_tr)
     tr_lot = np.zeros(max_tr); tr_pnl = np.zeros(max_tr); tr_reason = np.zeros(max_tr, np.int64)
-    tr_risk = np.zeros(max_tr)
-    eq_close = np.zeros(n)
-    ntr = 0
+    tr_risk = np.zeros(max_tr); tr_sig = np.full(max_tr, -1, np.int64)
+    eq_close = np.zeros(n); eq_low = np.zeros(n)
+    K = max_pos
+    act = np.zeros(K, np.bool_); pd_ = np.zeros(K, np.int64); pep = np.zeros(K); plot = np.zeros(K)
+    psl = np.zeros(K); ptp = np.zeros(K); pei = np.zeros(K, np.int64); pdl = np.zeros(K, np.int64)
+    pbe = np.zeros(K); pbed = np.zeros(K, np.bool_); ptr = np.zeros(K); prisk = np.zeros(K)
+    pid = np.zeros(K, np.int64)
+    ntr = 0          # trades opened (index into tr_*)
     bal = init_bal
-    in_pos = False
-    d = 0; ep = 0.0; lot = 0.0; slp = 0.0; tpp = 0.0; ei = 0; deadline = 0; be_px = 0.0; be_done = False
-    trail = 0.0
     cur_day = -1; day_ref = bal; day_trades = 0; stopped = False
     si = 0
     for i in range(n):
         if day_id[i] != cur_day:
             cur_day = day_id[i]; day_ref = bal; day_trades = 0
+        sp = spr[i]
         # ---- entry at bar open ----
         while si < ns and s_idx[si] < i:
             si += 1
-        if (not in_pos) and si < ns and s_idx[si] == i and not stopped:
+        if si < ns and s_idx[si] == i and not stopped:
+            nact = 0; cur_dir = 0; open_risk = 0.0
+            for k in range(K):
+                if act[k]:
+                    nact += 1; cur_dir = pd_[k]; open_risk += prisk[k]
+            d = s_dir[si]
             tm = t_min[i]
-            ok = (tm >= first_m) and (tm <= last_m) and (not block[i]) and (day_trades < max_td)
+            ok = (tm >= first_m) and (tm <= last_m) and (not block[i]) and (day_trades < max_td) and (nact < K)
+            if nact > 0 and d != cur_dir:
+                ok = False                                  # no hedging
             if dow[i] == 4 and tm >= fri_m - 60:
                 ok = False
             day_pnl = bal - day_ref
@@ -87,64 +102,80 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
             if ok:
                 dd_tot = (init_bal - bal) / init_bal * 100.0
                 rp = risk_pct if dd_tot < derisk else risk_pct * 0.5
-                # the new trade's full risk must fit inside the hard daily limit
-                room = hard / 100.0 * day_ref + day_pnl
-                risk_usd = min(rp / 100.0 * bal, room)
+                room = hard / 100.0 * day_ref + day_pnl - open_risk
+                risk_usd = min(rp / 100.0 * bal, room, max_open_risk / 100.0 * bal - open_risk)
                 dist = s_sl[si]
                 lots = np.floor(risk_usd / (dist * 100.0 + comm) / 0.01 + 1e-9) * 0.01
                 if lots >= 0.01:
-                    d = s_dir[si]
-                    sp = spr[i]
+                    k = 0
+                    while act[k]:
+                        k += 1
                     if d == 1:
                         ep = o[i] + sp + slip
-                        slp = ep - dist; tpp = ep + s_tp[si]
+                        psl[k] = ep - dist; ptp[k] = ep + s_tp[si]
                     else:
                         ep = o[i] - slip
-                        slp = ep + dist; tpp = ep - s_tp[si]
-                    lot = lots; ei = i; deadline = s_hold[si]; in_pos = True
-                    be_px = s_be[si]; be_done = False; trail = s_trail[si]
+                        psl[k] = ep + dist; ptp[k] = ep - s_tp[si]
+                    act[k] = True; pd_[k] = d; pep[k] = ep; plot[k] = lots; pei[k] = i; pdl[k] = s_hold[si]
+                    pbe[k] = s_be[si]; pbed[k] = False; ptr[k] = s_trail[si]
+                    prisk[k] = lots * (dist * 100.0 + comm); pid[k] = ntr
                     day_trades += 1
-                    tr_ei[ntr] = i; tr_dir[ntr] = d; tr_ep[ntr] = ep; tr_lot[ntr] = lot
-                    tr_risk[ntr] = lots * (dist * 100.0 + comm)
-        # ---- manage open position within bar i ----
-        if in_pos:
-            sp = spr[i]
+                    tr_ei[ntr] = i; tr_dir[ntr] = d; tr_ep[ntr] = ep; tr_lot[ntr] = lots
+                    tr_risk[ntr] = prisk[k]; tr_sig[ntr] = si
+                    ntr += 1
+        # ---- hard daily guard on the bar's worst price (all positions share one direction) ----
+        any_act = False; sum_lot = 0.0; sum_eplot = 0.0; d_all = 0; worst_pnl = 0.0
+        for k in range(K):
+            if act[k]:
+                any_act = True; d_all = pd_[k]
+                sum_lot += plot[k]; sum_eplot += pep[k] * plot[k]
+                wp = (l[i] - pep[k]) if pd_[k] == 1 else (pep[k] - (h[i] + sp))
+                worst_pnl += wp * plot[k] * CONTRACT - plot[k] * comm
+        guard_hit = False
+        if any_act and (bal - day_ref) + worst_pnl <= -hard / 100.0 * day_ref:
+            guard_hit = True
+            # price where total day P&L == -hard (solve linear equation for the common exit price)
+            target_open_pnl = -hard / 100.0 * day_ref - (bal - day_ref) + sum_lot * comm
+            if d_all == 1:
+                px = (target_open_pnl / CONTRACT + sum_eplot) / sum_lot
+            else:
+                px = (sum_eplot - target_open_pnl / CONTRACT) / sum_lot
+        # ---- manage each position ----
+        for k in range(K):
+            if not act[k]:
+                continue
+            d = pd_[k]; ep = pep[k]; slp = psl[k]; tpp = ptp[k]
             xp = 0.0; reason = 0
-            if d == 1:
-                if o[i] <= slp and i > ei:
+            if guard_hit:
+                xp = px; reason = 5
+            elif d == 1:
+                if o[i] <= slp and i > pei[k]:
                     xp = o[i] - slip; reason = 1
                 elif l[i] <= slp:
                     xp = slp - slip; reason = 1
                 elif h[i] >= tpp:
                     xp = tpp; reason = 2
             else:
-                if o[i] + sp >= slp and i > ei:
+                if o[i] + sp >= slp and i > pei[k]:
                     xp = o[i] + sp + slip; reason = 1
                 elif h[i] + sp >= slp:
                     xp = slp + slip; reason = 1
                 elif l[i] + sp <= tpp:
                     xp = tpp; reason = 2
-            # hard daily guard on worst price of the bar
-            if reason == 0:
-                worst = (l[i] - ep) if d == 1 else (ep - (h[i] + sp))
-                if (bal - day_ref) + worst * lot * CONTRACT - lot * comm <= -hard / 100.0 * day_ref:
-                    lim = (-hard / 100.0 * day_ref - (bal - day_ref) + lot * comm) / (lot * CONTRACT)
-                    xp = ep + lim if d == 1 else ep - lim
-                    reason = 5
-            # trailing stop (chandelier on bar extremes; applies from next bar)
-            if reason == 0 and trail > 0:
+            if reason == 0 and ptr[k] > 0:
                 if d == 1:
-                    if h[i] - trail > slp:
-                        slp = h[i] - trail
+                    if h[i] - ptr[k] > psl[k]:
+                        psl[k] = h[i] - ptr[k]
                 else:
-                    if l[i] + sp + trail < slp:
-                        slp = l[i] + sp + trail
-            # break-even move (after the bar, applies from next bar)
-            if reason == 0 and be_px > 0 and not be_done:
-                if (d == 1 and h[i] - ep >= be_px) or (d == -1 and ep - (l[i] + sp) >= be_px):
-                    slp = ep; be_done = True
+                    if l[i] + sp + ptr[k] < psl[k]:
+                        psl[k] = l[i] + sp + ptr[k]
+            if reason == 0 and pbe[k] > 0 and not pbed[k]:
+                if (d == 1 and h[i] - ep >= pbe[k]) or (d == -1 and ep - (l[i] + sp) >= pbe[k]):
+                    if (d == 1 and ep > psl[k]) or (d == -1 and ep < psl[k]):
+                        psl[k] = ep
+                    pbed[k] = True
             if reason == 0:
-                if i - ei + 1 >= deadline:
+                if i - pei[k] + 1 >= pdl[k]:
                     reason = 3
                 elif flat[i]:
                     reason = 4
@@ -155,21 +186,27 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
                 if reason != 0:
                     xp = c[i] if d == 1 else c[i] + sp
             if reason != 0:
-                pnl = (xp - ep) * d * lot * CONTRACT - lot * comm
+                pnl = (xp - ep) * d * plot[k] * CONTRACT - plot[k] * comm
                 bal += pnl
-                tr_xi[ntr] = i; tr_xp[ntr] = xp; tr_pnl[ntr] = pnl; tr_reason[ntr] = reason
-                ntr += 1
-                in_pos = False
-                if (init_bal - bal) / init_bal * 100.0 >= tstop:
-                    stopped = True
-        # equity at bar close
-        if in_pos:
-            mark = c[i] if d == 1 else c[i] + spr[i]
-            eq_close[i] = bal + (mark - ep) * d * lot * CONTRACT
-        else:
-            eq_close[i] = bal
+                j = pid[k]
+                tr_xi[j] = i; tr_xp[j] = xp; tr_pnl[j] = pnl; tr_reason[j] = reason
+                act[k] = False
+        if (init_bal - bal) / init_bal * 100.0 >= tstop:
+            stopped = True
+        # equity at bar close and at the bar's worst price
+        fl = 0.0; fw = 0.0
+        for k in range(K):
+            if act[k]:
+                if pd_[k] == 1:
+                    fl += (c[i] - pep[k]) * plot[k] * CONTRACT
+                    fw += (l[i] - pep[k]) * plot[k] * CONTRACT
+                else:
+                    fl += (pep[k] - (c[i] + sp)) * plot[k] * CONTRACT
+                    fw += (pep[k] - (h[i] + sp)) * plot[k] * CONTRACT
+        eq_close[i] = bal + fl
+        eq_low[i] = min(bal + fw, bal + fl)
     return (tr_ei[:ntr], tr_xi[:ntr], tr_dir[:ntr], tr_ep[:ntr], tr_xp[:ntr], tr_lot[:ntr],
-            tr_pnl[:ntr], tr_reason[:ntr], tr_risk[:ntr], eq_close)
+            tr_pnl[:ntr], tr_reason[:ntr], tr_risk[:ntr], tr_sig[:ntr], eq_close, eq_low)
 
 
 REASONS = {1: "SL", 2: "TP", 3: "TIME", 4: "NEWS", 5: "DAILY_GUARD", 6: "EOD"}
@@ -179,7 +216,7 @@ REASONS = {1: "SL", 2: "TP", 3: "TIME", 4: "NEWS", 5: "DAILY_GUARD", 6: "EOD"}
 class Result:
     trades: pd.DataFrame
     equity: pd.Series          # equity at each execution bar close
-    daily: pd.DataFrame        # per server day: start, end, min equity
+    daily: pd.DataFrame        # per server day: start, end, min (intrabar worst) equity
     params: dict = field(default_factory=dict)
 
 
@@ -202,15 +239,16 @@ def prepare_exec(bars: pd.DataFrame, bar_minutes: int, news_block=None, news_fla
 
 def run(exec_x: dict, signals: pd.DataFrame, guards: Guards = Guards(), costs: Costs = Costs()) -> Result:
     """signals: DataFrame indexed by decision time (bar CLOSE time of the signal bar) with columns
-    dir (+1/-1), sl (USD distance), tp (USD distance), hold_min (max holding minutes), be (USD, 0=off).
-    Entry happens at the open of the first execution bar starting at/after the decision time."""
+    dir (+1/-1), sl (USD distance), tp (USD distance), hold_min (max holding minutes), be (USD, 0=off),
+    trail (USD, 0=off), optional leg. Entry happens at the open of the first execution bar at/after the
+    decision time. One entry per execution bar (first signal wins)."""
+    assert 1 <= guards.max_positions <= MAXK
     idx = exec_x["index"]
-    sig = signals.sort_index()
+    sig = signals.sort_index(kind="stable")
     s_idx = np.searchsorted(idx.values.astype("datetime64[ns]"), sig.index.values.astype("datetime64[ns]"),
                             side="left").astype(np.int64)
     keep = s_idx < len(idx)
     sig = sig[keep]; s_idx = s_idx[keep]
-    # one signal per execution bar (first wins)
     _, first = np.unique(s_idx, return_index=True)
     sig = sig.iloc[first]; s_idx = s_idx[first]
     bm = exec_x["bar_minutes"]
@@ -224,16 +262,23 @@ def run(exec_x: dict, signals: pd.DataFrame, guards: Guards = Guards(), costs: C
                guards.initial_balance, guards.risk_pct, guards.daily_soft_pct, guards.daily_hard_pct,
                guards.total_derisk_pct, guards.total_stop_pct, guards.max_trades_day,
                guards.first_entry_min, guards.last_entry_min, guards.flatten_min, guards.fri_flatten_min,
-               costs.commission_per_lot, costs.slippage_pts * POINT)
-    ei, xi, dr, ep, xp, lot, pnl, rsn, risk, eq = out
+               costs.commission_per_lot, costs.slippage_pts * POINT, guards.max_positions,
+               guards.max_open_risk_pct)
+    ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi, eq, eql = out
+    closed = xi >= 0
+    ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi = (a[closed] for a in (ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi))
     trades = pd.DataFrame({
         "entry_time": idx[ei], "exit_time": idx[xi] + pd.Timedelta(minutes=bm) * (rsn >= 3),
         "dir": dr, "entry": ep, "exit": xp, "lots": lot, "pnl": pnl, "risk_usd": risk,
         "reason": [REASONS[r] for r in rsn],
     })
+    if "leg" in sig:
+        trades["leg"] = sig["leg"].to_numpy()[sgi]
     trades["R"] = trades["pnl"] / trades["risk_usd"]
+    trades = trades.sort_values("exit_time", kind="stable").reset_index(drop=True)
     equity = pd.Series(eq, index=idx, name="equity")
     day = idx.normalize()
-    daily = pd.DataFrame({"end": equity.groupby(day).last(), "min": equity.groupby(day).min()})
+    daily = pd.DataFrame({"end": equity.groupby(day).last(),
+                          "min": pd.Series(eql, index=idx).groupby(day).min()})
     daily["start"] = daily["end"].shift(1).fillna(guards.initial_balance)
     return Result(trades, equity, daily, {"guards": asdict(guards), "costs": asdict(costs)})

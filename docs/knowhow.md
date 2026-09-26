@@ -27,3 +27,11 @@
 - ~1,200 configurations were tried in EXP-003/007. With that many (correlated) trials the expected best DEV Sharpe under
   the null is ~2 (annualized, ~600 days). DEV Sharpe alone is therefore NOT evidence; VAL (independent 10 months)
   SR 2.34 on 189 trades (t ≈ 2.1) is the real, still modest, evidence. OOS (2025-10..2026-09) stays locked.
+
+## OOS lesson (EXP-013, 2025-10..2026-09)
+- The US-session H1-trend breakout portfolio (DEV SR 1.75 / VAL 2.35) dropped to SR 0.13 (conservative) and 0.56 (aggressive K4)
+  in the one-shot OOS. The regime changed: volatility 3–4×, blow-off top and crash, spreads +30 %. Shorts lost, longs still won.
+- Risk engine worked: no daily or static-total breach even in the bad regime (worst static DD ≈ 4.7 %, worst day 1.9 %).
+- Concurrency (K4, 2 % open risk) raises speed but peak-to-trough DD reached 10.3 % in OOS → too aggressive for an 8 % peak-DD reading.
+- Next research must be walk-forward (re-fit every N months on trailing data) over 2022-07..2026-09 and regime-aware
+  (volatility-scaled targets, regime switch), then confirmed on a live demo — there is no untouched history left.

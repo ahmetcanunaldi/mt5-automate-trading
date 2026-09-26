@@ -1,0 +1,442 @@
+{
+  "meta": {
+    "desc": "rule families, default params",
+    "families": [
+      "asia_breakout",
+      "ny_orb",
+      "ema_pullback",
+      "vwap_reversion",
+      "prev_day_break"
+    ]
+  },
+  "results": {
+    "asia_breakout|DEV": {
+      "label": "asia_breakout|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 87,
+      "trades_per_week": 0.7,
+      "win_rate": 0.299,
+      "avg_R": -0.222,
+      "profit_factor": 0.665,
+      "net_pct": -8.03,
+      "cagr_pct": -3.42,
+      "sharpe": -1.037,
+      "sortino": -1.344,
+      "max_total_dd_pct": 8.44,
+      "max_daily_dd_pct": 0.97,
+      "worst_day_pct": -0.97,
+      "avg_hold_min": 92.8,
+      "exit_reasons": {
+        "SL": 57,
+        "TP": 17,
+        "TIME": 10,
+        "NEWS": 3
+      },
+      "mc_dd50_pct": 11.13,
+      "mc_dd95_pct": 13.79,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": false,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "asia_breakout|VAL": {
+      "label": "asia_breakout|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 63,
+      "trades_per_week": 1.48,
+      "win_rate": 0.365,
+      "avg_R": -0.053,
+      "profit_factor": 0.898,
+      "net_pct": -1.76,
+      "cagr_pct": -2.14,
+      "sharpe": -0.447,
+      "sortino": -1.138,
+      "max_total_dd_pct": 3.96,
+      "max_daily_dd_pct": 0.8,
+      "worst_day_pct": -0.5,
+      "avg_hold_min": 94.6,
+      "exit_reasons": {
+        "SL": 36,
+        "TP": 22,
+        "NEWS": 3,
+        "TIME": 2
+      },
+      "mc_dd50_pct": 5.28,
+      "mc_dd95_pct": 7.69,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": false,
+        "trades": false,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    },
+    "ny_orb|DEV": {
+      "label": "ny_orb|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 332,
+      "trades_per_week": 2.66,
+      "win_rate": 0.434,
+      "avg_R": -0.052,
+      "profit_factor": 0.862,
+      "net_pct": -8.03,
+      "cagr_pct": -3.42,
+      "sharpe": -0.686,
+      "sortino": -0.966,
+      "max_total_dd_pct": 10.41,
+      "max_daily_dd_pct": 0.99,
+      "worst_day_pct": -0.99,
+      "avg_hold_min": 106.4,
+      "exit_reasons": {
+        "TIME": 126,
+        "SL": 121,
+        "TP": 55,
+        "NEWS": 27,
+        "EOD": 3
+      },
+      "mc_dd50_pct": 12.9,
+      "mc_dd95_pct": 17.01,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.0,
+        "fail_rate": 0.01,
+        "timeout_rate": 0.99,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": true,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "ny_orb|VAL": {
+      "label": "ny_orb|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 156,
+      "trades_per_week": 3.65,
+      "win_rate": 0.487,
+      "avg_R": 0.038,
+      "profit_factor": 1.112,
+      "net_pct": 3.19,
+      "cagr_pct": 3.89,
+      "sharpe": 0.695,
+      "sortino": 1.441,
+      "max_total_dd_pct": 3.8,
+      "max_daily_dd_pct": 0.99,
+      "worst_day_pct": -0.99,
+      "avg_hold_min": 108.8,
+      "exit_reasons": {
+        "TIME": 56,
+        "SL": 45,
+        "TP": 36,
+        "NEWS": 15,
+        "EOD": 4
+      },
+      "mc_dd50_pct": 5.14,
+      "mc_dd95_pct": 7.94,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": false,
+        "trades": false,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    },
+    "ema_pullback|DEV": {
+      "label": "ema_pullback|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 220,
+      "trades_per_week": 1.76,
+      "win_rate": 0.386,
+      "avg_R": -0.079,
+      "profit_factor": 0.852,
+      "net_pct": -8.19,
+      "cagr_pct": -3.49,
+      "sharpe": -0.672,
+      "sortino": -0.847,
+      "max_total_dd_pct": 13.57,
+      "max_daily_dd_pct": 1.01,
+      "worst_day_pct": -1.01,
+      "avg_hold_min": 99.3,
+      "exit_reasons": {
+        "SL": 118,
+        "TP": 38,
+        "TIME": 32,
+        "NEWS": 29,
+        "EOD": 3
+      },
+      "mc_dd50_pct": 13.14,
+      "mc_dd95_pct": 17.71,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.0,
+        "fail_rate": 0.08,
+        "timeout_rate": 0.92,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": true,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "ema_pullback|VAL": {
+      "label": "ema_pullback|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 189,
+      "trades_per_week": 4.43,
+      "win_rate": 0.397,
+      "avg_R": -0.067,
+      "profit_factor": 0.873,
+      "net_pct": -5.88,
+      "cagr_pct": -7.11,
+      "sharpe": -0.973,
+      "sortino": -2.035,
+      "max_total_dd_pct": 9.12,
+      "max_daily_dd_pct": 1.19,
+      "worst_day_pct": -0.99,
+      "avg_hold_min": 118.2,
+      "exit_reasons": {
+        "SL": 92,
+        "TIME": 37,
+        "TP": 31,
+        "NEWS": 26,
+        "EOD": 3
+      },
+      "mc_dd50_pct": 10.67,
+      "mc_dd95_pct": 14.56,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.0,
+        "fail_rate": 0.064,
+        "timeout_rate": 0.936,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": false,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "vwap_reversion|DEV": {
+      "label": "vwap_reversion|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 343,
+      "trades_per_week": 2.74,
+      "win_rate": 0.487,
+      "avg_R": 0.018,
+      "profit_factor": 1.041,
+      "net_pct": 2.39,
+      "cagr_pct": 0.99,
+      "sharpe": 0.222,
+      "sortino": 0.368,
+      "max_total_dd_pct": 5.62,
+      "max_daily_dd_pct": 0.65,
+      "worst_day_pct": -0.6,
+      "avg_hold_min": 112.3,
+      "exit_reasons": {
+        "TIME": 136,
+        "SL": 97,
+        "TP": 61,
+        "NEWS": 46,
+        "EOD": 3
+      },
+      "mc_dd50_pct": 7.12,
+      "mc_dd95_pct": 10.91,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": false,
+        "trades": true,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "vwap_reversion|VAL": {
+      "label": "vwap_reversion|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 166,
+      "trades_per_week": 3.89,
+      "win_rate": 0.452,
+      "avg_R": -0.074,
+      "profit_factor": 0.81,
+      "net_pct": -5.95,
+      "cagr_pct": -7.2,
+      "sharpe": -1.367,
+      "sortino": -3.138,
+      "max_total_dd_pct": 7.15,
+      "max_daily_dd_pct": 0.93,
+      "worst_day_pct": -0.93,
+      "avg_hold_min": 114.9,
+      "exit_reasons": {
+        "SL": 57,
+        "TIME": 56,
+        "TP": 37,
+        "NEWS": 15,
+        "EOD": 1
+      },
+      "mc_dd50_pct": 8.69,
+      "mc_dd95_pct": 11.42,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": false,
+        "trades": false,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "prev_day_break|DEV": {
+      "label": "prev_day_break|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 147,
+      "trades_per_week": 1.18,
+      "win_rate": 0.347,
+      "avg_R": -0.09,
+      "profit_factor": 0.755,
+      "net_pct": -8.01,
+      "cagr_pct": -3.42,
+      "sharpe": -0.966,
+      "sortino": -1.304,
+      "max_total_dd_pct": 9.94,
+      "max_daily_dd_pct": 0.64,
+      "worst_day_pct": -0.51,
+      "avg_hold_min": 85.4,
+      "exit_reasons": {
+        "SL": 75,
+        "TP": 35,
+        "NEWS": 18,
+        "TIME": 16,
+        "EOD": 3
+      },
+      "mc_dd50_pct": 10.21,
+      "mc_dd95_pct": 13.52,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.0,
+        "fail_rate": 0.002,
+        "timeout_rate": 0.998,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": false,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "prev_day_break|VAL": {
+      "label": "prev_day_break|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 85,
+      "trades_per_week": 1.99,
+      "win_rate": 0.459,
+      "avg_R": 0.054,
+      "profit_factor": 1.115,
+      "net_pct": 2.26,
+      "cagr_pct": 2.76,
+      "sharpe": 0.587,
+      "sortino": 1.486,
+      "max_total_dd_pct": 7.94,
+      "max_daily_dd_pct": 0.71,
+      "worst_day_pct": -0.5,
+      "avg_hold_min": 89.4,
+      "exit_reasons": {
+        "SL": 37,
+        "TP": 26,
+        "TIME": 11,
+        "NEWS": 10,
+        "EOD": 1
+      },
+      "mc_dd50_pct": 4.17,
+      "mc_dd95_pct": 6.61,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": false,
+        "trades": false,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    }
+  }
+}

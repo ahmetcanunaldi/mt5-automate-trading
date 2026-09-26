@@ -1,0 +1,7 @@
+data/
+__pycache__/
+*.pyc
+.pytest_cache/
+mt5-mcp.txt
+reports/**/*.parquet
+*.ex5

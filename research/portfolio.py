@@ -29,7 +29,7 @@ def leg_signals(df, names):
         s = FAMILIES[fam](df, **p)
         s["leg"] = n
         parts.append(s)
-    s = pd.concat(parts).sort_index()
+    s = pd.concat(parts).sort_index(kind="stable")  # leg order = priority on simultaneous signals (EA mirrors it)
     return s[~s.index.duplicated(keep="first")]
 
 

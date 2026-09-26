@@ -1,0 +1,15 @@
+donchian_h1 2010-2013        n=   0 PF=inf SR= 0.00 net=   0.0% DD=0.0%
+pdb_long_h1 2010-2013        n=   0 PF=inf SR= 0.00 net=   0.0% DD=0.0%
+pdb_trend_h1 2010-2013       n=   0 PF=inf SR= 0.00 net=   0.0% DD=0.0%
+donchian_h1 2014-2017        n=   0 PF=inf SR= 0.00 net=   0.0% DD=0.0%
+pdb_long_h1 2014-2017        n=   0 PF=inf SR= 0.00 net=   0.0% DD=0.0%
+pdb_trend_h1 2014-2017       n=   0 PF=inf SR= 0.00 net=   0.0% DD=0.0%
+donchian_h1 2018-2021        n= 255 PF=0.85 SR=-0.50 net=  -8.1% DD=9.7%
+pdb_long_h1 2018-2021        n= 243 PF=0.77 SR=-0.74 net=  -7.0% DD=9.0%
+pdb_trend_h1 2018-2021       n= 168 PF=0.63 SR=-1.08 net=  -8.0% DD=8.7%
+donchian_h1 2022-2024        n= 299 PF=1.27 SR= 0.98 net=  16.3% DD=4.5%
+pdb_long_h1 2022-2024        n= 177 PF=0.71 SR=-1.01 net=  -6.2% DD=7.7%
+pdb_trend_h1 2022-2024       n= 142 PF=0.52 SR=-1.67 net=  -8.1% DD=8.4%
+donchian_h1 2024-2026        n= 182 PF=0.87 SR=-0.52 net=  -4.5% DD=6.2%
+pdb_long_h1 2024-2026        n= 126 PF=1.68 SR= 1.63 net=   9.7% DD=2.2%
+pdb_trend_h1 2024-2026       n= 136 PF=1.46 SR= 1.27 net=   7.3% DD=2.3%

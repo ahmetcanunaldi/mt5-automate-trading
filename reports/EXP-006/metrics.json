@@ -1,0 +1,438 @@
+{
+  "meta": {
+    "primary": [
+      [
+        "donchian",
+        {
+          "n": 32,
+          "sl_atr": 2.0,
+          "start": 120,
+          "end": 1320,
+          "trend": "none",
+          "per_day": 3,
+          "min_width_atr": 0.0
+        }
+      ],
+      [
+        "ny_orb",
+        {
+          "or_start": 990,
+          "or_bars": 2,
+          "end": 1200,
+          "sl_atr": 2.0,
+          "trend": "none",
+          "min_rng_atr": 0.3,
+          "max_rng_atr": 8.0
+        }
+      ],
+      [
+        "prev_day_break",
+        {
+          "start": 120,
+          "end": 1320,
+          "sl_atr": 2.0,
+          "trend": "none",
+          "buffer_atr": 0.1
+        }
+      ],
+      [
+        "asia_breakout",
+        {
+          "start": 600,
+          "end": 900,
+          "sl_atr": 2.0,
+          "min_rng_atr": 0.5,
+          "max_rng_atr": 10.0,
+          "trend": "none"
+        }
+      ]
+    ],
+    "exits": {
+      "rr": 3.0,
+      "trail_atr": 0.0,
+      "be_r": 0.0,
+      "hold_min": 480
+    },
+    "features": [
+      "hour",
+      "dow",
+      "atr_pct",
+      "atr_ratio",
+      "ret1",
+      "ret4",
+      "ret16",
+      "ret64",
+      "vwap_dist",
+      "dh_dist",
+      "dl_dist",
+      "h1_trend",
+      "h1_pos",
+      "body",
+      "clv",
+      "vol_ratio",
+      "spread",
+      "rng_day",
+      "news_next_h",
+      "news_prev_h",
+      "dir",
+      "src",
+      "ret1_d",
+      "ret4_d",
+      "ret16_d",
+      "ret64_d",
+      "vwap_dist_d",
+      "h1_trend_d",
+      "h1_pos_d",
+      "body_d",
+      "clv_d",
+      "sl_atr",
+      "tp_atr"
+    ]
+  },
+  "results": {
+    "thr0.5|DEVoof": {
+      "label": "ml_thr0.5|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 180,
+      "trades_per_week": 1.44,
+      "win_rate": 0.367,
+      "avg_R": -0.096,
+      "profit_factor": 0.806,
+      "net_pct": -8.03,
+      "cagr_pct": -3.42,
+      "sharpe": -0.706,
+      "sortino": -0.583,
+      "max_total_dd_pct": 10.35,
+      "max_daily_dd_pct": 1.6,
+      "worst_day_pct": -1.41,
+      "avg_hold_min": 213.4,
+      "exit_reasons": {
+        "SL": 87,
+        "EOD": 45,
+        "NEWS": 19,
+        "TIME": 17,
+        "TP": 12
+      },
+      "mc_dd50_pct": 12.31,
+      "mc_dd95_pct": 16.35,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.0,
+        "fail_rate": 0.061,
+        "timeout_rate": 0.939,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": false,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "thr0.5|VAL": {
+      "label": "ml_thr0.5|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 379,
+      "trades_per_week": 8.87,
+      "win_rate": 0.398,
+      "avg_R": 0.018,
+      "profit_factor": 1.015,
+      "net_pct": 1.19,
+      "cagr_pct": 1.45,
+      "sharpe": 0.193,
+      "sortino": 0.395,
+      "max_total_dd_pct": 8.36,
+      "max_daily_dd_pct": 1.6,
+      "worst_day_pct": -1.43,
+      "avg_hold_min": 224.1,
+      "exit_reasons": {
+        "SL": 163,
+        "EOD": 100,
+        "NEWS": 45,
+        "TIME": 40,
+        "TP": 31
+      },
+      "mc_dd50_pct": 11.07,
+      "mc_dd95_pct": 16.33,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.0,
+        "fail_rate": 0.006,
+        "timeout_rate": 0.994,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": true,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "thr0.6|DEVoof": {
+      "label": "ml_thr0.6|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 149,
+      "trades_per_week": 1.19,
+      "win_rate": 0.369,
+      "avg_R": -0.11,
+      "profit_factor": 0.766,
+      "net_pct": -8.05,
+      "cagr_pct": -3.43,
+      "sharpe": -0.799,
+      "sortino": -0.707,
+      "max_total_dd_pct": 10.66,
+      "max_daily_dd_pct": 1.62,
+      "worst_day_pct": -1.25,
+      "avg_hold_min": 215.1,
+      "exit_reasons": {
+        "SL": 72,
+        "EOD": 45,
+        "TIME": 13,
+        "NEWS": 10,
+        "TP": 9
+      },
+      "mc_dd50_pct": 11.33,
+      "mc_dd95_pct": 14.84,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.0,
+        "fail_rate": 0.073,
+        "timeout_rate": 0.927,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": false,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "thr0.6|VAL": {
+      "label": "ml_thr0.6|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 323,
+      "trades_per_week": 7.56,
+      "win_rate": 0.409,
+      "avg_R": 0.047,
+      "profit_factor": 1.077,
+      "net_pct": 5.47,
+      "cagr_pct": 6.7,
+      "sharpe": 0.684,
+      "sortino": 1.453,
+      "max_total_dd_pct": 6.86,
+      "max_daily_dd_pct": 1.63,
+      "worst_day_pct": -1.51,
+      "avg_hold_min": 229.3,
+      "exit_reasons": {
+        "SL": 133,
+        "EOD": 92,
+        "TIME": 36,
+        "NEWS": 36,
+        "TP": 26
+      },
+      "mc_dd50_pct": 9.06,
+      "mc_dd95_pct": 13.72,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": false,
+        "trades": true,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "thr0.7|DEVoof": {
+      "label": "ml_thr0.7|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 244,
+      "trades_per_week": 1.95,
+      "win_rate": 0.426,
+      "avg_R": -0.024,
+      "profit_factor": 0.834,
+      "net_pct": -8.04,
+      "cagr_pct": -3.43,
+      "sharpe": -0.673,
+      "sortino": -0.77,
+      "max_total_dd_pct": 8.79,
+      "max_daily_dd_pct": 1.59,
+      "worst_day_pct": -1.22,
+      "avg_hold_min": 225.2,
+      "exit_reasons": {
+        "SL": 103,
+        "EOD": 89,
+        "NEWS": 19,
+        "TIME": 18,
+        "TP": 15
+      },
+      "mc_dd50_pct": 10.29,
+      "mc_dd95_pct": 14.84,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": true,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "thr0.7|VAL": {
+      "label": "ml_thr0.7|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 248,
+      "trades_per_week": 5.81,
+      "win_rate": 0.431,
+      "avg_R": 0.061,
+      "profit_factor": 1.123,
+      "net_pct": 6.27,
+      "cagr_pct": 7.68,
+      "sharpe": 0.916,
+      "sortino": 1.971,
+      "max_total_dd_pct": 5.31,
+      "max_daily_dd_pct": 1.53,
+      "worst_day_pct": -1.53,
+      "avg_hold_min": 235.4,
+      "exit_reasons": {
+        "SL": 94,
+        "EOD": 80,
+        "NEWS": 30,
+        "TIME": 25,
+        "TP": 19
+      },
+      "mc_dd50_pct": 7.26,
+      "mc_dd95_pct": 11.22,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": false,
+        "trades": true,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "thr0.8|DEVoof": {
+      "label": "ml_thr0.8|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 310,
+      "trades_per_week": 2.48,
+      "win_rate": 0.406,
+      "avg_R": -0.064,
+      "profit_factor": 0.882,
+      "net_pct": -8.04,
+      "cagr_pct": -3.43,
+      "sharpe": -0.563,
+      "sortino": -0.916,
+      "max_total_dd_pct": 11.7,
+      "max_daily_dd_pct": 1.12,
+      "worst_day_pct": -1.12,
+      "avg_hold_min": 220.6,
+      "exit_reasons": {
+        "SL": 132,
+        "EOD": 116,
+        "TIME": 24,
+        "NEWS": 22,
+        "TP": 16
+      },
+      "mc_dd50_pct": 14.76,
+      "mc_dd95_pct": 19.24,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.0,
+        "fail_rate": 0.017,
+        "timeout_rate": 0.983,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": true,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "thr0.8|VAL": {
+      "label": "ml_thr0.8|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 149,
+      "trades_per_week": 3.49,
+      "win_rate": 0.443,
+      "avg_R": 0.059,
+      "profit_factor": 1.124,
+      "net_pct": 3.75,
+      "cagr_pct": 4.58,
+      "sharpe": 0.724,
+      "sortino": 1.529,
+      "max_total_dd_pct": 5.71,
+      "max_daily_dd_pct": 1.05,
+      "worst_day_pct": -1.05,
+      "avg_hold_min": 237.7,
+      "exit_reasons": {
+        "SL": 54,
+        "EOD": 54,
+        "TIME": 16,
+        "NEWS": 16,
+        "TP": 9
+      },
+      "mc_dd50_pct": 5.65,
+      "mc_dd95_pct": 8.9,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": false,
+        "trades": false,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    }
+  }
+}

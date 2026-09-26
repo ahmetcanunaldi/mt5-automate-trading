@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "legs": [
+      [
+        "ny_orb",
+        {
+          "or_start": 990,
+          "or_bars": 2,
+          "end": 1080,
+          "sl_atr": 3.0,
+          "trend": "with",
+          "min_rng_atr": 1.0,
+          "max_rng_atr": 5.0,
+          "rr": 2.0,
+          "trail_atr": 0.0,
+          "be_r": 0.0,
+          "hold_min": 240
+        }
+      ],
+      [
+        "donchian",
+        {
+          "n": 16,
+          "sl_atr": 3.0,
+          "start": 1020,
+          "end": 1320,
+          "trend": "with",
+          "per_day": 2,
+          "min_width_atr": 4.0,
+          "rr": 3.0,
+          "trail_atr": 3.0,
+          "be_r": 0.0,
+          "hold_min": 480
+        }
+      ],
+      [
+        "donchian",
+        {
+          "n": 16,
+          "sl_atr": 1.5,
+          "start": 1020,
+          "end": 1320,
+          "trend": "with",
+          "per_day": 2,
+          "min_width_atr": 4.0,
+          "rr": 2.0,
+          "trail_atr": 3.0,
+          "be_r": 0.0,
+          "hold_min": 240
+        }
+      ]
+    ],
+    "pool_size": 53,
+    "configs_tried": 300
+  },
+  "results": {
+    "DEV": {
+      "label": "greedy|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 224,
+      "trades_per_week": 1.79,
+      "win_rate": 0.589,
+      "avg_R": 0.207,
+      "profit_factor": 2.009,
+      "net_pct": 23.6,
+      "cagr_pct": 9.22,
+      "sharpe": 2.448,
+      "sortino": 3.376,
+      "max_total_dd_pct": 2.18,
+      "max_daily_dd_pct": 0.5,
+      "worst_day_pct": -0.5,
+      "avg_hold_min": 190.6,
+      "exit_reasons": {
+        "TIME": 94,
+        "EOD": 61,
+        "NEWS": 26,
+        "SL": 26,
+        "TP": 17
+      },
+      "mc_dd50_pct": 2.21,
+      "mc_dd95_pct": 3.45,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": true,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": true,
+        "trades": true,
+        "mc_dd95": true,
+        "ALL": true
+      }
+    },
+    "VAL": {
+      "label": "greedy|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 74,
+      "trades_per_week": 1.73,
+      "win_rate": 0.541,
+      "avg_R": 0.09,
+      "profit_factor": 1.396,
+      "net_pct": 2.93,
+      "cagr_pct": 3.58,
+      "sharpe": 1.276,
+      "sortino": 1.587,
+      "max_total_dd_pct": 2.86,
+      "max_daily_dd_pct": 0.58,
+      "worst_day_pct": -0.5,
+      "avg_hold_min": 198.5,
+      "exit_reasons": {
+        "TIME": 36,
+        "EOD": 15,
+        "SL": 11,
+        "NEWS": 10,
+        "TP": 2
+      },
+      "mc_dd50_pct": 1.95,
+      "mc_dd95_pct": 3.1,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": true,
+        "trades": false,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    }
+  }
+}

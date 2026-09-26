@@ -20,3 +20,10 @@
 - Breakouts need room: trailing at 1–1.5 ATR destroys them; 3 ATR or no trailing with 2–3 R targets and ≥ 4 h max hold works.
 - Mean reversion to VWAP worked in the 2022–24 range regime but lost heavily in the 2025 trend regime — avoid unless regime-gated.
 - Raw time-of-day / session drifts are real but tiny (1–4 bps) versus the $6 minimum target.
+- Broker H1 history before 2018 contains one bar per day (not intraday) → intraday research can only start 2018.
+- Coarse-bar proxies (H1 exec with SL-first) are not trustworthy for breakout legs: sign flips vs M15/M1 execution.
+
+## Statistical caution
+- ~1,200 configurations were tried in EXP-003/007. With that many (correlated) trials the expected best DEV Sharpe under
+  the null is ~2 (annualized, ~600 days). DEV Sharpe alone is therefore NOT evidence; VAL (independent 10 months)
+  SR 2.34 on 189 trades (t ≈ 2.1) is the real, still modest, evidence. OOS (2025-10..2026-09) stays locked.

@@ -1,0 +1,10 @@
+donchian qualified so far: 8
+ny_orb qualified so far: 47
+ema_pullback qualified so far: 49
+prev_day_break qualified so far: 53
+asia_breakout qualified so far: 53
++ ny_orb {'or_start': 990, 'or_bars': 2, 'end': 1080, 'sl_atr': 3.0, 'trend': 'with', 'min_rng_atr': 1.0, 'max_rng_atr': 5.0, 'rr': 2.0, 'trail_atr': 0.0, 'be_r': 0.0, 'hold_min': 240} -> DEV SR 1.68 n=144
++ donchian {'n': 16, 'sl_atr': 3.0, 'start': 1020, 'end': 1320, 'trend': 'with', 'per_day': 2, 'min_width_atr': 4.0, 'rr': 3.0, 'trail_atr': 3.0, 'be_r': 0.0, 'hold_min': 480} -> DEV SR 2.18 n=224
++ donchian {'n': 16, 'sl_atr': 1.5, 'start': 1020, 'end': 1320, 'trend': 'with', 'per_day': 2, 'min_width_atr': 4.0, 'rr': 2.0, 'trail_atr': 3.0, 'be_r': 0.0, 'hold_min': 240} -> DEV SR 2.45 n=224
+greedy|DEV                               n= 224 wr=0.59 PF=2.01 net=  23.6% SR= 2.45 DD=2.2% dDD=0.5% mc95=3.45 pass=0.0 fail=0.0 med_days=None
+greedy|VAL                               n=  74 wr=0.54 PF=1.40 net=   2.9% SR= 1.28 DD=2.9% dDD=0.6% mc95=3.1 pass=0.0 fail=0.0 med_days=None

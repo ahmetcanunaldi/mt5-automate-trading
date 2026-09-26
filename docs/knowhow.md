@@ -42,3 +42,9 @@
 - Pure direction AUC ≈ 0.51 with 120 features (3-scale swing structure, S/R clusters, tick microstructure, 6 cross assets).
 - 27 price-action setups × 5 barrier schemes: none significant after costs; signs flip between half-years.
 - Costs matter: baseline mean R per random entry is −0.03…−0.07 R (spread 0.2$, slip, $7/lot) — any edge must beat that.
+
+## Long history (tester export, EXP-020)
+- After Navigator → Refresh, the MCP tester runs our EAs. DataExporter in "m1 ohlc" mode exports full M1 history
+  (2018-09..) to Common\Files in ~5 min — bypasses the 100k "max bars" cap. File: data/XAUUSD_M1_2018.parquet.
+- The rule portfolio (EXP-005/013) is regime-specific: negative in 2019–2021 (−38 R), positive 2022–2025 (+94 R), mixed 2026.
+  Any future candidate must be judged on 2019–2026 walk-forward, not on a single era.

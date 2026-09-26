@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "era": [
+      "2019-01-01",
+      "2022-07-04"
+    ],
+    "candidates": "EXP-013 A/B unchanged"
+  },
+  "results": {
+    "A_base3_K1|FRESH": {
+      "label": "A_base3_K1|FRESH",
+      "from": "2019-01-02",
+      "to": "2022-07-04",
+      "trades": 414,
+      "trades_per_week": 2.27,
+      "win_rate": 0.44,
+      "avg_R": -0.034,
+      "profit_factor": 0.877,
+      "net_pct": -8.04,
+      "cagr_pct": -2.37,
+      "sharpe": -0.532,
+      "sortino": -0.644,
+      "max_total_dd_pct": 10.89,
+      "max_daily_dd_pct": 1.14,
+      "worst_day_pct": -1.14,
+      "avg_hold_min": 133.4,
+      "exit_reasons": {
+        "SL": 143,
+        "EOD": 112,
+        "TIME": 98,
+        "NEWS": 40,
+        "TP": 21
+      },
+      "mc_dd50_pct": 12.79,
+      "mc_dd95_pct": 17.37,
+      "pass60": 0.0,
+      "fail60": 0.0,
+      "med60": null,
+      "pass120": 0.0,
+      "fail120": 0.018,
+      "med120": null,
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": true,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "B_aggr_K4|FRESH": {
+      "label": "B_aggr_K4|FRESH",
+      "from": "2019-01-02",
+      "to": "2022-07-04",
+      "trades": 350,
+      "trades_per_week": 1.92,
+      "win_rate": 0.417,
+      "avg_R": -0.048,
+      "profit_factor": 0.884,
+      "net_pct": -8.09,
+      "cagr_pct": -2.38,
+      "sharpe": -0.343,
+      "sortino": -0.383,
+      "max_total_dd_pct": 13.94,
+      "max_daily_dd_pct": 1.48,
+      "worst_day_pct": -1.47,
+      "avg_hold_min": 136.7,
+      "exit_reasons": {
+        "SL": 132,
+        "EOD": 110,
+        "TIME": 56,
+        "NEWS": 27,
+        "TP": 25
+      },
+      "mc_dd50_pct": 13.35,
+      "mc_dd95_pct": 17.8,
+      "pass60": 0.0,
+      "fail60": 0.032,
+      "med60": null,
+      "pass120": 0.0,
+      "fail120": 0.076,
+      "med120": null,
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": true,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    }
+  }
+}

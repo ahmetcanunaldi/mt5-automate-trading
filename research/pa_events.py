@@ -16,6 +16,9 @@ from research import lab  # noqa: E402
 
 LABELS = ["VOL_1.5_2.25", "VOL_2.0_3.0", "VOL_3.0_4.5", "VOL_2.0_2.0", "STRUCT"]
 PERIODS = [("2024-12", "2025-06"), ("2025-07", "2025-12"), ("2026-01", "2026-09")]
+LONG = "--long" in sys.argv
+if LONG:
+    PERIODS = [(f"{y}-01", f"{y}-12") for y in range(2019, 2027)]
 
 
 def events(D):
@@ -47,7 +50,8 @@ def events(D):
 
 
 def main():
-    D = pd.read_parquet(lab.DATA / "ml_dataset_m5.parquet")
+    D = pd.read_parquet(lab.DATA / ("ml_dataset_m5_long.parquet" if LONG else "ml_dataset_m5.parquet"))
+    D = D[D.close_time >= "2019-01-01"] if LONG else D
     D = D.sort_values(["dir", "close_time"]).reset_index(drop=True)
     ev = events(D)
     rows = []
@@ -56,14 +60,14 @@ def main():
         sub = D[m]
         if len(sub) < 50:
             continue
-        row = {"event": name, "n": len(sub), "per_day": round(len(sub) / 440, 2)}
+        row = {"event": name, "n": len(sub), "per_day": round(len(sub) / (D.close_time.dt.normalize().nunique() or 1), 2)}
         for lb in LABELS:
             r = sub[f"R_{lb}"].dropna()
             row[f"{lb}"] = round(r.mean(), 3)
             row[f"t_{lb}"] = round(r.mean() / r.std() * np.sqrt(len(r)), 1)
         for a, b in PERIODS:
             p = sub[(sub.close_time >= a) & (sub.close_time < pd.Timestamp(b) + pd.offsets.MonthEnd(1))]
-            row[f"R23_{a}"] = round(p["R_VOL_2.0_3.0"].mean(), 3)
+            row[f"R23_{a[:4] if LONG else a}"] = round(p["R_VOL_2.0_3.0"].mean(), 3)
         rows.append(row)
     base = {"event": "ALL bars (baseline)", "n": len(D)}
     for lb in LABELS:
@@ -72,8 +76,12 @@ def main():
     pd.set_option("display.width", 250)
     cols = ["event", "n", "per_day"] + LABELS + [f"t_{x}" for x in ("VOL_2.0_3.0", "STRUCT")] + [c for c in T.columns if c.startswith("R23_")]
     print(T[cols].sort_values("VOL_2.0_3.0", ascending=False).to_string(index=False))
-    (lab.REPORTS / "EXP-016").mkdir(exist_ok=True)
-    T.to_csv(lab.REPORTS / "EXP-016" / "events.csv", index=False)
+    exp = "EXP-022" if LONG else "EXP-016"
+    (lab.REPORTS / exp).mkdir(exist_ok=True)
+    T.to_csv(lab.REPORTS / exp / "events.csv", index=False)
+    y = [c for c in T.columns if c.startswith("R23_")]
+    T["years_pos"] = (T[y] > 0).sum(axis=1)
+    print("events positive (VOL 2/3) in >= 6 of 8 years:", T.loc[T.years_pos >= 6, "event"].tolist())
 
 
 if __name__ == "__main__":

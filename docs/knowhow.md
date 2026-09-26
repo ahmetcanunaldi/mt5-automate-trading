@@ -48,3 +48,7 @@
   (2018-09..) to Common\Files in ~5 min — bypasses the 100k "max bars" cap. File: data/XAUUSD_M1_2018.parquet.
 - The rule portfolio (EXP-005/013) is regime-specific: negative in 2019–2021 (−38 R), positive 2022–2025 (+94 R), mixed 2026.
   Any future candidate must be judged on 2019–2026 walk-forward, not on a single era.
+- Position-size floor: $10k × 0.5 % = $50 risk; at 0.01 lot a $1 move = $1 → maximum stop ≈ $49 (after commission).
+  In 2026 (daily ATR $80–226) any strategy with daily-ATR-scale stops cannot be traded on this account size.
+- 8-year verdict (EXP-022..024): no intraday horizon (M5 → end of day) shows a cost-beating, year-stable edge in
+  price-action, supply/demand, ML direction (AUC 0.51–0.52 every year) or daily momentum/cross-asset signals.

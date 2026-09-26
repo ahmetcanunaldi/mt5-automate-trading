@@ -23,8 +23,14 @@ def main():
     ap.add_argument("--widths", default="1.5,2.0,3.0")
     ap.add_argument("--deltas", default="0.02,0.04,0.06,0.08")
     ap.add_argument("--K", type=int, default=1)
+    ap.add_argument("--long", action="store_true")
     a = ap.parse_args()
-    D = pd.read_parquet(lab.DATA / "ml_dataset_m5.parquet")
+    global blocks
+    if a.long:
+        lab.PERIODS["WF"] = ("2020-01-01", "2026-09-26", "M1L")
+        from research.ml_walkforward import blocks as _b
+        blocks = lambda: _b("2020-01-01", "2026-09-26", months=6)  # noqa: E731
+    D = pd.read_parquet(lab.DATA / ("ml_dataset_m5_long.parquet" if a.long else "ml_dataset_m5.parquet"))
     cols = [c for c in feature_cols(D) if c != "dir"]
     L = D[D.dir == 1].set_index("close_time")
     S = D[D.dir == -1].set_index("close_time")
@@ -35,6 +41,7 @@ def main():
         o = L[f"o_{name}"]
         y = (o == 1).astype(float)
         has = o != 0
+        y_all = y
         p = pd.Series(np.nan, index=L.index)
         aucs = []
         for s0, s1 in blocks():
@@ -45,6 +52,10 @@ def main():
             ev = te & has
             aucs.append(round(roc_auc_score(y[ev], p[ev]), 3))
         mask = p.notna()
+        yrs = p[mask].index.year
+        print("   AUC by year:", {int(y): round(roc_auc_score(y_[h_], p_[h_]), 3) for y in sorted(set(yrs))
+                                   for y_, p_, h_ in [(y_all[mask][yrs == y], p[mask][yrs == y], has[mask][yrs == y])]
+                                   if h_.sum() > 100})
         # realized R of trading each side, by p decile
         dec = pd.qcut(p[mask], 10, labels=False)
         rl = L.loc[mask, f"R_{name}"].groupby(dec).mean().round(3).to_dict()

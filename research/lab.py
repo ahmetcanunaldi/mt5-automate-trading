@@ -58,6 +58,8 @@ def exec_data(period, news_cfg=(30, 30, 10), costs=engine.Costs()):
         return _cache[key]
     if tf == "M15":
         bars, bm = load("M15").loc[a:b], 15
+    elif tf == "M1L":                      # long tester export 2018-09..
+        bars, bm = load("M1_2018").loc[a:b], 1
     else:
         bars, bm = load("M1_from_ticks").loc[a:b], 1
     news = calendar_news.load_news_server_times()

@@ -52,7 +52,7 @@ def micro_feats(m1, idx_close):
     return pd.DataFrame(out, index=idx_close)
 
 
-def cross_feats(idx_close, gold_m1):
+def cross_feats(idx_close, gold_m1, suffix="_M1T"):
     out = {}
     g = gold_m1["close"]
     g.index = g.index + pd.Timedelta(minutes=1)
@@ -61,7 +61,7 @@ def cross_feats(idx_close, gold_m1):
         gr = np.log(g).diff(w)
         gret[w] = gr.reindex(idx_close, method="ffill")
     for sym in CROSS:
-        p = DATA / f"{sym}_M1T.parquet"
+        p = DATA / f"{sym}{suffix}.parquet"
         if not p.exists():
             continue
         c = pd.read_parquet(p)["close"]
@@ -121,8 +121,11 @@ def first_hit(entry_i, n_i, d, sl, tp, o, h, l, c, spr, day):
     return out_y, out_r, out_o
 
 
-def build(save=True):
-    m1 = pd.read_parquet(DATA / "XAUUSD_M1T.parquet")
+def build(save=True, m1_file="XAUUSD_M1T.parquet", cross_suffix="_M1T", out="ml_dataset_m5.parquet"):
+    m1 = pd.read_parquet(DATA / m1_file)
+    if "n" not in m1:                       # tester export: no tick-level up/down/path
+        m1 = m1.rename(columns={"tick_volume": "n"})
+        m1["up"] = np.nan; m1["dn"] = np.nan; m1["path"] = np.nan; m1["spread_max"] = m1["spread"]
     m5 = m5_from_m1(m1)
     close_t = m5.index + pd.Timedelta(minutes=5)
     a5 = atr(m5, 14)
@@ -158,7 +161,7 @@ def build(save=True):
     F["h1_pos"] = ((ctx["c"] - ctx["e50"]) / ctx["a"]).to_numpy()
     # microstructure + cross asset (indexed by close time)
     mi = micro_feats(m1, close_t); mi.index = m5.index
-    xa = cross_feats(close_t, m1); xa.index = m5.index
+    xa = cross_feats(close_t, m1, cross_suffix); xa.index = m5.index
     F = F.join(mi).join(xa)
     # news proximity + blackout at the entry time
     news = calendar_news.load_news_server_times()
@@ -223,14 +226,19 @@ def build(save=True):
         D[f"{nm}_bos_with"] = np.where(long_, D[f"{nm}_bos_up"], D[f"{nm}_bos_dn"])
         D[f"{nm}_bos_against"] = np.where(long_, D[f"{nm}_bos_dn"], D[f"{nm}_bos_up"])
         D = D.drop(columns=[f"{nm}_res_d", f"{nm}_sup_d", f"{nm}_res_t", f"{nm}_sup_t", f"{nm}_bos_up", f"{nm}_bos_dn"])
-    D = D.copy()
+    D = D.dropna(axis=1, how="all")
+    fcols = D.select_dtypes("float64").columns
+    D[fcols] = D[fcols].astype(np.float32)
     if save:
-        D.to_parquet(DATA / "ml_dataset_m5.parquet")
+        D.to_parquet(DATA / out)
     return D
 
 
 if __name__ == "__main__":
-    D = build()
+    if "--long" in sys.argv:
+        D = build(m1_file="XAUUSD_M1_2018.parquet", cross_suffix="_M1_2018", out="ml_dataset_m5_long.parquet")
+    else:
+        D = build()
     print(D.shape)
     for c in [c for c in D.columns if c.startswith("y_")]:
         name = c[2:]

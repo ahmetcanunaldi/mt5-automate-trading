@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "widths": "2.0,3.0",
+    "deltas": "0.04,0.08",
+    "K": 1
+  },
+  "results": {
+    "VOL_3.0_3.0|d0.04": {
+      "label": "VOL_3.0_3.0|d0.04|WF",
+      "from": "2020-01-02",
+      "to": "2026-09-25",
+      "trades": 195,
+      "trades_per_week": 0.56,
+      "win_rate": 0.456,
+      "avg_R": -0.098,
+      "profit_factor": 0.804,
+      "net_pct": -8.07,
+      "cagr_pct": -1.24,
+      "sharpe": -0.544,
+      "sortino": -0.095,
+      "max_total_dd_pct": 8.54,
+      "max_daily_dd_pct": 2.35,
+      "worst_day_pct": -2.35,
+      "avg_hold_min": 85.9,
+      "exit_reasons": {
+        "SL": 86,
+        "TP": 75,
+        "TIME": 25,
+        "NEWS": 7,
+        "EOD": 2
+      },
+      "mc_dd50_pct": 11.57,
+      "mc_dd95_pct": 14.54,
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": false,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "VOL_3.0_3.0|d0.08": {
+      "label": "VOL_3.0_3.0|d0.08|WF",
+      "from": "2020-01-02",
+      "to": "2026-09-25",
+      "trades": 81,
+      "trades_per_week": 0.23,
+      "win_rate": 0.407,
+      "avg_R": -0.207,
+      "profit_factor": 0.451,
+      "net_pct": -8.13,
+      "cagr_pct": -1.25,
+      "sharpe": -0.771,
+      "sortino": -0.113,
+      "max_total_dd_pct": 8.38,
+      "max_daily_dd_pct": 2.07,
+      "worst_day_pct": -2.07,
+      "avg_hold_min": 91.6,
+      "exit_reasons": {
+        "SL": 40,
+        "TP": 25,
+        "TIME": 14,
+        "NEWS": 2
+      },
+      "mc_dd50_pct": 9.01,
+      "mc_dd95_pct": 10.79,
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": false,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "VOL_2.0_2.0|d0.08": {
+      "label": "VOL_2.0_2.0|d0.08|WF",
+      "from": "2020-01-02",
+      "to": "2026-09-25",
+      "trades": 26,
+      "trades_per_week": 0.07,
+      "win_rate": 0.115,
+      "avg_R": -0.802,
+      "profit_factor": 0.095,
+      "net_pct": -8.2,
+      "cagr_pct": -1.26,
+      "sharpe": -0.778,
+      "sortino": -0.091,
+      "max_total_dd_pct": 8.25,
+      "max_daily_dd_pct": 2.38,
+      "worst_day_pct": -2.38,
+      "avg_hold_min": 52.8,
+      "exit_reasons": {
+        "SL": 23,
+        "TP": 3
+      },
+      "mc_dd50_pct": 9.93,
+      "mc_dd95_pct": 10.37,
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": false,
+        "trades": false,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    }
+  }
+}

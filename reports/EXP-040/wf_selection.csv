@@ -1,0 +1,7 @@
+year,n_sel,WF_R,ALL_R,HAND_R,selected
+2021,3,-1.3,-56.2,4.2,"trendH4,friday,nr7"
+2022,2,1.9,7.1,5.0,"tday,tom"
+2023,2,1.0,16.3,10.8,"tday,fri_close"
+2024,7,33.7,27.2,25.0,"tday,drift,friday,nr7,fri_close,old_ny_orb,old_donchian_us"
+2025,8,75.0,83.2,48.3,"drift,friday,tom,lw,inside,fri_close,old_donchian_us,old_pdb_long"
+2026,10,10.8,12.5,3.3,"trendH4,tday,drift,tom,lw,inside,nr7,fri_close,old_donchian_us,old_pdb_long"

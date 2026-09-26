@@ -62,7 +62,7 @@ class Guards:
 
 @njit(cache=True)
 def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
-         s_idx, s_dir, s_sl, s_tp, s_hold, s_be, s_trail,
+         s_idx, s_dir, s_sl, s_tp, s_hold, s_be, s_trail, s_rm,
          init_bal, risk_pct, soft, hard, derisk, tstop, max_td, first_m, last_m, flat_m, fri_m,
          comm, slip, max_pos, max_open_risk, intraday, weekend_flat, swap_l, swap_s, triple_dow):
     n = len(o)
@@ -115,7 +115,7 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
                 dd_tot = (init_bal - bal) / init_bal * 100.0
                 rp = risk_pct if dd_tot < derisk else risk_pct * 0.5
                 room = hard / 100.0 * day_ref + day_pnl - open_risk
-                risk_usd = min(rp / 100.0 * bal, room, max_open_risk / 100.0 * bal - open_risk)
+                risk_usd = min(rp * min(s_rm[si], 1.0) / 100.0 * bal, room, max_open_risk / 100.0 * bal - open_risk)
                 dist = s_sl[si]
                 lots = np.floor(risk_usd / (dist * 100.0 + comm) / 0.01 + 1e-9) * 0.01
                 if lots >= 0.01:
@@ -270,10 +270,11 @@ def run(exec_x: dict, signals: pd.DataFrame, guards: Guards = Guards(), costs: C
     s_hold = np.maximum(1, np.ceil(sig["hold_min"].to_numpy(float) / bm)).astype(np.int64)
     be = sig["be"].to_numpy(float) if "be" in sig else np.zeros(len(sig))
     trail = sig["trail"].to_numpy(float) if "trail" in sig else np.zeros(len(sig))
+    rm = sig["risk_mult"].fillna(1.0).to_numpy(float) if "risk_mult" in sig else np.ones(len(sig))
     out = _run(exec_x["t_min"], exec_x["dow"], exec_x["day_id"], exec_x["o"], exec_x["h"], exec_x["l"],
                exec_x["c"], exec_x["spr"], exec_x["block"], exec_x["flat"],
                s_idx, sig["dir"].to_numpy(np.int64), sig["sl"].to_numpy(float), sig["tp"].to_numpy(float),
-               s_hold, be, trail,
+               s_hold, be, trail, rm,
                guards.initial_balance, guards.risk_pct, guards.daily_soft_pct, guards.daily_hard_pct,
                guards.total_derisk_pct, guards.total_stop_pct, guards.max_trades_day,
                guards.first_entry_min, guards.last_entry_min, guards.flatten_min, guards.fri_flatten_min,

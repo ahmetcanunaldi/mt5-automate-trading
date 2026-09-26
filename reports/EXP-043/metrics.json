@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "strategy": "MTF momentum alignment"
+  },
+  "results": {
+    "n16|all4|tr0.0|swing|65-1320": {
+      "label": "",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 1169,
+      "trades_per_week": 2.91,
+      "win_rate": 0.304,
+      "avg_R": 0.116,
+      "profit_factor": 1.193,
+      "net_pct": 83.07,
+      "cagr_pct": 8.14,
+      "sharpe": 0.65,
+      "sortino": 1.4,
+      "max_total_dd_pct": 22.32,
+      "max_daily_dd_pct": 3.0,
+      "worst_day_pct": -3.0,
+      "avg_hold_min": 437.6,
+      "exit_reasons": {
+        "SL": 726,
+        "NEWS": 377,
+        "EOD": 65,
+        "DAILY_GUARD": 1
+      }
+    },
+    "n16|h1h4d1|tr0.0|swing|65-1320": {
+      "label": "",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 1305,
+      "trades_per_week": 3.25,
+      "win_rate": 0.308,
+      "avg_R": 0.106,
+      "profit_factor": 1.178,
+      "net_pct": 84.47,
+      "cagr_pct": 8.24,
+      "sharpe": 0.635,
+      "sortino": 1.322,
+      "max_total_dd_pct": 23.79,
+      "max_daily_dd_pct": 2.76,
+      "worst_day_pct": -2.67,
+      "avg_hold_min": 440.3,
+      "exit_reasons": {
+        "SL": 804,
+        "NEWS": 430,
+        "EOD": 71
+      }
+    }
+  }
+}

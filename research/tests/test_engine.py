@@ -150,3 +150,12 @@ def test_swing_holds_overnight_and_pays_swap():
     # nights: Mon->Tue 1, Tue->Wed 1, Wed->Thu 3 (triple), Thu->Fri 1 = 6 nights x $10 x 0.10 lot = $6
     price_pnl = (104.5 - 100) * 0.10 * 100
     assert t.pnl == pytest.approx(price_pnl - 6.0)
+
+
+def test_risk_mult_scales_down_never_up():
+    bars = make_bars([(100, 100.5, 99.5, 100)] * 3)
+    for rm, lots in ((0.5, 0.05), (2.0, 0.10)):
+        s = sig("2025-03-04 10:00", sl=5.0)
+        s["risk_mult"] = rm
+        res = run(prepare_exec(bars, 1, costs=ZERO), s, Guards(), ZERO)
+        assert res.trades.iloc[0].lots == pytest.approx(lots)

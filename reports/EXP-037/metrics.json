@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "strategy": "vol breakouts"
+  },
+  "results": {
+    "nr|patterninside|rr2.0|trendTrue|start_min65": {
+      "label": "",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 110,
+      "trades_per_week": 0.27,
+      "win_rate": 0.573,
+      "avg_R": 0.146,
+      "profit_factor": 1.782,
+      "net_pct": 8.03,
+      "cagr_pct": 1.0,
+      "sharpe": 0.789,
+      "sortino": 0.42,
+      "max_total_dd_pct": 1.84,
+      "max_daily_dd_pct": 0.5,
+      "worst_day_pct": -0.5,
+      "avg_hold_min": 573.9,
+      "exit_reasons": {
+        "NEWS": 63,
+        "EOD": 37,
+        "SL": 7,
+        "TP": 3
+      }
+    },
+    "nr|patterninside|rrNone|trendTrue|start_min65": {
+      "label": "",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 110,
+      "trades_per_week": 0.27,
+      "win_rate": 0.573,
+      "avg_R": 0.15,
+      "profit_factor": 1.81,
+      "net_pct": 8.32,
+      "cagr_pct": 1.04,
+      "sharpe": 0.777,
+      "sortino": 0.435,
+      "max_total_dd_pct": 1.84,
+      "max_daily_dd_pct": 0.5,
+      "worst_day_pct": -0.5,
+      "avg_hold_min": 584.8,
+      "exit_reasons": {
+        "NEWS": 64,
+        "EOD": 39,
+        "SL": 7
+      }
+    }
+  }
+}

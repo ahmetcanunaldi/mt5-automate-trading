@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "sets": {
+      "prev5": [
+        "trendH4",
+        "tday",
+        "drift",
+        "friday",
+        "tom"
+      ],
+      "prev5+lw": [
+        "trendH4",
+        "tday",
+        "drift",
+        "friday",
+        "tom",
+        "lw"
+      ],
+      "prev5+nr": [
+        "trendH4",
+        "tday",
+        "drift",
+        "friday",
+        "tom",
+        "inside",
+        "nr7"
+      ],
+      "all": [
+        "trendH4",
+        "tday",
+        "drift",
+        "friday",
+        "tom",
+        "lw",
+        "inside",
+        "nr7",
+        "fri_close"
+      ],
+      "intraday_all": [
+        "tday",
+        "drift",
+        "friday",
+        "lw",
+        "inside",
+        "nr7",
+        "fri_close"
+      ]
+    }
+  },
+  "results": {
+    "prev5+nr|K4|wf0": {
+      "label": "prev5+nr",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 2856,
+      "trades_per_week": 7.11,
+      "win_rate": 0.532,
+      "avg_R": 0.04,
+      "profit_factor": 1.318,
+      "net_pct": 72.73,
+      "cagr_pct": 7.33,
+      "sharpe": 1.27,
+      "sortino": 2.132,
+      "max_total_dd_pct": 8.12,
+      "max_daily_dd_pct": 2.01,
+      "worst_day_pct": -1.7,
+      "avg_hold_min": 701.6,
+      "exit_reasons": {
+        "TIME": 2003,
+        "NEWS": 757,
+        "SL": 96
+      },
+      "mc_dd50_pct": 4.64,
+      "mc_dd95_pct": 7.01
+    },
+    "all|K6|wf0": {
+      "label": "all",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 4152,
+      "trades_per_week": 10.33,
+      "win_rate": 0.515,
+      "avg_R": 0.034,
+      "profit_factor": 1.303,
+      "net_pct": 97.15,
+      "cagr_pct": 9.18,
+      "sharpe": 1.246,
+      "sortino": 2.393,
+      "max_total_dd_pct": 8.57,
+      "max_daily_dd_pct": 2.58,
+      "worst_day_pct": -2.46,
+      "avg_hold_min": 737.9,
+      "exit_reasons": {
+        "TIME": 2504,
+        "NEWS": 1513,
+        "SL": 135
+      },
+      "mc_dd50_pct": 5.48,
+      "mc_dd95_pct": 8.0
+    }
+  }
+}

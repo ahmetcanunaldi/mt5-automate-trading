@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "legs": [
+      "trendH4",
+      "tday",
+      "drift",
+      "friday",
+      "tom"
+    ]
+  },
+  "results": {
+    "trendH4+tday+friday+tom|K2|wf0": {
+      "label": "trendH4+tday+friday+tom",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 1039,
+      "trades_per_week": 2.59,
+      "win_rate": 0.552,
+      "avg_R": 0.053,
+      "profit_factor": 1.432,
+      "net_pct": 30.24,
+      "cagr_pct": 3.48,
+      "sharpe": 1.093,
+      "sortino": 1.14,
+      "max_total_dd_pct": 4.03,
+      "max_daily_dd_pct": 1.78,
+      "worst_day_pct": -1.66,
+      "avg_hold_min": 937.4,
+      "exit_reasons": {
+        "NEWS": 585,
+        "TIME": 409,
+        "SL": 45
+      },
+      "mc_dd50_pct": 3.28,
+      "mc_dd95_pct": 5.18
+    },
+    "trendH4+tday+drift+friday+tom|K4|wf0": {
+      "label": "trendH4+tday+drift+friday+tom",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 2718,
+      "trades_per_week": 6.76,
+      "win_rate": 0.528,
+      "avg_R": 0.032,
+      "profit_factor": 1.253,
+      "net_pct": 50.56,
+      "cagr_pct": 5.44,
+      "sharpe": 1.055,
+      "sortino": 1.644,
+      "max_total_dd_pct": 8.68,
+      "max_daily_dd_pct": 1.99,
+      "worst_day_pct": -1.72,
+      "avg_hold_min": 685.4,
+      "exit_reasons": {
+        "TIME": 1974,
+        "NEWS": 663,
+        "SL": 81
+      },
+      "mc_dd50_pct": 4.8,
+      "mc_dd95_pct": 7.35
+    },
+    "trendH4+tday+friday+tom|K4|wf0": {
+      "label": "trendH4+tday+friday+tom",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 1139,
+      "trades_per_week": 2.83,
+      "win_rate": 0.555,
+      "avg_R": 0.057,
+      "profit_factor": 1.437,
+      "net_pct": 36.3,
+      "cagr_pct": 4.09,
+      "sharpe": 1.001,
+      "sortino": 0.97,
+      "max_total_dd_pct": 5.65,
+      "max_daily_dd_pct": 1.93,
+      "worst_day_pct": -1.79,
+      "avg_hold_min": 986.0,
+      "exit_reasons": {
+        "NEWS": 654,
+        "TIME": 427,
+        "SL": 58
+      },
+      "mc_dd50_pct": 3.46,
+      "mc_dd95_pct": 5.36
+    }
+  }
+}

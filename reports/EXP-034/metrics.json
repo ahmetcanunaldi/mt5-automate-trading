@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "strategy": "trend-conditioned intraday"
+  },
+  "results": {
+    "tday_k0.3_sl0.5_rrNone_T1080_rr": {
+      "label": "",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 358,
+      "trades_per_week": 0.89,
+      "win_rate": 0.539,
+      "avg_R": 0.066,
+      "profit_factor": 1.478,
+      "net_pct": 12.18,
+      "cagr_pct": 1.5,
+      "sharpe": 0.902,
+      "sortino": 0.651,
+      "max_total_dd_pct": 2.15,
+      "max_daily_dd_pct": 0.5,
+      "worst_day_pct": -0.5,
+      "avg_hold_min": 262.1,
+      "exit_reasons": {
+        "EOD": 278,
+        "NEWS": 63,
+        "SL": 17
+      }
+    },
+    "tday_k0.5_sl0.5_rrNone_T1080_rr": {
+      "label": "",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 250,
+      "trades_per_week": 0.62,
+      "win_rate": 0.54,
+      "avg_R": 0.075,
+      "profit_factor": 1.567,
+      "net_pct": 9.63,
+      "cagr_pct": 1.2,
+      "sharpe": 0.881,
+      "sortino": 0.552,
+      "max_total_dd_pct": 1.94,
+      "max_daily_dd_pct": 0.5,
+      "worst_day_pct": -0.5,
+      "avg_hold_min": 271.8,
+      "exit_reasons": {
+        "EOD": 203,
+        "NEWS": 37,
+        "SL": 10
+      }
+    }
+  }
+}

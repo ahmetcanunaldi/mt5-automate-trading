@@ -52,7 +52,7 @@ class Guards:
 
 @njit(cache=True)
 def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
-         s_idx, s_dir, s_sl, s_tp, s_hold, s_be,
+         s_idx, s_dir, s_sl, s_tp, s_hold, s_be, s_trail,
          init_bal, risk_pct, soft, hard, derisk, tstop, max_td, first_m, last_m, flat_m, fri_m,
          comm, slip):
     n = len(o)
@@ -67,6 +67,7 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
     bal = init_bal
     in_pos = False
     d = 0; ep = 0.0; lot = 0.0; slp = 0.0; tpp = 0.0; ei = 0; deadline = 0; be_px = 0.0; be_done = False
+    trail = 0.0
     cur_day = -1; day_ref = bal; day_trades = 0; stopped = False
     si = 0
     for i in range(n):
@@ -101,7 +102,7 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
                         ep = o[i] - slip
                         slp = ep + dist; tpp = ep - s_tp[si]
                     lot = lots; ei = i; deadline = s_hold[si]; in_pos = True
-                    be_px = s_be[si]; be_done = False
+                    be_px = s_be[si]; be_done = False; trail = s_trail[si]
                     day_trades += 1
                     tr_ei[ntr] = i; tr_dir[ntr] = d; tr_ep[ntr] = ep; tr_lot[ntr] = lot
                     tr_risk[ntr] = lots * (dist * 100.0 + comm)
@@ -130,6 +131,14 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
                     lim = (-hard / 100.0 * day_ref - (bal - day_ref) + lot * comm) / (lot * CONTRACT)
                     xp = ep + lim if d == 1 else ep - lim
                     reason = 5
+            # trailing stop (chandelier on bar extremes; applies from next bar)
+            if reason == 0 and trail > 0:
+                if d == 1:
+                    if h[i] - trail > slp:
+                        slp = h[i] - trail
+                else:
+                    if l[i] + sp + trail < slp:
+                        slp = l[i] + sp + trail
             # break-even move (after the bar, applies from next bar)
             if reason == 0 and be_px > 0 and not be_done:
                 if (d == 1 and h[i] - ep >= be_px) or (d == -1 and ep - (l[i] + sp) >= be_px):
@@ -207,10 +216,11 @@ def run(exec_x: dict, signals: pd.DataFrame, guards: Guards = Guards(), costs: C
     bm = exec_x["bar_minutes"]
     s_hold = np.maximum(1, np.ceil(sig["hold_min"].to_numpy(float) / bm)).astype(np.int64)
     be = sig["be"].to_numpy(float) if "be" in sig else np.zeros(len(sig))
+    trail = sig["trail"].to_numpy(float) if "trail" in sig else np.zeros(len(sig))
     out = _run(exec_x["t_min"], exec_x["dow"], exec_x["day_id"], exec_x["o"], exec_x["h"], exec_x["l"],
                exec_x["c"], exec_x["spr"], exec_x["block"], exec_x["flat"],
                s_idx, sig["dir"].to_numpy(np.int64), sig["sl"].to_numpy(float), sig["tp"].to_numpy(float),
-               s_hold, be,
+               s_hold, be, trail,
                guards.initial_balance, guards.risk_pct, guards.daily_soft_pct, guards.daily_hard_pct,
                guards.total_derisk_pct, guards.total_stop_pct, guards.max_trades_day,
                guards.first_entry_min, guards.last_entry_min, guards.flatten_min, guards.fri_flatten_min,

@@ -1,0 +1,605 @@
+{
+  "meta": {
+    "legs": {
+      "ny_orb": [
+        "ny_orb",
+        {
+          "or_start": 990,
+          "or_bars": 2,
+          "end": 1200,
+          "sl_atr": 2.0,
+          "rr": 2.0,
+          "trail_atr": 0.0,
+          "be_r": 0.0,
+          "hold_min": 480,
+          "trend": "with",
+          "min_rng_atr": 0.5,
+          "max_rng_atr": 5.0
+        }
+      ],
+      "donchian_us": [
+        "donchian",
+        {
+          "n": 32,
+          "sl_atr": 2.0,
+          "rr": 3.0,
+          "trail_atr": 0.0,
+          "be_r": 0.0,
+          "hold_min": 480,
+          "start": 900,
+          "end": 1320,
+          "trend": "with",
+          "per_day": 2,
+          "min_width_atr": 4.0
+        }
+      ],
+      "pdb_trend": [
+        "prev_day_break",
+        {
+          "start": 120,
+          "end": 900,
+          "sl_atr": 1.5,
+          "rr": 2.0,
+          "trail_atr": 2.0,
+          "be_r": 0.0,
+          "hold_min": 120,
+          "trend": "with",
+          "buffer_atr": 0.3
+        }
+      ],
+      "pdb_long": [
+        "prev_day_break",
+        {
+          "start": 120,
+          "end": 900,
+          "sl_atr": 2.0,
+          "rr": 3.0,
+          "trail_atr": 2.0,
+          "be_r": 0.0,
+          "hold_min": 60,
+          "trend": "long_only",
+          "buffer_atr": 0.3
+        }
+      ]
+    },
+    "combos": [
+      [
+        "ny_orb"
+      ],
+      [
+        "donchian_us"
+      ],
+      [
+        "pdb_trend"
+      ],
+      [
+        "ny_orb",
+        "donchian_us"
+      ],
+      [
+        "ny_orb",
+        "donchian_us",
+        "pdb_trend"
+      ],
+      [
+        "ny_orb",
+        "donchian_us",
+        "pdb_long"
+      ]
+    ]
+  },
+  "results": {
+    "ny_orb|DEV": {
+      "label": "ny_orb|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 232,
+      "trades_per_week": 1.86,
+      "win_rate": 0.522,
+      "avg_R": 0.068,
+      "profit_factor": 1.181,
+      "net_pct": 7.03,
+      "cagr_pct": 2.87,
+      "sharpe": 0.678,
+      "sortino": 1.073,
+      "max_total_dd_pct": 3.96,
+      "max_daily_dd_pct": 0.51,
+      "worst_day_pct": -0.51,
+      "avg_hold_min": 209.5,
+      "exit_reasons": {
+        "EOD": 123,
+        "SL": 57,
+        "NEWS": 29,
+        "TP": 23
+      },
+      "mc_dd50_pct": 4.92,
+      "mc_dd95_pct": 7.56,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": false,
+        "trades": true,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    },
+    "ny_orb|VAL": {
+      "label": "ny_orb|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 77,
+      "trades_per_week": 1.8,
+      "win_rate": 0.545,
+      "avg_R": 0.104,
+      "profit_factor": 1.443,
+      "net_pct": 4.19,
+      "cagr_pct": 5.13,
+      "sharpe": 1.463,
+      "sortino": 2.065,
+      "max_total_dd_pct": 2.57,
+      "max_daily_dd_pct": 0.49,
+      "worst_day_pct": -0.49,
+      "avg_hold_min": 246.5,
+      "exit_reasons": {
+        "EOD": 46,
+        "SL": 15,
+        "NEWS": 11,
+        "TP": 4,
+        "TIME": 1
+      },
+      "mc_dd50_pct": 2.39,
+      "mc_dd95_pct": 3.85,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": true,
+        "trades": false,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    },
+    "donchian_us|DEV": {
+      "label": "donchian_us|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 222,
+      "trades_per_week": 1.78,
+      "win_rate": 0.514,
+      "avg_R": 0.189,
+      "profit_factor": 1.525,
+      "net_pct": 20.59,
+      "cagr_pct": 8.1,
+      "sharpe": 1.539,
+      "sortino": 2.53,
+      "max_total_dd_pct": 5.72,
+      "max_daily_dd_pct": 0.98,
+      "worst_day_pct": -0.98,
+      "avg_hold_min": 165.5,
+      "exit_reasons": {
+        "EOD": 101,
+        "SL": 62,
+        "NEWS": 41,
+        "TP": 13,
+        "TIME": 5
+      },
+      "mc_dd50_pct": 3.98,
+      "mc_dd95_pct": 6.15,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.08,
+        "fail_rate": 0.0,
+        "timeout_rate": 0.92,
+        "median_days_to_pass": 210.5
+      },
+      "gates": {
+        "sharpe": true,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": true,
+        "trades": true,
+        "mc_dd95": true,
+        "ALL": true
+      }
+    },
+    "donchian_us|VAL": {
+      "label": "donchian_us|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 77,
+      "trades_per_week": 1.8,
+      "win_rate": 0.519,
+      "avg_R": 0.293,
+      "profit_factor": 2.006,
+      "net_pct": 11.33,
+      "cagr_pct": 13.95,
+      "sharpe": 2.573,
+      "sortino": 4.652,
+      "max_total_dd_pct": 3.11,
+      "max_daily_dd_pct": 0.65,
+      "worst_day_pct": -0.59,
+      "avg_hold_min": 190.7,
+      "exit_reasons": {
+        "EOD": 35,
+        "SL": 21,
+        "NEWS": 13,
+        "TP": 6,
+        "TIME": 2
+      },
+      "mc_dd50_pct": 2.37,
+      "mc_dd95_pct": 3.86,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": true,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": true,
+        "trades": false,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    },
+    "pdb_trend|DEV": {
+      "label": "pdb_trend|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 202,
+      "trades_per_week": 1.62,
+      "win_rate": 0.396,
+      "avg_R": 0.035,
+      "profit_factor": 1.063,
+      "net_pct": 2.8,
+      "cagr_pct": 1.15,
+      "sharpe": 0.252,
+      "sortino": 0.474,
+      "max_total_dd_pct": 4.87,
+      "max_daily_dd_pct": 0.51,
+      "worst_day_pct": -0.51,
+      "avg_hold_min": 56.4,
+      "exit_reasons": {
+        "SL": 119,
+        "TIME": 45,
+        "TP": 33,
+        "NEWS": 5
+      },
+      "mc_dd50_pct": 6.78,
+      "mc_dd95_pct": 10.51,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": false,
+        "trades": true,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "pdb_trend|VAL": {
+      "label": "pdb_trend|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 70,
+      "trades_per_week": 1.64,
+      "win_rate": 0.486,
+      "avg_R": 0.257,
+      "profit_factor": 1.704,
+      "net_pct": 8.5,
+      "cagr_pct": 10.44,
+      "sharpe": 2.146,
+      "sortino": 3.787,
+      "max_total_dd_pct": 2.89,
+      "max_daily_dd_pct": 0.7,
+      "worst_day_pct": -0.5,
+      "avg_hold_min": 62.9,
+      "exit_reasons": {
+        "SL": 42,
+        "TIME": 14,
+        "TP": 14
+      },
+      "mc_dd50_pct": 2.43,
+      "mc_dd95_pct": 3.94,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": true,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": true,
+        "trades": false,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    },
+    "ny_orb+donchian_us|DEV": {
+      "label": "ny_orb+donchian_us|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 353,
+      "trades_per_week": 2.82,
+      "win_rate": 0.521,
+      "avg_R": 0.12,
+      "profit_factor": 1.317,
+      "net_pct": 21.03,
+      "cagr_pct": 8.26,
+      "sharpe": 1.348,
+      "sortino": 2.615,
+      "max_total_dd_pct": 4.87,
+      "max_daily_dd_pct": 0.96,
+      "worst_day_pct": -0.96,
+      "avg_hold_min": 183.7,
+      "exit_reasons": {
+        "EOD": 163,
+        "SL": 100,
+        "NEWS": 54,
+        "TP": 31,
+        "TIME": 5
+      },
+      "mc_dd50_pct": 5.44,
+      "mc_dd95_pct": 8.47,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.036,
+        "fail_rate": 0.0,
+        "timeout_rate": 0.964,
+        "median_days_to_pass": 217.5
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": true,
+        "trades": true,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "ny_orb+donchian_us|VAL": {
+      "label": "ny_orb+donchian_us|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 117,
+      "trades_per_week": 2.74,
+      "win_rate": 0.53,
+      "avg_R": 0.184,
+      "profit_factor": 1.602,
+      "net_pct": 10.82,
+      "cagr_pct": 13.32,
+      "sharpe": 2.221,
+      "sortino": 5.01,
+      "max_total_dd_pct": 2.7,
+      "max_daily_dd_pct": 0.64,
+      "worst_day_pct": -0.62,
+      "avg_hold_min": 211.5,
+      "exit_reasons": {
+        "EOD": 54,
+        "SL": 33,
+        "NEWS": 20,
+        "TP": 8,
+        "TIME": 2
+      },
+      "mc_dd50_pct": 3.21,
+      "mc_dd95_pct": 5.02,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.0,
+        "fail_rate": 0.0,
+        "timeout_rate": 1.0,
+        "median_days_to_pass": null
+      },
+      "gates": {
+        "sharpe": true,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": true,
+        "trades": false,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    },
+    "ny_orb+donchian_us+pdb_trend|DEV": {
+      "label": "ny_orb+donchian_us+pdb_trend|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 554,
+      "trades_per_week": 4.43,
+      "win_rate": 0.475,
+      "avg_R": 0.082,
+      "profit_factor": 1.199,
+      "net_pct": 23.03,
+      "cagr_pct": 9.0,
+      "sharpe": 1.138,
+      "sortino": 2.288,
+      "max_total_dd_pct": 6.0,
+      "max_daily_dd_pct": 1.2,
+      "worst_day_pct": -1.18,
+      "avg_hold_min": 137.9,
+      "exit_reasons": {
+        "SL": 219,
+        "EOD": 163,
+        "TP": 62,
+        "NEWS": 60,
+        "TIME": 50
+      },
+      "mc_dd50_pct": 7.72,
+      "mc_dd95_pct": 11.72,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.05,
+        "fail_rate": 0.0,
+        "timeout_rate": 0.95,
+        "median_days_to_pass": 178.5
+      },
+      "gates": {
+        "sharpe": false,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": false,
+        "trades": true,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "ny_orb+donchian_us+pdb_trend|VAL": {
+      "label": "ny_orb+donchian_us+pdb_trend|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 184,
+      "trades_per_week": 4.31,
+      "win_rate": 0.511,
+      "avg_R": 0.213,
+      "profit_factor": 1.636,
+      "net_pct": 19.58,
+      "cagr_pct": 24.32,
+      "sharpe": 2.959,
+      "sortino": 6.473,
+      "max_total_dd_pct": 2.87,
+      "max_daily_dd_pct": 0.97,
+      "worst_day_pct": -0.97,
+      "avg_hold_min": 157.0,
+      "exit_reasons": {
+        "SL": 74,
+        "EOD": 55,
+        "TP": 21,
+        "NEWS": 19,
+        "TIME": 15
+      },
+      "mc_dd50_pct": 3.53,
+      "mc_dd95_pct": 5.54,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.503,
+        "fail_rate": 0.0,
+        "timeout_rate": 0.497,
+        "median_days_to_pass": 110.0
+      },
+      "gates": {
+        "sharpe": true,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": true,
+        "trades": false,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    },
+    "ny_orb+donchian_us+pdb_long|DEV": {
+      "label": "ny_orb+donchian_us+pdb_long|DEV",
+      "from": "2022-07-05",
+      "to": "2024-11-29",
+      "trades": 526,
+      "trades_per_week": 4.21,
+      "win_rate": 0.508,
+      "avg_R": 0.114,
+      "profit_factor": 1.342,
+      "net_pct": 32.67,
+      "cagr_pct": 12.48,
+      "sharpe": 1.703,
+      "sortino": 3.425,
+      "max_total_dd_pct": 5.64,
+      "max_daily_dd_pct": 1.08,
+      "worst_day_pct": -1.06,
+      "avg_hold_min": 139.2,
+      "exit_reasons": {
+        "EOD": 164,
+        "SL": 161,
+        "TIME": 109,
+        "NEWS": 60,
+        "TP": 32
+      },
+      "mc_dd50_pct": 5.68,
+      "mc_dd95_pct": 8.88,
+      "challenge": {
+        "starts": 603,
+        "pass_rate": 0.202,
+        "fail_rate": 0.0,
+        "timeout_rate": 0.798,
+        "median_days_to_pass": 167.5
+      },
+      "gates": {
+        "sharpe": true,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": true,
+        "trades": true,
+        "mc_dd95": false,
+        "ALL": false
+      }
+    },
+    "ny_orb+donchian_us+pdb_long|VAL": {
+      "label": "ny_orb+donchian_us+pdb_long|VAL",
+      "from": "2024-12-04",
+      "to": "2025-09-30",
+      "trades": 189,
+      "trades_per_week": 4.43,
+      "win_rate": 0.519,
+      "avg_R": 0.152,
+      "profit_factor": 1.506,
+      "net_pct": 13.96,
+      "cagr_pct": 17.25,
+      "sharpe": 2.336,
+      "sortino": 5.02,
+      "max_total_dd_pct": 2.77,
+      "max_daily_dd_pct": 0.92,
+      "worst_day_pct": -0.92,
+      "avg_hold_min": 146.5,
+      "exit_reasons": {
+        "SL": 65,
+        "EOD": 55,
+        "TIME": 43,
+        "NEWS": 19,
+        "TP": 7
+      },
+      "mc_dd50_pct": 3.54,
+      "mc_dd95_pct": 5.67,
+      "challenge": {
+        "starts": 171,
+        "pass_rate": 0.269,
+        "fail_rate": 0.0,
+        "timeout_rate": 0.731,
+        "median_days_to_pass": 133.0
+      },
+      "gates": {
+        "sharpe": true,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": true,
+        "trades": false,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    }
+  }
+}

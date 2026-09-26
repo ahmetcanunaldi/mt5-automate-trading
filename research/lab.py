@@ -90,7 +90,8 @@ def save_experiment(exp_id, meta: dict, results: dict, res_objs: dict | None = N
         import matplotlib.pyplot as plt
         fig, ax = plt.subplots(len(res_objs), 1, figsize=(10, 3 * len(res_objs)), squeeze=False)
         for k, (per, r) in enumerate(res_objs.items()):
-            r.trades.to_csv(d / f"trades_{per}.csv", index=False)
+            safe = "".join(ch if ch.isalnum() or ch in "-_." else "_" for ch in per)
+            r.trades.to_csv(d / f"trades_{safe}.csv", index=False)
             daily_eq = r.daily["end"]
             ax[k, 0].plot(daily_eq.index, daily_eq.values)
             ax[k, 0].set_title(f"{exp_id} {per}")

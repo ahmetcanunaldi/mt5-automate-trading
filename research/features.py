@@ -61,7 +61,7 @@ def base_frame(m15: pd.DataFrame, h1: pd.DataFrame, bar_minutes=15) -> pd.DataFr
     return df
 
 
-def to_signals(df, mask_long, mask_short, sl, tp, hold_min, be=0.0):
+def to_signals(df, mask_long, mask_short, sl, tp, hold_min, be=0.0, trail=0.0):
     """Build a signals frame indexed by decision time (bar close). sl/tp/be: scalar or Series on df.index."""
     def pick(v, m):
         if np.isscalar(v):
@@ -74,10 +74,10 @@ def to_signals(df, mask_long, mask_short, sl, tp, hold_min, be=0.0):
         if not m.any():
             continue
         rows.append(pd.DataFrame({"dir": d, "sl": pick(sl, m), "tp": pick(tp, m),
-                                  "hold_min": hold_min, "be": pick(be, m)},
+                                  "hold_min": hold_min, "be": pick(be, m), "trail": pick(trail, m)},
                                  index=pd.DatetimeIndex(df["close_time"].to_numpy()[m])))
     if not rows:
-        return pd.DataFrame(columns=["dir", "sl", "tp", "hold_min", "be"], index=pd.DatetimeIndex([]))
+        return pd.DataFrame(columns=["dir", "sl", "tp", "hold_min", "be", "trail"], index=pd.DatetimeIndex([]))
     s = pd.concat(rows).sort_index()
     s = s[(s["sl"] > 0) & (s["tp"] > 0) & np.isfinite(s["sl"]) & np.isfinite(s["tp"])]
     return s[~s.index.duplicated(keep="first")]

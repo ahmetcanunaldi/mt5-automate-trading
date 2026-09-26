@@ -101,3 +101,13 @@ def test_calendar_timezone():
     # NFP 2026-01-09 13:30 UTC -> server UTC+2 = 15:30 ; 2026-07-02 12:30 UTC -> server UTC+3 = 15:30
     t = pd.DatetimeIndex(["2026-01-09 13:30", "2026-07-02 12:30"])
     assert list(utc_to_server(t)) == [pd.Timestamp("2026-01-09 15:30"), pd.Timestamp("2026-07-02 15:30")]
+
+
+def test_trailing_stop_locks_profit():
+    # long from 100, trail $3: high 110 -> stop 107; next bar drops to 105 -> exit 107
+    bars = make_bars([(100, 100, 100, 100), (100, 110, 100, 109), (109, 109, 105, 105)])
+    s = sig("2025-03-04 10:00", sl=5, tp=50)
+    s["trail"] = 3.0
+    res = run(prepare_exec(bars, 1, costs=ZERO), s, Guards(), ZERO)
+    t = res.trades.iloc[0]
+    assert t.reason == "SL" and t.exit == pytest.approx(107.0) and t.pnl > 0

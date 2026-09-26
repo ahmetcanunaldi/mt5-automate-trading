@@ -35,3 +35,10 @@
 - Concurrency (K4, 2 % open risk) raises speed but peak-to-trough DD reached 10.3 % in OOS → too aggressive for an 8 % peak-DD reading.
 - Next research must be walk-forward (re-fit every N months on trailing data) over 2022-07..2026-09 and regime-aware
   (volatility-scaled targets, regime switch), then confirmed on a live demo — there is no untouched history left.
+
+## ML / price-action findings (EXP-014..016, tick era 2024-12..2026-09)
+- Beware "TP-first" labels with a time barrier: timeouts labelled 0 let the model score AUC 0.6+ by predicting volatility
+  (hour/news/ATR), not direction. Always test with a pure-direction label (timeouts dropped) and look at realized R by decile.
+- Pure direction AUC ≈ 0.51 with 120 features (3-scale swing structure, S/R clusters, tick microstructure, 6 cross assets).
+- 27 price-action setups × 5 barrier schemes: none significant after costs; signs flip between half-years.
+- Costs matter: baseline mean R per random entry is −0.03…−0.07 R (spread 0.2$, slip, $7/lot) — any edge must beat that.

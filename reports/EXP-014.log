@@ -1,0 +1,75 @@
+features: 98 rows: 212224
+
+## VOL_1.5_2.25  AUC by block [('2025-07-01', 0.517), ('2025-09-01', 0.492), ('2025-11-01', 0.513), ('2026-01-01', 0.538), ('2026-03-01', 0.536), ('2026-05-01', 0.53), ('2026-07-01', 0.524), ('2026-09-01', 0.56)]
+   mean realized R by predicted-p decile: {0: -0.059, 1: -0.1, 2: -0.098, 3: -0.101, 4: -0.076, 5: -0.072, 6: -0.047, 7: -0.012, 8: -0.025, 9: -0.023}
+   top features (gain): ['h1_trend', 'hour', 'news_prev_h', 'news_next_h', 'ma_bars_since', 'pdh_d', 'mi60_spr_z', 'mi60_sprmax_r', 'ma_leg', 'h1_pos', 'ma_ahead_d', 'atr_bps', 'pdl_d', 'round50_d', 'me_dh']
+    VOL_1.5_2.25|th0.0|WF                    n=  84 wr=0.32 PF=0.67 net=  -8.1% SR=-1.54 DD=9.7% dDD=2.5% mc95=12.96 pass=None fail=None med_days=None
+    VOL_1.5_2.25|th0.1|WF                    n=  60 wr=0.28 PF=0.57 net=  -8.1% SR=-1.18 DD=10.6% dDD=2.4% mc95=12.29 pass=None fail=None med_days=None
+    VOL_1.5_2.25|th0.2|WF                    n= 181 wr=0.38 PF=0.84 net=  -8.2% SR=-0.85 DD=14.9% dDD=2.5% mc95=16.29 pass=None fail=None med_days=None
+    VOL_1.5_2.25|th0.3|WF                    n= 102 wr=0.34 PF=0.72 net=  -8.1% SR=-1.39 DD=13.6% dDD=1.7% mc95=13.49 pass=None fail=None med_days=None
+
+## VOL_2.0_3.0  AUC by block [('2025-07-01', 0.55), ('2025-09-01', 0.524), ('2025-11-01', 0.563), ('2026-01-01', 0.553), ('2026-03-01', 0.556), ('2026-05-01', 0.555), ('2026-07-01', 0.543), ('2026-09-01', 0.57)]
+   mean realized R by predicted-p decile: {0: -0.015, 1: -0.071, 2: -0.114, 3: -0.066, 4: -0.063, 5: -0.058, 6: -0.042, 7: -0.018, 8: 0.015, 9: -0.034}
+   top features (gain): ['hour', 'h1_trend', 'news_prev_h', 'news_next_h', 'ma_bars_since', 'ma_leg', 'pdh_d', 'pdl_d', 'mi60_spr_z', 'h1_pos', 'mi60_sprmax_r', 'ma_ahead_d', 'round50_d', 'atr_bps', 'ma_behind_d']
+    VOL_2.0_3.0|th0.0|WF                     n= 604 wr=0.40 PF=0.95 net=  -8.1% SR=-0.48 DD=15.6% dDD=2.4% mc95=25.07 pass=None fail=None med_days=None
+    VOL_2.0_3.0|th0.1|WF                     n= 516 wr=0.41 PF=0.94 net=  -8.1% SR=-0.52 DD=15.8% dDD=2.5% mc95=23.56 pass=None fail=None med_days=None
+    VOL_2.0_3.0|th0.2|WF                     n=1060 wr=0.43 PF=1.07 net=  20.8% SR= 1.00 DD=15.0% dDD=2.4% mc95=20.6 pass=None fail=None med_days=None
+    VOL_2.0_3.0|th0.3|WF                     n= 185 wr=0.38 PF=0.84 net=  -8.0% SR=-1.05 DD=10.8% dDD=2.4% mc95=16.99 pass=None fail=None med_days=None
+
+## VOL_3.0_4.5  AUC by block [('2025-07-01', 0.615), ('2025-09-01', 0.602), ('2025-11-01', 0.586), ('2026-01-01', 0.617), ('2026-03-01', 0.6), ('2026-05-01', 0.632), ('2026-07-01', 0.619), ('2026-09-01', 0.637)]
+   mean realized R by predicted-p decile: {0: -0.029, 1: -0.058, 2: -0.054, 3: -0.043, 4: -0.007, 5: -0.02, 6: -0.016, 7: -0.009, 8: -0.02, 9: -0.066}
+   top features (gain): ['hour', 'h1_trend', 'news_prev_h', 'news_next_h', 'pdh_d', 'ma_ahead_d', 'pdl_d', 'ma_leg', 'h1_pos', 'ma_bars_since', 'atr_ratio_d', 'mi60_sprmax_r', 'ma_dh', 'mi60_spr_z', 'atr_bps']
+    VOL_3.0_4.5|th0.0|WF                     n= 384 wr=0.41 PF=0.91 net=  -8.1% SR=-0.78 DD=14.2% dDD=2.4% mc95=20.59 pass=None fail=None med_days=None
+    VOL_3.0_4.5|th0.1|WF                     n= 286 wr=0.40 PF=0.88 net=  -8.0% SR=-0.94 DD=12.5% dDD=2.4% mc95=17.81 pass=None fail=None med_days=None
+    VOL_3.0_4.5|th0.2|WF                     n= 169 wr=0.39 PF=0.77 net=  -8.2% SR=-1.32 DD=9.6% dDD=1.9% mc95=15.14 pass=None fail=None med_days=None
+    VOL_3.0_4.5|th0.3|WF                     n= 161 wr=0.39 PF=0.79 net=  -8.1% SR=-1.11 DD=9.5% dDD=2.2% mc95=14.73 pass=None fail=None med_days=None
+
+## VOL_2.0_2.0  AUC by block [('2025-07-01', 0.527), ('2025-09-01', 0.497), ('2025-11-01', 0.533), ('2026-01-01', 0.547), ('2026-03-01', 0.54), ('2026-05-01', 0.522), ('2026-07-01', 0.523), ('2026-09-01', 0.557)]
+   mean realized R by predicted-p decile: {0: -0.034, 1: -0.095, 2: -0.08, 3: -0.08, 4: -0.069, 5: -0.046, 6: -0.027, 7: -0.024, 8: 0.008, 9: -0.015}
+   top features (gain): ['h1_trend', 'hour', 'news_prev_h', 'news_next_h', 'ma_bars_since', 'mi60_sprmax_r', 'h1_pos', 'pdh_d', 'mi60_spr_z', 'ma_leg', 'me_dh', 'ma_dh', 'pdl_d', 'ma_ahead_d', 'ma_behind_d']
+    VOL_2.0_2.0|th0.0|WF                     n= 921 wr=0.50 PF=0.96 net=  -8.2% SR=-0.58 DD=16.1% dDD=2.5% mc95=24.39 pass=None fail=None med_days=None
+    VOL_2.0_2.0|th0.1|WF                     n= 217 wr=0.47 PF=0.77 net=  -8.1% SR=-1.51 DD=10.2% dDD=2.2% mc95=14.45 pass=None fail=None med_days=None
+    VOL_2.0_2.0|th0.2|WF                     n= 202 wr=0.46 PF=0.83 net=  -8.1% SR=-1.06 DD=13.7% dDD=2.1% mc95=15.59 pass=None fail=None med_days=None
+    VOL_2.0_2.0|th0.3|WF                     n= 219 wr=0.52 PF=1.06 net=   2.8% SR= 0.40 DD=6.4% dDD=2.1% mc95=9.93 pass=None fail=None med_days=None
+
+## VOL_3.0_6.0  AUC by block [('2025-07-01', 0.649), ('2025-09-01', 0.644), ('2025-11-01', 0.626), ('2026-01-01', 0.646), ('2026-03-01', 0.623), ('2026-05-01', 0.687), ('2026-07-01', 0.657), ('2026-09-01', 0.658)]
+   mean realized R by predicted-p decile: {0: -0.044, 1: -0.042, 2: -0.064, 3: -0.024, 4: -0.02, 5: -0.01, 6: -0.015, 7: 0.007, 8: -0.019, 9: -0.069}
+   top features (gain): ['hour', 'h1_trend', 'news_next_h', 'news_prev_h', 'h1_pos', 'atr_ratio', 'ma_leg', 'mi60_sprmax_r', 'pdh_d', 'atr_ratio_d', 'ma_bars_since', 'ma_dh', 'ma_ahead_d', 'atr_bps', 'pdl_d']
+    VOL_3.0_6.0|th0.0|WF                     n= 690 wr=0.39 PF=0.95 net=  -8.1% SR=-0.52 DD=15.7% dDD=2.4% mc95=26.09 pass=None fail=None med_days=None
+    VOL_3.0_6.0|th0.1|WF                     n= 171 wr=0.35 PF=0.82 net=  -8.0% SR=-0.94 DD=11.0% dDD=2.4% mc95=16.83 pass=None fail=None med_days=None
+    VOL_3.0_6.0|th0.2|WF                     n= 132 wr=0.32 PF=0.76 net=  -8.1% SR=-1.17 DD=10.3% dDD=2.4% mc95=15.13 pass=None fail=None med_days=None
+    VOL_3.0_6.0|th0.3|WF                     n= 356 wr=0.39 PF=0.90 net=  -8.0% SR=-0.75 DD=11.2% dDD=2.3% mc95=19.63 pass=None fail=None med_days=None
+
+## STRUCT  AUC by block [('2025-07-01', 0.626), ('2025-09-01', 0.644), ('2025-11-01', 0.617), ('2026-01-01', 0.635), ('2026-03-01', 0.617), ('2026-05-01', 0.637), ('2026-07-01', 0.626), ('2026-09-01', 0.626)]
+   mean realized R by predicted-p decile: {0: -0.019, 1: -0.005, 2: -0.022, 3: -0.029, 4: -0.043, 5: -0.05, 6: -0.065, 7: -0.039, 8: -0.046, 9: -0.062}
+   top features (gain): ['me_ahead_d', 'hour', 'h1_trend', 'news_next_h', 'news_prev_h', 'me_dl', 'me_dh', 'me_leg', 'h1_pos', 'pdh_d', 'ma_leg', 'ma_bars_since', 'atr_ratio_d', 'mi60_spr_z', 'ma_behind_d']
+    STRUCT|th0.0|WF                          n=  93 wr=0.38 PF=0.66 net=  -8.1% SR=-1.56 DD=8.1% dDD=2.5% mc95=13.36 pass=None fail=None med_days=None
+    STRUCT|th0.1|WF                          n=  75 wr=0.31 PF=0.63 net=  -8.1% SR=-1.29 DD=10.6% dDD=2.5% mc95=13.29 pass=None fail=None med_days=None
+    STRUCT|th0.2|WF                          n=  67 wr=0.25 PF=0.61 net=  -8.1% SR=-1.54 DD=9.9% dDD=2.4% mc95=13.65 pass=None fail=None med_days=None
+    STRUCT|th0.3|WF                          n=  74 wr=0.28 PF=0.64 net=  -8.1% SR=-1.33 DD=9.3% dDD=2.4% mc95=13.36 pass=None fail=None med_days=None
+
+            label  theta     n     SR     PF   avgR   net%    DD%  dDD%  pass120  med_days  auc_mean
+0   VOL_1.5_2.25    0.0    84 -1.545  0.668 -0.216  -8.13   9.72  2.45    0.000       NaN   0.52625
+1   VOL_1.5_2.25    0.1    60 -1.182  0.574 -0.337  -8.10  10.64  2.44    0.000       NaN   0.52625
+2   VOL_1.5_2.25    0.2   181 -0.855  0.837 -0.106  -8.17  14.92  2.45    0.000       NaN   0.52625
+3   VOL_1.5_2.25    0.3   102 -1.391  0.725 -0.183  -8.07  13.56  1.72    0.000       NaN   0.52625
+4    VOL_2.0_3.0    0.0   604 -0.477  0.953 -0.032  -8.07  15.60  2.39    0.000       NaN   0.55175
+5    VOL_2.0_3.0    0.1   516 -0.517  0.943 -0.038  -8.14  15.80  2.48    0.000       NaN   0.55175
+6    VOL_2.0_3.0    0.2  1060  1.002  1.072  0.047  20.78  14.96  2.42    0.276      63.0   0.55175
+7    VOL_2.0_3.0    0.3   185 -1.049  0.837 -0.114  -8.02  10.75  2.38    0.000       NaN   0.55175
+8    VOL_3.0_4.5    0.0   384 -0.782  0.909 -0.053  -8.10  14.24  2.36    0.000       NaN   0.61350
+9    VOL_3.0_4.5    0.1   286 -0.938  0.878 -0.060  -8.02  12.47  2.43    0.000       NaN   0.61350
+10   VOL_3.0_4.5    0.2   169 -1.319  0.774 -0.102  -8.15   9.57  1.91    0.000       NaN   0.61350
+11   VOL_3.0_4.5    0.3   161 -1.113  0.787 -0.114  -8.06   9.53  2.19    0.000       NaN   0.61350
+12   VOL_2.0_2.0    0.0   921 -0.577  0.959 -0.016  -8.16  16.10  2.48    0.000       NaN   0.53075
+13   VOL_2.0_2.0    0.1   217 -1.507  0.765 -0.070  -8.08  10.21  2.16    0.000       NaN   0.53075
+14   VOL_2.0_2.0    0.2   202 -1.060  0.830 -0.102  -8.10  13.70  2.13    0.000       NaN   0.53075
+15   VOL_2.0_2.0    0.3   219  0.396  1.060  0.025   2.76   6.41  2.06    0.000       NaN   0.53075
+16   VOL_3.0_6.0    0.0   690 -0.523  0.949 -0.024  -8.10  15.70  2.41    0.000       NaN   0.64875
+17   VOL_3.0_6.0    0.1   171 -0.936  0.824 -0.118  -8.01  11.02  2.41    0.000       NaN   0.64875
+18   VOL_3.0_6.0    0.2   132 -1.173  0.763 -0.145  -8.06  10.30  2.37    0.000       NaN   0.64875
+19   VOL_3.0_6.0    0.3   356 -0.751  0.901 -0.032  -8.01  11.25  2.34    0.000       NaN   0.64875
+20        STRUCT    0.0    93 -1.563  0.662 -0.220  -8.06   8.06  2.45    0.000       NaN   0.62850
+21        STRUCT    0.1    75 -1.286  0.628 -0.268  -8.11  10.55  2.48    0.000       NaN   0.62850
+22        STRUCT    0.2    67 -1.541  0.615 -0.305  -8.07   9.94  2.44    0.000       NaN   0.62850
+23        STRUCT    0.3    74 -1.328  0.637 -0.244  -8.06   9.33  2.44    0.000       NaN   0.62850

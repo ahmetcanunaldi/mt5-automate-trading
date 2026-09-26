@@ -1,5 +1,5 @@
 //+------------------------------------------------------------------+
-//| XauLab.mq5 = copy of XauPortfolio.mq5 (indexed tester slot)     |
+//| XauPortfolio.mq5                                                 |
 //| 9-leg XAUUSD portfolio = research candidate EXP-047              |
 //| (D:\mt5-automate-trading\research\final_candidate.py, LEGS9)     |
 //|                                                                  |

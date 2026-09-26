@@ -1,0 +1,17 @@
+=== (a) weekend gap & Monday ===
+Monday gap (Fri close -> Mon open)                   n   969 mean   -1.17 bps  t -0.62  yrs+ 12/20
+Monday open->close                                   n   970 mean   +0.81 bps  t +0.22  yrs+ 8/20
+Monday open->close signed by -gap (fade gap)         n   969 mean   +0.27 bps  t +0.07  yrs+ 9/20
+Monday open->close signed by gap (follow gap)        n   183 mean  -23.52 bps  t -1.93  yrs+ 8/20
+Mon fade when |gap| > 30 bps                         n   129 mean  +32.48 bps  t +2.08  yrs+ 12/19
+
+=== (b) pre-/post-holiday (days before a >=3 day market gap) ===
+pre-holiday (non-Friday) open->close                 n    37 mean  +28.99 bps  t +2.16  yrs+ 11/18
+post-holiday open->close                             n    37 mean  +65.38 bps  t +4.37  yrs+ 15/19
+
+=== (c) gold/silver ratio (2018+) ===
+gold 5d fwd when ratio z < -1.5 (gold cheap)         n   304 mean  +24.91 bps  t +1.49  yrs+ 5/9
+gold 5d fwd when ratio z > +1.5 (gold rich)          n   312 mean  +42.30 bps  t +2.85  yrs+ 7/8
+gold 5d fwd when ratio z < -2.0 (gold cheap)         n   141 mean  +56.60 bps  t +2.26  yrs+ 6/9
+gold 5d fwd when ratio z > +2.0 (gold rich)          n   144 mean  +66.50 bps  t +2.45  yrs+ 6/8
+gold 5d fwd unconditional                            n  2057 mean  +30.74 bps  t +5.89  yrs+ 7/9

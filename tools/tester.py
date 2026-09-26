@@ -31,8 +31,7 @@ def run(ex5_rel, name, symbol="XAUUSD", model="real ticks", timeframe="M1",
     while time.time() - t0 < wait_sec:
         st = c.call("tester_wait", run_id=run_id, timeout_sec=60)
         status = c.call("tester_get_status", run_id=run_id)
-        print(f"[{int(time.time()-t0)}s] {status}", flush=True)
-        if isinstance(status, dict) and str(status.get("status", "")).lower() in ("stopped", "finished", "completed"):
+        if isinstance(status, dict) and str(status.get("tester_status", status.get("status", ""))).lower() in ("stopped", "finished", "completed"):
             break
     rep = c.call("tester_get_report", run_id=run_id, **({"path": report_path} if report_path else {}))
     return run_id, rep

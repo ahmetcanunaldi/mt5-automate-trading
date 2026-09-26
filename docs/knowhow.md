@@ -52,3 +52,11 @@
   In 2026 (daily ATR $80–226) any strategy with daily-ATR-scale stops cannot be traded on this account size.
 - 8-year verdict (EXP-022..024): no intraday horizon (M5 → end of day) shows a cost-beating, year-stable edge in
   price-action, supply/demand, ML direction (AUC 0.51–0.52 every year) or daily momentum/cross-asset signals.
+
+## Tester / EA notes (EXP-050)
+- New EA files are not indexed until Navigator → Refresh. Workaround used: compile experiments into the already
+  indexed slot `Experts/XauResearch/XauLab` (copy of the canonical source, e.g. `XauScalper/XauPortfolio.mq5`).
+- "1 minute OHLC" tester runs of 5+ years take ~20 s; "every tick" ~2 min; "real ticks" currently fails with
+  "tick cache error 7".
+- 2026-09-27 01:37: the user's Python 3.11/3.12 installations were deleted by something outside this session
+  (not by our commands). The research stack needs Python 3.11+ with pandas, numpy, numba, lightgbm, pyarrow, MetaTrader5.

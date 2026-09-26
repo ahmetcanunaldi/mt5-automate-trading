@@ -5,3 +5,4 @@ __pycache__/
 mt5-mcp.txt
 reports/**/*.parquet
 *.ex5
+.venv/

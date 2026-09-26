@@ -26,8 +26,8 @@ SLIP = 0.05
 HORIZON_MIN = 240
 
 
-def m5_from_m1(m1):
-    return m1.resample("5min").agg({"open": "first", "high": "max", "low": "min", "close": "last", "n": "sum",
+def m5_from_m1(m1, tf=5):
+    return m1.resample(f"{tf}min").agg({"open": "first", "high": "max", "low": "min", "close": "last", "n": "sum",
                                     "up": "sum", "dn": "sum", "path": "sum", "spread": "mean",
                                     "spread_max": "max"}).dropna(subset=["open"])
 
@@ -83,19 +83,19 @@ def cross_feats(idx_close, gold_m1, suffix="_M1T"):
 
 
 @njit(cache=True)
-def first_hit(entry_i, n_i, d, sl, tp, o, h, l, c, spr, day):
+def first_hit(entry_i, n_i, d, sl, tp, o, h, l, c, spr, day, comm=COMM_PER_OZ, slip=SLIP):
     """Walk the M1 path from entry_i (entry at open). Returns (label, R)."""
     out_y = np.zeros(len(entry_i)); out_r = np.full(len(entry_i), np.nan); out_o = np.zeros(len(entry_i))
     for k in range(len(entry_i)):
         e = entry_i[k]
         if e < 0 or e >= len(o) or not (sl[k] > 0) or not (tp[k] > 0):
             continue
-        cost = COMM_PER_OZ
+        cost = comm
         if d[k] == 1:
-            ep = o[e] + spr[e] + SLIP
+            ep = o[e] + spr[e] + slip
             s_px = ep - sl[k]; t_px = ep + tp[k]
         else:
-            ep = o[e] - SLIP
+            ep = o[e] - slip
             s_px = ep + sl[k]; t_px = ep - tp[k]
         res = np.nan
         last = min(e + n_i, len(o)) - 1
@@ -105,12 +105,12 @@ def first_hit(entry_i, n_i, d, sl, tp, o, h, l, c, spr, day):
                 break
             if d[k] == 1:
                 if l[j] <= s_px:
-                    res = (s_px - SLIP - ep - cost) / sl[k]; out_o[k] = -1.0; break
+                    res = (s_px - slip - ep - cost) / sl[k]; out_o[k] = -1.0; break
                 if h[j] >= t_px:
                     res = (t_px - ep - cost) / sl[k]; out_y[k] = 1.0; out_o[k] = 1.0; break
             else:
                 if h[j] + spr[j] >= s_px:
-                    res = (ep - s_px - SLIP - cost) / sl[k]; out_o[k] = -1.0; break
+                    res = (ep - s_px - slip - cost) / sl[k]; out_o[k] = -1.0; break
                 if l[j] + spr[j] <= t_px:
                     res = (ep - t_px - cost) / sl[k]; out_y[k] = 1.0; out_o[k] = 1.0; break
         if np.isnan(res):
@@ -121,20 +121,22 @@ def first_hit(entry_i, n_i, d, sl, tp, o, h, l, c, spr, day):
     return out_y, out_r, out_o
 
 
-def build(save=True, m1_file="XAUUSD_M1T.parquet", cross_suffix="_M1T", out="ml_dataset_m5.parquet"):
+def build(save=True, m1_file="XAUUSD_M1T.parquet", cross_suffix="_M1T", out="ml_dataset_m5.parquet", tf=5,
+          horizon=HORIZON_MIN, barriers=((1.5, 2.25), (2.0, 3.0), (3.0, 4.5), (1.5, 1.5), (2.0, 2.0), (3.0, 3.0), (3.0, 6.0)),
+          gross=False):
     m1 = pd.read_parquet(DATA / m1_file)
     if "n" not in m1:                       # tester export: no tick-level up/down/path
         m1 = m1.rename(columns={"tick_volume": "n"})
         m1["up"] = np.nan; m1["dn"] = np.nan; m1["path"] = np.nan; m1["spread_max"] = m1["spread"]
-    m5 = m5_from_m1(m1)
-    close_t = m5.index + pd.Timedelta(minutes=5)
+    m5 = m5_from_m1(m1, tf)
+    close_t = m5.index + pd.Timedelta(minutes=tf)
     a5 = atr(m5, 14)
     F = pd.DataFrame(index=m5.index)
     F["hour"] = m5.index.hour + m5.index.minute / 60
     F["dow"] = m5.index.dayofweek
     F["atr_bps"] = a5 / m5["close"] * 1e4
     F["atr_ratio"] = a5 / atr(m5, 96)
-    F["atr_ratio_d"] = a5 / atr(m5, 288 * 5)
+    F["atr_ratio_d"] = a5 / atr(m5, int(1440 / tf) * 5)
     for k in (1, 3, 6, 12, 24, 48):
         F[f"ret{k}"] = (m5["close"] - m5["close"].shift(k)) / a5
     F["clv"] = ((m5.close - m5.low) - (m5.high - m5.close)) / (m5.high - m5.low).replace(0, np.nan)
@@ -193,7 +195,7 @@ def build(save=True, m1_file="XAUUSD_M1T.parquet", cross_suffix="_M1T", out="ml_
     s = D["atr"].to_numpy()
     c = D["close"].to_numpy(); d = D["dir"].to_numpy()
     lab_cols = {}
-    for a_, b_ in ((1.5, 2.25), (2.0, 3.0), (3.0, 4.5), (1.5, 1.5), (2.0, 2.0), (3.0, 3.0), (3.0, 6.0)):
+    for a_, b_ in barriers:
         lab_cols[f"VOL_{a_}_{b_}"] = (a_ * s, b_ * s)
     # structure barriers
     stop_ref = np.where(d == 1, c - D["me_last_l"].to_numpy(), D["me_last_h"].to_numpy() - c)
@@ -209,7 +211,10 @@ def build(save=True, m1_file="XAUUSD_M1T.parquet", cross_suffix="_M1T", out="ml_
     entry_i = np.searchsorted(m1.index.values.astype("datetime64[ns]"),
                               D["close_time"].values.astype("datetime64[ns]"), side="left").astype(np.int64)
     for name, (sl, tp) in lab_cols.items():
-        y, r, oc = first_hit(entry_i, HORIZON_MIN, d.astype(np.int64), sl, tp, o, h, l, cc, spr, day)
+        y, r, oc = first_hit(entry_i, horizon, d.astype(np.int64), sl, tp, o, h, l, cc, spr, day)
+        if gross:
+            _, rg, _ = first_hit(entry_i, horizon, d.astype(np.int64), sl, tp, o, h, l, cc, spr * 0.0, day, 0.0, 0.0)
+            D[f"G_{name}"] = rg
         D[f"y_{name}"] = y; D[f"R_{name}"] = r; D[f"sl_{name}"] = sl; D[f"tp_{name}"] = tp; D[f"o_{name}"] = oc
     # direction-signed features (so one model serves both sides)
     signed = [x for x in D.columns if x.startswith(("ret", "body", "clv", "h1_", "pdh", "pdl", "tdh", "tdl", "round"))
@@ -235,7 +240,11 @@ def build(save=True, m1_file="XAUUSD_M1T.parquet", cross_suffix="_M1T", out="ml_
 
 
 if __name__ == "__main__":
-    if "--long" in sys.argv:
+    if "--m15" in sys.argv:
+        D = build(m1_file="XAUUSD_M1_2018.parquet", cross_suffix="_M1_2018", out="ml_dataset_m15_long.parquet",
+                  tf=15, horizon=480, gross=True,
+                  barriers=((1.5, 1.5), (2.0, 2.0), (3.0, 3.0), (1.5, 3.0), (2.0, 4.0)))
+    elif "--long" in sys.argv:
         D = build(m1_file="XAUUSD_M1_2018.parquet", cross_suffix="_M1_2018", out="ml_dataset_m5_long.parquet")
     else:
         D = build()

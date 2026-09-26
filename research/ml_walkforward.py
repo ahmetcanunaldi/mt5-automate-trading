@@ -24,7 +24,7 @@ lab.PERIODS["WF"] = (WF_START, WF_END, "M1")
 
 
 def feature_cols(D):
-    return [c for c in D.columns if c not in META and not c.startswith(("y_", "R_", "sl_", "tp_", "o_"))]
+    return [c for c in D.columns if c not in META and not c.startswith(("y_", "R_", "sl_", "tp_", "o_", "G_"))]
 
 
 def blocks(start=WF_START, end=WF_END, months=2):

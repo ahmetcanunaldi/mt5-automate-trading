@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "account": 100000,
+    "grid": "model x sweep x confirm x range filter x tp"
+  },
+  "results": {
+    "london_ny|sw0.5|cb2|rngNone|range": {
+      "label": "london_ny|sw0.5|cb2|rngNone|range",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 582,
+      "trades_per_week": 1.45,
+      "win_rate": 0.416,
+      "avg_R": -0.011,
+      "profit_factor": 0.958,
+      "net_pct": -6.04,
+      "cagr_pct": -0.8,
+      "sharpe": -0.138,
+      "sortino": -0.269,
+      "max_total_dd_pct": 15.6,
+      "max_daily_dd_pct": 0.56,
+      "worst_day_pct": -0.56,
+      "avg_hold_min": 110.9,
+      "exit_reasons": {
+        "SL": 258,
+        "TP": 126,
+        "NEWS": 111,
+        "EOD": 81,
+        "TIME": 6
+      }
+    },
+    "london_ny|sw0.25|cb4|rngNone|rr": {
+      "label": "london_ny|sw0.25|cb4|rngNone|rr",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 702,
+      "trades_per_week": 1.75,
+      "win_rate": 0.405,
+      "avg_R": -0.012,
+      "profit_factor": 0.949,
+      "net_pct": -8.1,
+      "cagr_pct": -1.09,
+      "sharpe": -0.188,
+      "sortino": -0.358,
+      "max_total_dd_pct": 12.11,
+      "max_daily_dd_pct": 0.56,
+      "worst_day_pct": -0.56,
+      "avg_hold_min": 118.3,
+      "exit_reasons": {
+        "SL": 318,
+        "TP": 128,
+        "NEWS": 125,
+        "EOD": 118,
+        "TIME": 13
+      }
+    },
+    "london_ny|sw0.25|cb8|rngNone|rr": {
+      "label": "london_ny|sw0.25|cb8|rngNone|rr",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 314,
+      "trades_per_week": 0.78,
+      "win_rate": 0.404,
+      "avg_R": -0.024,
+      "profit_factor": 0.865,
+      "net_pct": -8.16,
+      "cagr_pct": -1.09,
+      "sharpe": -0.36,
+      "sortino": -0.367,
+      "max_total_dd_pct": 8.23,
+      "max_daily_dd_pct": 0.56,
+      "worst_day_pct": -0.56,
+      "avg_hold_min": 125.3,
+      "exit_reasons": {
+        "SL": 133,
+        "EOD": 66,
+        "NEWS": 57,
+        "TP": 53,
+        "TIME": 5
+      }
+    }
+  }
+}

@@ -134,3 +134,19 @@ def test_daily_hard_guard_multi():
     res = run(prepare_exec(bars, 1, costs=ZERO), s, Guards(max_positions=2), ZERO)
     assert res.trades.pnl.sum() >= -300.0 - 1e-6
     assert summarize(res)["max_daily_dd_pct"] <= 3.0 + 1e-6
+
+
+def test_swing_holds_overnight_and_pays_swap():
+    idx = pd.to_datetime(["2025-03-03", "2025-03-04", "2025-03-05", "2025-03-06", "2025-03-07"])  # Mon..Fri daily
+    bars = pd.DataFrame({"open": [100, 101, 102, 103, 104], "high": [101, 102, 103, 104, 105],
+                         "low": [99.5, 100.5, 101.5, 102.5, 103.5], "close": [101, 102, 103, 104, 104.5],
+                         "spread": 0.0}, index=idx)
+    c = Costs(commission_per_lot=0.0, slippage_pts=0.0, min_spread_pts=0.0, swap_long=-10.0, swap_short=0.0)
+    g = Guards(intraday=False, weekend_flat=True, first_entry_min=0, last_entry_min=1440)
+    s = sig("2025-03-03", sl=5, tp=50, hold=10 * 1440)
+    res = run(prepare_exec(bars, 1440, costs=c), s, g, c)
+    t = res.trades.iloc[0]
+    assert t.reason == "EOD"
+    # nights: Mon->Tue 1, Tue->Wed 1, Wed->Thu 3 (triple), Thu->Fri 1 = 6 nights x $10 x 0.10 lot = $6
+    price_pnl = (104.5 - 100) * 0.10 * 100
+    assert t.pnl == pytest.approx(price_pnl - 6.0)

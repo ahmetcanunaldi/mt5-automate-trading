@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "strategy": "Asia-open drift long"
+  },
+  "results": {
+    "e75_h475_d1234_k4.0": {
+      "label": "",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 1598,
+      "trades_per_week": 3.98,
+      "win_rate": 0.509,
+      "avg_R": 0.014,
+      "profit_factor": 1.108,
+      "net_pct": 10.92,
+      "cagr_pct": 1.35,
+      "sharpe": 0.545,
+      "sortino": 0.783,
+      "max_total_dd_pct": 5.82,
+      "max_daily_dd_pct": 0.5,
+      "worst_day_pct": -0.5,
+      "avg_hold_min": 470.2,
+      "exit_reasons": {
+        "TIME": 1559,
+        "SL": 26,
+        "NEWS": 13
+      }
+    },
+    "e65_h115_d3_k2.0": {
+      "label": "",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 402,
+      "trades_per_week": 1.0,
+      "win_rate": 0.52,
+      "avg_R": 0.02,
+      "profit_factor": 1.212,
+      "net_pct": 3.95,
+      "cagr_pct": 0.5,
+      "sharpe": 0.486,
+      "sortino": 0.364,
+      "max_total_dd_pct": 3.08,
+      "max_daily_dd_pct": 0.5,
+      "worst_day_pct": -0.5,
+      "avg_hold_min": 114.3,
+      "exit_reasons": {
+        "TIME": 397,
+        "SL": 4,
+        "NEWS": 1
+      }
+    },
+    "e65_h115_d3_k4.0": {
+      "label": "",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 402,
+      "trades_per_week": 1.0,
+      "win_rate": 0.52,
+      "avg_R": 0.01,
+      "profit_factor": 1.204,
+      "net_pct": 1.88,
+      "cagr_pct": 0.24,
+      "sharpe": 0.471,
+      "sortino": 0.344,
+      "max_total_dd_pct": 1.53,
+      "max_daily_dd_pct": 0.43,
+      "worst_day_pct": -0.32,
+      "avg_hold_min": 114.9,
+      "exit_reasons": {
+        "TIME": 401,
+        "NEWS": 1
+      }
+    }
+  }
+}

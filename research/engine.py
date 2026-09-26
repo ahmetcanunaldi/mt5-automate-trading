@@ -36,6 +36,9 @@ class Costs:
     slippage_pts: float = 5.0          # per side, points (0.05$)
     spread_mult: float = 1.0           # stress test multiplier on recorded spread
     min_spread_pts: float = 15.0       # floor on spread
+    swap_long: float = -79.48          # USD per lot per night (Vantage XAUUSD, swap_mode points; 1 pt = $1/lot)
+    swap_short: float = 34.41
+    triple_dow: int = 2                # Wednesday rollover charged x3 (weekend)
 
 
 @dataclass
@@ -53,13 +56,15 @@ class Guards:
     fri_flatten_min: int = 22 * 60 + 30
     max_positions: int = 1
     max_open_risk_pct: float = 1.0
+    intraday: bool = True              # False = swing: no end-of-day exit, swaps charged at rollover
+    weekend_flat: bool = True          # swing only: close everything on the last bar before the weekend
 
 
 @njit(cache=True)
 def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
          s_idx, s_dir, s_sl, s_tp, s_hold, s_be, s_trail,
          init_bal, risk_pct, soft, hard, derisk, tstop, max_td, first_m, last_m, flat_m, fri_m,
-         comm, slip, max_pos, max_open_risk):
+         comm, slip, max_pos, max_open_risk, intraday, weekend_flat, swap_l, swap_s, triple_dow):
     n = len(o)
     ns = len(s_idx)
     max_tr = ns + 1
@@ -72,14 +77,21 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
     act = np.zeros(K, np.bool_); pd_ = np.zeros(K, np.int64); pep = np.zeros(K); plot = np.zeros(K)
     psl = np.zeros(K); ptp = np.zeros(K); pei = np.zeros(K, np.int64); pdl = np.zeros(K, np.int64)
     pbe = np.zeros(K); pbed = np.zeros(K, np.bool_); ptr = np.zeros(K); prisk = np.zeros(K)
-    pid = np.zeros(K, np.int64)
+    pid = np.zeros(K, np.int64); pswap = np.zeros(K)
     ntr = 0          # trades opened (index into tr_*)
     bal = init_bal
     cur_day = -1; day_ref = bal; day_trades = 0; stopped = False
     si = 0
     for i in range(n):
         if day_id[i] != cur_day:
-            cur_day = day_id[i]; day_ref = bal; day_trades = 0
+            if i > 0 and not intraday:
+                nights = 3 if dow[i - 1] == triple_dow else 1
+                for k in range(K):
+                    if act[k]:
+                        sw = (swap_l if pd_[k] == 1 else swap_s) * plot[k] * nights
+                        bal += sw; pswap[k] += sw
+            cur_day = day_id[i]; day_trades = 0
+            day_ref = max(bal, eq_close[i - 1]) if i > 0 else bal
         sp = spr[i]
         # ---- entry at bar open ----
         while si < ns and s_idx[si] < i:
@@ -94,7 +106,7 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
             ok = (tm >= first_m) and (tm <= last_m) and (not block[i]) and (day_trades < max_td) and (nact < K)
             if nact > 0 and d != cur_dir:
                 ok = False                                  # no hedging
-            if dow[i] == 4 and tm >= fri_m - 60:
+            if intraday and dow[i] == 4 and tm >= fri_m - 60:
                 ok = False
             day_pnl = bal - day_ref
             if day_pnl <= -soft / 100.0 * day_ref:
@@ -118,7 +130,7 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
                         psl[k] = ep + dist; ptp[k] = ep - s_tp[si]
                     act[k] = True; pd_[k] = d; pep[k] = ep; plot[k] = lots; pei[k] = i; pdl[k] = s_hold[si]
                     pbe[k] = s_be[si]; pbed[k] = False; ptr[k] = s_trail[si]
-                    prisk[k] = lots * (dist * 100.0 + comm); pid[k] = ntr
+                    prisk[k] = lots * (dist * 100.0 + comm); pid[k] = ntr; pswap[k] = 0.0
                     day_trades += 1
                     tr_ei[ntr] = i; tr_dir[ntr] = d; tr_ep[ntr] = ep; tr_lot[ntr] = lots
                     tr_risk[ntr] = prisk[k]; tr_sig[ntr] = si
@@ -179,9 +191,12 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
                     reason = 3
                 elif flat[i]:
                     reason = 4
-                elif t_min[i] >= flat_m or (dow[i] == 4 and t_min[i] >= fri_m):
+                elif i + 1 >= n:
                     reason = 6
-                elif i + 1 >= n or day_id[i + 1] != day_id[i]:
+                elif intraday:
+                    if t_min[i] >= flat_m or (dow[i] == 4 and t_min[i] >= fri_m) or day_id[i + 1] != day_id[i]:
+                        reason = 6
+                elif weekend_flat and dow[i] == 4 and day_id[i + 1] - day_id[i] > 1:
                     reason = 6
                 if reason != 0:
                     xp = c[i] if d == 1 else c[i] + sp
@@ -189,7 +204,7 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
                 pnl = (xp - ep) * d * plot[k] * CONTRACT - plot[k] * comm
                 bal += pnl
                 j = pid[k]
-                tr_xi[j] = i; tr_xp[j] = xp; tr_pnl[j] = pnl; tr_reason[j] = reason
+                tr_xi[j] = i; tr_xp[j] = xp; tr_pnl[j] = pnl + pswap[k]; tr_reason[j] = reason
                 act[k] = False
         if (init_bal - bal) / init_bal * 100.0 >= tstop:
             stopped = True
@@ -263,7 +278,8 @@ def run(exec_x: dict, signals: pd.DataFrame, guards: Guards = Guards(), costs: C
                guards.total_derisk_pct, guards.total_stop_pct, guards.max_trades_day,
                guards.first_entry_min, guards.last_entry_min, guards.flatten_min, guards.fri_flatten_min,
                costs.commission_per_lot, costs.slippage_pts * POINT, guards.max_positions,
-               guards.max_open_risk_pct)
+               guards.max_open_risk_pct, guards.intraday, guards.weekend_flat, costs.swap_long, costs.swap_short,
+               costs.triple_dow)
     ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi, eq, eql = out
     closed = xi >= 0
     ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi = (a[closed] for a in (ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi))

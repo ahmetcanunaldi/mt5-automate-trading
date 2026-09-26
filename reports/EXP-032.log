@@ -1,0 +1,45 @@
+True donchian done
+True ema_state done
+True rsi2 done
+True bollinger_mr done
+False donchian done
+False ema_state done
+False rsi2 done
+False bollinger_mr done
+configs 608; >=7/8 years positive: 5; t>3: 0
+ wflat    family                                                                               cfg   n  avgR    t    SR  net%   DD%  yrs_pos  n_yrs  R2019  R2020  R2021  R2022  R2023  R2024  R2025  R2026
+ False  donchian      {"n": 120, "sl": 3.0, "trail": 3.0, "hold": 30, "filt": null, "both": false} 110 0.242 2.16 0.893 13.57  4.93        7      8  0.280  0.462 -0.442  0.080  0.043  0.488  0.284  1.137
+ False  donchian  {"n": 120, "sl": 3.0, "trail": 3.0, "hold": 30, "filt": "ema200", "both": false} 110 0.242 2.16 0.893 13.57  4.93        7      8  0.280  0.462 -0.442  0.080  0.043  0.488  0.284  1.137
+ False  donchian       {"n": 20, "sl": 3.0, "trail": 5.0, "hold": 120, "filt": null, "both": true} 228 0.161 1.37 0.560 18.25  8.55        7      8 -0.276  0.242  0.029  0.254  0.154  0.194  0.488  0.393
+ False ema_state     {"fast": 50, "slow": 200, "sl": 2.0, "trail": 4.0, "hold": 30, "both": false} 421 0.098 1.21 0.482 21.38 16.23        7      8  0.038  0.021 -0.419  0.016  0.001  0.091  0.520  0.255
+  True ema_state       {"fast": 20, "slow": 50, "sl": 2.0, "trail": 0.0, "hold": 30, "both": true} 739 0.053 1.02 0.371 18.73 14.72        7      8  0.013  0.002  0.007 -0.031  0.150  0.078  0.152  0.053
+ False  donchian      {"n": 120, "sl": 2.0, "trail": 5.0, "hold": 30, "filt": null, "both": false} 104 0.518 2.45 1.057 29.37  7.23        6      8  0.448  0.836 -0.317 -0.466  0.790  0.723  0.689  1.983
+ False  donchian  {"n": 120, "sl": 2.0, "trail": 5.0, "hold": 30, "filt": "ema200", "both": false} 104 0.518 2.45 1.057 29.37  7.23        6      8  0.448  0.836 -0.317 -0.466  0.790  0.723  0.689  1.983
+ False  donchian      {"n": 120, "sl": 2.0, "trail": 3.0, "hold": 30, "filt": null, "both": false} 112 0.388 2.42 0.985 22.70  6.59        6      8  0.501  0.785 -0.531 -0.076  0.174  0.566  0.475  1.722
+ False  donchian  {"n": 120, "sl": 2.0, "trail": 3.0, "hold": 30, "filt": "ema200", "both": false} 112 0.388 2.42 0.985 22.70  6.59        6      8  0.501  0.785 -0.531 -0.076  0.174  0.566  0.475  1.722
+ False  donchian     {"n": 120, "sl": 2.0, "trail": 5.0, "hold": 120, "filt": null, "both": false}  80 0.771 2.32 1.069 33.82  9.35        6      8  0.851  0.873 -0.628 -0.686  0.688  0.997  2.077  3.563
+ False  donchian {"n": 120, "sl": 2.0, "trail": 5.0, "hold": 120, "filt": "ema200", "both": false}  80 0.771 2.32 1.069 33.82  9.35        6      8  0.851  0.873 -0.628 -0.686  0.688  0.997  2.077  3.563
+ False  donchian   {"n": 55, "sl": 2.0, "trail": 3.0, "hold": 30, "filt": "ema200", "both": false} 153 0.306 2.22 0.909 24.43  9.14        6      8  0.191  0.812 -0.559 -0.183  0.645  0.298  0.273  1.796
+ False  donchian   {"n": 55, "sl": 3.0, "trail": 3.0, "hold": 30, "filt": "ema200", "both": false} 148 0.211 2.14 0.882 15.89  6.35        6      8  0.114  0.484 -0.445 -0.055  0.521  0.308  0.148  1.188
+ False  donchian     {"n": 120, "sl": 2.0, "trail": 3.0, "hold": 120, "filt": null, "both": false} 107 0.372 2.13 0.883 20.42  7.45        6      8  1.121  0.493 -0.531 -0.198  0.102  0.601  0.433  1.864
+ False  donchian {"n": 120, "sl": 2.0, "trail": 3.0, "hold": 120, "filt": "ema200", "both": false} 107 0.372 2.13 0.883 20.42  7.45        6      8  1.121  0.493 -0.531 -0.198  0.102  0.601  0.433  1.864
+  True  donchian      {"n": 120, "sl": 2.0, "trail": 5.0, "hold": 30, "filt": null, "both": false} 129 0.296 2.09 0.820 19.65  7.65        6      8  0.540  0.191 -0.176 -0.534  0.477  0.500  0.600  1.073
+  True  donchian  {"n": 120, "sl": 2.0, "trail": 5.0, "hold": 30, "filt": "ema200", "both": false} 129 0.296 2.09 0.820 19.65  7.65        6      8  0.540  0.191 -0.176 -0.534  0.477  0.500  0.600  1.073
+  True  donchian     {"n": 120, "sl": 2.0, "trail": 5.0, "hold": 120, "filt": null, "both": false} 129 0.296 2.09 0.820 19.65  7.65        6      8  0.540  0.191 -0.176 -0.534  0.477  0.500  0.600  1.073
+  True  donchian {"n": 120, "sl": 2.0, "trail": 5.0, "hold": 120, "filt": "ema200", "both": false} 129 0.296 2.09 0.820 19.65  7.65        6      8  0.540  0.191 -0.176 -0.534  0.477  0.500  0.600  1.073
+ False  donchian       {"n": 55, "sl": 2.0, "trail": 3.0, "hold": 30, "filt": null, "both": false} 159 0.271 2.05 0.804 22.17  9.03        6      8  0.191  0.812 -0.564 -0.115  0.478  0.298  0.273  1.231
+ False  donchian       {"n": 120, "sl": 2.0, "trail": 5.0, "hold": 30, "filt": null, "both": true} 157 0.326 2.01 0.881 27.46  9.29        6      8  0.308  0.530 -0.193 -0.273  0.499  0.464  0.550  1.231
+ False  donchian   {"n": 120, "sl": 2.0, "trail": 5.0, "hold": 30, "filt": "ema200", "both": true} 157 0.326 2.01 0.881 27.46  9.29        6      8  0.308  0.530 -0.193 -0.273  0.499  0.464  0.550  1.231
+ False  donchian     {"n": 120, "sl": 3.0, "trail": 5.0, "hold": 120, "filt": null, "both": false}  76 0.466 1.92 0.881 18.30  7.27        6      8  0.561  0.413 -0.639 -0.494  0.287  0.957  1.243  2.293
+ False  donchian {"n": 120, "sl": 3.0, "trail": 5.0, "hold": 120, "filt": "ema200", "both": false}  76 0.466 1.92 0.881 18.30  7.27        6      8  0.561  0.413 -0.639 -0.494  0.287  0.957  1.243  2.293
+ False  donchian       {"n": 55, "sl": 3.0, "trail": 3.0, "hold": 30, "filt": null, "both": false} 154 0.181 1.91 0.761 14.03  6.53        6      8  0.114  0.484 -0.445 -0.042  0.401  0.308  0.148  0.754
+                    count  mean   max
+wflat family                         
+False bollinger_mr   16.0 -1.43 -0.75
+      donchian       96.0  1.44  2.45
+      ema_state     128.0  0.42  1.50
+      rsi2           64.0 -2.00 -0.65
+True  bollinger_mr   16.0 -1.13 -0.65
+      donchian       96.0  1.17  2.09
+      ema_state     128.0  0.41  1.26
+      rsi2           64.0 -1.98 -0.71

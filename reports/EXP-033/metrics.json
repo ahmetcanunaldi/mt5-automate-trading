@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "strategy": "H4 Donchian pyramiding"
+  },
+  "results": {
+    "n180_tr6.0_L_K1_wf0_stop8": {
+      "label": "",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 50,
+      "trades_per_week": 0.12,
+      "win_rate": 0.46,
+      "avg_R": 1.391,
+      "profit_factor": 3.68,
+      "net_pct": 39.29,
+      "cagr_pct": 4.38,
+      "sharpe": 1.216,
+      "sortino": 1.037,
+      "max_total_dd_pct": 4.74,
+      "max_daily_dd_pct": 1.28,
+      "worst_day_pct": -1.28,
+      "avg_hold_min": 18629.4,
+      "exit_reasons": {
+        "SL": 48,
+        "TIME": 2
+      }
+    },
+    "n180_tr4.0_L_K1_wf0_stop8": {
+      "label": "",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 69,
+      "trades_per_week": 0.17,
+      "win_rate": 0.464,
+      "avg_R": 0.827,
+      "profit_factor": 2.787,
+      "net_pct": 31.13,
+      "cagr_pct": 3.57,
+      "sharpe": 1.196,
+      "sortino": 0.973,
+      "max_total_dd_pct": 5.01,
+      "max_daily_dd_pct": 0.9,
+      "worst_day_pct": -0.9,
+      "avg_hold_min": 9196.3,
+      "exit_reasons": {
+        "SL": 69
+      }
+    },
+    "n180_tr4.0_L_K2_wf0_stop8": {
+      "label": "",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 126,
+      "trades_per_week": 0.31,
+      "win_rate": 0.429,
+      "avg_R": 0.844,
+      "profit_factor": 2.8,
+      "net_pct": 64.34,
+      "cagr_pct": 6.64,
+      "sharpe": 1.185,
+      "sortino": 0.979,
+      "max_total_dd_pct": 10.82,
+      "max_daily_dd_pct": 1.63,
+      "worst_day_pct": -1.63,
+      "avg_hold_min": 8973.6,
+      "exit_reasons": {
+        "SL": 126
+      }
+    }
+  }
+}

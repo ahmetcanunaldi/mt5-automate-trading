@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "source": "https://youtu.be/wsXu2Xr1nQc",
+    "grid": "k x entry x sweep x range x session"
+  },
+  "results": {
+    "k1.0_aggr_sw1_rf0_AsiaLon": {
+      "label": "k1.0_aggr_sw1_rf0_AsiaLon",
+      "from": "2024-12-04",
+      "to": "2026-09-25",
+      "trades": 281,
+      "trades_per_week": 2.99,
+      "win_rate": 0.448,
+      "avg_R": 0.001,
+      "profit_factor": 0.993,
+      "net_pct": -0.48,
+      "cagr_pct": -0.27,
+      "sharpe": -0.012,
+      "sortino": -0.019,
+      "max_total_dd_pct": 8.66,
+      "max_daily_dd_pct": 1.42,
+      "worst_day_pct": -1.42,
+      "avg_hold_min": 18.6,
+      "exit_reasons": {
+        "SL": 152,
+        "TP": 125,
+        "TIME": 3,
+        "NEWS": 1
+      },
+      "mc_dd50_pct": 9.77,
+      "mc_dd95_pct": 14.42
+    },
+    "k1.0_aggr_sw1_rf1_AsiaLon": {
+      "label": "k1.0_aggr_sw1_rf1_AsiaLon",
+      "from": "2024-12-04",
+      "to": "2026-09-25",
+      "trades": 148,
+      "trades_per_week": 1.58,
+      "win_rate": 0.439,
+      "avg_R": -0.023,
+      "profit_factor": 0.955,
+      "net_pct": -1.7,
+      "cagr_pct": -0.94,
+      "sharpe": -0.181,
+      "sortino": -0.32,
+      "max_total_dd_pct": 9.01,
+      "max_daily_dd_pct": 1.0,
+      "worst_day_pct": -1.0,
+      "avg_hold_min": 18.7,
+      "exit_reasons": {
+        "SL": 81,
+        "TP": 65,
+        "TIME": 1,
+        "NEWS": 1
+      },
+      "mc_dd50_pct": 7.74,
+      "mc_dd95_pct": 11.25
+    },
+    "k1.0_aggr_sw0_rf0_All": {
+      "label": "k1.0_aggr_sw0_rf0_All",
+      "from": "2024-12-04",
+      "to": "2026-09-25",
+      "trades": 207,
+      "trades_per_week": 2.2,
+      "win_rate": 0.425,
+      "avg_R": -0.088,
+      "profit_factor": 0.85,
+      "net_pct": -8.02,
+      "cagr_pct": -4.52,
+      "sharpe": -0.794,
+      "sortino": -0.682,
+      "max_total_dd_pct": 9.69,
+      "max_daily_dd_pct": 2.36,
+      "worst_day_pct": -2.36,
+      "avg_hold_min": 15.1,
+      "exit_reasons": {
+        "SL": 119,
+        "TP": 88
+      },
+      "mc_dd50_pct": 12.6,
+      "mc_dd95_pct": 16.57
+    }
+  }
+}

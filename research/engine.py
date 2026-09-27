@@ -58,13 +58,17 @@ class Guards:
     max_open_risk_pct: float = 1.0
     intraday: bool = True              # False = swing: no end-of-day exit, swaps charged at rollover
     weekend_flat: bool = True          # swing only: close everything on the last bar before the weekend
+    risk_on_initial: bool = False      # size from the initial balance (funded account with payouts back to initial)
+    payout_pct: float = 0.0            # >0: withdraw profit when cycle profit >= payout_pct % (balance back to initial)
+    consistency_pct: float = 100.0     # payout only if the best day <= consistency_pct % of the cycle profit
+    day_profit_cap_pct: float = 0.0    # >0: when day P&L (incl. floating) >= cap, close all and stop for the day
 
 
 @njit(cache=True)
 def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
          s_idx, s_dir, s_sl, s_tp, s_hold, s_be, s_trail, s_rm,
          init_bal, risk_pct, soft, hard, derisk, tstop, max_td, first_m, last_m, flat_m, fri_m,
-         comm, slip, max_pos, max_open_risk, intraday, weekend_flat, swap_l, swap_s, triple_dow):
+         comm, slip, max_pos, max_open_risk, intraday, weekend_flat, swap_l, swap_s, triple_dow, risk_on_init, pay_pct, cons_pct, pcap):
     n = len(o)
     ns = len(s_idx)
     max_tr = ns + 1
@@ -78,25 +82,43 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
     psl = np.zeros(K); ptp = np.zeros(K); pei = np.zeros(K, np.int64); pdl = np.zeros(K, np.int64)
     pbe = np.zeros(K); pbed = np.zeros(K, np.bool_); ptr = np.zeros(K); prisk = np.zeros(K)
     pid = np.zeros(K, np.int64); pswap = np.zeros(K)
+    pay_i = np.full(n, -1, np.int64); pay_amt = np.zeros(n); reach_i = np.full(n, -1, np.int64); npay = 0
+    day_bal0 = init_bal; cyc_best = 0.0; reached = -1; paid_now = False; capped = False
     ntr = 0          # trades opened (index into tr_*)
     bal = init_bal
     cur_day = -1; day_ref = bal; day_trades = 0; stopped = False
     si = 0
     for i in range(n):
         if day_id[i] != cur_day:
+            paid_now = False
+            if i > 0 and pay_pct > 0:
+                dp = bal - day_bal0
+                if dp > cyc_best:
+                    cyc_best = dp
+                prof = bal - init_bal
+                anyopen = False
+                for k in range(K):
+                    if act[k]:
+                        anyopen = True
+                if prof >= pay_pct / 100.0 * init_bal:
+                    if reached < 0:
+                        reached = i
+                    if (not anyopen) and cyc_best <= cons_pct / 100.0 * prof:
+                        pay_i[npay] = i; pay_amt[npay] = prof; reach_i[npay] = reached; npay += 1
+                        bal = init_bal; cyc_best = 0.0; reached = -1; paid_now = True
             if i > 0 and not intraday:
                 nights = 3 if dow[i - 1] == triple_dow else 1
                 for k in range(K):
                     if act[k]:
                         sw = (swap_l if pd_[k] == 1 else swap_s) * plot[k] * nights
                         bal += sw; pswap[k] += sw
-            cur_day = day_id[i]; day_trades = 0
-            day_ref = max(bal, eq_close[i - 1]) if i > 0 else bal
+            cur_day = day_id[i]; day_trades = 0; day_bal0 = bal; capped = False
+            day_ref = max(bal, eq_close[i - 1]) if (i > 0 and not paid_now) else bal
         sp = spr[i]
         # ---- entry at bar open ----
         while si < ns and s_idx[si] < i:
             si += 1
-        if si < ns and s_idx[si] == i and not stopped:
+        if si < ns and s_idx[si] == i and not stopped and not capped:
             nact = 0; cur_dir = 0; open_risk = 0.0
             for k in range(K):
                 if act[k]:
@@ -115,7 +137,8 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
                 dd_tot = (init_bal - bal) / init_bal * 100.0
                 rp = risk_pct if dd_tot < derisk else risk_pct * 0.5
                 room = hard / 100.0 * day_ref + day_pnl - open_risk
-                risk_usd = min(rp * min(s_rm[si], 1.0) / 100.0 * bal, room, max_open_risk / 100.0 * bal - open_risk)
+                base = init_bal if risk_on_init else bal
+                risk_usd = min(rp * min(s_rm[si], 1.0) / 100.0 * base, room, max_open_risk / 100.0 * base - open_risk)
                 dist = s_sl[si]
                 lots = np.floor(risk_usd / (dist * 100.0 + comm) / 0.01 + 1e-9) * 0.01
                 if lots >= 0.01:
@@ -143,7 +166,14 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
                 sum_lot += plot[k]; sum_eplot += pep[k] * plot[k]
                 wp = (l[i] - pep[k]) if pd_[k] == 1 else (pep[k] - (h[i] + sp))
                 worst_pnl += wp * plot[k] * CONTRACT - plot[k] * comm
-        guard_hit = False
+        guard_hit = False; cap_hit = False
+        if pcap > 0 and any_act:
+            fl_c = 0.0
+            for k in range(K):
+                if act[k]:
+                    fl_c += ((c[i] - pep[k]) if pd_[k] == 1 else (pep[k] - (c[i] + sp))) * plot[k] * CONTRACT
+            if (bal - day_ref) + fl_c >= pcap / 100.0 * day_ref:
+                cap_hit = True; capped = True
         if any_act and (bal - day_ref) + worst_pnl <= -hard / 100.0 * day_ref:
             guard_hit = True
             # price where total day P&L == -hard (solve linear equation for the common exit price)
@@ -160,6 +190,8 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
             xp = 0.0; reason = 0
             if guard_hit:
                 xp = px; reason = 5
+            elif cap_hit:
+                xp = c[i] if d == 1 else c[i] + sp; reason = 7
             elif d == 1:
                 if o[i] <= slp and i > pei[k]:
                     xp = o[i] - slip; reason = 1
@@ -222,10 +254,11 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
         bal_close[i] = bal
         eq_low[i] = min(bal + fw, bal + fl)
     return (tr_ei[:ntr], tr_xi[:ntr], tr_dir[:ntr], tr_ep[:ntr], tr_xp[:ntr], tr_lot[:ntr],
-            tr_pnl[:ntr], tr_reason[:ntr], tr_risk[:ntr], tr_sig[:ntr], eq_close, eq_low, bal_close)
+            tr_pnl[:ntr], tr_reason[:ntr], tr_risk[:ntr], tr_sig[:ntr], eq_close, eq_low, bal_close,
+            pay_i[:npay], pay_amt[:npay], reach_i[:npay])
 
 
-REASONS = {1: "SL", 2: "TP", 3: "TIME", 4: "NEWS", 5: "DAILY_GUARD", 6: "EOD"}
+REASONS = {1: "SL", 2: "TP", 3: "TIME", 4: "NEWS", 5: "DAILY_GUARD", 6: "EOD", 7: "PROFIT_CAP"}
 
 
 @dataclass
@@ -281,8 +314,9 @@ def run(exec_x: dict, signals: pd.DataFrame, guards: Guards = Guards(), costs: C
                guards.first_entry_min, guards.last_entry_min, guards.flatten_min, guards.fri_flatten_min,
                costs.commission_per_lot, costs.slippage_pts * POINT, guards.max_positions,
                guards.max_open_risk_pct, guards.intraday, guards.weekend_flat, costs.swap_long, costs.swap_short,
-               costs.triple_dow)
-    ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi, eq, eql, balc = out
+               costs.triple_dow, guards.risk_on_initial, guards.payout_pct, guards.consistency_pct,
+               guards.day_profit_cap_pct)
+    ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi, eq, eql, balc, pay_i, pay_amt, reach_i = out
     closed = xi >= 0
     ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi = (a[closed] for a in (ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi))
     trades = pd.DataFrame({
@@ -302,4 +336,5 @@ def run(exec_x: dict, signals: pd.DataFrame, guards: Guards = Guards(), costs: C
     # FundingPips daily reference: max(balance, equity) at the start of the server day
     daily["start"] = np.maximum(daily["end"].shift(1), daily["bal_end"].shift(1)).fillna(guards.initial_balance)
     daily["start_eq"] = daily["end"].shift(1).fillna(guards.initial_balance)   # for returns / Sharpe
-    return Result(trades, equity, daily, {"guards": asdict(guards), "costs": asdict(costs)})
+    payouts = pd.DataFrame({"time": idx[pay_i], "amount": pay_amt, "reached": idx[reach_i]})
+    return Result(trades, equity, daily, {"guards": asdict(guards), "costs": asdict(costs), "payouts": payouts})

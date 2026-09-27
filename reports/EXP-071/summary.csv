@@ -1,0 +1,5 @@
+case,payouts,per_year,withdrawn_$,avg_payout_$,median_days,mean_days,p75_days,p90_days,max_days,median_trading_days,waited_for_consistency_%,mean_consistency_wait_d,account_breached,R_yr,SR,worst_day%,peak_DD%,week_R
+cap 0.0 %,11,1.4,88360,8033,97.0,236.0,348.5,568.0,830,68.0,73,164.7,False,25.3,1.404,1.57,8.42,0.44
+cap 0.75 %,18,2.3,61633,3424,61.0,155.1,166.0,410.50000000000017,873,42.5,17,6.7,False,18.0,1.35,1.42,7.03,0.31
+cap 1.0 %,17,2.2,67570,3975,75.0,164.2,148.0,508.6,669,52.0,65,6.8,False,20.8,1.446,1.38,6.8,0.36
+cap 1.25 %,16,2.1,78182,4886,56.0,174.1,175.25,517.0,693,39.5,94,60.3,False,23.7,1.539,1.31,7.57,0.41

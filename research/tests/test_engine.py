@@ -159,3 +159,28 @@ def test_risk_mult_scales_down_never_up():
         s["risk_mult"] = rm
         res = run(prepare_exec(bars, 1, costs=ZERO), s, Guards(), ZERO)
         assert res.trades.iloc[0].lots == pytest.approx(lots)
+
+
+def _days(n_days, start="2025-03-03"):
+    idx = pd.bdate_range(start, periods=n_days)
+    return idx
+
+
+def test_payout_and_consistency():
+    # daily bars: +$1,000 per day for 3 days on a 1-lot style book -> profit 3k (3 %) with best day 1k (33 %) -> payout
+    idx = _days(6)
+    bars = pd.DataFrame({"open": 100.0, "high": 100.0, "low": 100.0, "close": 100.0, "spread": 0.0}, index=idx)
+    g = Guards(initial_balance=100_000, intraday=False, weekend_flat=False, first_entry_min=0, last_entry_min=1440,
+               payout_pct=3.0, consistency_pct=35.0, risk_on_initial=True)
+    # three winning one-day trades of +$1,000 each (TP hit): sl 5 -> 1 lot for $500 risk, tp 10 -> +$1,000
+    rows = []
+    for k in range(3):
+        bars.iloc[k, bars.columns.get_loc("high")] = 110.0
+        rows.append(sig(str(idx[k].date()), sl=5.0, tp=10.0, hold=1440))
+    res = run(prepare_exec(bars, 1440, costs=ZERO), pd.concat(rows), g, ZERO)
+    p = res.params["payouts"]
+    assert len(p) == 1 and p.amount.iloc[0] == pytest.approx(3000.0)
+    # the same profit made in ONE day (best day 100 % of profit) must NOT be paid out (consistency)
+    bars2 = bars.copy(); bars2["high"] = 100.0; bars2.iloc[0, bars2.columns.get_loc("high")] = 130.0
+    res2 = run(prepare_exec(bars2, 1440, costs=ZERO), sig(str(idx[0].date()), sl=5.0, tp=30.0, hold=1440), g, ZERO)
+    assert len(res2.params["payouts"]) == 0

@@ -1,0 +1,4 @@
+case,payouts,per_year,withdrawn_$,avg_payout_$,median_days,mean_days,p75_days,p90_days,max_days,median_trading_days,waited_for_consistency_%,mean_consistency_wait_d,account_breached
+3 % + consistency 35 %,11,1.4,88360,8033,97.0,236.0,348.5,568.0,830,68.0,73,164.7,False
+3 % without consistency,21,2.7,89765,4275,70.0,132.9,199.0,218.0,649,50.0,33,3.6,False
+2 % + consistency 35 %,11,1.4,88360,8033,97.0,236.0,348.5,568.0,830,68.0,100,184.3,False

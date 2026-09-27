@@ -184,3 +184,17 @@ def test_payout_and_consistency():
     bars2 = bars.copy(); bars2["high"] = 100.0; bars2.iloc[0, bars2.columns.get_loc("high")] = 130.0
     res2 = run(prepare_exec(bars2, 1440, costs=ZERO), sig(str(idx[0].date()), sl=5.0, tp=30.0, hold=1440), g, ZERO)
     assert len(res2.params["payouts"]) == 0
+
+
+def test_news_reentry_reopens_after_blackout_with_remaining_hold():
+    bars = make_bars([(100, 100.2, 99.8, 100)] * 60)
+    x = prepare_exec(bars, 1, costs=ZERO)
+    x["flat"] = np.zeros(60, bool); x["flat"][20] = True          # news flatten at bar 20
+    x["block"] = np.zeros(60, bool); x["block"][15:40] = True     # entries blocked until bar 40
+    s = sig("2025-03-04 10:05", hold=45)                           # entry bar 5, expiry bar 50
+    off = run(x, s, Guards(), ZERO).trades
+    assert list(off.reason) == ["NEWS"]
+    on = run(x, s, Guards(news_reentry=True), ZERO).trades
+    assert list(on.reason) == ["NEWS", "TIME"]
+    assert on.entry_time.iloc[1] == pd.Timestamp("2025-03-04 10:40")
+    assert on.exit_time.iloc[1] == pd.Timestamp("2025-03-04 10:50")   # original expiry kept

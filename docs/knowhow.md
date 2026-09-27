@@ -78,3 +78,14 @@
   0.69 R/week, P1+P2 within 250 d in 54 % of start dates, 0 % breaches.
 - Strong-close edge: persists 2008–2026 incl. the 2013–18 bear; realised mostly in Asian hours but holding to the
   close is still better after costs. Weakness does NOT persist (no short counterpart).
+
+## Sharpe is the binding quantity (EXP-072..077, 2026-09-27)
+- 2 R/week at 0.5 % R = ~52 %/yr at fixed sizing. With an 8 % drawdown limit that needs Sharpe ≈ 4
+  (simulation: SR 1.5 → median 1-year MDD 23 %; SR 3 → 8.5 %; SR 4 → 5.4 %, P(MDD ≥ 8 %) 11 %).
+- More exposure never helps at a fixed Sharpe: holding through news (+46 % R) or more positions raises DD 1:1.
+  The news flatten is pure de-risking (SR 1.53 vs 1.52 when holding through), not an edge killer.
+- Risk shaping (vol targeting, correlation-aware leg weights, concurrency caps) leaves SR at 1.45–1.55.
+- Funded payouts: frequency is set by weekly R (6 R per +3 % cycle). Fixed 1.25 % day cap is the best
+  consistency tool found; dynamic caps and dropping swing legs do not beat it.
+- Calendar-flow (CNY, Diwali, COMEX FND, quarter end) and compression-breakout variants add nothing new.
+  Lead: Dec 20 → +7 trading days year-end rally (+111 bps excess, t 2.3, 4/4 eras).

@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "change": "news re-entry"
+  },
+  "results": {
+    "best13": {
+      "label": "best13",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 4058,
+      "trades_per_week": 10.1,
+      "win_rate": 0.528,
+      "avg_R": 0.047,
+      "profit_factor": 1.404,
+      "net_pct": 138.7,
+      "cagr_pct": 11.92,
+      "sharpe": 1.531,
+      "sortino": 3.064,
+      "max_total_dd_pct": 8.57,
+      "max_daily_dd_pct": 2.14,
+      "worst_day_pct": -2.14,
+      "avg_hold_min": 683.0,
+      "exit_reasons": {
+        "NEWS": 2063,
+        "TIME": 1671,
+        "EOD": 169,
+        "SL": 155
+      },
+      "week_R_mean": 0.69,
+      "week_R_median": 0.04,
+      "weeks_ge_2R": 0.196,
+      "weeks_pos": 0.517,
+      "mc_dd50_pct": 4.66,
+      "mc_dd95_pct": 7.02
+    },
+    "best13 +news_reentry": {
+      "label": "best13 +news_reentry",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 369,
+      "trades_per_week": 0.92,
+      "win_rate": 0.379,
+      "avg_R": -0.054,
+      "profit_factor": 0.676,
+      "net_pct": -8.32,
+      "cagr_pct": -1.12,
+      "sharpe": -0.465,
+      "sortino": -0.18,
+      "max_total_dd_pct": 10.37,
+      "max_daily_dd_pct": 2.39,
+      "worst_day_pct": -2.39,
+      "avg_hold_min": 577.2,
+      "exit_reasons": {
+        "TIME": 194,
+        "NEWS": 156,
+        "EOD": 11,
+        "SL": 8
+      },
+      "week_R_mean": -0.04,
+      "week_R_median": 0.0,
+      "weeks_ge_2R": 0.002,
+      "weeks_pos": 0.015,
+      "mc_dd50_pct": 10.52,
+      "mc_dd95_pct": 12.19
+    }
+  }
+}

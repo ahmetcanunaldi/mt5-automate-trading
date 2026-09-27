@@ -1,0 +1,6 @@
+case,payouts,per_year,withdrawn_$,avg_payout_$,median_days,mean_days,p75_days,p90_days,max_days,median_trading_days,waited_for_consistency_%,mean_consistency_wait_d,account_breached,SR,worst_day%,week_R
+fixed cap floor 1.25 %,16,2.1,78182,4886,56.0,174.1,175.25,517.0,693,39.5,94,60.3,False,1.539,1.31,0.41
+dyn cap floor 0.75 %,16,2.1,56043,3503,71.0,174.4,161.75,570.0,665,48.5,56,3.9,False,1.302,1.62,0.37
+dyn cap floor 1.05 %,14,1.8,66864,4776,85.0,184.6,184.25,534.2,652,59.0,93,71.2,False,1.416,1.52,0.41
+dyn cap floor 1.25 %,16,2.1,78484,4905,92.5,174.4,220.25,403.0,650,65.5,88,41.1,False,1.412,1.51,0.42
+dyn cap floor 1.5 %,13,1.7,79982,6152,175.0,214.7,244.0,525.8000000000002,658,124.0,100,78.4,False,1.397,1.52,0.41

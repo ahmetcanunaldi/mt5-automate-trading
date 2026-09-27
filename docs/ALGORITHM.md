@@ -127,6 +127,11 @@ MT5 tester uyumu yalnızca 9 bacaklı XAU EA için yapıldı (EXP-050).
    çıkıyor → istatistiksel olarak kanıtlanmadı; seçilen örüntüler büyük ölçüde mevcut bacakları (zayıf/güçlü kapanış,
    Cuma) yeniden buluyor, katkısı çoğunlukla ek long pozisyon. **Algoritmaya alınmadı.**
 
+9. **Endeks genişlemesi reddedildi (EXP-102):** FundingPips'in diğer endekslerine (SP500, UK100, JP225, GER40) aynı
+   literatür bacakları eklendi. SP500 tek başına t 2.9 ama NAS/DJ ile aynı günlerde aynı yönde bahis → SR 1.91 → 1.86,
+   DD %7.6 → %8.7 (sınır aşımı). UK100 (t 0.4), JP225 (t −0.8), GER40 (t 0.3) bacakları kenarsız; hepsi birlikte SR 1.50.
+   Bu bacaklar ABD hisse piyasasına özgü (hafta sonu etkisi, dip alımı). FX majörleri de kenarsız (FXR-001..003).
+
 ## 7. Değişiklik geçmişi
 
 | Tarih | Sürüm | Değişiklik | Kanıt |
@@ -136,3 +141,4 @@ MT5 tester uyumu yalnızca 9 bacaklı XAU EA için yapıldı (EXP-050).
 | 2026-09-27 | v2 | + NAS100/DJ30 bacakları (mon, dip_low20, dip_clv, hi20, prefomc, tom), çok sembollü motor, haber kuralı v2 (±10 dk giriş yasağı, 10 dk önce kapat); GER40 test edilip çıkarıldı | EXP-082..087 |
 | 2026-09-27 | v2 (değişmedi) | v2.1 adayı (örüntü bacağı) placebo testinde anlamsız çıktı → reddedildi; v2 EA yazıldı | EXP-088..098 |
 | 2026-09-27 | v2.2 | Tampon-oranlı risk kuralı (Grossman–Zhou/CPPI tipi) — MC: challenge başarısızlık %2.2 → %0.03, funded 2 yılda hesap kaybı %5.6 → %0.03; kilitli kutu 2025–26 geçti; EA v2.20'ye eklendi | QM-008/009, QM-LOCKBOX, EXP-100 |
+| 2026-09-27 | v2.2 (değişmedi) | FX majör taraması (FXR-001..003) ve endeks genişlemesi SP500/UK100/JP225/GER40 (EXP-102) → kenar yok veya SR düşürüyor, reddedildi | FXR-001..003, EXP-102 |

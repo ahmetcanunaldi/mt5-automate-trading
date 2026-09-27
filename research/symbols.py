@@ -29,6 +29,9 @@ SPECS = {
     "DJ30": dict(point=0.01, contract=1.0, quote="USD", news=("usd",), vmin=0.1, vstep=0.1, file="DJ30"),
     "GER40": dict(point=0.01, contract=1.0, quote="EUR", news=("usd", "eur"), vmin=0.1, vstep=0.1, file="GER40"),
     "SP500": dict(point=0.01, contract=1.0, quote="USD", news=("usd",), vmin=0.1, vstep=0.1, file="SP500"),
+    # FundingPips FTSE100 / JP225 (broker: UK100.r cash 2021+, JPN225ft future 2022-12+); fx = (pair, invert) -> USD per quote unit
+    "UK100": dict(point=0.01, contract=1.0, quote="GBP", fx=("GBPUSD", False), news=("usd",), vmin=0.1, vstep=0.1, file="UK100"),
+    "JP225": dict(point=0.01, contract=1.0, quote="JPY", fx=("USDJPY", True), news=("usd", "jpy"), vmin=1.0, vstep=1.0, file="JPN225"),
 }
 NEWS_BEFORE, NEWS_AFTER, NEWS_FLATTEN, NEWS_EXEMPT_MIN = 10, 10, 10, 290
 COSTS = {
@@ -42,6 +45,10 @@ COSTS = {
                          swap_short=1.96, triple_dow=4),
     "GER40": engine.Costs(commission_per_lot=0.0, min_spread_pts=50.0, slippage_pts=50.0, swap_long=-4.30,
                           swap_short=0.37, triple_dow=4),
+    "UK100": engine.Costs(commission_per_lot=0.0, min_spread_pts=80.0, slippage_pts=50.0, swap_long=-2.15,
+                          swap_short=0.40, triple_dow=4),
+    "JP225": engine.Costs(commission_per_lot=0.0, min_spread_pts=1000.0, slippage_pts=500.0, swap_long=0.0,
+                          swap_short=0.0, triple_dow=4),
     "SP500": engine.Costs(commission_per_lot=0.0, min_spread_pts=30.0, slippage_pts=25.0, swap_long=-1.57,
                           swap_short=0.29, triple_dow=4),
 }
@@ -70,5 +77,8 @@ def prepare(sym, bars, before=NEWS_BEFORE, after=NEWS_AFTER, flatten=NEWS_FLATTE
     blk, flt = calendar_news.blackout_masks(bars.index, 1, news, before, after, flatten)
     sp = SPECS[sym]
     fx = load_m1("EURUSD")["close"] if sp["quote"] == "EUR" else None
+    if "fx" in sp:
+        px = load_m1(sp["fx"][0])["close"]
+        fx = 1.0 / px if sp["fx"][1] else px
     return engine.prepare_exec(bars, 1, blk, flt, costs or COSTS[sym], point=sp["point"], contract=sp["contract"],
                                quote=sp["quote"], fx=fx, vmin=sp.get("vmin", 0.01), vstep=sp.get("vstep", 0.01))

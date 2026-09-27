@@ -1,6 +1,8 @@
 """Export full M1 history of symbols through the Strategy Tester (bypasses the 100k max-bars cap).
-usage: python tools/export_m1.py XAGUSD EURUSD USDX.r"""
+usage: python tools/export_m1.py XAGUSD EURUSD USDX.r UK100.r@2021-01-05   (@ = first date; the tester does not
+run when the start precedes the server history)"""
 import pathlib
+import shutil
 import sys
 import time
 
@@ -17,10 +19,11 @@ DATA = pathlib.Path(__file__).resolve().parents[1] / "data"
 if __name__ == "__main__":
     c = MT5MCP()
     ex5 = str(MQL5_DIR / "Experts/XauResearch/DataExporter.ex5")
-    for sym in sys.argv[1:]:
+    for arg in sys.argv[1:]:
+        sym, start = (arg.split("@") + ["2018-01-01"])[:2]
         ini = str(MQL5_DIR / f"Profiles/Tester/export_{sym}.ini")
         c.call("tester_prepare_config", mql5_program_path=ex5, symbol=sym, model="m1 ohlc", timeframe="M1",
-               from_date="2018-01-01T00:00:00", to_date="2026-09-26T00:00:00", deposit=10000,
+               from_date=f"{start}T00:00:00", to_date="2026-09-26T00:00:00", deposit=10000,
                deposit_currency="USD", leverage=100, execution_delay=0, optimization=False, output_path=ini)
         rid = c.call("tester_run_backtest", config_path=ini, wait=False)["run_id"]
         t0 = time.time()
@@ -30,9 +33,14 @@ if __name__ == "__main__":
             if str(st.get("tester_status", "")).lower() == "stopped" or time.time() - t0 > 3600:
                 break
         f = COMMON / f"xau_export_{sym}_M1.csv"
+        if not f.exists():
+            print(sym, "no export file (server history too short?)", flush=True)
+            continue
         df = pd.read_csv(f)
         df["time"] = pd.to_datetime(df["time"], unit="s")
         df = df.set_index("time").sort_index()
         df = df[~df.index.duplicated()]
-        df.to_parquet(DATA / f"{sym.replace('.r', '')}_M1_2018.parquet")
+        df.to_parquet(DATA / f"{sym.replace('.r', '').replace('ft', '')}_M1_2018.parquet")
+        raw = DATA / "raw_exports"; raw.mkdir(exist_ok=True)
+        shutil.move(str(f), str(raw / f.name))       # keep C: free (the terminal drive), archive on D:
         print(sym, len(df), df.index[0], "->", df.index[-1], f"{time.time()-t0:.0f}s", flush=True)

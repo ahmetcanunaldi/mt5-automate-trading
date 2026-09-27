@@ -1,0 +1,77 @@
+sym,test,n,bps,t,yrs_same,h1,h2,halves
+NAS100,on->cash (cont+),1999,3.11,1.24,0.75,6.15,-0.14,False
+NAS100,eu->cash (cont+),2000,4.6,1.83,0.88,4.59,4.62,True
+NAS100,or30->rest (cont+),2000,1.76,0.77,0.62,3.33,0.08,True
+NAS100,h1->rest (cont+),2000,2.57,1.22,0.75,0.34,4.95,True
+NAS100,day->last (cont+),2000,1.65,1.64,0.62,3.2,-0.01,False
+NAS100,asia->eu (cont+),2000,-0.97,-0.71,0.5,-3.29,1.5,False
+NAS100,london open 10:00->10:30 -> 10:30-16:30 (cont+),2000,-1.26,-0.98,0.5,-0.86,-1.69,True
+NAS100,gap -9.0..-0.5 ATR -> first hour (long),181,6.04,0.97,0.5,1.98,10.83,True
+NAS100,gap -9.0..-0.5 ATR -> cash session (long),181,-2.04,-0.18,0.38,-10.43,7.87,False
+NAS100,gap -0.5..-0.2 ATR -> first hour (long),290,-5.87,-1.54,0.62,-9.62,-2.22,True
+NAS100,gap -0.5..-0.2 ATR -> cash session (long),290,-4.54,-0.72,0.62,-11.17,1.9,False
+NAS100,gap -0.2..+0.2 ATR -> first hour (long),885,1.96,1.1,0.62,3.18,0.63,True
+NAS100,gap -0.2..+0.2 ATR -> cash session (long),885,6.5,1.82,0.75,4.39,8.83,True
+NAS100,gap +0.2..+0.5 ATR -> first hour (long),441,1.54,0.56,0.62,4.27,-1.69,False
+NAS100,gap +0.2..+0.5 ATR -> cash session (long),441,1.73,0.34,0.62,0.81,2.82,True
+NAS100,gap +0.5..+9.0 ATR -> first hour (long),202,-1.62,-0.4,0.5,-5.1,1.19,False
+NAS100,gap +0.5..+9.0 ATR -> cash session (long),202,1.78,0.22,0.62,12.61,-6.93,False
+NAS100,big cash day (>0.7 ATR) -> next Asia 01:05-10:00 (cont+),321,-3.96,-1.15,0.75,-6.44,-1.24,True
+NAS100,cash session -> next day 01:05->16:30 (cont+),1999,-3.55,-1.91,1.0,-4.19,-2.86,True
+DJ30,on->cash (cont+),1999,-1.64,-0.88,0.75,1.28,-4.75,False
+DJ30,eu->cash (cont+),2000,0.36,0.2,0.5,1.45,-0.81,False
+DJ30,or30->rest (cont+),2000,-1.04,-0.61,0.62,-3.14,1.21,False
+DJ30,h1->rest (cont+),2000,-0.77,-0.49,0.75,-3.56,2.21,False
+DJ30,day->last (cont+),2000,0.67,0.83,0.62,0.84,0.48,True
+DJ30,asia->eu (cont+),2000,-1.44,-1.29,0.75,-2.52,-0.27,True
+DJ30,london open 10:00->10:30 -> 10:30-16:30 (cont+),2000,-0.93,-0.88,0.75,-0.46,-1.43,True
+DJ30,gap -9.0..-0.5 ATR -> first hour (long),170,-13.47,-2.84,0.88,-16.97,-8.59,True
+DJ30,gap -9.0..-0.5 ATR -> cash session (long),170,-9.75,-1.0,0.5,-13.87,-3.99,True
+DJ30,gap -0.5..-0.2 ATR -> first hour (long),315,1.99,0.85,0.62,-0.13,4.03,False
+DJ30,gap -0.5..-0.2 ATR -> cash session (long),315,7.7,1.53,0.75,3.08,12.12,True
+DJ30,gap -0.2..+0.2 ATR -> first hour (long),894,0.87,0.7,0.62,0.6,1.13,True
+DJ30,gap -0.2..+0.2 ATR -> cash session (long),894,0.59,0.26,0.5,-1.12,2.29,False
+DJ30,gap +0.2..+0.5 ATR -> first hour (long),432,0.82,0.42,0.62,3.25,-1.95,False
+DJ30,gap +0.2..+0.5 ATR -> cash session (long),432,-0.81,-0.22,0.5,0.86,-2.72,False
+DJ30,gap +0.5..+9.0 ATR -> first hour (long),188,-0.05,-0.01,0.5,-2.48,3.03,False
+DJ30,gap +0.5..+9.0 ATR -> cash session (long),188,3.0,0.43,0.62,8.26,-3.65,False
+DJ30,big cash day (>0.7 ATR) -> next Asia 01:05-10:00 (cont+),312,-3.29,-0.99,0.5,-7.24,0.41,False
+DJ30,cash session -> next day 01:05->16:30 (cont+),1999,-0.52,-0.34,0.38,-0.37,-0.68,True
+GER40,on->cash (cont+),1969,0.5,0.33,0.62,1.19,-0.23,False
+GER40,eu->cash (cont+),1970,1.06,0.69,0.5,2.13,-0.09,False
+GER40,or30->rest (cont+),1970,2.54,1.8,0.88,1.29,3.87,True
+GER40,h1->rest (cont+),1970,2.69,2.12,0.75,1.7,3.76,True
+GER40,day->last (cont+),1969,1.53,2.92,0.75,1.71,1.34,True
+GER40,asia->eu (cont+),1969,0.21,0.12,0.38,-0.1,0.54,False
+GER40,london open 10:00->10:30 -> 10:30-16:30 (cont+),1970,1.22,0.78,0.75,1.56,0.86,True
+GER40,gap -9.0..-0.5 ATR -> first hour (long),275,1.05,0.36,0.38,-0.45,2.68,False
+GER40,gap -9.0..-0.5 ATR -> cash session (long),275,-1.43,-0.28,0.5,-6.76,4.35,False
+GER40,gap -0.5..-0.2 ATR -> first hour (long),306,-0.61,-0.3,0.75,0.98,-2.08,False
+GER40,gap -0.5..-0.2 ATR -> cash session (long),306,1.12,0.29,0.5,-1.15,3.22,False
+GER40,gap -0.2..+0.2 ATR -> first hour (long),656,0.42,0.33,0.38,1.76,-1.13,False
+GER40,gap -0.2..+0.2 ATR -> cash session (long),656,2.64,0.96,0.88,2.96,2.26,True
+GER40,gap +0.2..+0.5 ATR -> first hour (long),403,0.18,0.11,0.62,-0.45,0.87,False
+GER40,gap +0.2..+0.5 ATR -> cash session (long),403,2.16,0.76,0.62,-0.42,5.0,False
+GER40,gap +0.5..+9.0 ATR -> first hour (long),329,-0.93,-0.48,0.75,-1.13,-0.73,True
+GER40,gap +0.5..+9.0 ATR -> cash session (long),329,2.23,0.63,0.62,3.27,1.19,True
+GER40,big cash day (>0.7 ATR) -> next Asia 01:05-10:00 (cont+),112,1.15,0.12,0.38,-5.12,8.91,False
+GER40,cash session -> next day 01:05->16:30 (cont+),1969,3.17,1.35,0.75,2.87,3.49,True
+XAUUSD,on->cash (cont+),1996,3.69,2.51,0.75,1.06,6.5,True
+XAUUSD,eu->cash (cont+),1997,3.13,2.13,0.88,2.73,3.55,True
+XAUUSD,or30->rest (cont+),1997,0.16,0.13,0.5,0.99,-0.73,False
+XAUUSD,h1->rest (cont+),1997,0.33,0.28,0.75,0.4,0.25,True
+XAUUSD,day->last (cont+),1997,0.74,1.78,0.75,0.33,1.17,True
+XAUUSD,asia->eu (cont+),1997,1.58,1.16,0.62,-0.01,3.29,False
+XAUUSD,london open 10:00->10:30 -> 10:30-16:30 (cont+),1997,-0.79,-0.59,0.62,-0.43,-1.18,True
+XAUUSD,gap -9.0..-0.5 ATR -> first hour (long),229,-4.05,-1.2,0.62,-6.13,-1.37,True
+XAUUSD,gap -9.0..-0.5 ATR -> cash session (long),229,-7.57,-1.42,0.62,-4.32,-11.76,True
+XAUUSD,gap -0.5..-0.2 ATR -> first hour (long),290,-3.39,-1.49,0.75,-3.02,-3.72,True
+XAUUSD,gap -0.5..-0.2 ATR -> cash session (long),290,-5.9,-1.55,1.0,-5.68,-6.1,True
+XAUUSD,gap -0.2..+0.2 ATR -> first hour (long),749,0.99,0.8,0.5,2.74,-1.11,False
+XAUUSD,gap -0.2..+0.2 ATR -> cash session (long),749,2.21,0.99,0.62,3.59,0.54,True
+XAUUSD,gap +0.2..+0.5 ATR -> first hour (long),420,-0.4,-0.22,0.5,-0.46,-0.33,True
+XAUUSD,gap +0.2..+0.5 ATR -> cash session (long),420,3.62,1.25,0.62,3.29,3.97,True
+XAUUSD,gap +0.5..+9.0 ATR -> first hour (long),308,2.16,0.73,0.75,1.24,2.94,True
+XAUUSD,gap +0.5..+9.0 ATR -> cash session (long),308,2.2,0.53,0.5,-3.94,7.38,False
+XAUUSD,big cash day (>0.7 ATR) -> next Asia 01:05-10:00 (cont+),185,4.28,0.65,0.38,-6.26,16.94,False
+XAUUSD,cash session -> next day 01:05->16:30 (cont+),1996,1.51,0.83,0.62,3.09,-0.18,False

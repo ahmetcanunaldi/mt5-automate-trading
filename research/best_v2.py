@@ -18,6 +18,11 @@ IDX = {"NAS100": PRIOR, "DJ30": PRIOR}          # GER40 dropped (EXP-085/086: it
 if __name__ == "__main__":
     ax, xau, idx_legs = load_all()
     sig = book(xau, idx_legs, IDX)
+    EXP = "EXP-087"
+    if "--pattern" in sys.argv:                                   # v2.1: + walk-forward pattern leg (EXP-090)
+        from research.pattern_leg import FILES, pattern_signals
+        sig = pd.concat([sig] + [pattern_signals(s_).assign(sym=s_, leg=f"{s_}:pattern") for s_ in FILES]).sort_index(kind="stable")
+        EXP = "EXP-096"
     costs = {s: symbols.COSTS[s] for s in SYMS}
     res = engine_multi.run(ax, sig, costs, guards(K, ORISK))
     m = metrics.summarize(res, "v2 challenge mode"); m.update(metrics.monte_carlo_dd(res))
@@ -41,10 +46,10 @@ if __name__ == "__main__":
     print("\nfunded:", r)
     print("funded perf:", {k: mf[k] for k in ("sharpe", "max_total_dd_pct", "max_daily_dd_pct", "week_R_mean", "weeks_ge_2R")})
     print("payouts per year:", p.groupby(p.time.dt.year).amount.agg(["count", "sum"]).round(0).to_dict())
-    d = lab.REPORTS / "EXP-087"; d.mkdir(exist_ok=True)
+    d = lab.REPORTS / EXP; d.mkdir(exist_ok=True)
     by_sym.to_csv(d / "by_symbol.csv"); by_leg.to_csv(d / "by_leg.csv"); p.to_csv(d / "payouts.csv", index=False)
-    chart(rf, p, d / "payouts.png", f"EXP-087 v2 funded 2019–26 (XAU + NAS100/DJ30, cap {CAP} %): {len(p)} payouts, "
+    chart(rf, p, d / "payouts.png", f"{EXP} {'v2.1' if EXP != 'EXP-087' else 'v2'} funded 2019–26 (XAU + NAS100/DJ30, cap {CAP} %): {len(p)} payouts, "
           f"median every {p.days.median():.0f} days, ${p.amount.sum():,.0f}")
     mf["payouts"] = r
-    lab.save_experiment("EXP-087", {"book": "v2", "K": K, "orisk": ORISK, "cap": CAP},
+    lab.save_experiment(EXP, {"book": "v2", "K": K, "orisk": ORISK, "cap": CAP},
                         {"challenge": m, "funded": mf}, {"challenge": res, "funded": rn})

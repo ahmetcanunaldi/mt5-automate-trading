@@ -6,11 +6,11 @@
 
 | | |
 |---|---|
-| **Sürüm** | **v2** — XAUUSD best13 + NAS100/DJ30 endeks bacakları, tek hesap (EXP-087) |
+| **Sürüm** | **v2.1** — v2 (XAUUSD best13 + NAS100/DJ30 endeks bacakları) + walk-forward örüntü bacağı (EXP-096) |
 | **Son güncelleme** | 2026-09-27 |
 | **Enstrüman / hesap** | XAUUSD + NAS100 + DJ30 (US30), FundingPips 2-Step Standard $100k |
 | **Kod (araştırma)** | `research/best_v2.py` (rapor) · XAU bacakları `research/best_report.py::book_signals()` · endeks bacakları `research/index_legs.py::index_legs()` · motor `research/engine_multi.py` |
-| **Kod (MT5 EA)** | `mql5/Experts/XauScalper/XauPortfolio.mq5` (yalnız 9 XAU bacağı; v1 ekleri ve endeksler henüz EA'da yok) |
+| **Kod (MT5 EA)** | `mql5/Experts/XauScalper/XauIdxPortfolio.mq5` = v2 (18 bacak, çok sembollü; tester 6,630 vs Python 6,609 işlem, EXP-088). Örüntü bacağı (v2.1) henüz EA'da yok |
 | **Durum** | Araştırma adayı. Haftalık 2R dışındaki **tüm kapılar geçiyor**. Demo forward test yapılmadı (bkz. §6) |
 
 ---
@@ -79,6 +79,17 @@ Giriş 01:05, çıkış 23:30 (sunucu); gün içi olanlarda iz süren stop = 1.5
 
 GER40 test edildi, aynı bacaklar ~0 katkı verip DD'yi artırdığı için **çıkarıldı** (EXP-086).
 
+### 3c. Örüntü bacağı (v2.1) — XAUUSD, NAS100, DJ30
+
+- Her gün D1 barı kesikli özelliklerle kodlanır: yön, önceki kapanışa göre, kapanış konumu (CLV üçte bir dilimleri),
+  aralık/ATR (dar/normal/geniş), açılış boşluğu, 20 günlük konum; aynıları dün için; ertesi günün haftanın günü.
+  Tekli, ikili ve üçlü kombinasyonlar = 2,914 örüntü (`research/pattern_mine.py`).
+- **Her yıl başında**, o yıldan önceki tüm yıllarda ertesi gün getirisini (ATR biriminde, **ortalamadan arındırılmış**)
+  |t| ≥ 3 ve n ≥ 60 ile ayıran örüntüler seçilir; yönü eğitim ortalamasının işaretidir.
+- O yıl içinde bir günde aktif seçili örüntülerin oy toplamı > 0 ise → ertesi gün **01:06 long**, stop 1 × ATR_D,
+  iz stop 1.5 × stop, çıkış 23:30 (`research/pattern_leg.py`). 01:06 = diğer günlük bacakların dakikasını işgal etmez.
+- Seçim tamamen geçmişe dayalı (walk-forward) → sonuçlar örneklem dışıdır. Sağlamlık: EXP-095 (DJ30 kısmı zayıf).
+
 Portföy kuralları: toplam en fazla 6 pozisyon, her sembolde tek yön (o sembolde ters sinyal yok sayılır),
 açık risk ≤ %3, günde en fazla 8 giriş, FP korumaları (§1).
 
@@ -91,22 +102,22 @@ açık risk ≤ %3, günde en fazla 8 giriş, FP korumaları (§1).
 
 Tavan seçimi (EXP-071): %1.25 toplam çekimi en az bozan ve medyan çekim aralığını en çok kısaltan ayar.
 
-## 5. Performans (Python motoru, M1 icra, 2019-01 → 2026-09, EXP-087)
+## 5. Performans (Python motoru, M1 icra, 2019-01 → 2026-09, EXP-096)
 
 | Ölçüt | Challenge modu (bileşik) | Funded modu (sabit $500, tavan %1.25) |
 |---|---|---|
-| Sharpe | **1.91** (v1: 1.53) · Sortino 3.35 | 1.85 |
-| Net | +$234k / 7.7 yıl (CAGR %16.9) | 25 çekim, toplam **$116k** brüt (kâr payı öncesi) |
-| Tepe DD | **%7.57** (v1: %8.6) · MC95 %7.5 | %6.7, ihlal yok |
-| En kötü gün | −%2.4 | −%2.0 |
-| Haftalık R | 1.16 ort. (bileşik), %30 hafta ≥ 2R | 0.60 ort. |
-| Challenge (P1+P2 ≤ 250 gün) | **%66 geçer, %0 ihlal**, medyan 154 gün | — |
-| Çekim sıklığı | — | yılda 3.2 · medyan **71 gün** · %88'i tutarlılık için bekledi (ort. 34 gün) |
-| Yıllar | Her yıl pozitif (2021 en zayıf: +$2.6k) | 2021'de çekim yok |
-| Katkı | XAU 177R · NAS100 53R · DJ30 32R; endekslerin XAU ile günlük korelasyonu ≈ 0 | |
+| Sharpe | **1.96** (v2: 1.91, v1: 1.53) · Sortino 3.22 | 1.92 |
+| Net | +$305k / 7.7 yıl (CAGR %19.8) | 30 çekim, toplam **$139k** brüt (kâr payı öncesi) |
+| Tepe DD | **%7.62** · MC95 %7.9 | %7.7, ihlal yok |
+| En kötü gün | −%2.4 | −%1.9 |
+| Haftalık R | 1.51 ort. (bileşik), %42 hafta ≥ 2R | 0.71 ort. |
+| Challenge (P1+P2 ≤ 250 gün) | **%71 geçer, %0 ihlal**, medyan 135 gün | — |
+| Çekim sıklığı | — | yılda 3.9 · medyan **60 gün** · her yıl en az 1 çekim |
+| Yıllar | Her yıl pozitif (2021 en zayıf: +$4.6k) | |
+| Katkı | XAU 177R · NAS100 76R · DJ30 46R | |
 
-Kapılar: Sharpe ✓ · günlük DD ✓ · toplam DD ✓ · PF ✓ · işlem sayısı ✓ · MC95 ✓ · **haftalık 2R ✗**.
-MT5 tester uyumu yalnızca 9 bacaklı XAU EA için yapıldı (EXP-050).
+Kapılar: Sharpe ✓ · günlük DD ✓ · toplam DD ✓ · PF ✓ · işlem sayısı ✓ · MC95 ✓ · **haftalık 2R ✗** (funded 0.71R).
+MT5 tester: v2 EA 2019–26 "1 minute OHLC" 6,630 işlem (Python 6,609), PF 1.40 (1.36); kâr farkı mutabakatı açık iş.
 
 ## 6. Bilinen zayıflıklar / açık işler
 
@@ -118,7 +129,7 @@ MT5 tester uyumu yalnızca 9 bacaklı XAU EA için yapıldı (EXP-050).
    ayı piyasası (2022 gibi) sınırlı sayıda.
 4. Seçim yanlılığı: GER40'ın çıkarılması ve endeks bacak listesi 2013–26 verisine bakılarak yapıldı (literatür öncülü
    olsa da). Endeks başına seçilmiş set (SR 2.03) kullanılmadı.
-5. v2'nin EA karşılığı yok (XauPortfolio.mq5 yalnız 9 XAU bacağı); çok sembollü EA + MT5 tester doğrulaması gerekli.
+5. EA: v2 yazıldı (XauIdxPortfolio.mq5); bacak bazında mutabakat ve örüntü bacağı (yıllık örüntü dosyası) eksik.
 6. FX (EURUSD/USDJPY) ve gümüş: bu broker maliyetleriyle katkı yok (EXP-078..081). FundingPips spread/komisyonları
    farklıysa yeniden değerlendirilecek.
 7. Demo forward test yapılmadı (yalnızca kullanıcının ayrı demo hesabında yapılacak).
@@ -130,3 +141,4 @@ MT5 tester uyumu yalnızca 9 bacaklı XAU EA için yapıldı (EXP-050).
 | 2026-09-27 | v0 | 9 bacaklı portföy (trendH4, tday, drift, friday, tom, lw, inside, nr7, fri_close) | EXP-047, EXP-050 |
 | 2026-09-27 | v1 | + tday900, strong_close, drift yalnız düşük-vol, season ×0.5, gün içi trail 1.5×; funded modu %3 çekim + %35 tutarlılık + %1.25 gün tavanı | EXP-052..071 |
 | 2026-09-27 | v2 | + NAS100/DJ30 bacakları (mon, dip_low20, dip_clv, hi20, prefomc, tom), çok sembollü motor, haber kuralı v2 (±10 dk giriş yasağı, 10 dk önce kapat); GER40 test edilip çıkarıldı | EXP-082..087 |
+| 2026-09-27 | v2.1 | + walk-forward örüntü bacağı (XAU/NAS100/DJ30); v2 EA yazıldı | EXP-088..096 |

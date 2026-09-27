@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "book": "v2",
+    "K": 6,
+    "orisk": 3.0,
+    "cap": 1.25
+  },
+  "results": {
+    "challenge": {
+      "label": "v2 challenge mode",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 7904,
+      "trades_per_week": 19.67,
+      "win_rate": 0.542,
+      "avg_R": 0.038,
+      "profit_factor": 1.332,
+      "net_pct": 304.72,
+      "cagr_pct": 19.83,
+      "sharpe": 1.964,
+      "sortino": 3.217,
+      "max_total_dd_pct": 7.62,
+      "max_daily_dd_pct": 2.39,
+      "worst_day_pct": -2.28,
+      "avg_hold_min": 851.6,
+      "exit_reasons": {
+        "NEWS": 4650,
+        "TIME": 2754,
+        "SL": 288,
+        "EOD": 212
+      },
+      "week_R_mean": 1.51,
+      "week_R_median": 1.1,
+      "weeks_ge_2R": 0.416,
+      "weeks_pos": 0.611,
+      "mc_dd50_pct": 5.5,
+      "mc_dd95_pct": 7.89,
+      "challenge": {
+        "starts": 1981,
+        "pass_rate": 0.71,
+        "fail_rate": 0.0,
+        "timeout_rate": 0.29,
+        "median_days_to_pass": 135.0
+      },
+      "gates": {
+        "sharpe": true,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": true,
+        "trades": true,
+        "weekly_2R": false,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    },
+    "funded": {
+      "label": "v2 funded (no payouts)",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 7912,
+      "trades_per_week": 19.69,
+      "win_rate": 0.546,
+      "avg_R": 0.039,
+      "profit_factor": 1.318,
+      "net_pct": 143.33,
+      "cagr_pct": 12.19,
+      "sharpe": 1.923,
+      "sortino": 2.9,
+      "max_total_dd_pct": 7.7,
+      "max_daily_dd_pct": 1.9,
+      "worst_day_pct": -1.88,
+      "avg_hold_min": 843.6,
+      "exit_reasons": {
+        "NEWS": 4566,
+        "TIME": 2669,
+        "SL": 271,
+        "PROFIT_CAP": 205,
+        "EOD": 201
+      },
+      "week_R_mean": 0.71,
+      "week_R_median": 0.66,
+      "weeks_ge_2R": 0.272,
+      "weeks_pos": 0.624,
+      "payouts": {
+        "case": "v2 funded cap 1.25",
+        "payouts": 30,
+        "per_year": 3.9,
+        "withdrawn_$": 139121,
+        "avg_payout_$": 4637,
+        "median_days": 59.5,
+        "mean_days": 89.2,
+        "p75_days": 92.75,
+        "p90_days": 207.50000000000017,
+        "max_days": 392,
+        "median_trading_days": 41.5,
+        "waited_for_consistency_%": 83,
+        "mean_consistency_wait_d": 27.3,
+        "account_breached": false
+      }
+    }
+  }
+}

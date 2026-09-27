@@ -27,9 +27,13 @@
 //|  - entries appended to the CSV at entry time, deals CSV rewritten|
 //|    every new server day; news / FOMC file coverage checks        |
 //|  - order filling mode taken from the symbol                      |
+//| v2.22 (live only): demo-only guard; symbols with trading disabled|
+//|  refuse to start; broker session end respected: no entries in    |
+//|  the last 15 min, same-day positions and the Friday book closed  |
+//|  5 min before the symbol's trade session ends                    |
 //+------------------------------------------------------------------+
 #property copyright "mt5-automate-trading"
-#property version   "2.21"
+#property version   "2.22"
 
 #include <Trade\Trade.mqh>
 #include <XauScalper\NewsFilter.mqh>
@@ -63,6 +67,7 @@ input bool   InpTradeXau = true, InpTradeNas = true, InpTradeDj = true;
 input bool   InpExportTrades = true;        // write <prefix>_entries.csv / <prefix>_deals.csv to Common\Files at the end
 input string InpExportPrefix = "xauidx";
 input bool   InpCheckServerTime = true;     // live: refuse to trade unless server time = NY + 7 h (research convention)
+input bool   InpDemoOnly = true;            // live: refuse to run on anything but a demo account
 
 CTrade      g_trade;
 CNewsFilter g_news;
@@ -100,6 +105,20 @@ bool     g_live = false;                    // not in the strategy tester
 
 //--------------------------------------------------------------- live helpers (v2.21)
 string StateFile() { return InpExportPrefix + "_state.csv"; }
+
+// end of the symbol's last trade session of the day containing t (0 = unknown / open until midnight)
+datetime SessionEnd(string sym, datetime t)
+  {
+   MqlDateTime d; TimeToStruct(t, d);
+   datetime from, to, best = 0;
+   for(uint i = 0; i < 10; i++)
+     {
+      if(!SymbolInfoSessionTrade(sym, (ENUM_DAY_OF_WEEK)d.day_of_week, i, from, to)) break;
+      if(to > best) best = to;
+     }
+   if(best == 0 || best >= 86400 - 60) return 0;
+   return DayOf(t) + best;
+  }
 
 // research convention: server time = New York time + 7 h (GMT+2 winter / GMT+3 US summer time)
 int ExpectedServerOffset(datetime gmt)
@@ -320,6 +339,11 @@ bool Enter(int s, int dir, double sl_dist, int hold_min, double trail, double ri
    int tm = MinuteOfDay(now);
    if(g_stopped || g_capped || tm < InpFirstEntryMin || tm > InpLastEntryMin) return false;
    if(g_news.BlockEntry(now) || g_day_trades >= InpMaxTradesDay) return false;
+   if(g_live)
+     {
+      datetime se = SessionEnd(sym, now);
+      if(se > 0 && now >= se - 15 * 60) return false;
+     }
    double bal = AccountInfoDouble(ACCOUNT_BALANCE);
    double day_pnl = bal - g_day_ref;
    if(day_pnl <= -InpDailySoftPct / 100.0 * g_day_ref) return false;
@@ -585,6 +609,16 @@ void Manage(datetime now, bool new_m1)
      { CloseAll("day profit cap"); g_capped = true; SaveState(); return; }
    if(g_news.MustFlatten(now)) { CloseAll("news flatten"); return; }
    if(Dow(now) == 5 && MinuteOfDay(now) >= 1435) { CloseAll("weekend"); return; }
+   if(g_live)
+      for(int i = ArraySize(g_pos) - 1; i >= 0; i--)
+        {
+         datetime se = SessionEnd(g_sym[g_pos[i].s], now);
+         if(se <= 0 || now < se - 5 * 60) continue;
+         // Friday: nothing is carried over the weekend; other days: close positions whose planned exit falls in the
+         // session break (research exits at 23:30 on a broker trading until 23:57)
+         if(Dow(now) == 5 || g_pos[i].entry + g_pos[i].hold_min * 60 < se + 4 * 3600)
+            CloseTicket(i, Dow(now) == 5 ? "weekend (session end)" : "session end");
+        }
    for(int i = ArraySize(g_pos) - 1; i >= 0; i--)
      {
       if(!PositionSelectByTicket(g_pos[i].ticket)) { ArrayRemove(g_pos, i, 1); continue; }
@@ -646,6 +680,16 @@ int OnInit()
    g_live = !(bool)MQLInfoInteger(MQL_TESTER) && !(bool)MQLInfoInteger(MQL_OPTIMIZATION);
    if(g_live)
      {
+      if(InpDemoOnly && AccountInfoInteger(ACCOUNT_TRADE_MODE) != ACCOUNT_TRADE_MODE_DEMO)
+        { Print("[Init] InpDemoOnly: this is not a demo account - refusing to run"); return INIT_FAILED; }
+      for(int s = 0; s < NSYM; s++)
+        {
+         if(!g_on[s]) continue;
+         if(SymbolInfoInteger(g_sym[s], SYMBOL_TRADE_MODE) == SYMBOL_TRADE_MODE_DISABLED)
+           { PrintFormat("[Init] trading is disabled for %s on this server - switch it off in the inputs", g_sym[s]); return INIT_FAILED; }
+         datetime se = SessionEnd(g_sym[s], TimeCurrent());
+         PrintFormat("[Init] %s session end today %s", g_sym[s], se > 0 ? TimeToString(se, TIME_MINUTES) : "24:00 / unknown");
+        }
       datetime gmt = TimeGMT();
       int off = (int)MathRound((double)(TimeTradeServer() - gmt) / 1800.0) * 1800, expo = ExpectedServerOffset(gmt);
       PrintFormat("[Init] server offset GMT%+.1f h, expected GMT%+.1f h (NY + 7 h)", off / 3600.0, expo / 3600.0);
@@ -707,6 +751,8 @@ void ExportDeals()
 
 void OnTick()
   {
+   if(g_live && InpDemoOnly && AccountInfoInteger(ACCOUNT_TRADE_MODE) != ACCOUNT_TRADE_MODE_DEMO)
+     { Print("[Guard] account is no longer a demo - EA removed"); ExpertRemove(); return; }
    datetime now = TimeCurrent();
    datetime day = DayOf(now);
    if(day != g_day)

@@ -70,10 +70,12 @@ def status(P, D):
             "sum_R": round(float(closed.R.sum()), 2)}
 
 
-def shadow(start, end, prefix="shadow"):
+def shadow(start, end, prefix="shadow", xau_only=False):
     sys.path.insert(0, str(ROOT / "tools"))
     import tester  # noqa: E402
     p = ["InpInitialBalance=100000", "InpCushionStartPct=2.0", "InpRiskPct=0.5", "InpExportTrades=true", f"InpExportPrefix={prefix}"]
+    if xau_only:
+        p += ["InpTradeNas=false", "InpTradeDj=false"]
     tester.run("Experts/XauResearch/XauLab.ex5", "forward_shadow", symbol="XAUUSD", model="m1 ohlc", from_date=start,
                to_date=end, deposit=100000, execution_delay=0, params=p)
     return pd.read_csv(COMMON / f"{prefix}_entries.csv", parse_dates=["time"])
@@ -100,6 +102,7 @@ if __name__ == "__main__":
     ap.add_argument("--prefix", default="fwd")
     ap.add_argument("--start", default=None)
     ap.add_argument("--shadow", action="store_true")
+    ap.add_argument("--xau-only", action="store_true", help="demo trades gold only (MetaQuotes-Demo: index CFDs disabled)")
     a = ap.parse_args()
     today = pd.Timestamp.today().normalize()
     out = ROOT / "reports" / "forward" / today.strftime("%Y-%m-%d")
@@ -112,7 +115,7 @@ if __name__ == "__main__":
     pd.Series(st).to_csv(out / "status.csv")
     if a.shadow:
         start = a.start or P.entry_time.min().strftime("%Y-%m-%d")
-        S = shadow(start, (today + pd.Timedelta(days=1)).strftime("%Y-%m-%d"))
+        S = shadow(start, (today + pd.Timedelta(days=1)).strftime("%Y-%m-%d"), xau_only=a.xau_only)
         M, extra = match(P, S)
         M.to_csv(out / "shadow_match.csv", index=False); extra.to_csv(out / "demo_only.csv", index=False)
         print(f"shadow (tester, Vantage data): {len(M)} signals, matched by the demo {M.matched.mean():.1%}; "

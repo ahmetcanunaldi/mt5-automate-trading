@@ -72,3 +72,6 @@ Candidates for the one-shot lockbox test: (1) cushion rule, (2) gold vol-managed
   correlation peak, removed only partially by mid-price correction.
 - The v2.2 book is already a spread-spectrum receiver: 18 weak legs at −22 dB net per-trade SNR, +29 dB/yr breadth
   gain → t 6.3. More *independent* legs (breadth) is the only lever that behaves like processing gain.
+- FX majors (QM-014b): the richest and most stable time-of-day "codes" of all assets (rollover, Tokyo fix, London
+  open, US data), significant out of sample on 6/6 pairs, yet worth 0.02–0.3 bp per 5-min trade (≤ 0.8 bp per hour)
+  — below the $5/lot commission alone (0.4–0.7 bp). Recorded FX spreads are not cheaper than gold in bp.

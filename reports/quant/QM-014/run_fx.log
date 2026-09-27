@@ -1,0 +1,169 @@
+{"sym": "EURUSD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 10.37, "cfar_thr_acq": 3.98, "detections_acq": 54, "max_t_trk": 6.66, "cfar_thr_trk": 4.03, "detections_trk": 8, "corr_t_acq_trk": 0.349, "p_tracking": 0.005, "coherent_mean_abs_t": 1.325, "coherent_null": 0.813, "p_coherent": 0.0, "noncoh_mean_excess": 3.648, "noncoh_null": 0.049, "p_noncoherent": 0.0, "year_to_year_corr": 0.285, "year_to_year_null": 0.004, "p_year_to_year": 0.0, "whiten": true, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  01:00    5  10.37    0.63    0.43   4.10       -1.78
+1  23:30   30  -8.37   -0.82   -0.19  -2.04       -2.27
+2  00:05   15   5.24    0.35   -0.03  -0.35       -3.68
+3  09:55    5  -5.18   -0.59    0.46   3.49       -1.58
+4  08:50   15  -4.22   -0.42    0.33   2.14       -1.72
+5  14:55    5  -4.17   -0.42    0.46   3.13       -1.57
+{"sym": "EURUSD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 10.2, "cfar_thr_acq": 4.0, "detections_acq": 50, "max_t_trk": 5.9, "cfar_thr_trk": 4.09, "detections_trk": 7, "corr_t_acq_trk": 0.332, "p_tracking": 0.0, "coherent_mean_abs_t": 1.327, "coherent_null": 0.806, "p_coherent": 0.0, "noncoh_mean_excess": 3.682, "noncoh_null": 0.059, "p_noncoherent": 0.0, "year_to_year_corr": 0.265, "year_to_year_null": 0.004, "p_year_to_year": 0.0, "whiten": false, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  01:00    5  10.20    0.63    0.43   4.10       -1.78
+1  23:45   15  -8.30   -0.67   -0.15  -2.41       -2.24
+2  09:55    5  -5.29   -0.59    0.46   3.49       -1.58
+3  00:00   15   4.65    0.31   -0.05  -0.54       -4.13
+4  02:55    5  -4.11   -0.22    0.18   2.58       -1.89
+5  04:25   60   4.07    0.73   -0.12  -0.53       -2.18
+{"sym": "EURUSD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 17.64, "cfar_thr_acq": 3.98, "detections_acq": 67, "max_t_trk": 16.88, "cfar_thr_trk": 4.04, "detections_trk": 58, "corr_t_acq_trk": 0.662, "p_tracking": 0.0, "coherent_mean_abs_t": 1.589, "coherent_null": 0.798, "p_coherent": 0.0, "noncoh_mean_excess": 8.945, "noncoh_null": 0.06, "p_noncoherent": 0.0, "year_to_year_corr": 0.528, "year_to_year_null": -0.005, "p_year_to_year": 0.0, "whiten": true, "mid": false}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  01:00    5  17.64    1.11    1.14  10.72       -1.06
+1  23:45   15  -9.11   -0.74   -0.12  -1.93       -2.21
+2  00:00   60   7.80    0.72    1.43  11.52       -2.66
+3  09:55    5  -5.17   -0.58    0.46   3.49       -1.58
+4  08:50   15  -4.18   -0.41    0.33   2.15       -1.72
+5  14:55    5  -4.16   -0.42    0.46   3.14       -1.57
+{"sym": "GBPUSD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 10.7, "cfar_thr_acq": 4.06, "detections_acq": 37, "max_t_trk": 4.6, "cfar_thr_trk": 4.03, "detections_trk": 2, "corr_t_acq_trk": 0.15, "p_tracking": 0.1, "coherent_mean_abs_t": 1.019, "coherent_null": 0.808, "p_coherent": 0.02, "noncoh_mean_excess": 1.999, "noncoh_null": 0.094, "p_noncoherent": 0.0, "year_to_year_corr": 0.156, "year_to_year_null": 0.005, "p_year_to_year": 0.0, "whiten": true, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  23:55    5 -10.70   -1.15    0.04   0.84       -2.04
+1  01:00    5   7.42    0.75    0.37   2.72       -2.14
+2  06:45   15  -4.37   -0.32    0.00   0.03       -1.97
+3  15:10    5   3.71    0.45    0.10   0.75       -1.74
+4  12:55    5   3.70    0.45    0.28   2.01       -1.57
+5  02:55    5  -3.42   -0.20    0.08   1.03       -1.92
+{"sym": "GBPUSD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 10.0, "cfar_thr_acq": 3.99, "detections_acq": 22, "max_t_trk": 4.65, "cfar_thr_trk": 3.97, "detections_trk": 1, "corr_t_acq_trk": 0.097, "p_tracking": 0.175, "coherent_mean_abs_t": 0.959, "coherent_null": 0.793, "p_coherent": 0.03, "noncoh_mean_excess": 1.54, "noncoh_null": 0.007, "p_noncoherent": 0.01, "year_to_year_corr": 0.114, "year_to_year_null": -0.003, "p_year_to_year": 0.0, "whiten": false, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  23:55    5 -10.00   -1.15    0.04   0.84       -2.04
+1  01:00    5   6.53    0.75    0.37   2.72       -2.14
+2  06:45   15  -4.20   -0.32    0.00   0.03       -1.97
+3  12:55    5   3.83    0.45    0.28   2.01       -1.57
+4  15:10    5   3.54    0.45    0.10   0.75       -1.74
+5  01:55    5  -3.19   -0.17   -0.00  -0.04       -2.15
+{"sym": "GBPUSD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 16.97, "cfar_thr_acq": 4.04, "detections_acq": 62, "max_t_trk": 21.76, "cfar_thr_trk": 4.02, "detections_trk": 60, "corr_t_acq_trk": 0.704, "p_tracking": 0.0, "coherent_mean_abs_t": 1.426, "coherent_null": 0.799, "p_coherent": 0.0, "noncoh_mean_excess": 11.083, "noncoh_null": -0.009, "p_noncoherent": 0.0, "year_to_year_corr": 0.555, "year_to_year_null": -0.002, "p_year_to_year": 0.0, "whiten": true, "mid": false}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  01:00    5  16.97    1.88    1.67  11.80       -0.85
+1  23:55    5 -11.80   -1.29    0.07   1.36       -2.01
+2  00:05   15   6.65    0.85    1.18   8.39       -4.78
+3  06:40   30  -4.29   -0.40    0.22   1.33       -1.76
+4  12:55    5   3.72    0.45    0.28   2.03       -1.57
+5  15:10    5   3.71    0.44    0.10   0.73       -1.74
+{"sym": "USDJPY", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 9.54, "cfar_thr_acq": 3.97, "detections_acq": 9, "max_t_trk": 6.38, "cfar_thr_trk": 3.96, "detections_trk": 27, "corr_t_acq_trk": 0.288, "p_tracking": 0.01, "coherent_mean_abs_t": 1.23, "coherent_null": 0.803, "p_coherent": 0.0, "noncoh_mean_excess": 3.562, "noncoh_null": 0.042, "p_noncoherent": 0.0, "year_to_year_corr": 0.188, "year_to_year_null": 0.006, "p_year_to_year": 0.0, "whiten": true, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  23:55    5  -9.54   -0.65    0.21   3.92       -2.17
+1  23:10   30   5.43    0.47    0.53   1.67       -1.60
+2  00:05    5  -5.07   -0.38   -0.00  -0.00       -4.56
+3  01:55    5   4.32    0.22    0.08   0.92       -2.08
+4  13:55    5   3.90    0.29    0.14   1.32       -1.92
+5  14:55    5   3.73    0.28    0.06   0.54       -1.98
+{"sym": "USDJPY", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 9.16, "cfar_thr_acq": 3.95, "detections_acq": 7, "max_t_trk": 6.98, "cfar_thr_trk": 3.99, "detections_trk": 18, "corr_t_acq_trk": 0.227, "p_tracking": 0.025, "coherent_mean_abs_t": 1.17, "coherent_null": 0.802, "p_coherent": 0.0, "noncoh_mean_excess": 3.088, "noncoh_null": 0.046, "p_noncoherent": 0.0, "year_to_year_corr": 0.164, "year_to_year_null": 0.003, "p_year_to_year": 0.0, "whiten": false, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  23:55    5  -9.16   -0.65    0.21   3.92       -2.17
+1  23:10   30   4.51    0.47    0.53   1.67       -1.60
+2  00:05    5  -4.32   -0.38   -0.00  -0.00       -4.56
+3  01:55    5   4.07    0.22    0.08   0.92       -2.08
+4  13:55    5   4.04    0.29    0.14   1.32       -1.92
+5  14:55    5   3.67    0.28    0.06   0.54       -1.98
+{"sym": "USDJPY", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 10.74, "cfar_thr_acq": 3.99, "detections_acq": 33, "max_t_trk": 7.17, "cfar_thr_trk": 3.97, "detections_trk": 49, "corr_t_acq_trk": 0.391, "p_tracking": 0.0, "coherent_mean_abs_t": 1.396, "coherent_null": 0.8, "p_coherent": 0.0, "noncoh_mean_excess": 5.498, "noncoh_null": 0.028, "p_noncoherent": 0.0, "year_to_year_corr": 0.256, "year_to_year_null": -0.005, "p_year_to_year": 0.0, "whiten": true, "mid": false}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  23:55    5 -10.74   -0.74    0.31   5.94       -2.07
+1  01:00    5   6.58    0.65    1.08   5.38       -1.34
+2  23:10   30   5.06    0.44    0.50   1.57       -1.63
+3  01:55    5   4.39    0.22    0.09   0.99       -2.07
+4  13:55    5   3.92    0.29    0.14   1.33       -1.92
+5  14:55    5   3.75    0.28    0.07   0.56       -1.98
+{"sym": "USDCHF", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 14.89, "cfar_thr_acq": 4.07, "detections_acq": 17, "max_t_trk": 4.95, "cfar_thr_trk": 4.01, "detections_trk": 4, "corr_t_acq_trk": 0.234, "p_tracking": 0.01, "coherent_mean_abs_t": 1.169, "coherent_null": 0.793, "p_coherent": 0.0, "noncoh_mean_excess": 3.665, "noncoh_null": 0.064, "p_noncoherent": 0.0, "year_to_year_corr": 0.162, "year_to_year_null": -0.008, "p_year_to_year": 0.01, "whiten": true, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  23:55    5 -14.89   -1.25    0.13   2.50       -3.11
+1  10:00    5  -4.90   -0.59    0.41   2.22       -2.29
+2  15:00   15  -4.44   -0.65    0.05   0.21       -2.64
+3  06:25   30   4.43    0.37    0.37   2.93       -2.48
+4  01:55    5   4.40    0.15    0.01   0.11       -3.05
+5  02:40   60   4.29    0.84    0.11   0.47       -2.80
+{"sym": "USDCHF", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 14.57, "cfar_thr_acq": 4.04, "detections_acq": 17, "max_t_trk": 4.34, "cfar_thr_trk": 4.03, "detections_trk": 4, "corr_t_acq_trk": 0.258, "p_tracking": 0.0, "coherent_mean_abs_t": 1.154, "coherent_null": 0.805, "p_coherent": 0.0, "noncoh_mean_excess": 3.681, "noncoh_null": 0.032, "p_noncoherent": 0.0, "year_to_year_corr": 0.142, "year_to_year_null": 0.003, "p_year_to_year": 0.0, "whiten": false, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  23:55    5 -14.57   -1.25    0.13   2.50       -3.11
+1  10:00    5  -4.82   -0.59    0.41   2.22       -2.29
+2  02:55   30   4.37    0.65    0.32   1.71       -2.58
+3  09:55    5   4.19    0.47    0.19   1.36       -2.52
+4  06:25   30   4.16    0.37    0.37   2.93       -2.48
+5  00:00  120  -4.08   -0.79   -0.23  -0.79      -10.85
+{"sym": "USDCHF", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 17.47, "cfar_thr_acq": 3.99, "detections_acq": 86, "max_t_trk": 22.67, "cfar_thr_trk": 4.02, "detections_trk": 76, "corr_t_acq_trk": 0.774, "p_tracking": 0.0, "coherent_mean_abs_t": 1.862, "coherent_null": 0.794, "p_coherent": 0.0, "noncoh_mean_excess": 19.905, "noncoh_null": 0.017, "p_noncoherent": 0.0, "year_to_year_corr": 0.593, "year_to_year_null": -0.008, "p_year_to_year": 0.0, "whiten": true, "mid": false}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  01:00    5  17.47    1.93    3.32  19.96       -0.44
+1  23:55    5 -16.17   -1.38    0.32   6.48       -2.92
+2  01:55  120   4.93    1.12    0.08   0.23       -2.97
+3  10:00    5  -4.82   -0.58    0.42   2.31       -2.27
+4  01:05   15   4.71    0.39    0.47   3.28       -2.92
+5  15:00   15  -4.47   -0.66    0.06   0.23       -2.63
+{"sym": "AUDUSD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 12.57, "cfar_thr_acq": 4.03, "detections_acq": 18, "max_t_trk": 7.95, "cfar_thr_trk": 4.04, "detections_trk": 25, "corr_t_acq_trk": 0.398, "p_tracking": 0.0, "coherent_mean_abs_t": 1.089, "coherent_null": 0.807, "p_coherent": 0.0, "noncoh_mean_excess": 1.552, "noncoh_null": 0.068, "p_noncoherent": 0.02, "year_to_year_corr": 0.232, "year_to_year_null": 0.005, "p_year_to_year": 0.0, "whiten": true, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  01:00    5  12.57    1.47    1.14   6.99       -2.92
+1  23:55    5 -10.65   -1.05    0.24   3.42       -3.67
+2  00:55    5  -9.82   -0.83    0.43   4.39       -5.07
+3  02:55    5  -8.36   -0.87    0.64   4.88       -3.05
+4  01:55    5  -5.84   -0.53    0.18   2.05       -3.61
+5  15:25    5  -4.20   -0.45    0.27   1.99       -3.38
+{"sym": "AUDUSD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 10.69, "cfar_thr_acq": 4.01, "detections_acq": 16, "max_t_trk": 7.44, "cfar_thr_trk": 4.03, "detections_trk": 25, "corr_t_acq_trk": 0.369, "p_tracking": 0.0, "coherent_mean_abs_t": 1.086, "coherent_null": 0.796, "p_coherent": 0.0, "noncoh_mean_excess": 1.61, "noncoh_null": 0.046, "p_noncoherent": 0.0, "year_to_year_corr": 0.21, "year_to_year_null": -0.004, "p_year_to_year": 0.0, "whiten": false, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  01:00    5  10.69    1.47    1.14   6.99       -2.92
+1  23:55    5 -10.14   -1.05    0.24   3.42       -3.67
+2  00:55    5  -9.06   -0.83    0.43   4.39       -5.07
+3  02:55    5  -7.81   -0.87    0.64   4.88       -3.05
+4  01:55    5  -4.93   -0.53    0.18   2.05       -3.61
+5  15:25    5  -4.09   -0.45    0.27   1.99       -3.38
+{"sym": "AUDUSD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 14.91, "cfar_thr_acq": 4.01, "detections_acq": 52, "max_t_trk": 20.09, "cfar_thr_trk": 3.96, "detections_trk": 59, "corr_t_acq_trk": 0.609, "p_tracking": 0.0, "coherent_mean_abs_t": 1.337, "coherent_null": 0.807, "p_coherent": 0.0, "noncoh_mean_excess": 6.582, "noncoh_null": 0.029, "p_noncoherent": 0.0, "year_to_year_corr": 0.441, "year_to_year_null": 0.011, "p_year_to_year": 0.0, "whiten": true, "mid": false}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  01:00    5  14.91    1.86    2.33  13.92       -1.72
+1  23:55    5 -11.36   -1.17    0.27   3.87       -3.64
+2  00:55    5  -9.47   -0.78    0.42   4.47       -5.08
+3  02:55    5  -8.26   -0.86    0.64   4.90       -3.05
+4  01:55    5  -5.55   -0.50    0.17   1.96       -3.62
+5  00:00   30   4.36    0.72    2.57  12.92       -5.61
+{"sym": "USDCAD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 10.63, "cfar_thr_acq": 4.08, "detections_acq": 8, "max_t_trk": 6.18, "cfar_thr_trk": 4.03, "detections_trk": 3, "corr_t_acq_trk": 0.349, "p_tracking": 0.0, "coherent_mean_abs_t": 1.031, "coherent_null": 0.785, "p_coherent": 0.0, "noncoh_mean_excess": -0.065, "noncoh_null": 0.036, "p_noncoherent": 0.59, "year_to_year_corr": 0.152, "year_to_year_null": -0.012, "p_year_to_year": 0.0, "whiten": true, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  23:55    5 -10.63   -0.95    0.07   1.32       -2.12
+1  01:55    5   4.84    0.28    0.01   0.09       -2.18
+2  02:55    5   4.66    0.28    0.14   2.14       -1.98
+3  15:25    5  -4.25   -0.41    0.42   4.04       -1.61
+4  00:50   15  -3.97   -0.34   -0.07  -0.63       -4.14
+5  00:30   15   3.73    0.28    0.04   0.59       -4.34
+{"sym": "USDCAD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 9.38, "cfar_thr_acq": 3.98, "detections_acq": 8, "max_t_trk": 6.03, "cfar_thr_trk": 3.96, "detections_trk": 3, "corr_t_acq_trk": 0.374, "p_tracking": 0.0, "coherent_mean_abs_t": 1.039, "coherent_null": 0.794, "p_coherent": 0.01, "noncoh_mean_excess": 0.09, "noncoh_null": 0.046, "p_noncoherent": 0.4, "year_to_year_corr": 0.153, "year_to_year_null": 0.001, "p_year_to_year": 0.0, "whiten": false, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  23:55    5  -9.38   -0.95    0.07   1.32       -2.12
+1  01:55    5   4.90    0.28    0.01   0.09       -2.18
+2  02:45   15   4.26    0.38    0.26   2.73       -1.87
+3  15:25    5  -4.00   -0.41    0.42   4.04       -1.61
+4  18:45    5  -3.83   -0.36    0.14   1.32       -1.87
+5  00:30   15   3.79    0.28    0.04   0.59       -4.34
+{"sym": "USDCAD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 11.25, "cfar_thr_acq": 3.99, "detections_acq": 57, "max_t_trk": 18.64, "cfar_thr_trk": 4.03, "detections_trk": 66, "corr_t_acq_trk": 0.718, "p_tracking": 0.0, "coherent_mean_abs_t": 1.416, "coherent_null": 0.805, "p_coherent": 0.0, "noncoh_mean_excess": 4.781, "noncoh_null": 0.167, "p_noncoherent": 0.0, "year_to_year_corr": 0.458, "year_to_year_null": 0.0, "p_year_to_year": 0.0, "whiten": true, "mid": false}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  23:55    5 -11.25   -1.02    0.08   1.50       -2.11
+1  00:05  120   8.63    1.82    2.72  12.18       -2.26
+2  02:55    5   4.69    0.29    0.14   2.15       -1.98
+3  15:25    5  -4.34   -0.42    0.43   4.11       -1.60
+4  18:45    5  -3.52   -0.36    0.14   1.30       -1.88
+5  03:05    5  -3.35   -0.20    0.11   1.45       -1.97
+       sym  thr  slots  trades_day  gross_bp_day  t_gross  cost_opt_bp_day  cost_bp_day  net_opt_bp_day  net_bp_day  gross/cost_opt  breakeven_bp_trade  commission_bp
+0   EURUSD  1.5     90          79          5.73     5.38           126.17       168.73         -120.44     -163.00           0.045               0.073          0.449
+1   EURUSD  2.0     46          45          5.05     7.03            72.44        96.68          -67.39      -91.63           0.070               0.112          0.449
+2   EURUSD  2.5     25          25          3.38     6.30            41.05        54.52          -37.67      -51.14           0.082               0.135          0.449
+3   EURUSD  3.0     13          13          2.48     5.99            21.39        28.39          -18.91      -25.91           0.116               0.191          0.449
+4   GBPUSD  1.5     71          68          3.05     2.99           110.96       142.67         -107.91     -139.62           0.027               0.045          0.389
+5   GBPUSD  2.0     39          38          1.64     2.11            58.28        76.01          -56.64      -74.37           0.028               0.043          0.389
+6   GBPUSD  2.5     21          21          1.42     2.47            33.92        43.72          -32.50      -42.30           0.042               0.068          0.389
+7   GBPUSD  3.0      7           7          0.64     2.04            11.01        14.28          -10.37      -13.64           0.058               0.092          0.389
+8   USDJPY  1.5     69          64          6.13     5.61           101.19       135.39          -95.06     -129.26           0.061               0.096          0.500
+9   USDJPY  2.0     32          31          4.41     5.21            50.33        66.89          -45.91      -62.48           0.088               0.142          0.500
+10  USDJPY  2.5     15          15          3.12     5.85            25.86        33.88          -22.74      -30.75           0.121               0.208          0.500
+11  USDJPY  3.0      6           6          0.71     2.97            12.07        15.28          -11.36      -14.57           0.059               0.119          0.500
+12  USDCHF  1.5     70          60          4.09     4.71           147.97       186.73         -143.88     -182.64           0.028               0.068          0.500
+13  USDCHF  2.0     36          34          4.20     6.22            85.40       107.37          -81.20     -103.16           0.049               0.124          0.500
+14  USDCHF  2.5     22          21          2.99     5.51            57.90        71.47          -54.92      -68.48           0.052               0.142          0.500
+15  USDCHF  3.0     13          13          1.40     3.52            34.65        43.05          -33.25      -41.65           0.040               0.107          0.500
+16  AUDUSD  1.5     65          59          6.24     4.62           170.55       221.39         -164.30     -215.14           0.037               0.106          0.718
+17  AUDUSD  2.0     37          35          4.45     4.09           102.93       133.09          -98.48     -128.64           0.043               0.127          0.718
+18  AUDUSD  2.5     18          18          3.35     5.53            55.26        70.77          -51.91      -67.42           0.061               0.186          0.718
+19  AUDUSD  3.0     11          11          3.45     7.90            35.71        45.19          -32.26      -41.74           0.097               0.314          0.718
+20  USDCAD  1.5     52          50          2.41     3.19            82.74       105.40          -80.33     -102.99           0.029               0.048          0.500
+21  USDCAD  2.0     30          30          0.99     1.86            50.69        64.28          -49.70      -63.30           0.019               0.033          0.500
+22  USDCAD  2.5     17          17          0.26     0.69            27.79        35.49          -27.52      -35.23           0.009               0.015          0.500
+23  USDCAD  3.0      9           9          1.02     4.26            14.66        18.74          -13.64      -17.72           0.070               0.114          0.500

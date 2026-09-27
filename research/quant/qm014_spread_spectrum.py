@@ -30,11 +30,15 @@ from research.quant import data as Q  # noqa: E402
 from research.quant.qm001_map import COST  # noqa: E402
 
 OUT = lab.REPORTS / "quant" / "QM-014"
-SYMS = ["XAUUSD", "NAS100", "DJ30", "EURUSD"]
+SYMS = sys.argv[1:] or ["XAUUSD", "NAS100", "DJ30", "EURUSD"]
+FX = ["EURUSD", "GBPUSD", "USDJPY", "USDCHF", "AUDUSD", "USDCAD", "NZDUSD"]
+FX_COMMISSION = 5.0          # USD per lot round turn (FundingPips FX / metals)
+FX_SLIP_PTS = 3.0            # per side, as research.symbols.COSTS["EURUSD"]
 H = [1, 3, 6, 12, 24, 48]
 NS = 288
 ACQ, TRK = ("2018-01-01", "2021-12-31"), ("2022-01-01", "2024-12-31")
 B = 1000
+TAG = ""
 rng = np.random.default_rng(14)
 
 
@@ -57,6 +61,30 @@ def day_matrix(sym, mid=True):
     rv = pd.Series((R ** 2).sum(1), index=days)
     sig = np.sqrt(rv.ewm(halflife=10).mean().shift(1)).to_numpy()
     return days, R, have, sig
+
+
+def commission_bp(sym):
+    """round-turn commission alone in bp: a hard floor that no spread improvement removes."""
+    if sym not in FX:
+        return 0.0
+    px = Q.bars(sym, "1D").close.median()
+    return FX_COMMISSION / (100_000.0 * (px if sym[3:] == "USD" else 1.0)) * 1e4
+
+
+def slot_cost_bp(sym, slip=True):
+    """round-trip cost in bp per 5-min slot of the server day: median recorded spread at that slot (DEV) +
+    slippage both sides + commission. Non-FX symbols: the flat QM-001 cost."""
+    if sym not in FX:
+        return np.full(NS, COST[sym])
+    b = Q.bars(sym, "5min")
+    pt = __import__("research.symbols", fromlist=["SPECS"]).SPECS[sym]["point"]
+    sp = (b.spread * pt / b.close * 1e4).groupby((b.index.hour * 60 + b.index.minute) // 5).median()
+    sp = sp.reindex(range(NS)).ffill().bfill().to_numpy()
+    px = b.close.median()
+    notional_usd = 100_000.0 * (px if sym[3:] == "USD" else 1.0)
+    comm = FX_COMMISSION / notional_usd * 1e4
+    slip_bp = 2 * FX_SLIP_PTS * pt / px * 1e4 if slip else 0.0
+    return sp + slip_bp + comm
 
 
 def caf(X, n_ok):
@@ -131,7 +159,7 @@ def analyse(sym, whiten=True, mid=True):
         top.append({"start": hhmm(cells[k, 0]), "min": int(cells[k, 1] * 5), "t_acq": round(ta[k], 2),
                     "acq_bp": round(Xa_raw[:, k].mean(), 2), "oos_bp": round(oos.mean(), 2),
                     "oos_t": round(oos.mean() / (oos.std(ddof=1) / np.sqrt(len(oos))), 2),
-                    "oos_net_bp": round(oos.mean() - COST[sym], 2)})
+                    "oos_net_bp": round(oos.mean() - slot_cost_bp(sym)[cells[k, 0]], 2)})
     # coherent vs non-coherent integration across the 7 DEV years
     yrs = pd.DatetimeIndex(days).year.to_numpy()
     cells_all, Xall, _ = grid(R, have, sig, keep, whiten)
@@ -179,7 +207,7 @@ def plot_caf(maps):
             ax.set_title(f"{sym} — {lab_} — CFAR |t| > {thr:.2f}, max |t| {np.nanmax(np.abs(M)):.2f}", fontsize=8, loc="left")
     fig.colorbar(im, ax=axes, shrink=0.6, label="t (whitened correlator output)")
     fig.suptitle("QM-014 cross-ambiguity map: start time (code phase, server time) × horizon (Doppler)", fontsize=10)
-    fig.savefig(OUT / "caf_maps.png", dpi=110, bbox_inches="tight"); plt.close(fig)
+    fig.savefig(OUT / f"caf_maps{TAG}.png", dpi=110, bbox_inches="tight"); plt.close(fig)
 
 
 def matched_filter(sym, thr=(1.5, 2.0, 2.5, 3.0)):
@@ -190,15 +218,21 @@ def matched_filter(sym, thr=(1.5, 2.0, 2.5, 3.0)):
     ia = keep & (days >= ACQ[0]) & (days <= ACQ[1]); it = keep & (days >= TRK[0]) & (days <= TRK[1])
     Ra, Rt = R[ia], R[it]
     ta = Ra.mean(0) / (Ra.std(0, ddof=1) / np.sqrt(len(Ra)) + 1e-12)
+    c_opt, c_full = slot_cost_bp(sym, slip=False), slot_cost_bp(sym, slip=True)
     out = []
     for th in thr:
         w = np.where(np.abs(ta) > th, np.sign(ta), 0.0)
         pnl = Rt @ w
         k = int((w != 0).sum())
-        out.append({"sym": sym, "thr": th, "slots": k, "gross_bp_day": round(pnl.mean(), 2),
+        starts = np.flatnonzero((w != 0) & (np.r_[0.0, w[:-1]] != w))      # contiguous same-sign slots = 1 trade
+        co, cf = c_opt[starts].sum(), c_full[starts].sum()
+        out.append({"sym": sym, "thr": th, "slots": k, "trades_day": len(starts), "gross_bp_day": round(pnl.mean(), 2),
                     "t_gross": round(pnl.mean() / (pnl.std(ddof=1) / np.sqrt(len(pnl))), 2),
-                    "cost_bp_day": round(k * COST[sym], 2), "net_bp_day": round(pnl.mean() - k * COST[sym], 2),
-                    "gross_per_slot_bp": round(pnl.mean() / max(k, 1), 3)})
+                    "cost_opt_bp_day": round(co, 2), "cost_bp_day": round(cf, 2),
+                    "net_opt_bp_day": round(pnl.mean() - co, 2), "net_bp_day": round(pnl.mean() - cf, 2),
+                    "gross/cost_opt": round(pnl.mean() / co, 3) if co > 0 else None,
+                    "breakeven_bp_trade": round(pnl.mean() / max(len(starts), 1), 3),
+                    "commission_bp": round(commission_bp(sym), 3)})
     return out
 
 
@@ -224,6 +258,7 @@ def gain_ledger():
 
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
+    tag = "_fx" if set(SYMS) <= set(FX) else ""
     summary, tops, maps = [], {}, {}
     for sym in SYMS:
         for wh, mid in ((True, True), (False, True), (True, False)):
@@ -232,10 +267,12 @@ if __name__ == "__main__":
             if wh and mid:
                 tops[sym] = top; maps[sym] = mp
             print(json.dumps(res)); print(pd.DataFrame(top).to_string())
+    TAG = tag
     plot_caf(maps)
-    MF = pd.DataFrame([r for sym in SYMS for r in matched_filter(sym)]); MF.to_csv(OUT / "matched_filter.csv", index=False)
+    MF = pd.DataFrame([r for sym in SYMS for r in matched_filter(sym)]); MF.to_csv(OUT / f"matched_filter{tag}.csv", index=False)
     print(MF.to_string())
-    S = pd.DataFrame(summary); S.to_csv(OUT / "acquisition.csv", index=False)
-    pd.concat({k: pd.DataFrame(v) for k, v in tops.items()}).to_csv(OUT / "top_cells.csv")
-    G = gain_ledger(); G.to_csv(OUT / "gain_ledger.csv", index=False)
-    print(G.to_string())
+    S = pd.DataFrame(summary); S.to_csv(OUT / f"acquisition{tag}.csv", index=False)
+    pd.concat({k: pd.DataFrame(v) for k, v in tops.items()}).to_csv(OUT / f"top_cells{tag}.csv")
+    if not tag:
+        G = gain_ledger(); G.to_csv(OUT / "gain_ledger.csv", index=False)
+        print(G.to_string())

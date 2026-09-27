@@ -1,0 +1,39 @@
+{"ts": "2026-09-27 17:05:11", "exp": "QM-003", "family": "vol_managed", "config": {"book": "XAUUSD always-long", "p": 0}, "metrics": {"SR": 0.846}}
+{"ts": "2026-09-27 17:05:20", "exp": "QM-003", "family": "vol_managed", "config": {"book": "XAUUSD always-long", "p": 1}, "metrics": {"SR": 0.922}}
+{"ts": "2026-09-27 17:05:28", "exp": "QM-003", "family": "vol_managed", "config": {"book": "XAUUSD always-long", "p": 2}, "metrics": {"SR": 0.973}}
+{"ts": "2026-09-27 17:05:30", "exp": "QM-003", "family": "vol_managed", "config": {"book": "NAS100 always-long", "p": 0}, "metrics": {"SR": 1.044}}
+{"ts": "2026-09-27 17:05:40", "exp": "QM-003", "family": "vol_managed", "config": {"book": "NAS100 always-long", "p": 1}, "metrics": {"SR": 1.042}}
+{"ts": "2026-09-27 17:05:51", "exp": "QM-003", "family": "vol_managed", "config": {"book": "NAS100 always-long", "p": 2}, "metrics": {"SR": 1.024}}
+{"ts": "2026-09-27 17:05:52", "exp": "QM-003", "family": "vol_managed", "config": {"book": "DJ30 always-long", "p": 0}, "metrics": {"SR": 0.514}}
+{"ts": "2026-09-27 17:06:03", "exp": "QM-003", "family": "vol_managed", "config": {"book": "DJ30 always-long", "p": 1}, "metrics": {"SR": 0.569}}
+{"ts": "2026-09-27 17:06:13", "exp": "QM-003", "family": "vol_managed", "config": {"book": "DJ30 always-long", "p": 2}, "metrics": {"SR": 0.523}}
+{"ts": "2026-09-27 17:06:23", "exp": "QM-003", "family": "vol_managed", "config": {"book": "v2", "p": 0}, "metrics": {"SR": 1.295}}
+{"ts": "2026-09-27 17:06:24", "exp": "QM-003", "family": "vol_managed", "config": {"book": "v2", "p": 1}, "metrics": {"SR": 1.309}}
+{"ts": "2026-09-27 17:06:25", "exp": "QM-003", "family": "vol_managed", "config": {"book": "v2", "p": 2}, "metrics": {"SR": 1.335}}
+{"ts": "2026-09-27 17:07:06", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "NAS100", "z": "z_cc", "k": 0.0}, "metrics": {"bps": 6.3, "t": 2.21}}
+{"ts": "2026-09-27 17:07:06", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "NAS100", "z": "z_cc", "k": 0.05}, "metrics": {"bps": 7.59, "t": 2.05}}
+{"ts": "2026-09-27 17:07:06", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "NAS100", "z": "z_cc", "k": 0.1}, "metrics": {"bps": 8.82, "t": 1.14}}
+{"ts": "2026-09-27 17:07:06", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "NAS100", "z": "z_oc", "k": 0.0}, "metrics": {"bps": 5.76, "t": 2.02}}
+{"ts": "2026-09-27 17:07:06", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "NAS100", "z": "z_oc", "k": 0.05}, "metrics": {"bps": 7.69, "t": 2.01}}
+{"ts": "2026-09-27 17:07:06", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "NAS100", "z": "z_oc", "k": 0.1}, "metrics": {"bps": 14.36, "t": 1.92}}
+{"ts": "2026-09-27 17:07:06", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "NAS100", "z": "z_common", "k": 0.0}, "metrics": {"bps": 6.84, "t": 2.4}}
+{"ts": "2026-09-27 17:07:06", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "NAS100", "z": "z_common", "k": 0.05}, "metrics": {"bps": 8.82, "t": 2.33}}
+{"ts": "2026-09-27 17:07:06", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "NAS100", "z": "z_common", "k": 0.1}, "metrics": {"bps": 9.5, "t": 1.28}}
+{"ts": "2026-09-27 17:07:07", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "DJ30", "z": "z_cc", "k": 0.0}, "metrics": {"bps": 2.37, "t": 1.07}}
+{"ts": "2026-09-27 17:07:07", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "DJ30", "z": "z_cc", "k": 0.05}, "metrics": {"bps": 2.34, "t": 0.89}}
+{"ts": "2026-09-27 17:07:07", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "DJ30", "z": "z_cc", "k": 0.1}, "metrics": {"bps": -10.16, "t": -1.44}}
+{"ts": "2026-09-27 17:07:07", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "DJ30", "z": "z_oc", "k": 0.0}, "metrics": {"bps": 1.4, "t": 0.63}}
+{"ts": "2026-09-27 17:07:07", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "DJ30", "z": "z_oc", "k": 0.05}, "metrics": {"bps": 2.68, "t": 1.03}}
+{"ts": "2026-09-27 17:07:07", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "DJ30", "z": "z_oc", "k": 0.1}, "metrics": {"bps": -6.91, "t": -1.02}}
+{"ts": "2026-09-27 17:07:07", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "DJ30", "z": "z_common", "k": 0.0}, "metrics": {"bps": 2.22, "t": 1.0}}
+{"ts": "2026-09-27 17:07:07", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "DJ30", "z": "z_common", "k": 0.05}, "metrics": {"bps": 1.96, "t": 0.75}}
+{"ts": "2026-09-27 17:07:07", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "DJ30", "z": "z_common", "k": 0.1}, "metrics": {"bps": -11.06, "t": -1.75}}
+{"ts": "2026-09-27 17:07:10", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "GER40", "z": "z_cc", "k": 0.0}, "metrics": {"bps": 0.96, "t": 0.41}}
+{"ts": "2026-09-27 17:07:10", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "GER40", "z": "z_cc", "k": 0.05}, "metrics": {"bps": -2.45, "t": -0.51}}
+{"ts": "2026-09-27 17:07:10", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "GER40", "z": "z_cc", "k": 0.1}, "metrics": {"bps": 2.15, "t": 0.24}}
+{"ts": "2026-09-27 17:07:10", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "GER40", "z": "z_oc", "k": 0.0}, "metrics": {"bps": 0.78, "t": 0.33}}
+{"ts": "2026-09-27 17:07:10", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "GER40", "z": "z_oc", "k": 0.05}, "metrics": {"bps": 0.38, "t": 0.05}}
+{"ts": "2026-09-27 17:07:10", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "GER40", "z": "z_oc", "k": 0.1}, "metrics": {"bps": 17.65, "t": 0.82}}
+{"ts": "2026-09-27 17:07:10", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "GER40", "z": "z_common", "k": 0.0}, "metrics": {"bps": 4.99, "t": 2.11}}
+{"ts": "2026-09-27 17:07:10", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "GER40", "z": "z_common", "k": 0.05}, "metrics": {"bps": -4.87, "t": -0.71}}
+{"ts": "2026-09-27 17:07:10", "exp": "QM-004", "family": "index_daily_ar", "config": {"sym": "GER40", "z": "z_common", "k": 0.1}, "metrics": {"bps": 26.72, "t": 1.1}}

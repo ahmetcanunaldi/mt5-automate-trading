@@ -13,3 +13,14 @@ DEV data 2018-01..2024-12; **lockbox 2025-01..2026-09 untouched** until phase 7.
 - Cross-asset lead-lag at 1 min is ≤ 0.02 correlation (e.g. SP500 → GER40 +0.02) — far below cost.
 - Mutual information is large at 1 min but comes from magnitude (volatility clustering), not sign.
 - ⇒ Priorities: volatility forecasting (phase 2) and daily-scale mean reversion / OU on indices (phases 3–4).
+
+## Phase 2 — volatility (QM-002, QM-003)
+- HAR-RV with leverage + jump terms is the best one-day-ahead variance forecaster on all 8 symbols (log R² 0.45–0.75);
+  GARCH on daily returns is clearly worse.
+- Rough volatility confirmed: Hurst of log-volatility 0.10–0.19 (literature ~0.1).
+- Volatility-managed sizing (≤ 0.5 % cap, so only scaling down) improves gold (SR 0.85 → 0.97, DD −25 %,
+  placebo p 0.00) but not equity indices. Portfolio v2: +0.04 SR on DEV.
+
+## Phase 3/4 lead check — index daily AR (QM-004)
+- After standardizing by forecast volatility, daily index autocorrelation is ≈ 0 and unstable; the raw −0.11 came
+  from crisis days. No timing value beyond the drift (placebo p ≥ 0.2).

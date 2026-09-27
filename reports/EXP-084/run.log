@@ -1,0 +1,196 @@
+{'sym': 'NAS100', 'leg': 'mon', 'n': 399, 'avgR': np.float64(0.067), 't': np.float64(3.57), 'R_yr': np.float64(3.5), 't_19_22': np.float64(1.02), 't_23_26': np.float64(4.26), 'yrs_pos': 6}
+{'sym': 'NAS100', 'leg': 'dip_clv', 'n': 371, 'avgR': np.float64(0.049), 't': np.float64(1.8), 'R_yr': np.float64(2.4), 't_19_22': np.float64(0.86), 't_23_26': np.float64(1.76), 'yrs_pos': 6}
+{'sym': 'NAS100', 'leg': 'dip_low20', 'n': 125, 'avgR': np.float64(0.119), 't': np.float64(2.3), 'R_yr': np.float64(1.9), 't_19_22': np.float64(1.4), 't_23_26': np.float64(1.93), 'yrs_pos': 7}
+{'sym': 'NAS100', 'leg': 'hi20', 'n': 550, 'avgR': np.float64(0.048), 't': np.float64(3.17), 'R_yr': np.float64(3.4), 't_19_22': np.float64(1.83), 't_23_26': np.float64(2.64), 'yrs_pos': 7}
+{'sym': 'NAS100', 'leg': 'up3', 'n': 305, 'avgR': np.float64(0.034), 't': np.float64(1.91), 'R_yr': np.float64(1.4), 't_19_22': np.float64(0.85), 't_23_26': np.float64(1.92), 'yrs_pos': 7}
+{'sym': 'NAS100', 'leg': 'tom', 'n': 93, 'avgR': np.float64(-0.005), 't': np.float64(-0.3), 'R_yr': np.float64(-0.1), 't_19_22': np.float64(-1.52), 't_23_26': np.float64(1.28), 'yrs_pos': 3}
+{'sym': 'NAS100', 'leg': 'prefomc', 'n': 61, 'avgR': np.float64(0.065), 't': np.float64(2.06), 'R_yr': np.float64(0.5), 't_19_22': np.float64(2.42), 't_23_26': np.float64(0.36), 'yrs_pos': 7}
+{'sym': 'NAS100', 'leg': 'xau_trendH4_L', 'n': 269, 'avgR': np.float64(-0.008), 't': np.float64(-0.24), 'R_yr': np.float64(-0.3), 't_19_22': np.float64(-1.31), 't_23_26': np.float64(0.88), 'yrs_pos': 5}
+{'sym': 'NAS100', 'leg': 'xau_trendH4_S', 'n': 68, 'avgR': np.float64(-0.218), 't': np.float64(-2.65), 'R_yr': np.float64(-1.9), 't_19_22': np.float64(-3.14), 't_23_26': np.float64(-0.73), 'yrs_pos': 1}
+{'sym': 'NAS100', 'leg': 'xau_tday', 'n': 362, 'avgR': np.float64(0.04), 't': np.float64(2.27), 'R_yr': np.float64(1.9), 't_19_22': np.float64(2.61), 't_23_26': np.float64(0.58), 'yrs_pos': 6}
+{'sym': 'NAS100', 'leg': 'xau_tday900', 'n': 223, 'avgR': np.float64(0.001), 't': np.float64(0.05), 'R_yr': np.float64(0.0), 't_19_22': np.float64(-0.89), 't_23_26': np.float64(1.09), 'yrs_pos': 4}
+{'sym': 'NAS100', 'leg': 'xau_drift_L', 'n': 1601, 'avgR': np.float64(-0.001), 't': np.float64(-0.2), 'R_yr': np.float64(-0.3), 't_19_22': np.float64(-0.12), 't_23_26': np.float64(-0.16), 'yrs_pos': 3}
+{'sym': 'NAS100', 'leg': 'xau_drift_S', 'n': 1601, 'avgR': np.float64(-0.021), 't': np.float64(-3.21), 'R_yr': np.float64(-4.5), 't_19_22': np.float64(-2.72), 't_23_26': np.float64(-1.78), 'yrs_pos': 0}
+{'sym': 'NAS100', 'leg': 'xau_friday_L', 'n': 396, 'avgR': np.float64(-0.005), 't': np.float64(-0.33), 'R_yr': np.float64(-0.3), 't_19_22': np.float64(-0.38), 't_23_26': np.float64(-0.1), 'yrs_pos': 4}
+{'sym': 'NAS100', 'leg': 'xau_friday_S', 'n': 396, 'avgR': np.float64(-0.004), 't': np.float64(-0.27), 'R_yr': np.float64(-0.2), 't_19_22': np.float64(-0.24), 't_23_26': np.float64(-0.15), 'yrs_pos': 3}
+{'sym': 'NAS100', 'leg': 'xau_tom_L', 'n': 93, 'avgR': np.float64(0.025), 't': np.float64(1.27), 'R_yr': np.float64(0.3), 't_19_22': np.float64(2.96), 't_23_26': np.float64(-0.61), 'yrs_pos': 5}
+{'sym': 'NAS100', 'leg': 'xau_tom_S', 'n': 93, 'avgR': np.float64(-0.034), 't': np.float64(-1.68), 'R_yr': np.float64(-0.4), 't_19_22': np.float64(-3.35), 't_23_26': np.float64(0.4), 'yrs_pos': 3}
+{'sym': 'NAS100', 'leg': 'xau_lw', 'n': 1251, 'avgR': np.float64(0.011), 't': np.float64(0.85), 'R_yr': np.float64(1.8), 't_19_22': np.float64(0.92), 't_23_26': np.float64(0.28), 'yrs_pos': 5}
+{'sym': 'NAS100', 'leg': 'xau_inside', 'n': 109, 'avgR': np.float64(0.026), 't': np.float64(0.46), 'R_yr': np.float64(0.4), 't_19_22': np.float64(1.07), 't_23_26': np.float64(-0.52), 'yrs_pos': 4}
+{'sym': 'NAS100', 'leg': 'xau_nr7', 'n': 134, 'avgR': np.float64(0.038), 't': np.float64(0.66), 'R_yr': np.float64(0.7), 't_19_22': np.float64(1.86), 't_23_26': np.float64(-1.21), 'yrs_pos': 5}
+{'sym': 'NAS100', 'leg': 'xau_fri_close_L', 'n': 382, 'avgR': np.float64(-0.024), 't': np.float64(-3.83), 'R_yr': np.float64(-1.2), 't_19_22': np.float64(-1.87), 't_23_26': np.float64(-3.54), 'yrs_pos': 1}
+{'sym': 'NAS100', 'leg': 'xau_fri_close_S', 'n': 382, 'avgR': np.float64(-0.01), 't': np.float64(-1.54), 'R_yr': np.float64(-0.5), 't_19_22': np.float64(-2.7), 't_23_26': np.float64(0.53), 'yrs_pos': 3}
+{'sym': 'NAS100', 'leg': 'xau_strong_close', 'n': 657, 'avgR': np.float64(0.026), 't': np.float64(1.7), 'R_yr': np.float64(2.2), 't_19_22': np.float64(0.88), 't_23_26': np.float64(1.56), 'yrs_pos': 7}
+{'sym': 'NAS100', 'leg': 'xau_weak_close', 'n': 371, 'avgR': np.float64(-0.067), 't': np.float64(-2.57), 'R_yr': np.float64(-3.2), 't_19_22': np.float64(-1.28), 't_23_26': np.float64(-2.52), 'yrs_pos': 2}
+{'sym': 'NAS100', 'leg': 'sw_don20_L', 'n': 244, 'avgR': np.float64(0.021), 't': np.float64(1.76), 'R_yr': np.float64(0.7), 't_19_22': np.float64(0.63), 't_23_26': np.float64(1.91), 'yrs_pos': 7}
+{'sym': 'NAS100', 'leg': 'sw_don20_S', 'n': 71, 'avgR': np.float64(-0.094), 't': np.float64(-2.26), 'R_yr': np.float64(-0.9), 't_19_22': np.float64(-1.71), 't_23_26': np.float64(-1.45), 'yrs_pos': 1}
+{'sym': 'NAS100', 'leg': 'sw_don55_L', 'n': 191, 'avgR': np.float64(0.017), 't': np.float64(1.25), 'R_yr': np.float64(0.4), 't_19_22': np.float64(-0.09), 't_23_26': np.float64(1.84), 'yrs_pos': 6}
+{'sym': 'NAS100', 'leg': 'sw_don55_S', 'n': 27, 'avgR': np.float64(-0.126), 't': np.float64(-1.72), 'R_yr': np.float64(-0.4), 't_19_22': np.float64(-0.89), 't_23_26': np.float64(-1.59), 'yrs_pos': 2}
+{'sym': 'NAS100', 'leg': 'sw_don100_L', 'n': 170, 'avgR': np.float64(0.018), 't': np.float64(1.23), 'R_yr': np.float64(0.4), 't_19_22': np.float64(-0.13), 't_23_26': np.float64(1.87), 'yrs_pos': 6}
+{'sym': 'NAS100', 'leg': 'sw_ema20_100_L', 'n': 1238, 'avgR': np.float64(0.016), 't': np.float64(2.15), 'R_yr': np.float64(2.6), 't_19_22': np.float64(0.99), 't_23_26': np.float64(2.07), 'yrs_pos': 7}
+{'sym': 'NAS100', 'leg': 'sw_ema20_100_S', 'n': 305, 'avgR': np.float64(-0.032), 't': np.float64(-2.29), 'R_yr': np.float64(-1.3), 't_19_22': np.float64(-1.93), 't_23_26': np.float64(-1.23), 'yrs_pos': 0}
+{'sym': 'NAS100', 'leg': 'sw_tsmom60_L', 'n': 286, 'avgR': np.float64(0.045), 't': np.float64(2.14), 'R_yr': np.float64(1.7), 't_19_22': np.float64(0.88), 't_23_26': np.float64(2.24), 'yrs_pos': 6}
+{'sym': 'NAS100', 'leg': 'sw_tsmom60_S', 'n': 105, 'avgR': np.float64(-0.096), 't': np.float64(-3.0), 'R_yr': np.float64(-1.3), 't_19_22': np.float64(-1.38), 't_23_26': np.float64(-3.32), 'yrs_pos': 1}
+{'sym': 'NAS100', 'leg': 'sw_tsmom120_L', 'n': 306, 'avgR': np.float64(0.048), 't': np.float64(2.31), 'R_yr': np.float64(1.9), 't_19_22': np.float64(0.97), 't_23_26': np.float64(2.38), 'yrs_pos': 6}
+{'sym': 'NAS100', 'leg': 'sw_tsmom120_S', 'n': 85, 'avgR': np.float64(-0.093), 't': np.float64(-2.98), 'R_yr': np.float64(-1.0), 't_19_22': np.float64(-1.57), 't_23_26': np.float64(-3.04), 'yrs_pos': 0}
+{'sym': 'NAS100', 'leg': 'sw_week_break_L', 'n': 125, 'avgR': np.float64(0.005), 't': np.float64(0.19), 'R_yr': np.float64(0.1), 't_19_22': np.float64(-0.7), 't_23_26': np.float64(1.16), 'yrs_pos': 4}
+{'sym': 'NAS100', 'leg': 'sw_week_break_S', 'n': 36, 'avgR': np.float64(-0.074), 't': np.float64(-0.96), 'R_yr': np.float64(-0.3), 't_19_22': np.float64(-1.42), 't_23_26': np.float64(0.15), 'yrs_pos': 2}
+{'sym': 'NAS100', 'leg': 'sw_rsi2_L', 'n': 101, 'avgR': np.float64(-0.005), 't': np.float64(-0.2), 'R_yr': np.float64(-0.1), 't_19_22': np.float64(-1.88), 't_23_26': np.float64(1.1), 'yrs_pos': 3}
+{'sym': 'NAS100', 'leg': 'sw_rsi2_S', 'n': 30, 'avgR': np.float64(0.011), 't': np.float64(0.52), 'R_yr': np.float64(0.0), 't_19_22': np.float64(1.2), 't_23_26': np.float64(-0.18), 'yrs_pos': 3}
+{'sym': 'NAS100', 'leg': 'sw_bb_mr_L', 'n': 48, 'avgR': np.float64(0.058), 't': np.float64(1.6), 'R_yr': np.float64(0.4), 't_19_22': np.float64(0.11), 't_23_26': np.float64(2.03), 'yrs_pos': 5}
+{'sym': 'DJ30', 'leg': 'mon', 'n': 399, 'avgR': np.float64(0.038), 't': np.float64(2.1), 'R_yr': np.float64(2.0), 't_19_22': np.float64(0.43), 't_23_26': np.float64(2.82), 'yrs_pos': 6}
+{'sym': 'DJ30', 'leg': 'dip_clv', 'n': 365, 'avgR': np.float64(0.061), 't': np.float64(2.25), 'R_yr': np.float64(2.9), 't_19_22': np.float64(0.74), 't_23_26': np.float64(2.66), 'yrs_pos': 6}
+{'sym': 'DJ30', 'leg': 'dip_low20', 'n': 126, 'avgR': np.float64(0.129), 't': np.float64(2.45), 'R_yr': np.float64(2.1), 't_19_22': np.float64(1.17), 't_23_26': np.float64(2.67), 'yrs_pos': 7}
+{'sym': 'DJ30', 'leg': 'hi20', 'n': 470, 'avgR': np.float64(0.025), 't': np.float64(1.63), 'R_yr': np.float64(1.5), 't_19_22': np.float64(1.58), 't_23_26': np.float64(0.67), 'yrs_pos': 5}
+{'sym': 'DJ30', 'leg': 'up3', 'n': 286, 'avgR': np.float64(0.02), 't': np.float64(0.96), 'R_yr': np.float64(0.8), 't_19_22': np.float64(1.02), 't_23_26': np.float64(0.32), 'yrs_pos': 5}
+{'sym': 'DJ30', 'leg': 'tom', 'n': 93, 'avgR': np.float64(-0.033), 't': np.float64(-1.95), 'R_yr': np.float64(-0.4), 't_19_22': np.float64(-4.19), 't_23_26': np.float64(1.45), 'yrs_pos': 4}
+{'sym': 'DJ30', 'leg': 'prefomc', 'n': 61, 'avgR': np.float64(0.034), 't': np.float64(1.08), 'R_yr': np.float64(0.3), 't_19_22': np.float64(1.08), 't_23_26': np.float64(0.45), 'yrs_pos': 6}
+{'sym': 'DJ30', 'leg': 'xau_trendH4_L', 'n': 208, 'avgR': np.float64(-0.1), 't': np.float64(-2.43), 'R_yr': np.float64(-2.7), 't_19_22': np.float64(-1.45), 't_23_26': np.float64(-1.96), 'yrs_pos': 0}
+{'sym': 'DJ30', 'leg': 'xau_trendH4_S', 'n': 71, 'avgR': np.float64(-0.219), 't': np.float64(-2.98), 'R_yr': np.float64(-2.0), 't_19_22': np.float64(-1.85), 't_23_26': np.float64(-2.33), 'yrs_pos': 1}
+{'sym': 'DJ30', 'leg': 'xau_tday', 'n': 342, 'avgR': np.float64(-0.015), 't': np.float64(-0.81), 'R_yr': np.float64(-0.7), 't_19_22': np.float64(-0.76), 't_23_26': np.float64(-0.36), 'yrs_pos': 3}
+{'sym': 'DJ30', 'leg': 'xau_tday900', 'n': 187, 'avgR': np.float64(-0.039), 't': np.float64(-1.72), 'R_yr': np.float64(-0.9), 't_19_22': np.float64(-2.08), 't_23_26': np.float64(-0.32), 'yrs_pos': 2}
+{'sym': 'DJ30', 'leg': 'xau_drift_L', 'n': 1601, 'avgR': np.float64(-0.009), 't': np.float64(-1.41), 'R_yr': np.float64(-1.8), 't_19_22': np.float64(-0.51), 't_23_26': np.float64(-1.64), 'yrs_pos': 1}
+{'sym': 'DJ30', 'leg': 'xau_drift_S', 'n': 1601, 'avgR': np.float64(-0.015), 't': np.float64(-2.32), 'R_yr': np.float64(-3.1), 't_19_22': np.float64(-1.99), 't_23_26': np.float64(-1.2), 'yrs_pos': 2}
+{'sym': 'DJ30', 'leg': 'xau_friday_L', 'n': 396, 'avgR': np.float64(-0.005), 't': np.float64(-0.28), 'R_yr': np.float64(-0.2), 't_19_22': np.float64(-0.04), 't_23_26': np.float64(-0.35), 'yrs_pos': 4}
+{'sym': 'DJ30', 'leg': 'xau_friday_S', 'n': 396, 'avgR': np.float64(-0.003), 't': np.float64(-0.2), 'R_yr': np.float64(-0.2), 't_19_22': np.float64(-0.22), 't_23_26': np.float64(-0.05), 'yrs_pos': 3}
+{'sym': 'DJ30', 'leg': 'xau_tom_L', 'n': 93, 'avgR': np.float64(0.026), 't': np.float64(1.3), 'R_yr': np.float64(0.3), 't_19_22': np.float64(3.13), 't_23_26': np.float64(-1.12), 'yrs_pos': 5}
+{'sym': 'DJ30', 'leg': 'xau_tom_S', 'n': 93, 'avgR': np.float64(-0.035), 't': np.float64(-1.78), 'R_yr': np.float64(-0.4), 't_19_22': np.float64(-3.5), 't_23_26': np.float64(0.81), 'yrs_pos': 3}
+{'sym': 'DJ30', 'leg': 'xau_lw', 'n': 1251, 'avgR': np.float64(-0.024), 't': np.float64(-1.94), 'R_yr': np.float64(-3.9), 't_19_22': np.float64(-1.34), 't_23_26': np.float64(-1.4), 'yrs_pos': 1}
+{'sym': 'DJ30', 'leg': 'xau_inside', 'n': 82, 'avgR': np.float64(-0.045), 't': np.float64(-0.65), 'R_yr': np.float64(-0.5), 't_19_22': np.float64(-0.7), 't_23_26': np.float64(-0.23), 'yrs_pos': 4}
+{'sym': 'DJ30', 'leg': 'xau_nr7', 'n': 130, 'avgR': np.float64(-0.055), 't': np.float64(-1.02), 'R_yr': np.float64(-0.9), 't_19_22': np.float64(-0.73), 't_23_26': np.float64(-0.71), 'yrs_pos': 2}
+{'sym': 'DJ30', 'leg': 'xau_fri_close_L', 'n': 382, 'avgR': np.float64(-0.036), 't': np.float64(-4.72), 'R_yr': np.float64(-1.8), 't_19_22': np.float64(-3.53), 't_23_26': np.float64(-3.19), 'yrs_pos': 0}
+{'sym': 'DJ30', 'leg': 'xau_fri_close_S', 'n': 382, 'avgR': np.float64(-0.003), 't': np.float64(-0.47), 'R_yr': np.float64(-0.2), 't_19_22': np.float64(-1.07), 't_23_26': np.float64(0.28), 'yrs_pos': 3}
+{'sym': 'DJ30', 'leg': 'xau_strong_close', 'n': 588, 'avgR': np.float64(0.018), 't': np.float64(1.07), 'R_yr': np.float64(1.3), 't_19_22': np.float64(0.69), 't_23_26': np.float64(0.83), 'yrs_pos': 6}
+{'sym': 'DJ30', 'leg': 'xau_weak_close', 'n': 365, 'avgR': np.float64(-0.061), 't': np.float64(-2.13), 'R_yr': np.float64(-2.9), 't_19_22': np.float64(-0.4), 't_23_26': np.float64(-3.15), 'yrs_pos': 3}
+{'sym': 'DJ30', 'leg': 'sw_don20_L', 'n': 197, 'avgR': np.float64(-0.012), 't': np.float64(-0.81), 'R_yr': np.float64(-0.3), 't_19_22': np.float64(-0.58), 't_23_26': np.float64(-0.57), 'yrs_pos': 4}
+{'sym': 'DJ30', 'leg': 'sw_don20_S', 'n': 83, 'avgR': np.float64(-0.104), 't': np.float64(-2.67), 'R_yr': np.float64(-1.1), 't_19_22': np.float64(-1.05), 't_23_26': np.float64(-2.96), 'yrs_pos': 1}
+{'sym': 'DJ30', 'leg': 'sw_don55_L', 'n': 127, 'avgR': np.float64(-0.037), 't': np.float64(-1.94), 'R_yr': np.float64(-0.6), 't_19_22': np.float64(-1.54), 't_23_26': np.float64(-1.17), 'yrs_pos': 1}
+{'sym': 'DJ30', 'leg': 'sw_don55_S', 'n': 31, 'avgR': np.float64(-0.133), 't': np.float64(-1.78), 'R_yr': np.float64(-0.5), 't_19_22': np.float64(-1.02), 't_23_26': np.float64(-1.45), 'yrs_pos': 1}
+{'sym': 'DJ30', 'leg': 'sw_don100_L', 'n': 108, 'avgR': np.float64(-0.053), 't': np.float64(-2.5), 'R_yr': np.float64(-0.7), 't_19_22': np.float64(-1.75), 't_23_26': np.float64(-1.83), 'yrs_pos': 1}
+{'sym': 'DJ30', 'leg': 'sw_ema20_100_L', 'n': 1197, 'avgR': np.float64(-0.002), 't': np.float64(-0.33), 'R_yr': np.float64(-0.4), 't_19_22': np.float64(-0.93), 't_23_26': np.float64(0.51), 'yrs_pos': 3}
+{'sym': 'DJ30', 'leg': 'sw_ema20_100_S', 'n': 350, 'avgR': np.float64(-0.047), 't': np.float64(-3.18), 'R_yr': np.float64(-2.1), 't_19_22': np.float64(-2.96), 't_23_26': np.float64(-1.35), 'yrs_pos': 0}
+{'sym': 'DJ30', 'leg': 'sw_tsmom60_L', 'n': 273, 'avgR': np.float64(-0.013), 't': np.float64(-0.64), 'R_yr': np.float64(-0.4), 't_19_22': np.float64(-0.89), 't_23_26': np.float64(0.04), 'yrs_pos': 3}
+{'sym': 'DJ30', 'leg': 'sw_tsmom60_S', 'n': 118, 'avgR': np.float64(-0.125), 't': np.float64(-4.19), 'R_yr': np.float64(-1.9), 't_19_22': np.float64(-2.52), 't_23_26': np.float64(-3.49), 'yrs_pos': 0}
+{'sym': 'DJ30', 'leg': 'sw_tsmom120_L', 'n': 292, 'avgR': np.float64(-0.003), 't': np.float64(-0.15), 'R_yr': np.float64(-0.1), 't_19_22': np.float64(-0.82), 't_23_26': np.float64(0.68), 'yrs_pos': 4}
+{'sym': 'DJ30', 'leg': 'sw_tsmom120_S', 'n': 99, 'avgR': np.float64(-0.117), 't': np.float64(-3.81), 'R_yr': np.float64(-1.5), 't_19_22': np.float64(-2.59), 't_23_26': np.float64(-2.98), 'yrs_pos': 0}
+{'sym': 'DJ30', 'leg': 'sw_week_break_L', 'n': 104, 'avgR': np.float64(-0.024), 't': np.float64(-0.9), 'R_yr': np.float64(-0.3), 't_19_22': np.float64(-0.26), 't_23_26': np.float64(-0.93), 'yrs_pos': 3}
+{'sym': 'DJ30', 'leg': 'sw_week_break_S', 'n': 41, 'avgR': np.float64(0.016), 't': np.float64(0.22), 'R_yr': np.float64(0.1), 't_19_22': np.float64(-0.5), 't_23_26': np.float64(1.09), 'yrs_pos': 4}
+{'sym': 'DJ30', 'leg': 'sw_rsi2_L', 'n': 116, 'avgR': np.float64(0.029), 't': np.float64(1.14), 'R_yr': np.float64(0.4), 't_19_22': np.float64(-0.32), 't_23_26': np.float64(1.72), 'yrs_pos': 5}
+{'sym': 'DJ30', 'leg': 'sw_rsi2_S', 'n': 38, 'avgR': np.float64(-0.041), 't': np.float64(-1.39), 'R_yr': np.float64(-0.2), 't_19_22': np.float64(-0.91), 't_23_26': np.float64(-2.39), 'yrs_pos': 0}
+{'sym': 'DJ30', 'leg': 'sw_bb_mr_L', 'n': 55, 'avgR': np.float64(0.034), 't': np.float64(0.9), 'R_yr': np.float64(0.2), 't_19_22': np.float64(-0.8), 't_23_26': np.float64(2.3), 'yrs_pos': 4}
+{'sym': 'GER40', 'leg': 'mon', 'n': 391, 'avgR': np.float64(0.011), 't': np.float64(0.59), 'R_yr': np.float64(0.6), 't_19_22': np.float64(-0.17), 't_23_26': np.float64(1.09), 'yrs_pos': 6}
+{'sym': 'GER40', 'leg': 'dip_clv', 'n': 351, 'avgR': np.float64(-0.03), 't': np.float64(-1.06), 'R_yr': np.float64(-1.4), 't_19_22': np.float64(-0.31), 't_23_26': np.float64(-1.19), 'yrs_pos': 2}
+{'sym': 'GER40', 'leg': 'dip_low20', 'n': 106, 'avgR': np.float64(-0.044), 't': np.float64(-0.74), 'R_yr': np.float64(-0.6), 't_19_22': np.float64(-1.33), 't_23_26': np.float64(0.41), 'yrs_pos': 3}
+{'sym': 'GER40', 'leg': 'hi20', 'n': 437, 'avgR': np.float64(0.041), 't': np.float64(2.23), 'R_yr': np.float64(2.4), 't_19_22': np.float64(1.28), 't_23_26': np.float64(1.86), 'yrs_pos': 8}
+{'sym': 'GER40', 'leg': 'up3', 'n': 296, 'avgR': np.float64(0.055), 't': np.float64(2.25), 'R_yr': np.float64(2.1), 't_19_22': np.float64(1.19), 't_23_26': np.float64(1.96), 'yrs_pos': 6}
+{'sym': 'GER40', 'leg': 'tom', 'n': 93, 'avgR': np.float64(-0.047), 't': np.float64(-2.05), 'R_yr': np.float64(-0.6), 't_19_22': np.float64(-2.71), 't_23_26': np.float64(0.21), 'yrs_pos': 2}
+{'sym': 'GER40', 'leg': 'prefomc', 'n': 61, 'avgR': np.float64(0.056), 't': np.float64(1.46), 'R_yr': np.float64(0.4), 't_19_22': np.float64(1.33), 't_23_26': np.float64(0.63), 'yrs_pos': 5}
+{'sym': 'GER40', 'leg': 'xau_trendH4_L', 'n': 206, 'avgR': np.float64(-0.026), 't': np.float64(-0.75), 'R_yr': np.float64(-0.7), 't_19_22': np.float64(-1.16), 't_23_26': np.float64(0.15), 'yrs_pos': 4}
+{'sym': 'GER40', 'leg': 'xau_trendH4_S', 'n': 75, 'avgR': np.float64(-0.138), 't': np.float64(-1.53), 'R_yr': np.float64(-1.3), 't_19_22': np.float64(-0.98), 't_23_26': np.float64(-1.18), 'yrs_pos': 2}
+{'sym': 'GER40', 'leg': 'xau_tday', 'n': 333, 'avgR': np.float64(0.013), 't': np.float64(1.0), 'R_yr': np.float64(0.6), 't_19_22': np.float64(1.03), 't_23_26': np.float64(0.33), 'yrs_pos': 5}
+{'sym': 'GER40', 'leg': 'xau_tday900', 'n': 275, 'avgR': np.float64(-0.01), 't': np.float64(-0.82), 'R_yr': np.float64(-0.4), 't_19_22': np.float64(-0.87), 't_23_26': np.float64(-0.22), 'yrs_pos': 3}
+{'sym': 'GER40', 'leg': 'xau_drift_L', 'n': 1577, 'avgR': np.float64(-0.013), 't': np.float64(-1.19), 'R_yr': np.float64(-2.7), 't_19_22': np.float64(-0.17), 't_23_26': np.float64(-1.58), 'yrs_pos': 2}
+{'sym': 'GER40', 'leg': 'xau_drift_S', 'n': 1577, 'avgR': np.float64(-0.017), 't': np.float64(-1.52), 'R_yr': np.float64(-3.5), 't_19_22': np.float64(-1.28), 't_23_26': np.float64(-0.84), 'yrs_pos': 2}
+{'sym': 'GER40', 'leg': 'xau_friday_L', 'n': 388, 'avgR': np.float64(-0.011), 't': np.float64(-0.66), 'R_yr': np.float64(-0.6), 't_19_22': np.float64(-0.25), 't_23_26': np.float64(-0.68), 'yrs_pos': 5}
+{'sym': 'GER40', 'leg': 'xau_friday_S', 'n': 388, 'avgR': np.float64(-0.003), 't': np.float64(-0.17), 'R_yr': np.float64(-0.1), 't_19_22': np.float64(-0.17), 't_23_26': np.float64(-0.06), 'yrs_pos': 3}
+{'sym': 'GER40', 'leg': 'xau_tom_L', 'n': 93, 'avgR': np.float64(0.052), 't': np.float64(1.84), 'R_yr': np.float64(0.6), 't_19_22': np.float64(3.27), 't_23_26': np.float64(-0.17), 'yrs_pos': 7}
+{'sym': 'GER40', 'leg': 'xau_tom_S', 'n': 93, 'avgR': np.float64(-0.064), 't': np.float64(-2.22), 'R_yr': np.float64(-0.8), 't_19_22': np.float64(-3.53), 't_23_26': np.float64(-0.13), 'yrs_pos': 1}
+{'sym': 'GER40', 'leg': 'xau_lw', 'n': 1321, 'avgR': np.float64(-0.008), 't': np.float64(-0.67), 'R_yr': np.float64(-1.3), 't_19_22': np.float64(-0.48), 't_23_26': np.float64(-0.47), 'yrs_pos': 4}
+{'sym': 'GER40', 'leg': 'xau_inside', 'n': 103, 'avgR': np.float64(-0.123), 't': np.float64(-2.16), 'R_yr': np.float64(-1.6), 't_19_22': np.float64(-2.27), 't_23_26': np.float64(-0.63), 'yrs_pos': 1}
+{'sym': 'GER40', 'leg': 'xau_nr7', 'n': 154, 'avgR': np.float64(-0.061), 't': np.float64(-1.24), 'R_yr': np.float64(-1.2), 't_19_22': np.float64(-0.94), 't_23_26': np.float64(-0.8), 'yrs_pos': 3}
+{'sym': 'GER40', 'leg': 'xau_fri_close_L', 'n': 388, 'avgR': np.float64(-0.005), 't': np.float64(-0.28), 'R_yr': np.float64(-0.3), 't_19_22': np.float64(-0.3), 't_23_26': np.float64(-0.09), 'yrs_pos': 4}
+{'sym': 'GER40', 'leg': 'xau_fri_close_S', 'n': 388, 'avgR': np.float64(-0.058), 't': np.float64(-2.89), 'R_yr': np.float64(-2.9), 't_19_22': np.float64(-1.25), 't_23_26': np.float64(-2.96), 'yrs_pos': 3}
+{'sym': 'GER40', 'leg': 'xau_strong_close', 'n': 544, 'avgR': np.float64(0.017), 't': np.float64(0.85), 'R_yr': np.float64(1.2), 't_19_22': np.float64(1.32), 't_23_26': np.float64(-0.17), 'yrs_pos': 5}
+{'sym': 'GER40', 'leg': 'xau_weak_close', 'n': 340, 'avgR': np.float64(-0.001), 't': np.float64(-0.02), 'R_yr': np.float64(-0.0), 't_19_22': np.float64(-0.79), 't_23_26': np.float64(0.73), 'yrs_pos': 3}
+{'sym': 'GER40', 'leg': 'sw_don20_L', 'n': 180, 'avgR': np.float64(0.001), 't': np.float64(0.08), 'R_yr': np.float64(0.0), 't_19_22': np.float64(-0.74), 't_23_26': np.float64(0.73), 'yrs_pos': 4}
+{'sym': 'GER40', 'leg': 'sw_don20_S', 'n': 80, 'avgR': np.float64(-0.083), 't': np.float64(-1.93), 'R_yr': np.float64(-0.9), 't_19_22': np.float64(-1.42), 't_23_26': np.float64(-1.29), 'yrs_pos': 1}
+{'sym': 'GER40', 'leg': 'sw_don55_L', 'n': 125, 'avgR': np.float64(-0.007), 't': np.float64(-0.34), 'R_yr': np.float64(-0.1), 't_19_22': np.float64(-0.96), 't_23_26': np.float64(0.35), 'yrs_pos': 3}
+{'sym': 'GER40', 'leg': 'sw_don55_S', 'n': 37, 'avgR': np.float64(-0.026), 't': np.float64(-0.36), 'R_yr': np.float64(-0.1), 't_19_22': np.float64(-0.18), 't_23_26': np.float64(-0.34), 'yrs_pos': 3}
+{'sym': 'GER40', 'leg': 'sw_don100_L', 'n': 110, 'avgR': np.float64(-0.011), 't': np.float64(-0.5), 'R_yr': np.float64(-0.2), 't_19_22': np.float64(-0.94), 't_23_26': np.float64(0.07), 'yrs_pos': 3}
+{'sym': 'GER40', 'leg': 'sw_don100_S', 'n': 21, 'avgR': np.float64(-0.061), 't': np.float64(-0.59), 'R_yr': np.float64(-0.2), 't_19_22': np.float64(-0.22), 't_23_26': np.float64(-0.72), 'yrs_pos': 2}
+{'sym': 'GER40', 'leg': 'sw_ema20_100_L', 'n': 1250, 'avgR': np.float64(-0.008), 't': np.float64(-1.03), 'R_yr': np.float64(-1.4), 't_19_22': np.float64(-0.7), 't_23_26': np.float64(-0.75), 'yrs_pos': 0}
+{'sym': 'GER40', 'leg': 'sw_ema20_100_S', 'n': 388, 'avgR': np.float64(-0.042), 't': np.float64(-3.07), 'R_yr': np.float64(-2.1), 't_19_22': np.float64(-2.48), 't_23_26': np.float64(-1.87), 'yrs_pos': 0}
+{'sym': 'GER40', 'leg': 'sw_tsmom60_L', 'n': 269, 'avgR': np.float64(-0.012), 't': np.float64(-0.59), 'R_yr': np.float64(-0.4), 't_19_22': np.float64(-0.36), 't_23_26': np.float64(-0.47), 'yrs_pos': 3}
+{'sym': 'GER40', 'leg': 'sw_tsmom60_S', 'n': 119, 'avgR': np.float64(-0.095), 't': np.float64(-2.63), 'R_yr': np.float64(-1.5), 't_19_22': np.float64(-1.53), 't_23_26': np.float64(-2.3), 'yrs_pos': 1}
+{'sym': 'GER40', 'leg': 'sw_tsmom120_L', 'n': 286, 'avgR': np.float64(-0.006), 't': np.float64(-0.28), 'R_yr': np.float64(-0.2), 't_19_22': np.float64(-0.62), 't_23_26': np.float64(0.19), 'yrs_pos': 2}
+{'sym': 'GER40', 'leg': 'sw_tsmom120_S', 'n': 102, 'avgR': np.float64(-0.084), 't': np.float64(-2.27), 'R_yr': np.float64(-1.1), 't_19_22': np.float64(-1.79), 't_23_26': np.float64(-1.42), 'yrs_pos': 1}
+{'sym': 'GER40', 'leg': 'sw_week_break_L', 'n': 113, 'avgR': np.float64(-0.053), 't': np.float64(-1.64), 'R_yr': np.float64(-0.8), 't_19_22': np.float64(-1.52), 't_23_26': np.float64(-0.78), 'yrs_pos': 2}
+{'sym': 'GER40', 'leg': 'sw_week_break_S', 'n': 38, 'avgR': np.float64(-0.086), 't': np.float64(-1.18), 'R_yr': np.float64(-0.4), 't_19_22': np.float64(-1.27), 't_23_26': np.float64(-0.35), 'yrs_pos': 2}
+{'sym': 'GER40', 'leg': 'sw_rsi2_L', 'n': 113, 'avgR': np.float64(0.028), 't': np.float64(0.95), 'R_yr': np.float64(0.4), 't_19_22': np.float64(0.73), 't_23_26': np.float64(0.6), 'yrs_pos': 5}
+{'sym': 'GER40', 'leg': 'sw_rsi2_S', 'n': 42, 'avgR': np.float64(0.046), 't': np.float64(1.7), 'R_yr': np.float64(0.2), 't_19_22': np.float64(2.38), 't_23_26': np.float64(-1.19), 'yrs_pos': 3}
+{'sym': 'GER40', 'leg': 'sw_bb_mr_L', 'n': 48, 'avgR': np.float64(0.021), 't': np.float64(0.41), 'R_yr': np.float64(0.1), 't_19_22': np.float64(0.69), 't_23_26': np.float64(-0.15), 'yrs_pos': 6}
+
+=== DJ30
+ sym              leg    n   avgR     t  R_yr  t_19_22  t_23_26  yrs_pos
+DJ30        dip_low20  126  0.129  2.45   2.1     1.17     2.67        7
+DJ30          dip_clv  365  0.061  2.25   2.9     0.74     2.66        6
+DJ30              mon  399  0.038  2.10   2.0     0.43     2.82        6
+DJ30             hi20  470  0.025  1.63   1.5     1.58     0.67        5
+DJ30        xau_tom_L   93  0.026  1.30   0.3     3.13    -1.12        5
+DJ30        sw_rsi2_L  116  0.029  1.14   0.4    -0.32     1.72        5
+DJ30          prefomc   61  0.034  1.08   0.3     1.08     0.45        6
+DJ30 xau_strong_close  588  0.018  1.07   1.3     0.69     0.83        6
+DJ30              up3  286  0.020  0.96   0.8     1.02     0.32        5
+DJ30       sw_bb_mr_L   55  0.034  0.90   0.2    -0.80     2.30        4
+DJ30  sw_week_break_S   41  0.016  0.22   0.1    -0.50     1.09        4
+DJ30    sw_tsmom120_L  292 -0.003 -0.15  -0.1    -0.82     0.68        4
+DJ30     xau_friday_S  396 -0.003 -0.20  -0.2    -0.22    -0.05        3
+DJ30     xau_friday_L  396 -0.005 -0.28  -0.2    -0.04    -0.35        4
+DJ30   sw_ema20_100_L 1197 -0.002 -0.33  -0.4    -0.93     0.51        3
+DJ30  xau_fri_close_S  382 -0.003 -0.47  -0.2    -1.07     0.28        3
+DJ30     sw_tsmom60_L  273 -0.013 -0.64  -0.4    -0.89     0.04        3
+DJ30       xau_inside   82 -0.045 -0.65  -0.5    -0.70    -0.23        4
+DJ30         xau_tday  342 -0.015 -0.81  -0.7    -0.76    -0.36        3
+DJ30       sw_don20_L  197 -0.012 -0.81  -0.3    -0.58    -0.57        4
+DJ30  sw_week_break_L  104 -0.024 -0.90  -0.3    -0.26    -0.93        3
+DJ30          xau_nr7  130 -0.055 -1.02  -0.9    -0.73    -0.71        2
+
+=== GER40
+  sym              leg    n   avgR     t  R_yr  t_19_22  t_23_26  yrs_pos
+GER40              up3  296  0.055  2.25   2.1     1.19     1.96        6
+GER40             hi20  437  0.041  2.23   2.4     1.28     1.86        8
+GER40        xau_tom_L   93  0.052  1.84   0.6     3.27    -0.17        7
+GER40        sw_rsi2_S   42  0.046  1.70   0.2     2.38    -1.19        3
+GER40          prefomc   61  0.056  1.46   0.4     1.33     0.63        5
+GER40         xau_tday  333  0.013  1.00   0.6     1.03     0.33        5
+GER40        sw_rsi2_L  113  0.028  0.95   0.4     0.73     0.60        5
+GER40 xau_strong_close  544  0.017  0.85   1.2     1.32    -0.17        5
+GER40              mon  391  0.011  0.59   0.6    -0.17     1.09        6
+GER40       sw_bb_mr_L   48  0.021  0.41   0.1     0.69    -0.15        6
+GER40       sw_don20_L  180  0.001  0.08   0.0    -0.74     0.73        4
+GER40   xau_weak_close  340 -0.001 -0.02  -0.0    -0.79     0.73        3
+GER40     xau_friday_S  388 -0.003 -0.17  -0.1    -0.17    -0.06        3
+GER40  xau_fri_close_L  388 -0.005 -0.28  -0.3    -0.30    -0.09        4
+GER40    sw_tsmom120_L  286 -0.006 -0.28  -0.2    -0.62     0.19        2
+GER40       sw_don55_L  125 -0.007 -0.34  -0.1    -0.96     0.35        3
+GER40       sw_don55_S   37 -0.026 -0.36  -0.1    -0.18    -0.34        3
+GER40      sw_don100_L  110 -0.011 -0.50  -0.2    -0.94     0.07        3
+GER40      sw_don100_S   21 -0.061 -0.59  -0.2    -0.22    -0.72        2
+GER40     sw_tsmom60_L  269 -0.012 -0.59  -0.4    -0.36    -0.47        3
+GER40     xau_friday_L  388 -0.011 -0.66  -0.6    -0.25    -0.68        5
+GER40           xau_lw 1321 -0.008 -0.67  -1.3    -0.48    -0.47        4
+
+=== NAS100
+   sym              leg    n  avgR    t  R_yr  t_19_22  t_23_26  yrs_pos
+NAS100              mon  399 0.067 3.57   3.5     1.02     4.26        6
+NAS100             hi20  550 0.048 3.17   3.4     1.83     2.64        7
+NAS100    sw_tsmom120_L  306 0.048 2.31   1.9     0.97     2.38        6
+NAS100        dip_low20  125 0.119 2.30   1.9     1.40     1.93        7
+NAS100         xau_tday  362 0.040 2.27   1.9     2.61     0.58        6
+NAS100   sw_ema20_100_L 1238 0.016 2.15   2.6     0.99     2.07        7
+NAS100     sw_tsmom60_L  286 0.045 2.14   1.7     0.88     2.24        6
+NAS100          prefomc   61 0.065 2.06   0.5     2.42     0.36        7
+NAS100              up3  305 0.034 1.91   1.4     0.85     1.92        7
+NAS100          dip_clv  371 0.049 1.80   2.4     0.86     1.76        6
+NAS100       sw_don20_L  244 0.021 1.76   0.7     0.63     1.91        7
+NAS100 xau_strong_close  657 0.026 1.70   2.2     0.88     1.56        7
+NAS100       sw_bb_mr_L   48 0.058 1.60   0.4     0.11     2.03        5
+NAS100        xau_tom_L   93 0.025 1.27   0.3     2.96    -0.61        5
+NAS100       sw_don55_L  191 0.017 1.25   0.4    -0.09     1.84        6
+NAS100      sw_don100_L  170 0.018 1.23   0.4    -0.13     1.87        6
+NAS100           xau_lw 1251 0.011 0.85   1.8     0.92     0.28        5
+NAS100          xau_nr7  134 0.038 0.66   0.7     1.86    -1.21        5
+NAS100        sw_rsi2_S   30 0.011 0.52   0.0     1.20    -0.18        3
+NAS100       xau_inside  109 0.026 0.46   0.4     1.07    -0.52        4
+NAS100  sw_week_break_L  125 0.005 0.19   0.1    -0.70     1.16        4
+NAS100      xau_tday900  223 0.001 0.05   0.0    -0.89     1.09        4

@@ -1,0 +1,187 @@
+sym,test,n,bps,t,eras_pos,eras,net_bps
+NAS100,weekday 0 long,658,18.8,3.69,4,"[np.float64(8.9), np.float64(0.9), np.float64(25.9), np.float64(35.5)]",17.5
+NAS100,weekday 0 short,658,-18.8,-3.69,0,"[np.float64(-8.9), np.float64(-0.9), np.float64(-25.9), np.float64(-35.5)]",-20.1
+NAS100,weekday 1 long,662,6.9,1.44,4,"[np.float64(7.6), np.float64(14.2), np.float64(7.4), np.float64(0.1)]",5.6
+NAS100,weekday 1 short,662,-6.9,-1.44,0,"[np.float64(-7.6), np.float64(-14.2), np.float64(-7.4), np.float64(-0.1)]",-8.2
+NAS100,weekday 2 long,660,13.9,2.62,4,"[np.float64(14.3), np.float64(14.8), np.float64(11.5), np.float64(14.8)]",12.6
+NAS100,weekday 2 short,660,-13.9,-2.62,0,"[np.float64(-14.3), np.float64(-14.8), np.float64(-11.5), np.float64(-14.8)]",-15.2
+NAS100,weekday 3 long,662,0.6,0.12,2,"[np.float64(3.5), np.float64(11.7), np.float64(-11.0), np.float64(-1.1)]",-0.7
+NAS100,weekday 3 short,662,-0.6,-0.12,2,"[np.float64(-3.5), np.float64(-11.7), np.float64(11.0), np.float64(1.1)]",-1.9
+NAS100,weekday 4 long,651,-2.3,-0.44,2,"[np.float64(-9.4), np.float64(7.3), np.float64(-9.9), np.float64(1.7)]",-3.6
+NAS100,weekday 4 short,651,2.3,0.44,2,"[np.float64(9.4), np.float64(-7.3), np.float64(9.9), np.float64(-1.7)]",1.0
+NAS100,month 01 long,278,7.6,1.05,2,"[np.float64(-13.7), np.float64(37.5), np.float64(-16.2), np.float64(18.0)]",6.3
+NAS100,month 01 short,278,-7.6,-1.05,2,"[np.float64(13.7), np.float64(-37.5), np.float64(16.2), np.float64(-18.0)]",-8.9
+NAS100,month 02 long,262,6.5,0.8,3,"[np.float64(17.9), np.float64(11.2), np.float64(-5.0), np.float64(3.0)]",5.2
+NAS100,month 02 short,262,-6.5,-0.8,1,"[np.float64(-17.9), np.float64(-11.2), np.float64(5.0), np.float64(-3.0)]",-7.8
+NAS100,month 03 long,284,4.0,0.34,4,"[np.float64(1.5), np.float64(6.3), np.float64(9.0), np.float64(0.1)]",2.7
+NAS100,month 03 short,284,-4.0,-0.34,0,"[np.float64(-1.5), np.float64(-6.3), np.float64(-9.0), np.float64(-0.1)]",-5.3
+NAS100,month 04 long,273,9.9,1.0,3,"[np.float64(-1.6), np.float64(12.7), np.float64(3.9), np.float64(20.9)]",8.6
+NAS100,month 04 short,273,-9.9,-1.0,1,"[np.float64(1.6), np.float64(-12.7), np.float64(-3.9), np.float64(-20.9)]",-11.2
+NAS100,month 05 long,287,17.2,2.51,4,"[np.float64(16.1), np.float64(4.0), np.float64(11.8), np.float64(32.2)]",15.9
+NAS100,month 05 short,287,-17.2,-2.51,0,"[np.float64(-16.1), np.float64(-4.0), np.float64(-11.8), np.float64(-32.2)]",-18.5
+NAS100,month 06 long,279,11.5,1.54,3,"[np.float64(-0.8), np.float64(12.8), np.float64(9.1), np.float64(21.8)]",10.2
+NAS100,month 06 short,279,-11.5,-1.54,1,"[np.float64(0.8), np.float64(-12.8), np.float64(-9.1), np.float64(-21.8)]",-12.8
+NAS100,month 07 long,289,13.6,2.21,3,"[np.float64(21.5), np.float64(13.9), np.float64(30.4), np.float64(-4.7)]",12.3
+NAS100,month 07 short,289,-13.6,-2.21,1,"[np.float64(-21.5), np.float64(-13.9), np.float64(-30.4), np.float64(4.7)]",-14.9
+NAS100,month 08 long,286,7.6,1.04,3,"[np.float64(-1.9), np.float64(12.8), np.float64(16.9), np.float64(3.5)]",6.3
+NAS100,month 08 short,286,-7.6,-1.04,1,"[np.float64(1.9), np.float64(-12.8), np.float64(-16.9), np.float64(-3.5)]",-8.9
+NAS100,month 09 long,277,-5.9,-0.86,2,"[np.float64(-2.0), np.float64(4.4), np.float64(-35.5), np.float64(6.7)]",-7.2
+NAS100,month 09 short,277,5.9,0.86,2,"[np.float64(2.0), np.float64(-4.4), np.float64(35.5), np.float64(-6.7)]",4.6
+NAS100,month 10 long,266,6.9,0.87,2,"[np.float64(18.8), np.float64(-0.1), np.float64(14.4), np.float64(-4.7)]",5.6
+NAS100,month 10 short,266,-6.9,-0.87,2,"[np.float64(-18.8), np.float64(0.1), np.float64(-14.4), np.float64(4.7)]",-8.2
+NAS100,month 11 long,256,16.6,2.21,4,"[np.float64(8.0), np.float64(10.8), np.float64(29.5), np.float64(17.9)]",15.3
+NAS100,month 11 short,256,-16.6,-2.21,0,"[np.float64(-8.0), np.float64(-10.8), np.float64(-29.5), np.float64(-17.9)]",-17.9
+NAS100,month 12 long,256,-5.1,-0.71,1,"[np.float64(-3.2), np.float64(-9.4), np.float64(-12.1), np.float64(4.2)]",-6.4
+NAS100,month 12 short,256,5.1,0.71,3,"[np.float64(3.2), np.float64(9.4), np.float64(12.1), np.float64(-4.2)]",3.8
+NAS100,month day +1 long,152,18.9,1.8,4,"[np.float64(11.3), np.float64(3.4), np.float64(40.1), np.float64(20.4)]",17.6
+NAS100,month day +1 short,152,-18.9,-1.8,0,"[np.float64(-11.3), np.float64(-3.4), np.float64(-40.1), np.float64(-20.4)]",-20.2
+NAS100,month day +2 long,153,-3.3,-0.32,1,"[np.float64(-1.9), np.float64(-17.2), np.float64(12.7), np.float64(-6.2)]",-4.6
+NAS100,month day +2 short,153,3.3,0.32,3,"[np.float64(1.9), np.float64(17.2), np.float64(-12.7), np.float64(6.2)]",2.0
+NAS100,last day of month long,153,7.2,0.76,3,"[np.float64(-11.1), np.float64(16.1), np.float64(3.6), np.float64(17.7)]",5.9
+NAS100,last day of month short,153,-7.2,-0.76,1,"[np.float64(11.1), np.float64(-16.1), np.float64(-3.6), np.float64(-17.7)]",-8.5
+NAS100,strong close -> long,657,1.2,0.25,3,"[np.float64(0.8), np.float64(9.7), np.float64(-12.2), np.float64(7.4)]",-0.1
+NAS100,strong close -> short (fade),657,-1.2,-0.25,1,"[np.float64(-0.8), np.float64(-9.7), np.float64(12.2), np.float64(-7.4)]",-2.5
+NAS100,weak close -> short,279,-31.1,-2.9,0,"[np.float64(-20.7), np.float64(-43.0), np.float64(-27.8), np.float64(-32.5)]",-32.4
+NAS100,weak close -> long (fade),279,31.1,2.9,4,"[np.float64(20.7), np.float64(43.0), np.float64(27.8), np.float64(32.5)]",29.8
+NAS100,3+ up days follow,544,5.8,1.34,3,"[np.float64(10.2), np.float64(14.0), np.float64(-16.9), np.float64(9.6)]",4.5
+NAS100,3+ up days fade,544,-5.8,-1.34,1,"[np.float64(-10.2), np.float64(-14.0), np.float64(16.9), np.float64(-9.6)]",-7.1
+NAS100,3+ down days follow,256,-20.6,-1.96,0,"[np.float64(-4.9), np.float64(-3.0), np.float64(-32.3), np.float64(-29.7)]",-21.9
+NAS100,3+ down days fade,256,20.6,1.96,4,"[np.float64(4.9), np.float64(3.0), np.float64(32.3), np.float64(29.7)]",19.3
+NAS100,4+ up days follow,303,5.3,1.0,3,"[np.float64(8.9), np.float64(18.3), np.float64(-38.7), np.float64(15.2)]",4.0
+NAS100,4+ up days fade,303,-5.3,-1.0,1,"[np.float64(-8.9), np.float64(-18.3), np.float64(38.7), np.float64(-15.2)]",-6.6
+NAS100,4+ down days follow,109,-12.2,-0.69,2,"[np.float64(3.4), np.float64(22.8), np.float64(-19.2), np.float64(-38.6)]",-13.5
+NAS100,4+ down days fade,109,12.2,0.69,2,"[np.float64(-3.4), np.float64(-22.8), np.float64(19.2), np.float64(38.6)]",10.9
+NAS100,range>2ATR down day follow,110,-39.4,-1.78,1,"[np.float64(5.5), np.float64(-26.2), np.float64(-87.1), np.float64(-59.5)]",-40.7
+NAS100,range>2ATR down day fade,110,39.4,1.78,3,"[np.float64(-5.5), np.float64(26.2), np.float64(87.1), np.float64(59.5)]",38.1
+NAS100,20d high zone follow,942,7.6,2.73,4,"[np.float64(9.3), np.float64(6.0), np.float64(2.5), np.float64(11.8)]",6.3
+NAS100,20d high zone fade,942,-7.6,-2.73,0,"[np.float64(-9.3), np.float64(-6.0), np.float64(-2.5), np.float64(-11.8)]",-8.9
+NAS100,20d low zone follow,180,-51.1,-3.24,0,"[np.float64(-47.5), np.float64(-55.1), np.float64(-53.7), np.float64(-47.4)]",-52.4
+NAS100,20d low zone fade,180,51.1,3.24,4,"[np.float64(47.5), np.float64(55.1), np.float64(53.7), np.float64(47.4)]",49.8
+NAS100,trend state next day,2811,-0.1,-0.05,3,"[np.float64(-8.0), np.float64(3.7), np.float64(1.5), np.float64(1.4)]",-1.4
+NAS100,trend state next 5d,2807,3.4,0.67,3,"[np.float64(-35.9), np.float64(19.7), np.float64(17.3), np.float64(9.3)]",2.1
+NAS100,tsmom60 next 5d,3289,-0.1,-0.01,2,"[np.float64(-29.0), np.float64(24.8), np.float64(-3.1), np.float64(5.8)]",-1.4
+NAS100,tsmom250 next 5d,3159,19.1,3.86,3,"[np.float64(-2.9), np.float64(18.7), np.float64(21.0), np.float64(32.9)]",17.8
+DJ30,weekday 0 long,708,10.8,2.81,4,"[np.float64(4.9), np.float64(2.3), np.float64(18.8), np.float64(18.3)]",9.6
+DJ30,weekday 0 short,708,-10.8,-2.81,0,"[np.float64(-4.9), np.float64(-2.3), np.float64(-18.8), np.float64(-18.3)]",-12.0
+DJ30,weekday 1 long,714,3.5,1.01,3,"[np.float64(7.7), np.float64(5.4), np.float64(4.6), np.float64(-2.8)]",2.3
+DJ30,weekday 1 short,714,-3.5,-1.01,1,"[np.float64(-7.7), np.float64(-5.4), np.float64(-4.6), np.float64(2.8)]",-4.7
+DJ30,weekday 2 long,710,6.4,1.71,4,"[np.float64(4.3), np.float64(9.3), np.float64(9.5), np.float64(2.3)]",5.2
+DJ30,weekday 2 short,710,-6.4,-1.71,0,"[np.float64(-4.3), np.float64(-9.3), np.float64(-9.5), np.float64(-2.3)]",-7.6
+DJ30,weekday 3 long,713,1.7,0.45,2,"[np.float64(8.3), np.float64(9.6), np.float64(-12.1), np.float64(-0.9)]",0.5
+DJ30,weekday 3 short,713,-1.7,-0.45,2,"[np.float64(-8.3), np.float64(-9.6), np.float64(12.1), np.float64(0.9)]",-2.9
+DJ30,weekday 4 long,704,2.3,0.6,2,"[np.float64(-0.6), np.float64(6.2), np.float64(-1.5), np.float64(3.4)]",1.1
+DJ30,weekday 4 short,704,-2.3,-0.6,2,"[np.float64(0.6), np.float64(-6.2), np.float64(1.5), np.float64(-3.4)]",-3.5
+DJ30,month 01 long,298,2.1,0.44,2,"[np.float64(-11.3), np.float64(14.1), np.float64(-13.6), np.float64(11.8)]",0.9
+DJ30,month 01 short,298,-2.1,-0.44,2,"[np.float64(11.3), np.float64(-14.1), np.float64(13.6), np.float64(-11.8)]",-3.3
+DJ30,month 02 long,282,3.1,0.54,2,"[np.float64(20.2), np.float64(6.7), np.float64(-8.9), np.float64(-4.1)]",1.9
+DJ30,month 02 short,282,-3.1,-0.54,2,"[np.float64(-20.2), np.float64(-6.7), np.float64(8.9), np.float64(4.1)]",-4.3
+DJ30,month 03 long,305,3.1,0.3,3,"[np.float64(5.8), np.float64(6.0), np.float64(5.1), np.float64(-3.5)]",1.9
+DJ30,month 03 short,305,-3.1,-0.3,1,"[np.float64(-5.8), np.float64(-6.0), np.float64(-5.1), np.float64(3.5)]",-4.3
+DJ30,month 04 long,296,5.4,0.79,4,"[np.float64(4.7), np.float64(4.9), np.float64(7.3), np.float64(5.2)]",4.2
+DJ30,month 04 short,296,-5.4,-0.79,0,"[np.float64(-4.7), np.float64(-4.9), np.float64(-7.3), np.float64(-5.2)]",-6.6
+DJ30,month 05 long,310,4.4,0.91,3,"[np.float64(6.8), np.float64(-4.1), np.float64(15.6), np.float64(3.4)]",3.2
+DJ30,month 05 short,310,-4.4,-0.91,1,"[np.float64(-6.8), np.float64(4.1), np.float64(-15.6), np.float64(-3.4)]",-5.6
+DJ30,month 06 long,299,6.5,1.15,2,"[np.float64(-2.5), np.float64(12.5), np.float64(-3.7), np.float64(15.2)]",5.3
+DJ30,month 06 short,299,-6.5,-1.15,2,"[np.float64(2.5), np.float64(-12.5), np.float64(3.7), np.float64(-15.2)]",-7.7
+DJ30,month 07 long,312,10.3,2.8,4,"[np.float64(9.0), np.float64(13.3), np.float64(13.0), np.float64(6.5)]",9.1
+DJ30,month 07 short,312,-10.3,-2.8,0,"[np.float64(-9.0), np.float64(-13.3), np.float64(-13.0), np.float64(-6.5)]",-11.5
+DJ30,month 08 long,308,1.4,0.3,3,"[np.float64(-12.3), np.float64(4.0), np.float64(8.4), np.float64(3.6)]",0.2
+DJ30,month 08 short,308,-1.4,-0.3,1,"[np.float64(12.3), np.float64(-4.0), np.float64(-8.4), np.float64(-3.6)]",-2.6
+DJ30,month 09 long,298,-4.1,-0.87,2,"[np.float64(0.3), np.float64(8.6), np.float64(-24.3), np.float64(-4.2)]",-5.3
+DJ30,month 09 short,298,4.1,0.87,2,"[np.float64(-0.3), np.float64(-8.6), np.float64(24.3), np.float64(4.2)]",2.9
+DJ30,month 10 long,289,8.9,1.65,2,"[np.float64(22.2), np.float64(-0.3), np.float64(23.6), np.float64(-6.2)]",7.7
+DJ30,month 10 short,289,-8.9,-1.65,2,"[np.float64(-22.2), np.float64(0.3), np.float64(-23.6), np.float64(6.2)]",-10.1
+DJ30,month 11 long,277,19.0,3.91,4,"[np.float64(13.0), np.float64(17.7), np.float64(21.4), np.float64(24.2)]",17.8
+DJ30,month 11 short,277,-19.0,-3.91,0,"[np.float64(-13.0), np.float64(-17.7), np.float64(-21.4), np.float64(-24.2)]",-20.2
+DJ30,month 12 long,275,-0.5,-0.09,2,"[np.float64(3.1), np.float64(-4.1), np.float64(2.1), np.float64(-2.1)]",-1.7
+DJ30,month 12 short,275,0.5,0.09,2,"[np.float64(-3.1), np.float64(4.1), np.float64(-2.1), np.float64(2.1)]",-0.7
+DJ30,month day +1 long,164,6.0,0.77,3,"[np.float64(-7.4), np.float64(3.5), np.float64(23.2), np.float64(5.6)]",4.8
+DJ30,month day +1 short,164,-6.0,-0.77,1,"[np.float64(7.4), np.float64(-3.5), np.float64(-23.2), np.float64(-5.6)]",-7.2
+DJ30,month day +2 long,165,7.7,1.05,3,"[np.float64(11.9), np.float64(-20.8), np.float64(44.2), np.float64(5.7)]",6.5
+DJ30,month day +2 short,165,-7.7,-1.05,1,"[np.float64(-11.9), np.float64(20.8), np.float64(-44.2), np.float64(-5.7)]",-8.9
+DJ30,last day of month long,165,-7.1,-1.06,2,"[np.float64(-27.1), np.float64(7.2), np.float64(-39.9), np.float64(19.7)]",-8.3
+DJ30,last day of month short,165,7.1,1.06,2,"[np.float64(27.1), np.float64(-7.2), np.float64(39.9), np.float64(-19.7)]",5.9
+DJ30,strong close -> long,589,6.3,1.73,2,"[np.float64(-2.0), np.float64(18.5), np.float64(-6.4), np.float64(12.6)]",5.1
+DJ30,strong close -> short (fade),589,-6.3,-1.73,2,"[np.float64(2.0), np.float64(-18.5), np.float64(6.4), np.float64(-12.6)]",-7.5
+DJ30,weak close -> short,294,-14.2,-1.69,0,"[np.float64(-5.9), np.float64(-9.8), np.float64(-21.3), np.float64(-17.7)]",-15.4
+DJ30,weak close -> long (fade),294,14.2,1.69,4,"[np.float64(5.9), np.float64(9.8), np.float64(21.3), np.float64(17.7)]",13.0
+DJ30,3+ up days follow,553,4.6,1.46,2,"[np.float64(9.5), np.float64(10.4), np.float64(-0.8), np.float64(-3.3)]",3.4
+DJ30,3+ up days fade,553,-4.6,-1.46,2,"[np.float64(-9.5), np.float64(-10.4), np.float64(0.8), np.float64(3.3)]",-5.8
+DJ30,3+ down days follow,322,-8.4,-1.18,0,"[np.float64(-7.7), np.float64(-2.5), np.float64(-10.8), np.float64(-12.0)]",-9.6
+DJ30,3+ down days fade,322,8.4,1.18,4,"[np.float64(7.7), np.float64(2.5), np.float64(10.8), np.float64(12.0)]",7.2
+DJ30,4+ up days follow,296,3.7,0.95,3,"[np.float64(5.6), np.float64(9.7), np.float64(1.2), np.float64(-6.1)]",2.5
+DJ30,4+ up days fade,296,-3.7,-0.95,1,"[np.float64(-5.6), np.float64(-9.7), np.float64(-1.2), np.float64(6.1)]",-4.9
+DJ30,4+ down days follow,155,-10.4,-0.87,1,"[np.float64(-1.5), np.float64(3.9), np.float64(-17.0), np.float64(-23.5)]",-11.6
+DJ30,4+ down days fade,155,10.4,0.87,3,"[np.float64(1.5), np.float64(-3.9), np.float64(17.0), np.float64(23.5)]",9.2
+DJ30,range>2ATR down day follow,101,-35.4,-1.8,1,"[np.float64(11.6), np.float64(-8.1), np.float64(-72.5), np.float64(-87.2)]",-36.6
+DJ30,range>2ATR down day fade,101,35.4,1.8,3,"[np.float64(-11.6), np.float64(8.1), np.float64(72.5), np.float64(87.2)]",34.2
+DJ30,20d high zone follow,945,5.8,2.99,3,"[np.float64(7.8), np.float64(11.3), np.float64(2.4), np.float64(-1.5)]",4.6
+DJ30,20d high zone fade,945,-5.8,-2.99,1,"[np.float64(-7.8), np.float64(-11.3), np.float64(-2.4), np.float64(1.5)]",-7.0
+DJ30,20d low zone follow,210,-16.7,-1.33,0,"[np.float64(-2.3), np.float64(-30.9), np.float64(-13.9), np.float64(-24.6)]",-17.9
+DJ30,20d low zone fade,210,16.7,1.33,4,"[np.float64(2.3), np.float64(30.9), np.float64(13.9), np.float64(24.6)]",15.5
+DJ30,trend state next day,3002,-0.5,-0.26,2,"[np.float64(-2.8), np.float64(2.8), np.float64(-3.3), np.float64(0.1)]",-1.7
+DJ30,trend state next 5d,2998,-1.9,-0.48,2,"[np.float64(-17.5), np.float64(4.9), np.float64(-3.9), np.float64(4.7)]",-3.1
+DJ30,tsmom60 next 5d,3507,-5.8,-1.57,1,"[np.float64(-12.1), np.float64(1.6), np.float64(-16.2), np.float64(-0.3)]",-7.0
+DJ30,tsmom250 next 5d,3317,-0.5,-0.12,2,"[np.float64(-5.5), np.float64(8.3), np.float64(-22.5), np.float64(10.9)]",-1.7
+GER40,weekday 0 long,690,9.6,2.3,3,"[np.float64(6.2), np.float64(-3.8), np.float64(22.5), np.float64(15.8)]",8.3
+GER40,weekday 0 short,690,-9.6,-2.3,1,"[np.float64(-6.2), np.float64(3.8), np.float64(-22.5), np.float64(-15.8)]",-10.9
+GER40,weekday 1 long,703,4.0,1.0,4,"[np.float64(1.9), np.float64(5.6), np.float64(8.0), np.float64(0.9)]",2.7
+GER40,weekday 1 short,703,-4.0,-1.0,0,"[np.float64(-1.9), np.float64(-5.6), np.float64(-8.0), np.float64(-0.9)]",-5.3
+GER40,weekday 2 long,702,8.8,2.08,4,"[np.float64(5.6), np.float64(8.8), np.float64(12.5), np.float64(8.4)]",7.5
+GER40,weekday 2 short,702,-8.8,-2.08,0,"[np.float64(-5.6), np.float64(-8.8), np.float64(-12.5), np.float64(-8.4)]",-10.1
+GER40,weekday 3 long,704,-3.8,-0.84,2,"[np.float64(8.1), np.float64(-6.6), np.float64(-22.1), np.float64(4.6)]",-5.1
+GER40,weekday 3 short,704,3.8,0.84,2,"[np.float64(-8.1), np.float64(6.6), np.float64(22.1), np.float64(-4.6)]",2.5
+GER40,weekday 4 long,693,1.2,0.3,1,"[np.float64(-3.3), np.float64(8.4), np.float64(-2.0), np.float64(-0.3)]",-0.1
+GER40,weekday 4 short,693,-1.2,-0.3,3,"[np.float64(3.3), np.float64(-8.4), np.float64(2.0), np.float64(0.3)]",-2.5
+GER40,month 01 long,299,9.3,1.67,3,"[np.float64(7.5), np.float64(9.5), np.float64(-7.1), np.float64(22.5)]",8.0
+GER40,month 01 short,299,-9.3,-1.67,1,"[np.float64(-7.5), np.float64(-9.5), np.float64(7.1), np.float64(-22.5)]",-10.6
+GER40,month 02 long,282,3.3,0.51,2,"[np.float64(18.7), np.float64(-9.6), np.float64(-15.5), np.float64(18.6)]",2.0
+GER40,month 02 short,282,-3.3,-0.51,2,"[np.float64(-18.7), np.float64(9.6), np.float64(15.5), np.float64(-18.6)]",-4.6
+GER40,month 03 long,303,5.8,0.57,3,"[np.float64(11.0), np.float64(6.9), np.float64(7.1), np.float64(-0.1)]",4.5
+GER40,month 03 short,303,-5.8,-0.57,1,"[np.float64(-11.0), np.float64(-6.9), np.float64(-7.1), np.float64(0.1)]",-7.1
+GER40,month 04 long,281,8.6,1.08,3,"[np.float64(-5.8), np.float64(13.5), np.float64(13.6), np.float64(11.8)]",7.3
+GER40,month 04 short,281,-8.6,-1.08,1,"[np.float64(5.8), np.float64(-13.5), np.float64(-13.6), np.float64(-11.8)]",-9.9
+GER40,month 05 long,300,9.4,1.61,4,"[np.float64(10.2), np.float64(0.2), np.float64(22.8), np.float64(8.3)]",8.1
+GER40,month 05 short,300,-9.4,-1.61,0,"[np.float64(-10.2), np.float64(-0.2), np.float64(-22.8), np.float64(-8.3)]",-10.7
+GER40,month 06 long,298,-0.6,-0.09,1,"[np.float64(-4.5), np.float64(6.1), np.float64(-5.9), np.float64(-0.1)]",-1.9
+GER40,month 06 short,298,0.6,0.09,3,"[np.float64(4.5), np.float64(-6.1), np.float64(5.9), np.float64(0.1)]",-0.7
+GER40,month 07 long,312,2.9,0.56,3,"[np.float64(-2.3), np.float64(3.2), np.float64(6.8), np.float64(3.8)]",1.6
+GER40,month 07 short,312,-2.9,-0.56,1,"[np.float64(2.3), np.float64(-3.2), np.float64(-6.8), np.float64(-3.8)]",-4.2
+GER40,month 08 long,308,-2.9,-0.56,1,"[np.float64(-12.0), np.float64(-6.1), np.float64(7.1), np.float64(-0.5)]",-4.2
+GER40,month 08 short,308,2.9,0.56,3,"[np.float64(12.0), np.float64(6.1), np.float64(-7.1), np.float64(0.5)]",1.6
+GER40,month 09 long,298,-5.7,-1.01,1,"[np.float64(-6.3), np.float64(9.8), np.float64(-21.3), np.float64(-8.4)]",-7.0
+GER40,month 09 short,298,5.7,1.01,3,"[np.float64(6.3), np.float64(-9.8), np.float64(21.3), np.float64(8.4)]",4.4
+GER40,month 10 long,284,3.4,0.55,3,"[np.float64(16.5), np.float64(1.5), np.float64(6.3), np.float64(-10.3)]",2.1
+GER40,month 10 short,284,-3.4,-0.55,1,"[np.float64(-16.5), np.float64(-1.5), np.float64(-6.3), np.float64(10.3)]",-4.7
+GER40,month 11 long,277,17.0,2.84,4,"[np.float64(26.7), np.float64(1.7), np.float64(28.8), np.float64(16.6)]",15.7
+GER40,month 11 short,277,-17.0,-2.84,0,"[np.float64(-26.7), np.float64(-1.7), np.float64(-28.8), np.float64(-16.6)]",-18.3
+GER40,month 12 long,250,-2.7,-0.45,2,"[np.float64(-16.0), np.float64(-6.6), np.float64(3.3), np.float64(9.5)]",-4.0
+GER40,month 12 short,250,2.7,0.45,2,"[np.float64(16.0), np.float64(6.6), np.float64(-3.3), np.float64(-9.5)]",1.4
+GER40,month day +1 long,164,10.5,1.13,3,"[np.float64(-9.0), np.float64(6.5), np.float64(44.8), np.float64(2.9)]",9.2
+GER40,month day +1 short,164,-10.5,-1.13,1,"[np.float64(9.0), np.float64(-6.5), np.float64(-44.8), np.float64(-2.9)]",-11.8
+GER40,month day +2 long,165,-2.8,-0.32,2,"[np.float64(-23.7), np.float64(-20.0), np.float64(37.6), np.float64(0.1)]",-4.1
+GER40,month day +2 short,165,2.8,0.32,2,"[np.float64(23.7), np.float64(20.0), np.float64(-37.6), np.float64(-0.1)]",1.5
+GER40,last day of month long,165,-14.8,-2.16,1,"[np.float64(-26.8), np.float64(-2.5), np.float64(-55.4), np.float64(14.2)]",-16.1
+GER40,last day of month short,165,14.8,2.16,3,"[np.float64(26.8), np.float64(2.5), np.float64(55.4), np.float64(-14.2)]",13.5
+GER40,strong close -> long,555,-0.6,-0.14,2,"[np.float64(6.7), np.float64(-7.3), np.float64(-6.7), np.float64(4.0)]",-1.9
+GER40,strong close -> short (fade),555,0.6,0.14,2,"[np.float64(-6.7), np.float64(7.3), np.float64(6.7), np.float64(-4.0)]",-0.7
+GER40,weak close -> short,254,-6.4,-0.77,1,"[np.float64(7.9), np.float64(-8.0), np.float64(-20.3), np.float64(-3.6)]",-7.7
+GER40,weak close -> long (fade),254,6.4,0.77,3,"[np.float64(-7.9), np.float64(8.0), np.float64(20.3), np.float64(3.6)]",5.1
+GER40,3+ up days follow,538,13.0,3.16,4,"[np.float64(18.2), np.float64(8.0), np.float64(13.3), np.float64(14.5)]",11.7
+GER40,3+ up days fade,538,-13.0,-3.16,0,"[np.float64(-18.2), np.float64(-8.0), np.float64(-13.3), np.float64(-14.5)]",-14.3
+GER40,3+ down days follow,295,-16.5,-2.27,0,"[np.float64(-13.6), np.float64(-1.3), np.float64(-21.4), np.float64(-31.1)]",-17.8
+GER40,3+ down days fade,295,16.5,2.27,4,"[np.float64(13.6), np.float64(1.3), np.float64(21.4), np.float64(31.1)]",15.2
+GER40,4+ up days follow,293,5.7,1.18,3,"[np.float64(17.2), np.float64(0.5), np.float64(-23.3), np.float64(20.5)]",4.4
+GER40,4+ up days fade,293,-5.7,-1.18,1,"[np.float64(-17.2), np.float64(-0.5), np.float64(23.3), np.float64(-20.5)]",-7.0
+GER40,4+ down days follow,121,-19.0,-1.42,1,"[np.float64(-10.7), np.float64(-4.2), np.float64(9.7), np.float64(-65.2)]",-20.3
+GER40,4+ down days fade,121,19.0,1.42,3,"[np.float64(10.7), np.float64(4.2), np.float64(-9.7), np.float64(65.2)]",17.7
+GER40,range>2ATR down day follow,97,-30.2,-1.99,0,"[np.float64(-5.2), np.float64(-51.3), np.float64(-38.6), np.float64(-29.0)]",-31.5
+GER40,range>2ATR down day fade,97,30.2,1.99,4,"[np.float64(5.2), np.float64(51.3), np.float64(38.6), np.float64(29.0)]",28.9
+GER40,20d high zone follow,776,10.7,3.76,4,"[np.float64(13.7), np.float64(5.2), np.float64(10.0), np.float64(14.7)]",9.4
+GER40,20d high zone fade,776,-10.7,-3.76,0,"[np.float64(-13.7), np.float64(-5.2), np.float64(-10.0), np.float64(-14.7)]",-12.0
+GER40,20d low zone follow,203,0.4,0.03,2,"[np.float64(10.0), np.float64(-11.7), np.float64(7.1), np.float64(-1.0)]",-0.9
+GER40,20d low zone fade,203,-0.4,-0.03,2,"[np.float64(-10.0), np.float64(11.7), np.float64(-7.1), np.float64(1.0)]",-1.7
+GER40,trend state next day,2924,-2.2,-1.09,0,"[np.float64(-2.2), np.float64(-0.9), np.float64(-4.2), np.float64(-2.1)]",-3.5
+GER40,trend state next 5d,2924,-9.1,-1.84,0,"[np.float64(-25.7), np.float64(-9.2), np.float64(-1.5), np.float64(-2.5)]",-10.4
+GER40,tsmom60 next 5d,3488,-4.9,-1.09,1,"[np.float64(-5.1), np.float64(-4.4), np.float64(-17.0), np.float64(4.7)]",-6.2
+GER40,tsmom250 next 5d,3308,-4.7,-1.0,1,"[np.float64(-2.0), np.float64(-3.8), np.float64(-40.5), np.float64(21.9)]",-6.0

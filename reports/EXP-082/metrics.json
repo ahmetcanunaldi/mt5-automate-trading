@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "rule": "news v2"
+  },
+  "results": {
+    "old -30/+30 flatten all": {
+      "label": "old -30/+30 flatten all",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 4058,
+      "trades_per_week": 10.1,
+      "win_rate": 0.528,
+      "avg_R": 0.047,
+      "profit_factor": 1.404,
+      "net_pct": 138.7,
+      "cagr_pct": 11.92,
+      "sharpe": 1.531,
+      "sortino": 3.064,
+      "max_total_dd_pct": 8.57,
+      "max_daily_dd_pct": 2.14,
+      "worst_day_pct": -2.14,
+      "avg_hold_min": 683.0,
+      "exit_reasons": {
+        "NEWS": 2063,
+        "TIME": 1671,
+        "EOD": 169,
+        "SL": 155
+      },
+      "week_R_mean": 0.69,
+      "week_R_median": 0.04,
+      "weeks_ge_2R": 0.196,
+      "weeks_pos": 0.517,
+      "mc_dd50_pct": 4.66,
+      "mc_dd95_pct": 7.02
+    },
+    "new -10/+10 flatten all": {
+      "label": "new -10/+10 flatten all",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 4234,
+      "trades_per_week": 10.53,
+      "win_rate": 0.521,
+      "avg_R": 0.044,
+      "profit_factor": 1.372,
+      "net_pct": 132.9,
+      "cagr_pct": 11.56,
+      "sharpe": 1.476,
+      "sortino": 2.973,
+      "max_total_dd_pct": 9.63,
+      "max_daily_dd_pct": 2.15,
+      "worst_day_pct": -2.15,
+      "avg_hold_min": 665.8,
+      "exit_reasons": {
+        "NEWS": 2220,
+        "TIME": 1658,
+        "EOD": 198,
+        "SL": 158
+      },
+      "week_R_mean": 0.66,
+      "week_R_median": 0.08,
+      "weeks_ge_2R": 0.188,
+      "weeks_pos": 0.525,
+      "mc_dd50_pct": 4.84,
+      "mc_dd95_pct": 6.95
+    },
+    "new -10/+10 + 5h exemption": {
+      "label": "new -10/+10 + 5h exemption",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 3991,
+      "trades_per_week": 9.93,
+      "win_rate": 0.522,
+      "avg_R": 0.062,
+      "profit_factor": 1.43,
+      "net_pct": 198.88,
+      "cagr_pct": 15.22,
+      "sharpe": 1.483,
+      "sortino": 2.652,
+      "max_total_dd_pct": 10.55,
+      "max_daily_dd_pct": 3.0,
+      "worst_day_pct": -3.0,
+      "avg_hold_min": 986.2,
+      "exit_reasons": {
+        "TIME": 2741,
+        "NEWS": 639,
+        "SL": 310,
+        "EOD": 293,
+        "DAILY_GUARD": 8
+      },
+      "week_R_mean": 0.98,
+      "week_R_median": 0.15,
+      "weeks_ge_2R": 0.255,
+      "weeks_pos": 0.532,
+      "mc_dd50_pct": 5.88,
+      "mc_dd95_pct": 8.65
+    }
+  }
+}

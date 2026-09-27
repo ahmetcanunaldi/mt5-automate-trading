@@ -198,3 +198,26 @@ def test_news_reentry_reopens_after_blackout_with_remaining_hold():
     assert list(on.reason) == ["NEWS", "TIME"]
     assert on.entry_time.iloc[1] == pd.Timestamp("2025-03-04 10:40")
     assert on.exit_time.iloc[1] == pd.Timestamp("2025-03-04 10:50")   # original expiry kept
+
+
+def test_volume_step_and_min_for_indices():
+    bars = make_bars([(100, 100.2, 99.8, 100)] * 5)
+    x = prepare_exec(bars, 1, costs=ZERO, contract=1.0, vmin=0.1, vstep=0.1)
+    # $50 risk / ($30 * 1) = 1.67 lots -> 1.6 (step 0.1)
+    res = run(x, sig("2025-03-04 10:00", sl=30.0), Guards(), ZERO)
+    assert res.trades.iloc[0].lots == pytest.approx(1.6)
+    # $50 / ($600 * 1) = 0.083 < min 0.1 -> skipped
+    assert len(run(x, sig("2025-03-04 10:00", sl=600.0), Guards(), ZERO).trades) == 0
+
+
+def test_news_exemption_keeps_old_positions():
+    bars = make_bars([(100, 100.2, 99.8, 100)] * 400)
+    x = prepare_exec(bars, 1, costs=ZERO)
+    x["flat"] = np.zeros(400, bool); x["flat"][350] = True
+    old = sig("2025-03-04 10:00", hold=390)                       # age at bar 350 = 350 min >= 290
+    young = sig("2025-03-04 11:00", hold=330)                     # age 290 at bar 350? entry bar 60 -> 290
+    young2 = sig("2025-03-04 12:00", hold=330)                    # age 230 -> flattened
+    g = Guards(news_exempt_min=290, flatten_min=1439, last_entry_min=1439)
+    assert run(x, old, g, ZERO).trades.reason.iloc[0] == "TIME"
+    assert run(x, young, g, ZERO).trades.reason.iloc[0] == "TIME"
+    assert run(x, young2, g, ZERO).trades.reason.iloc[0] == "NEWS"

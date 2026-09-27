@@ -89,3 +89,16 @@
   consistency tool found; dynamic caps and dropping swing legs do not beat it.
 - Calendar-flow (CNY, Diwali, COMEX FND, quarter end) and compression-breakout variants add nothing new.
   Lead: Dec 20 → +7 trading days year-end rally (+111 bps excess, t 2.3, 4/4 eras).
+
+## Multi-asset (EXP-078..087, 2026-09-27)
+- FX (EURUSD, USDJPY) and silver: gold legs do not transfer; intraday effects are below Vantage costs; only USDJPY
+  long momentum (~1 R/yr). Silver costs ~14.6 bps round trip.
+- US equity indices (NAS100, DJ30) carry independent edges: Monday long, buy after weakness (close in the 20-day
+  low zone / weak close), 20-day-high momentum, pre-FOMC drift. Daily P&L correlation with the gold book ≈ 0.
+  GER40's versions are ≈ 0 and add drawdown → excluded.
+- Adding NAS100 + DJ30 to the gold book: SR 1.48 → 1.91, peak DD 9.6 → 7.6 %, funded payouts 16 → 25.
+- Multi-symbol engine (`research/engine_multi.py`) reproduces the single engine exactly; signals enter at the first
+  bar of their own symbol (GER40 opens 03:00 server — a bug that silently dropped its signals was fixed).
+- Funded tail risk: after each payout the balance resets to $100k, so an 8 % drawdown right after a payout stops
+  the account; watch this in every funded simulation (`account_breached`).
+- News rule v2: entries blocked ±10 min, flatten 10 min before; the FP 5-hour exemption adds exposure, not Sharpe.

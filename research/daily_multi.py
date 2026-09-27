@@ -14,7 +14,7 @@ import pandas as pd  # noqa: E402
 from research import lab, symbols  # noqa: E402
 from research.features import atr, ema  # noqa: E402
 
-COST_BPS = {"XAUUSD": 1.5, "XAGUSD": 14.6, "EURUSD": 2.2, "USDJPY": 2.2}
+COST_BPS = {"XAUUSD": 1.5, "XAGUSD": 14.6, "EURUSD": 2.2, "USDJPY": 2.2, "NAS100": 1.3, "DJ30": 1.2, "GER40": 1.3}
 
 
 def battery(sym):

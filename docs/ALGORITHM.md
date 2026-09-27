@@ -6,12 +6,12 @@
 
 | | |
 |---|---|
-| **Sürüm** | v1 — "best13" (EXP-069) + funded çekim modu (EXP-070/071) |
+| **Sürüm** | **v2** — XAUUSD best13 + NAS100/DJ30 endeks bacakları, tek hesap (EXP-087) |
 | **Son güncelleme** | 2026-09-27 |
-| **Enstrüman / hesap** | XAUUSD, FundingPips 2-Step Standard $100k |
-| **Kod (araştırma)** | `research/best_report.py` → `book_signals()`; bacaklar `research/combo8.py::build()` |
-| **Kod (MT5 EA)** | `mql5/Experts/XauScalper/XauPortfolio.mq5` (9 bacaklı sürüm; v1'in 4 eki henüz EA'da yok) |
-| **Durum** | Araştırma adayı. Demo forward test yapılmadı. Haftalık 2R hedefi **karşılanmıyor** (bkz. §6) |
+| **Enstrüman / hesap** | XAUUSD + NAS100 + DJ30 (US30), FundingPips 2-Step Standard $100k |
+| **Kod (araştırma)** | `research/best_v2.py` (rapor) · XAU bacakları `research/best_report.py::book_signals()` · endeks bacakları `research/index_legs.py::index_legs()` · motor `research/engine_multi.py` |
+| **Kod (MT5 EA)** | `mql5/Experts/XauScalper/XauPortfolio.mq5` (yalnız 9 XAU bacağı; v1 ekleri ve endeksler henüz EA'da yok) |
+| **Durum** | Araştırma adayı. Haftalık 2R dışındaki **tüm kapılar geçiyor**. Demo forward test yapılmadı (bkz. §6) |
 
 ---
 
@@ -23,8 +23,8 @@
 | Günlük zarar | İç limit %3 (hard), %2'de yeni giriş durur. Referans = günün başında max(bakiye, equity) — **her gün yeniden hesaplanır** |
 | Toplam zarar | İç limit %8 (statik, $92k), %6.5'te risk yarıya iner |
 | Sharpe | ≥ 1.5 (günlük getiriler, √252) |
-| Hedge | Yok — aynı anda yalnız tek yön, en fazla 6 pozisyon, açık risk toplamı ≤ %3 |
-| Haber | USD yüksek etkili haberde −30/+30 dk yeni giriş yok; açık pozisyon haberden 10 dk önce kapatılır |
+| Hedge | Yok — her sembolde aynı anda yalnız tek yön; toplam en fazla 6 pozisyon, açık risk toplamı ≤ %3 |
+| Haber (v2) | Sembolün para birimlerindeki yüksek etkili haberde **−10…+10 dk yeni pozisyon yok**; açık pozisyonlar haberden 10 dk önce kapatılır (FP funded ±5 dk kuralından sıkı). Ayrıntı: `docs/rules.md` |
 | Hafta sonu | Cuma son bardan önce tüm pozisyonlar kapanır (overnight hafta içi serbest, swap maliyeti hesapta) |
 | Yasak teknikler | Grid, martingale, averaging, HFT/tick scalping, latency/arb yok |
 | Funded çekim | Döngü kârı ≥ %3 → çekim, bakiye $100k'ya döner |
@@ -35,11 +35,15 @@
 
 - Karar zaman dilimleri: M15 / H4 / D1 (M1'den oluşturulur); icra M1 barlarında.
 - Sunucu saati UTC+2/+3 (NY-close). Gün 01:00'de başlar; ilk giriş 01:05, son giriş 23:10, gün içi bacaklar 23:45'te kapanır.
-- Maliyetler: gerçek spread (min 15 pt), 5 pt slipaj/taraf, $7/lot komisyon, swap long −$79.48 / short +$34.41 lot/gece (Çarşamba ×3).
+- Maliyetler XAU: gerçek spread (min 15 pt), 5 pt slipaj/taraf, $7/lot komisyon, swap long −$79.48 / short +$34.41 lot/gece (Çarşamba ×3).
+- Maliyetler endeks: gerçek spread (NAS100 min 0.5, DJ30 min 1.0 endeks puanı), slipaj 0.5 / 1.0 puan/taraf, komisyon yok (FP), swap NAS100 −$6.08 / DJ30 −$10.61 lot/gece; lot adımı 0.1.
+- Tüm semboller tek M1 zaman çizgisinde, tek hesapta (`engine_multi`); her sinyal kendi sembolünün ilk açık barında girer.
 - SL ve TP aynı barda ise SL sayılır (kötümser). Lot aşağı yuvarlanır (0.01).
 - ATR_D = D1 ATR(14), dünün değeri (look-ahead yok). ATR_H1 / ATR_H4 aynı şekilde son kapanmış bar.
 
-## 3. Bacaklar (13 sinyal kaynağı)
+## 3. Bacaklar
+
+### 3a. XAUUSD (12 bacak — v1'den aynen)
 
 Hepsi aynı risk birimiyle (%0.5) girer; "season" yarım risk (%0.25). "Gün içi" bacaklarda iz süren stop =
 bacağın kendi stop mesafesinin 1.5 katı (EXP-068).
@@ -60,47 +64,63 @@ bacağın kendi stop mesafesinin 1.5 katı (EXP-068).
 | 12 | **season** | Long | Ocak, Temmuz, Ağustos her gün 01:07, **yarım risk** | 1 × ATR_D | 23:47 | Gün içi |
 | — | (trail) | | Gün içi bacaklarda (2–6, 8–12) iz süren stop = 1.5 × kendi stop mesafesi | | | |
 
-Portföy kuralları: aynı anda en fazla 6 pozisyon, hepsi aynı yönde (ters sinyal açık pozisyon varken yok sayılır),
+### 3b. NAS100 ve DJ30 (her ikisinde aynı 6 kural — literatür öncüllü, endeks başına seçim yapılmadı)
+
+Giriş 01:05, çıkış 23:30 (sunucu); gün içi olanlarda iz süren stop = 1.5 × kendi stop mesafesi. Hepsi long.
+
+| # | Bacak | Giriş koşulu | Stop | Çıkış |
+|---|---|---|---|---|
+| 13 | **mon** | Pazartesi | 1.5 × ATR_D | 23:30 |
+| 14 | **dip_low20** | Dünkü kapanış 20 günlük aralığın en alt %10'unda | 1 × ATR_D | 23:30 |
+| 15 | **dip_clv** | Dünkü kapanış günün aralığının alt bölgesinde (CLV < −0.6) | 1 × ATR_D | 23:30 |
+| 16 | **hi20** | Dünkü kapanış 20 günlük aralığın en üst %10'unda (momentum) | 1 × ATR_D | 23:30 |
+| 17 | **prefomc** | FOMC kararından 24 saat önce | 1.5 × ATR_D | Haber kuralıyla FOMC'den 10 dk önce |
+| 18 | **tom** | Ayın son işlem günü | 2 × ATR_D | 4 gün (Cuma kapanır), trail yok |
+
+GER40 test edildi, aynı bacaklar ~0 katkı verip DD'yi artırdığı için **çıkarıldı** (EXP-086).
+
+Portföy kuralları: toplam en fazla 6 pozisyon, her sembolde tek yön (o sembolde ters sinyal yok sayılır),
 açık risk ≤ %3, günde en fazla 8 giriş, FP korumaları (§1).
 
 ## 4. Çalışma modları
 
 | Faz | Mod | Ayar |
 |---|---|---|
-| Challenge P1 (%8) / P2 (%5) | Bileşik risk (bakiyenin %0.5'i), günlük kâr tavanı yok | `payout_sim.guards` yerine `final_candidate.g(True, 6)` |
-| Funded | Risk sabit $500, %3'te çekim, %35 tutarlılık; **günlük kâr tavanı %1.25** (gün kârı ≥ %1.25 → hepsini kapat, o gün işlem yok) | `payout_sim.guards(3.0, 35.0, 1.25)` |
+| Challenge P1 (%8) / P2 (%5) | Bileşik risk (bakiyenin %0.5'i), günlük kâr tavanı yok | `portfolio_v2.guards(6, 3.0)` |
+| Funded | Risk sabit $500, %3'te çekim, %35 tutarlılık; **günlük kâr tavanı %1.25** (gün kârı ≥ %1.25 → hepsini kapat, o gün işlem yok) | `portfolio_v2.guards(6, 3.0, risk_on_initial=True, payout_pct=3, consistency_pct=35, day_profit_cap_pct=1.25)` |
 
 Tavan seçimi (EXP-071): %1.25 toplam çekimi en az bozan ve medyan çekim aralığını en çok kısaltan ayar.
 
-## 5. Performans (Python motoru, M1 icra, 2019-01 → 2026-09)
+## 5. Performans (Python motoru, M1 icra, 2019-01 → 2026-09, EXP-087)
 
 | Ölçüt | Challenge modu (bileşik) | Funded modu (sabit $500, tavan %1.25) |
 |---|---|---|
-| Sharpe | 1.53 (2021–26: 1.72; 2025–26: 2.57) | 1.54 |
-| Net / yıl | +$138.7k (CAGR %11.9) | 23.7 R/yıl ≈ $11.9k/yıl (çekilen $78.2k / 7.7 yıl) |
-| Tepe DD | %8.6 (tepe-dip); statik %8 ihlali yok | %7.6 |
-| En kötü gün | −%2.1 | −%1.3 |
-| Haftalık R | 0.69 ort. (bileşik), %20 hafta ≥ 2R | 0.41 ort. |
-| Challenge (P1+P2 ≤ 250 gün) | %54 geçer, %0 ihlal, medyan 185 gün | — |
-| Çekim | — | 16 çekim / 7.7 yıl, medyan 56 gün, ortalama 174 gün, $78.2k toplam |
-| Yıllar | Her yıl pozitif | — |
+| Sharpe | **1.91** (v1: 1.53) · Sortino 3.35 | 1.85 |
+| Net | +$234k / 7.7 yıl (CAGR %16.9) | 25 çekim, toplam **$116k** brüt (kâr payı öncesi) |
+| Tepe DD | **%7.57** (v1: %8.6) · MC95 %7.5 | %6.7, ihlal yok |
+| En kötü gün | −%2.4 | −%2.0 |
+| Haftalık R | 1.16 ort. (bileşik), %30 hafta ≥ 2R | 0.60 ort. |
+| Challenge (P1+P2 ≤ 250 gün) | **%66 geçer, %0 ihlal**, medyan 154 gün | — |
+| Çekim sıklığı | — | yılda 3.2 · medyan **71 gün** · %88'i tutarlılık için bekledi (ort. 34 gün) |
+| Yıllar | Her yıl pozitif (2021 en zayıf: +$2.6k) | 2021'de çekim yok |
+| Katkı | XAU 177R · NAS100 53R · DJ30 32R; endekslerin XAU ile günlük korelasyonu ≈ 0 | |
 
-MT5 tester uyumu (9 bacaklı EA, EXP-050): 3,111 vs 3,101 işlem, equity DD %7.7 vs %7.9.
+Kapılar: Sharpe ✓ · günlük DD ✓ · toplam DD ✓ · PF ✓ · işlem sayısı ✓ · MC95 ✓ · **haftalık 2R ✗**.
+MT5 tester uyumu yalnızca 9 bacaklı XAU EA için yapıldı (EXP-050).
 
 ## 6. Bilinen zayıflıklar / açık işler
 
-1. **Haftalık 2R hedefi karşılanmıyor** (funded 0.41R, bileşik 0.69R). Asıl araştırma yönü bu.
-   Hesap (EXP-073 sonrası): %8 DD ile haftada 2R için Sharpe ≈ 4 gerekir; mevcut 1.5. Risk artırmak (haberde tutmak,
-   daha çok pozisyon) R'yi artırır ama DD'yi aynı oranda artırır → hedefe ancak **yeni, bağımsız getiri kaynaklarıyla** gidilir.
-2. İşlemlerin ~%50'si haber kapatmasıyla bitiyor. Test edildi (EXP-072/073): yeniden giriş zararlı, haberde tutmak
-   Sharpe'ı değiştirmiyor (yalnızca riski artırıyor) → mevcut haber kuralı kalıyor.
-3. Tutarlılık kuralı çekimleri geciktiriyor; çekim sıklığının üst sınırı haftalık R ile belirleniyor (+%3 = 6R).
-   Sabit %1.25 tavan, denenen alternatiflerden (dinamik tavan, swing bacaklarını çıkarmak) daha iyi (EXP-077).
-4. Kazanç yoğun olarak long tarafta (altın boğa piyasası 2019–26); 2013–18 tipi ayı piyasasında long bacaklar
-   yatay kalıyor (EXP-051), zarar değil.
-5. v1'in 4 eki (tday900, strong_close, drift düşük-vol filtresi, season, trail 1.5×) EA'ya taşınmadı.
-6. Kapsam XAGUSD / EURUSD / USDJPY'ye genişletildi (EXP-078..081): altın bacakları taşınmıyor, bu broker maliyetleriyle
-   FX/gümüş gün içi etkileri maliyetin altında; tek aday USDJPY long momentum (~1 R/yıl). Portföye henüz eklenen yok.
+1. **Haftalık 2R hedefi karşılanmıyor** (funded 0.60R, bileşik 1.16R). %8 DD ile haftada 2R için Sharpe ≈ 4 gerekir;
+   v2 1.9. İlerleme yolu yeni, **bağımsız** getiri kaynakları (v1→v2 böyle geldi).
+2. Funded modda her çekimden sonra bakiye $100k'ya döndüğü için tampon sıfırlanır: çekimden hemen sonra %8 düşüş
+   hesabı durdurur. v2'de 7.7 yılda olmadı, ama K10 + GER40 varyantında oldu (EXP-086) → izlenmeli.
+3. Endeks bacakları 2019–26 boğa piyasasında test edildi; 2013–18 D1 dönemleri de pozitif (EXP-083), ama uzun bir
+   ayı piyasası (2022 gibi) sınırlı sayıda.
+4. Seçim yanlılığı: GER40'ın çıkarılması ve endeks bacak listesi 2013–26 verisine bakılarak yapıldı (literatür öncülü
+   olsa da). Endeks başına seçilmiş set (SR 2.03) kullanılmadı.
+5. v2'nin EA karşılığı yok (XauPortfolio.mq5 yalnız 9 XAU bacağı); çok sembollü EA + MT5 tester doğrulaması gerekli.
+6. FX (EURUSD/USDJPY) ve gümüş: bu broker maliyetleriyle katkı yok (EXP-078..081). FundingPips spread/komisyonları
+   farklıysa yeniden değerlendirilecek.
 7. Demo forward test yapılmadı (yalnızca kullanıcının ayrı demo hesabında yapılacak).
 
 ## 7. Değişiklik geçmişi
@@ -109,3 +129,4 @@ MT5 tester uyumu (9 bacaklı EA, EXP-050): 3,111 vs 3,101 işlem, equity DD %7.7
 |---|---|---|---|
 | 2026-09-27 | v0 | 9 bacaklı portföy (trendH4, tday, drift, friday, tom, lw, inside, nr7, fri_close) | EXP-047, EXP-050 |
 | 2026-09-27 | v1 | + tday900, strong_close, drift yalnız düşük-vol, season ×0.5, gün içi trail 1.5×; funded modu %3 çekim + %35 tutarlılık + %1.25 gün tavanı | EXP-052..071 |
+| 2026-09-27 | v2 | + NAS100/DJ30 bacakları (mon, dip_low20, dip_clv, hi20, prefomc, tom), çok sembollü motor, haber kuralı v2 (±10 dk giriş yasağı, 10 dk önce kapat); GER40 test edilip çıkarıldı | EXP-082..087 |

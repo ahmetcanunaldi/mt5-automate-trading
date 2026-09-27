@@ -64,13 +64,15 @@ class Guards:
     day_profit_cap_pct: float = 0.0    # >0: when day P&L (incl. floating) >= cap, close all and stop for the day
     news_reentry: bool = False         # re-open a position closed by the news flatten once the blackout ends
     cap_dynamic: bool = False          # day cap = max(day_profit_cap_pct, cons/(100-cons) * cycle profit so far)
+    news_exempt_min: int = 0           # >0: positions older than this (minutes) at the news flatten bar are kept
+                                       # (FundingPips: trades opened >= 5 h before a news event are exempt)
 
 
 @njit(cache=True)
 def _run(t_min, dow, day_id, o, h, l, c, spr, cv, block, flat,
          s_idx, s_dir, s_sl, s_tp, s_hold, s_be, s_trail, s_rm,
          init_bal, risk_pct, soft, hard, derisk, tstop, max_td, first_m, last_m, flat_m, fri_m,
-         comm, slip, max_pos, max_open_risk, intraday, weekend_flat, swap_l, swap_s, triple_dow, risk_on_init, pay_pct, cons_pct, pcap, reent, capdyn):
+         comm, slip, max_pos, max_open_risk, intraday, weekend_flat, swap_l, swap_s, triple_dow, risk_on_init, pay_pct, cons_pct, pcap, reent, capdyn, vmin, vstep, exempt_bars):
     n = len(o)
     ns = len(s_idx)
     max_tr = (4 * ns + 1) if reent else (ns + 1)
@@ -163,8 +165,8 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, cv, block, flat,
                 room = hard / 100.0 * day_ref + day_pnl - open_risk
                 base = init_bal if risk_on_init else bal
                 risk_usd = min(rp * min(rm_, 1.0) / 100.0 * base, room, max_open_risk / 100.0 * base - open_risk)
-                lots = np.floor(risk_usd / (dist * cv[i] + comm) / 0.01 + 1e-9) * 0.01
-                if lots >= 0.01:
+                lots = np.floor(risk_usd / (dist * cv[i] + comm) / vstep + 1e-9) * vstep
+                if lots >= vmin - 1e-9:
                     k = 0
                     while act[k]:
                         k += 1
@@ -248,7 +250,7 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, cv, block, flat,
             if reason == 0:
                 if i - pei[k] + 1 >= pdl[k]:
                     reason = 3
-                elif flat[i]:
+                elif flat[i] and (exempt_bars <= 0 or i - pei[k] < exempt_bars):
                     reason = 4
                 elif i + 1 >= n:
                     reason = 6
@@ -305,19 +307,25 @@ class Result:
 
 
 def prepare_exec(bars: pd.DataFrame, bar_minutes: int, news_block=None, news_flat=None, costs: Costs = Costs(),
-                 point: float = POINT, contract: float = CONTRACT, quote: str = "USD"):
+                 point: float = POINT, contract: float = CONTRACT, quote: str = "USD", fx=None,
+                 vmin: float = 0.01, vstep: float = 0.01):
     """point / contract / quote describe the symbol (default XAUUSD). quote="JPY": P&L converted to USD at the
     bar's close (USD per 1.0 price unit per lot = contract / close)."""
     idx = bars.index
     spr_pts = np.maximum(bars["spread"].to_numpy(float) * costs.spread_mult, costs.min_spread_pts)
-    cv = np.full(len(bars), contract) if quote == "USD" else contract / bars["close"].to_numpy(float)
+    if quote == "USD":
+        cv = np.full(len(bars), contract)
+    elif fx is not None:                       # e.g. EUR-quoted index: USD per EUR (EURUSD close, as-of)
+        cv = contract * fx.reindex(idx, method="ffill").bfill().to_numpy(float)
+    else:                                      # USD base, quote currency = price (USDJPY)
+        cv = contract / bars["close"].to_numpy(float)
     x = {
         "t_min": (idx.hour * 60 + idx.minute).to_numpy(np.int64),
         "dow": idx.dayofweek.to_numpy(np.int64),
         "day_id": idx.values.astype("datetime64[D]").astype(np.int64),
         "o": bars["open"].to_numpy(float), "h": bars["high"].to_numpy(float),
         "l": bars["low"].to_numpy(float), "c": bars["close"].to_numpy(float),
-        "spr": spr_pts * point, "cv": cv, "point": point,
+        "spr": spr_pts * point, "cv": cv, "point": point, "vmin": vmin, "vstep": vstep,
         "block": np.zeros(len(bars), bool) if news_block is None else news_block,
         "flat": np.zeros(len(bars), bool) if news_flat is None else news_flat,
         "index": idx, "bar_minutes": bar_minutes,
@@ -354,7 +362,9 @@ def run(exec_x: dict, signals: pd.DataFrame, guards: Guards = Guards(), costs: C
                costs.commission_per_lot, costs.slippage_pts * exec_x.get("point", POINT), guards.max_positions,
                guards.max_open_risk_pct, guards.intraday, guards.weekend_flat, costs.swap_long, costs.swap_short,
                costs.triple_dow, guards.risk_on_initial, guards.payout_pct, guards.consistency_pct,
-               guards.day_profit_cap_pct, guards.news_reentry, guards.cap_dynamic)
+               guards.day_profit_cap_pct, guards.news_reentry, guards.cap_dynamic,
+               exec_x.get("vmin", 0.01), exec_x.get("vstep", 0.01),
+               int(guards.news_exempt_min // exec_x["bar_minutes"]))
     ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi, eq, eql, balc, pay_i, pay_amt, reach_i = out
     closed = xi >= 0
     ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi = (a[closed] for a in (ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi))

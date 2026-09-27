@@ -1,0 +1,4 @@
+rule,SR,CAGR%,DD%,dDD%,pass250,fail250,pass_unlim,fail_unlim,med_days,funded0.5_payouts,funded0.5_$,funded0.5_med_d,funded0.5_breach,funded0.4_payouts,funded0.4_$,funded0.4_med_d,funded0.4_breach
+step (current),1.322,9.6,7.57,2.16,0.436,0.0,0.695,0.0,263.5,14,65971,105.0,True,13,54120,150.0,True
+cushion from 2 %,1.322,9.6,7.57,2.16,0.436,0.0,0.695,0.0,263.5,14,64903,105.0,True,13,52936,152.0,True
+cushion from 4 %,1.322,9.6,7.57,2.16,0.436,0.0,0.695,0.0,263.5,14,65910,105.0,True,13,54120,150.0,True

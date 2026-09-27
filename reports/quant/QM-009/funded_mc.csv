@@ -1,0 +1,7 @@
+policy,payouts/yr,P(account lost in 2y)
+constant 0.5 %,3.34,0.0675
+step (current),3.34,0.056
+cushion from 2 %,3.22,0.0003
+cushion from 4 %,3.32,0.0027
+constant 0.4 %,2.75,0.0168
+0.4 % + cushion from 2 %,2.68,0.0

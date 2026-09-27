@@ -24,3 +24,22 @@ DEV data 2018-01..2024-12; **lockbox 2025-01..2026-09 untouched** until phase 7.
 ## Phase 3/4 lead check — index daily AR (QM-004)
 - After standardizing by forecast volatility, daily index autocorrelation is ≈ 0 and unstable; the raw −0.11 came
   from crisis days. No timing value beyond the drift (placebo p ≥ 0.2).
+
+## Phase 3 — regimes (QM-006)
+- HMM (2/3 states) and Kalman drift filters do not beat always-long on any symbol; HMM states are volatility
+  regimes; the Kalman drift signal-to-noise ratio is so low that the filtered drift never changes sign on indices.
+
+## Phase 4 — cointegration / OU (QM-005)
+- Index pairs and XAU–XAG are cointegrated in only 14–22 % of rolling windows; Kalman–OU–Bertram stat-arb loses
+  after costs on H1 and is insignificant on D1 (placebo p ≥ 0.23).
+
+## Phase 5 — jumps, Hawkes, volume (QM-007)
+- No post-jump drift; jumps mildly self-exciting (Hawkes branching 0.10–0.23); CGW volume effect has the textbook
+  sign (high-volume moves revert) but is tiny. Order-flow tests need tick data that exist only in the lockbox.
+
+## Phase 6 — optimal control (QM-008, QM-009) — the useful result
+- The prop challenge is a goal-reaching problem: with a positive edge and no time limit, P(success) rises as size
+  falls; the price is time. v2 at 0.5 %: P(pass) ≈ 97 %, fail ≈ 2–3 %, ~256 days (bootstrap).
+- **Cushion-proportional sizing** (risk × (8 % − DD)/(8 % − 2 %), floor 0.1) keeps the upside and cuts the failure
+  probability from 2.2 % to 0.03 % (challenge) and the 2-year funded loss probability from 5.6 % to 0.03 %, at
+  ~5 extra days / −0.12 payouts per year. It never bound on the real 2019–24 path (no historical cost).

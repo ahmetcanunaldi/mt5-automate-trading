@@ -64,6 +64,8 @@ class Guards:
     day_profit_cap_pct: float = 0.0    # >0: when day P&L (incl. floating) >= cap, close all and stop for the day
     news_reentry: bool = False         # re-open a position closed by the news flatten once the blackout ends
     cap_dynamic: bool = False          # day cap = max(day_profit_cap_pct, cons/(100-cons) * cycle profit so far)
+    cushion_start_pct: float = 0.0     # >0: risk scales linearly from 1 at this static DD to 0.1 at total_stop_pct
+                                       # (Grossman-Zhou / CPPI-like; replaces the total_derisk_pct step, QM-008)
     news_exempt_min: int = 0           # >0: positions older than this (minutes) at the news flatten bar are kept
                                        # (FundingPips: trades opened >= 5 h before a news event are exempt)
 
@@ -72,7 +74,7 @@ class Guards:
 def _run(t_min, dow, day_id, o, h, l, c, spr, cv, block, flat,
          s_idx, s_dir, s_sl, s_tp, s_hold, s_be, s_trail, s_rm,
          init_bal, risk_pct, soft, hard, derisk, tstop, max_td, first_m, last_m, flat_m, fri_m,
-         comm, slip, max_pos, max_open_risk, intraday, weekend_flat, swap_l, swap_s, triple_dow, risk_on_init, pay_pct, cons_pct, pcap, reent, capdyn, vmin, vstep, exempt_bars):
+         comm, slip, max_pos, max_open_risk, intraday, weekend_flat, swap_l, swap_s, triple_dow, risk_on_init, pay_pct, cons_pct, pcap, reent, capdyn, vmin, vstep, exempt_bars, cush):
     n = len(o)
     ns = len(s_idx)
     max_tr = (4 * ns + 1) if reent else (ns + 1)
@@ -161,7 +163,10 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, cv, block, flat,
                 ok = False
             if ok:
                 dd_tot = (init_bal - bal) / init_bal * 100.0
-                rp = risk_pct if dd_tot < derisk else risk_pct * 0.5
+                if cush > 0:
+                    rp = risk_pct * min(1.0, max(0.1, (tstop - dd_tot) / (tstop - cush)))
+                else:
+                    rp = risk_pct if dd_tot < derisk else risk_pct * 0.5
                 room = hard / 100.0 * day_ref + day_pnl - open_risk
                 base = init_bal if risk_on_init else bal
                 risk_usd = min(rp * min(rm_, 1.0) / 100.0 * base, room, max_open_risk / 100.0 * base - open_risk)
@@ -364,7 +369,7 @@ def run(exec_x: dict, signals: pd.DataFrame, guards: Guards = Guards(), costs: C
                costs.triple_dow, guards.risk_on_initial, guards.payout_pct, guards.consistency_pct,
                guards.day_profit_cap_pct, guards.news_reentry, guards.cap_dynamic,
                exec_x.get("vmin", 0.01), exec_x.get("vstep", 0.01),
-               int(guards.news_exempt_min // exec_x["bar_minutes"]))
+               int(guards.news_exempt_min // exec_x["bar_minutes"]), guards.cushion_start_pct)
     ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi, eq, eql, balc, pay_i, pay_amt, reach_i = out
     closed = xi >= 0
     ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi = (a[closed] for a in (ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi))

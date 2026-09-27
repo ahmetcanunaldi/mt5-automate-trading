@@ -67,7 +67,7 @@ def _run_multi(t_min, dow, day_id, o, h, l, c, spr, cv, live, block, flat, wkend
                s_idx, s_sym, s_dir, s_sl, s_tp, s_hold, s_trail, s_rm, s_flatm,
                init_bal, risk_pct, soft, hard, derisk, tstop, max_td, first_m, last_m, flat_m, fri_m,
                comm, slip, swap_l, swap_s, triple_dow, vmin, vstep,
-               max_pos, max_pos_sym, max_open_risk, weekend_flat, risk_on_init, pay_pct, cons_pct, pcap, exempt_bars):
+               max_pos, max_pos_sym, max_open_risk, weekend_flat, risk_on_init, pay_pct, cons_pct, pcap, exempt_bars, cush):
     S, n = o.shape
     ns = len(s_idx)
     tr_ei = np.full(ns + 1, -1, np.int64); tr_xi = np.full(ns + 1, -1, np.int64)
@@ -135,7 +135,10 @@ def _run_multi(t_min, dow, day_id, o, h, l, c, spr, cv, live, block, flat, wkend
                 ok = False
             if ok:
                 dd_tot = (init_bal - bal) / init_bal * 100.0
-                rp = risk_pct if dd_tot < derisk else risk_pct * 0.5
+                if cush > 0:
+                    rp = risk_pct * min(1.0, max(0.1, (tstop - dd_tot) / (tstop - cush)))
+                else:
+                    rp = risk_pct if dd_tot < derisk else risk_pct * 0.5
                 room = hard / 100.0 * day_ref + day_pnl - open_risk
                 base = init_bal if risk_on_init else bal
                 risk_usd = min(rp * min(s_rm[si], 1.0) / 100.0 * base, room, max_open_risk / 100.0 * base - open_risk)
@@ -290,7 +293,7 @@ def run(ax: dict, signals: pd.DataFrame, costs: dict, guards: Guards = Guards(),
                      np.array([c_.triple_dow for c_ in C], np.int64), ax["vmin"], ax["vstep"],
                      guards.max_positions, max_pos_sym, guards.max_open_risk_pct, guards.weekend_flat,
                      guards.risk_on_initial, guards.payout_pct, guards.consistency_pct, guards.day_profit_cap_pct,
-                     int(guards.news_exempt_min))
+                     int(guards.news_exempt_min), guards.cushion_start_pct)
     ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi, eq, eql, balc, pay_i, pay_amt, reach_i = out
     closed = xi >= 0
     ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi = (a[closed] for a in (ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi))

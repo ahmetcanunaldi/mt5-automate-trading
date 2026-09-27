@@ -6,7 +6,9 @@
 - `mql5/` — EA sources, synced + compiled into the terminal by `tools/deploy.py`; tests run via `tools/tester.py` (MCP).
 
 ```
-python research/data_loader.py --bars H1 M15 M5 M1 --ticks   # refresh data
+# Python env (since 2026-09-27): project-local venv on Python 3.12
+.venv/Scripts/python.exe -m pytest -q research/tests
+.venv/Scripts/python.exe research/data_loader.py --bars H1 M15 M5 M1 --ticks   # refresh data
 python -m pytest -q research/tests                            # engine / guard tests
 python research/run_baseline.py                               # EXP-001
 ```

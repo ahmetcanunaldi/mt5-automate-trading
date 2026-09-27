@@ -1,0 +1,7 @@
+UK100.r no export file (server history too short?)
+Traceback (most recent call last):
+  File "D:\mt5-automate-trading\tools\export_m1.py", line 22, in <module>
+    c.call("tester_prepare_config", mql5_program_path=ex5, symbol=sym, model="m1 ohlc", timeframe="M1",
+  File "D:\mt5-automate-trading\tools\mcp_client.py", line 64, in call
+    raise RuntimeError(text[:2000])
+RuntimeError: Tool 'tester_prepare_config' failed to create configuration file

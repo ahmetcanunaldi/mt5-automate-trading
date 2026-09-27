@@ -1,0 +1,24 @@
+GBPUSD 3256336 2017-12-29 23:59:00 -> 2026-09-25 23:55:00 60s
+USDCHF 3254518 2017-12-29 23:59:00 -> 2026-09-25 23:55:00 36s
+AUDUSD 3257286 2017-12-30 00:59:00 -> 2026-09-25 23:55:00 46s
+USDCAD 3256075 2017-12-29 23:59:00 -> 2026-09-25 23:55:00 52s
+Traceback (most recent call last):
+  File "D:\mt5-automate-trading\tools\export_m1.py", line 33, in <module>
+    df = pd.read_csv(f)
+         ^^^^^^^^^^^^^^
+  File "D:\mt5-automate-trading\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 872, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\mt5-automate-trading\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 300, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\mt5-automate-trading\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1643, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\mt5-automate-trading\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1907, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "D:\mt5-automate-trading\.venv\Lib\site-packages\pandas\io\common.py", line 930, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ahmet\\AppData\\Roaming\\MetaQuotes\\Terminal\\Common\\Files\\xau_export_NZDUSD_M1.csv'

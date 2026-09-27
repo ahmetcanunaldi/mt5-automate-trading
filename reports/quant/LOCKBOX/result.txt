@@ -1,0 +1,13 @@
+=== Candidate 1: cushion-proportional sizing (start 2 %) vs step rule, v2 book, lockbox ===
+step {'net%': 63.17, 'SR': 3.2, 'DD%': 4.32, 'dDD%': 2.3, 'payouts': 10, 'withdrawn': 47642, 'breach': False}
+cushion2 {'net%': 63.17, 'SR': 3.2, 'DD%': 4.32, 'dDD%': 2.3, 'payouts': 10, 'withdrawn': 47642, 'breach': False}
+lockbox daily R: mean 0.221, sd 1.100, n 449 (DEV was 0.094 / 0.984)
+step MC {'P(pass)': 0.99925, 'P(fail)': 0.00075, 'med_days': 120.0, 'funded_payouts/yr': np.float64(7.73), 'P(funded lost 2y)': 0.0045}
+cushion2 MC {'P(pass)': 1.0, 'P(fail)': 0.0, 'med_days': 120.0, 'funded_payouts/yr': np.float64(7.64), 'P(funded lost 2y)': 0.0}
+Candidate 1 verdict: PASS
+
+=== Candidate 2: gold volatility-managed sizing (p = 2), lockbox ===
+XAU always-long: SR unmanaged 1.281, managed 1.15, placebo mean 1.201, p 0.45
+v2 {'SR': 3.2, 'net%': 63.17, 'DD%': 4.32, 'dDD%': 2.3}
+v2 + gold vol sizing {'SR': 3.1, 'net%': 50.56, 'DD%': 4.19, 'dDD%': 2.09}
+Candidate 2 verdict: FAIL

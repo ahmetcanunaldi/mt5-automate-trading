@@ -22,3 +22,16 @@ PASS if all hold on the lockbox:
 - XAU always-long (01:05–23:30, SL 1 ATR_D, trail 1.5×): Sharpe(managed) > Sharpe(unmanaged) and
   placebo p ≤ 0.10 (multiplier shuffled within years, 20×);
 - v2 with the rule on its XAU legs: Sharpe not lower than v2 without it, peak DD not higher.
+
+## Results (opened once, 2026-09-27, `research/quant/qm_lockbox.py`, reports/quant/LOCKBOX/result.txt)
+Lockbox regime: exceptionally favourable — v2 daily R mean 0.221 (DEV 0.094), sd 1.10; v2 SR 3.2 (v2 legs are not
+out-of-sample here).
+
+**Candidate 1 — cushion sizing: PASS.** Real path identical to the step rule (the rule never bound: +63.2 %, SR 3.20,
+DD 4.32 %, 10 funded payouts, no breach, both). Bootstrap MC of lockbox R: P(fail challenge) 0.075 % → 0 %,
+P(funded account lost in 2 y) 0.45 % → 0 %, payouts/yr 7.73 → 7.64. Weak stress test (benign period) but no cost
+and the predicted direction.
+
+**Candidate 2 — gold vol-managed sizing: FAIL.** XAU always-long SR 1.28 → 1.15 (placebo p 0.45); v2 net +63 % →
++51 %, SR 3.20 → 3.10. In 2025–26 gold's volatility and returns rose together (the blow-off rally), so cutting size
+in high volatility cut the best days. The DEV result (QM-003) did not generalize.

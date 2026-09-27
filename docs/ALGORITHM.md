@@ -6,11 +6,11 @@
 
 | | |
 |---|---|
-| **Sürüm** | **v2** — XAUUSD best13 + NAS100/DJ30 endeks bacakları, tek hesap (EXP-087) |
+| **Sürüm** | **v2.2** — v2 (XAUUSD best13 + NAS100/DJ30 endeks bacakları) + tampon-oranlı risk kuralı (QM-008/009, kilitli kutuda doğrulandı) |
 | **Son güncelleme** | 2026-09-27 |
 | **Enstrüman / hesap** | XAUUSD + NAS100 + DJ30 (US30), FundingPips 2-Step Standard $100k |
 | **Kod (araştırma)** | `research/best_v2.py` (rapor) · XAU bacakları `research/best_report.py::book_signals()` · endeks bacakları `research/index_legs.py::index_legs()` · motor `research/engine_multi.py` |
-| **Kod (MT5 EA)** | `mql5/Experts/XauScalper/XauIdxPortfolio.mq5` = v2 (18 bacak, çok sembollü; tester 6,630 vs Python 6,609 işlem, EXP-088; bacak bazında mutabakat açık iş) |
+| **Kod (MT5 EA)** | `mql5/Experts/XauScalper/XauIdxPortfolio.mq5` v2.20 = v2.2 (tester 2019–26: 6,630 vs Python 6,609 işlem, bacak bazında 0–7 fark; tampon kuralı tester günlüğüyle doğrulandı, EXP-100) |
 | **Durum** | Araştırma adayı. Haftalık 2R dışındaki **tüm kapılar geçiyor**. Demo forward test yapılmadı (bkz. §6) |
 
 ---
@@ -21,7 +21,7 @@
 |---|---|
 | İşlem başı risk | ≤ %0.5 (funded modda başlangıç bakiyesinin %0.5'i = $500), her işlemde sunucu tarafı SL |
 | Günlük zarar | İç limit %3 (hard), %2'de yeni giriş durur. Referans = günün başında max(bakiye, equity) — **her gün yeniden hesaplanır** |
-| Toplam zarar | İç limit %8 (statik, $92k), %6.5'te risk yarıya iner |
+| Toplam zarar | İç limit %8 (statik, $92k). **Tampon kuralı:** statik DD %2'yi aşınca risk doğrusal azalır: risk × (8 − DD)/(8 − 2), en az ×0.1 (eski kural: %6.5'te yarıya) |
 | Sharpe | ≥ 1.5 (günlük getiriler, √252) |
 | Hedge | Yok — her sembolde aynı anda yalnız tek yön; toplam en fazla 6 pozisyon, açık risk toplamı ≤ %3 |
 | Haber (v2) | Sembolün para birimlerindeki yüksek etkili haberde **−10…+10 dk yeni pozisyon yok**; açık pozisyonlar haberden 10 dk önce kapatılır (FP funded ±5 dk kuralından sıkı). Ayrıntı: `docs/rules.md` |
@@ -118,7 +118,7 @@ MT5 tester uyumu yalnızca 9 bacaklı XAU EA için yapıldı (EXP-050).
    ayı piyasası (2022 gibi) sınırlı sayıda.
 4. Seçim yanlılığı: GER40'ın çıkarılması ve endeks bacak listesi 2013–26 verisine bakılarak yapıldı (literatür öncülü
    olsa da). Endeks başına seçilmiş set (SR 2.03) kullanılmadı.
-5. EA: v2 yazıldı (XauIdxPortfolio.mq5), ilk tester koşusu işlem sayısında uyumlu; bacak bazında mutabakat eksik.
+5. EA v2.20: bacak bazında uyumlu. MT5 kârı Python'dan yüksek (+$279k vs +$234k) çünkü tester komisyonu 0 ve slipaj yok; Python daha kötümser.
 6. FX (EURUSD/USDJPY) ve gümüş: bu broker maliyetleriyle katkı yok (EXP-078..081). FundingPips spread/komisyonları
    farklıysa yeniden değerlendirilecek.
 7. Demo forward test yapılmadı (yalnızca kullanıcının ayrı demo hesabında yapılacak).
@@ -135,3 +135,4 @@ MT5 tester uyumu yalnızca 9 bacaklı XAU EA için yapıldı (EXP-050).
 | 2026-09-27 | v1 | + tday900, strong_close, drift yalnız düşük-vol, season ×0.5, gün içi trail 1.5×; funded modu %3 çekim + %35 tutarlılık + %1.25 gün tavanı | EXP-052..071 |
 | 2026-09-27 | v2 | + NAS100/DJ30 bacakları (mon, dip_low20, dip_clv, hi20, prefomc, tom), çok sembollü motor, haber kuralı v2 (±10 dk giriş yasağı, 10 dk önce kapat); GER40 test edilip çıkarıldı | EXP-082..087 |
 | 2026-09-27 | v2 (değişmedi) | v2.1 adayı (örüntü bacağı) placebo testinde anlamsız çıktı → reddedildi; v2 EA yazıldı | EXP-088..098 |
+| 2026-09-27 | v2.2 | Tampon-oranlı risk kuralı (Grossman–Zhou/CPPI tipi) — MC: challenge başarısızlık %2.2 → %0.03, funded 2 yılda hesap kaybı %5.6 → %0.03; kilitli kutu 2025–26 geçti; EA v2.20'ye eklendi | QM-008/009, QM-LOCKBOX, EXP-100 |

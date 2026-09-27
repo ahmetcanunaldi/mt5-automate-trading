@@ -13,14 +13,16 @@
 //|    risk <= 3 %, max 8 entries per server day                     |
 //|  - one signal per symbol per minute (first leg in book order)    |
 //|  - daily soft 2 % / hard 3 % (ref = max(bal, eq) at day start),  |
-//|    total de-risk 6.5 %, stop 8 %                                 |
+//|    total stop 8 %; risk scales down linearly from 1 at a static  |
+//|    DD of InpCushionStartPct (2 %) to 0.1 at 8 % (cushion rule,   |
+//|    QM-008/009, lockbox-validated; 0 = old step rule at 6.5 %)    |
 //|  - news v2: no entries -10..+10 min around high-impact news,     |
 //|    positions closed 10 min before                                |
 //|  - everything closed before the weekend                          |
 //|  - funded mode: day profit cap (close all, stop for the day)     |
 //+------------------------------------------------------------------+
 #property copyright "mt5-automate-trading"
-#property version   "2.00"
+#property version   "2.20"
 
 #include <Trade\Trade.mqh>
 #include <XauScalper\NewsFilter.mqh>
@@ -31,7 +33,8 @@ input bool   InpRiskOnInitial  = false;     // funded mode: size from the initia
 input double InpDayProfitCap   = 0.0;       // funded mode: 1.25 (% of day reference), 0 = off
 input double InpDailySoftPct   = 2.0;
 input double InpDailyHardPct   = 3.0;
-input double InpTotalDeriskPct = 6.5;
+input double InpTotalDeriskPct = 6.5;       // used only when InpCushionStartPct = 0
+input double InpCushionStartPct = 2.0;      // cushion rule start (static DD %), 0 = step rule
 input double InpTotalStopPct   = 8.0;
 input int    InpMaxPositions   = 6;
 input double InpMaxOpenRiskPct = 3.0;
@@ -206,7 +209,16 @@ bool Enter(int s, int dir, double sl_dist, int hold_min, double trail, double ri
    int nopen = CountOpen(s, cur_dir, open_risk, nsym);
    if(nopen >= InpMaxPositions || (nsym > 0 && cur_dir != dir)) return false;       // no hedging per symbol
    if(sl_dist <= 0) return false;
-   double rp = ((InpInitialBalance - bal) / InpInitialBalance * 100.0 < InpTotalDeriskPct) ? InpRiskPct : InpRiskPct * 0.5;
+   double dd = (InpInitialBalance - bal) / InpInitialBalance * 100.0;
+   double rp;
+   if(InpCushionStartPct > 0)
+     {
+      double k = MathMin(1.0, MathMax(0.1, (InpTotalStopPct - dd) / (InpTotalStopPct - InpCushionStartPct)));
+      rp = InpRiskPct * k;
+      if(k < 1.0) PrintFormat("[Cushion] static DD %.2f %% -> risk x %.2f", dd, k);
+     }
+   else
+      rp = (dd < InpTotalDeriskPct) ? InpRiskPct : InpRiskPct * 0.5;
    double base = InpRiskOnInitial ? InpInitialBalance : bal;
    double room = InpDailyHardPct / 100.0 * g_day_ref + day_pnl - open_risk;
    double risk = MathMin(MathMin(rp * MathMin(risk_mult, 1.0) / 100.0 * base, room), InpMaxOpenRiskPct / 100.0 * base - open_risk);

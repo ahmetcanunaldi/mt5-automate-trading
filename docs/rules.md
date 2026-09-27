@@ -10,7 +10,7 @@ Sources (checked 2026-09-26; the official help-center pages return 403 to automa
 |---|---|---|
 | Profit target | Phase 1: 8 %, Phase 2: 5 % | Once reached, risk off; remaining minimum days with 0.01 lot |
 | Daily loss | 5 % of max(day-open balance, day-open equity), reset 00:00 server (UTC+3), floating included | **3 % hard** (force close), 2 % soft (no new entries); new trade's full risk must fit inside the 3 % room |
-| Max loss | 10 % static ($9,000 floor) | **8 % hard ($9,200)**, risk halved below 6.5 % DD |
+| Max loss | 10 % static ($90,000 floor on $100k) | **8 % hard ($92,000)**; cushion rule: risk × (8 − DD)/(8 − 2) above 2 % static DD (min ×0.1) |
 | Risk per trade | trade-idea rules on funded | **≤ 0.5 %** of balance, server-side SL on every order, lot rounded down |
 | Minimum days | 3 trading days per phase; no time limit; 30 days inactivity = breach | calendar check |
 | Prohibited | HFT, tick scalping, hedging, latency/arbitrage, gap trading, toxic flow, all-or-nothing sizing, server spamming | one position at a time, never opposite positions, no grid/martingale/averaging, ≤ 5 trades/day |

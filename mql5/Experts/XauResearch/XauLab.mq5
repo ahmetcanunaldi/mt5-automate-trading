@@ -20,9 +20,16 @@
 //|    positions closed 10 min before                                |
 //|  - everything closed before the weekend                          |
 //|  - funded mode: day profit cap (close all, stop for the day)     |
+//| v2.21 live readiness (no effect in the tester):                  |
+//|  - server time zone check (must be NY close = GMT+2/+3, US DST)  |
+//|  - state file: open positions (hold / trail / leg), day ref,     |
+//|    day counters, once-per-day flags, stop / cap survive restarts |
+//|  - entries appended to the CSV at entry time, deals CSV rewritten|
+//|    every new server day; news / FOMC file coverage checks        |
+//|  - order filling mode taken from the symbol                      |
 //+------------------------------------------------------------------+
 #property copyright "mt5-automate-trading"
-#property version   "2.20"
+#property version   "2.21"
 
 #include <Trade\Trade.mqh>
 #include <XauScalper\NewsFilter.mqh>
@@ -55,6 +62,7 @@ input long   InpMagic          = 27092602;
 input bool   InpTradeXau = true, InpTradeNas = true, InpTradeDj = true;
 input bool   InpExportTrades = true;        // write <prefix>_entries.csv / <prefix>_deals.csv to Common\Files at the end
 input string InpExportPrefix = "xauidx";
+input bool   InpCheckServerTime = true;     // live: refuse to trade unless server time = NY + 7 h (research convention)
 
 CTrade      g_trade;
 CNewsFilter g_news;
@@ -88,6 +96,113 @@ bool     g_lw_done, g_inside_done, g_nr7_done, g_tday_done, g_tday900_done, g_dr
          g_fric_done, g_sc_done, g_season_done;
 bool     g_idx_done[NSYM];
 bool     g_fomc_done[NSYM];
+bool     g_live = false;                    // not in the strategy tester
+
+//--------------------------------------------------------------- live helpers (v2.21)
+string StateFile() { return InpExportPrefix + "_state.csv"; }
+
+// research convention: server time = New York time + 7 h (GMT+2 winter / GMT+3 US summer time)
+int ExpectedServerOffset(datetime gmt)
+  {
+   MqlDateTime d; TimeToStruct(gmt, d);
+   MqlDateTime a; a.year = d.year; a.mon = 3; a.day = 1; a.hour = 7; a.min = 0; a.sec = 0;   // 2 am EST = 07:00 GMT
+   datetime mar1 = StructToTime(a);
+   int dw = (int)((mar1 / 86400 + 4) % 7);
+   datetime start = mar1 + ((7 - dw) % 7 + 7) * 86400;                                    // second Sunday of March
+   MqlDateTime b; b.year = d.year; b.mon = 11; b.day = 1; b.hour = 6; b.min = 0; b.sec = 0;  // 2 am EDT = 06:00 GMT
+   datetime nov1 = StructToTime(b);
+   dw = (int)((nov1 / 86400 + 4) % 7);
+   datetime end = nov1 + ((7 - dw) % 7) * 86400;                                           // first Sunday of November
+   return (gmt >= start && gmt < end) ? 3 * 3600 : 2 * 3600;
+  }
+
+void AppendEntry(string line)
+  {
+   string f = InpExportPrefix + "_entries.csv";
+   bool fresh = !FileIsExist(f, FILE_COMMON);
+   int h = FileOpen(f, FILE_READ | FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_COMMON);
+   if(h == INVALID_HANDLE) return;
+   if(fresh) FileWriteString(h, "position,symbol,leg,dir,time,price_at_signal,sl_price,sl_dist,lots,risk_usd,balance,risk_pct,risk_mult_used\n");
+   FileSeek(h, 0, SEEK_END);
+   FileWriteString(h, line + "\n");
+   FileClose(h);
+  }
+
+int Flags()
+  {
+   bool f[11];
+   f[0] = g_lw_done; f[1] = g_inside_done; f[2] = g_nr7_done; f[3] = g_tday_done; f[4] = g_tday900_done;
+   f[5] = g_drift_done; f[6] = g_friday_done; f[7] = g_tom_done; f[8] = g_fric_done; f[9] = g_sc_done; f[10] = g_season_done;
+   int m = 0;
+   for(int i = 0; i < 11; i++) if(f[i]) m |= (1 << i);
+   for(int s = 0; s < NSYM; s++) { if(g_idx_done[s]) m |= (1 << (11 + s)); if(g_fomc_done[s]) m |= (1 << (14 + s)); }
+   return m;
+  }
+
+void SetFlags(int m)
+  {
+   g_lw_done = (m & 1) != 0; g_inside_done = (m & 2) != 0; g_nr7_done = (m & 4) != 0; g_tday_done = (m & 8) != 0;
+   g_tday900_done = (m & 16) != 0; g_drift_done = (m & 32) != 0; g_friday_done = (m & 64) != 0; g_tom_done = (m & 128) != 0;
+   g_fric_done = (m & 256) != 0; g_sc_done = (m & 512) != 0; g_season_done = (m & 1024) != 0;
+   for(int s = 0; s < NSYM; s++) { g_idx_done[s] = (m & (1 << (11 + s))) != 0; g_fomc_done[s] = (m & (1 << (14 + s))) != 0; }
+  }
+
+// line 1: day,day_ref,day_trades,stopped,capped,flags,drift_low ; then one line per position:
+// ticket,s,entry,hold_min,trail,risk_usd,leg
+void SaveState()
+  {
+   if(!g_live) return;
+   int h = FileOpen(StateFile(), FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_COMMON);
+   if(h == INVALID_HANDLE) return;
+   FileWriteString(h, StringFormat("%I64d,%.2f,%d,%d,%d,%d,%d\n", (long)g_day, g_day_ref, g_day_trades, (int)g_stopped,
+                                   (int)g_capped, Flags(), (int)g_drift_low));
+   for(int i = 0; i < ArraySize(g_pos); i++)
+      FileWriteString(h, StringFormat("%I64u,%d,%I64d,%d,%.5f,%.2f,%s\n", g_pos[i].ticket, g_pos[i].s, (long)g_pos[i].entry,
+                                      g_pos[i].hold_min, g_pos[i].trail, g_pos[i].risk_usd, g_pos[i].leg));
+   FileClose(h);
+  }
+
+void LoadState()
+  {
+   if(!FileIsExist(StateFile(), FILE_COMMON)) { Print("[State] no state file - fresh start"); return; }
+   int h = FileOpen(StateFile(), FILE_READ | FILE_TXT | FILE_ANSI | FILE_COMMON);
+   if(h == INVALID_HANDLE) return;
+   string parts[];
+   if(!FileIsEnding(h) && StringSplit(FileReadString(h), ',', parts) == 7)
+     {
+      g_stopped = (int)StringToInteger(parts[3]) != 0;                   // a total stop is permanent
+      if((datetime)StringToInteger(parts[0]) == DayOf(TimeCurrent()))   // same server day: keep the day's counters
+        {
+         g_day = (datetime)StringToInteger(parts[0]); g_day_ref = StringToDouble(parts[1]);
+         g_day_trades = (int)StringToInteger(parts[2]); g_capped = (int)StringToInteger(parts[4]) != 0;
+         SetFlags((int)StringToInteger(parts[5])); g_drift_low = (int)StringToInteger(parts[6]) != 0;
+        }
+     }
+   int kept = 0;
+   while(!FileIsEnding(h))
+     {
+      if(StringSplit(FileReadString(h), ',', parts) != 7) continue;
+      ulong t = (ulong)StringToInteger(parts[0]);
+      if(!PositionSelectByTicket(t)) continue;                           // closed while the EA was off
+      SPos q;
+      q.ticket = t; q.s = (int)StringToInteger(parts[1]); q.entry = (datetime)StringToInteger(parts[2]);
+      q.hold_min = (int)StringToInteger(parts[3]); q.trail = StringToDouble(parts[4]); q.risk_usd = StringToDouble(parts[5]);
+      q.leg = parts[6];
+      int k = ArraySize(g_pos); ArrayResize(g_pos, k + 1); g_pos[k] = q; kept++;
+     }
+   FileClose(h);
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+     {
+      ulong t = PositionGetTicket(i);
+      if(PositionGetInteger(POSITION_MAGIC) != InpMagic) continue;
+      bool known = false;
+      for(int j = 0; j < ArraySize(g_pos); j++) if(g_pos[j].ticket == t) known = true;
+      if(!known) PrintFormat("[State] WARNING position %I64u (%s) not in the state file - only its SL protects it", t,
+                             PositionGetString(POSITION_SYMBOL));
+     }
+   PrintFormat("[State] restored: %d open positions, day trades %d, stopped=%d capped=%d", kept, g_day_trades,
+               (int)g_stopped, (int)g_capped);
+  }
 
 //--------------------------------------------------------------- helpers
 int      MinuteOfDay(datetime t) { return (int)((t % 86400) / 60); }
@@ -235,6 +350,7 @@ bool Enter(int s, int dir, double sl_dist, int hold_min, double trail, double ri
    int dg = (int)SymbolInfoInteger(sym, SYMBOL_DIGITS);
    bool ok;
    string cmt = leg;
+   g_trade.SetTypeFillingBySymbol(sym);
    if(dir > 0)
      {
       double ask = SymbolInfoDouble(sym, SYMBOL_ASK);
@@ -273,7 +389,9 @@ bool Enter(int s, int dir, double sl_dist, int hold_min, double trail, double ri
                                     p.ticket, sym, leg, dir, TimeToString(now, TIME_DATE | TIME_SECONDS), px,
                                     dir > 0 ? px - sl_dist : px + sl_dist, sl_dist, lots, p.risk_usd, bal,
                                     p.risk_usd / bal * 100.0, rp * MathMin(risk_mult, 1.0) / InpRiskPct);
+      if(g_live) AppendEntry(g_entry_log[n]);
      }
+   SaveState();
    PrintFormat("[Entry] %s %s %s %.2f lots sl=%.2f hold=%d trail=%.2f", sym, leg, dir > 0 ? "BUY" : "SELL", lots, sl_dist, hold_min, trail);
    return true;
   }
@@ -464,7 +582,7 @@ void Manage(datetime now, bool new_m1)
    double eq = AccountInfoDouble(ACCOUNT_EQUITY);
    if(ArraySize(g_pos) > 0 && eq - g_day_ref <= -InpDailyHardPct / 100.0 * g_day_ref) { CloseAll("daily hard guard"); return; }
    if(InpDayProfitCap > 0 && ArraySize(g_pos) > 0 && eq - g_day_ref >= InpDayProfitCap / 100.0 * g_day_ref)
-     { CloseAll("day profit cap"); g_capped = true; return; }
+     { CloseAll("day profit cap"); g_capped = true; SaveState(); return; }
    if(g_news.MustFlatten(now)) { CloseAll("news flatten"); return; }
    if(Dow(now) == 5 && MinuteOfDay(now) >= 1435) { CloseAll("weekend"); return; }
    for(int i = ArraySize(g_pos) - 1; i >= 0; i--)
@@ -525,22 +643,48 @@ int OnInit()
       if(g_on[s] && !SymbolSelect(g_sym[s], true)) { PrintFormat("[Init] symbol %s not available", g_sym[s]); return INIT_FAILED; }
    if(!g_news.Load(InpNewsFile, InpNewsBefore, InpNewsAfter, InpNewsFlatten)) { Print("[Init] news file missing - refusing to trade"); return INIT_FAILED; }
    if((g_on[1] || g_on[2]) && !LoadFomc()) { Print("[Init] FOMC file missing - refusing to trade"); return INIT_FAILED; }
+   g_live = !(bool)MQLInfoInteger(MQL_TESTER) && !(bool)MQLInfoInteger(MQL_OPTIMIZATION);
+   if(g_live)
+     {
+      datetime gmt = TimeGMT();
+      int off = (int)MathRound((double)(TimeTradeServer() - gmt) / 1800.0) * 1800, expo = ExpectedServerOffset(gmt);
+      PrintFormat("[Init] server offset GMT%+.1f h, expected GMT%+.1f h (NY + 7 h)", off / 3600.0, expo / 3600.0);
+      if(InpCheckServerTime && off != expo)
+        { Print("[Init] server time zone differs from the research convention (sessions, news, daily bars) - refusing to trade"); return INIT_FAILED; }
+      if(g_news.LastEvent() < TimeCurrent()) { Print("[Init] news file does not cover the future - refusing to trade"); return INIT_FAILED; }
+      if(g_news.LastEvent() < TimeCurrent() + 21 * 86400)
+         PrintFormat("[Init] WARNING news file ends %s - update it (tools/export_news.py)", TimeToString(g_news.LastEvent()));
+      if((g_on[1] || g_on[2]) && g_fomc[ArraySize(g_fomc) - 1] < TimeCurrent())
+         Print("[Init] WARNING no future FOMC decision in the FOMC file - prefomc leg inactive until it is updated");
+      for(int s = 0; s < NSYM; s++)
+         if(g_on[s]) PrintFormat("[Init] %s tick value %.5f, tick size %.5f, vol min %.2f step %.2f, filling %d", g_sym[s],
+                                 SymbolInfoDouble(g_sym[s], SYMBOL_TRADE_TICK_VALUE_LOSS), SymbolInfoDouble(g_sym[s], SYMBOL_TRADE_TICK_SIZE),
+                                 SymbolInfoDouble(g_sym[s], SYMBOL_VOLUME_MIN), SymbolInfoDouble(g_sym[s], SYMBOL_VOLUME_STEP),
+                                 (int)SymbolInfoInteger(g_sym[s], SYMBOL_FILLING_MODE));
+      LoadState();
+     }
    return INIT_SUCCEEDED;
   }
 
 void OnDeinit(const int reason)
   {
+   SaveState();
    if(!InpExportTrades)
       return;
-   int h = FileOpen(InpExportPrefix + "_entries.csv", FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_COMMON);
-   if(h != INVALID_HANDLE)
+   int h = g_live ? INVALID_HANDLE : FileOpen(InpExportPrefix + "_entries.csv", FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_COMMON);
+   if(h != INVALID_HANDLE)                            // tester: whole entry log once (live appends at entry time)
      {
       FileWriteString(h, "position,symbol,leg,dir,time,price_at_signal,sl_price,sl_dist,lots,risk_usd,balance,risk_pct,risk_mult_used\n");
       for(int i = 0; i < ArraySize(g_entry_log); i++) FileWriteString(h, g_entry_log[i] + "\n");
       FileClose(h);
      }
+   ExportDeals();
+  }
+
+void ExportDeals()
+  {
    if(!HistorySelect(0, TimeCurrent() + 86400)) return;
-   h = FileOpen(InpExportPrefix + "_deals.csv", FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_COMMON);
+   int h = FileOpen(InpExportPrefix + "_deals.csv", FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_COMMON);
    if(h == INVALID_HANDLE) return;
    FileWriteString(h, "deal,position,time,symbol,type,entry,volume,price,profit,commission,swap,reason,sl,comment\n");
    for(int i = 0; i < HistoryDealsTotal(); i++)
@@ -574,10 +718,11 @@ void OnTick()
       g_tom_done = g_fric_done = g_sc_done = g_season_done = false;
       for(int s = 0; s < NSYM; s++) { g_idx_done[s] = false; g_fomc_done[s] = false; }
       g_drift_low = (Dow(now) >= 2 && Dow(now) <= 5) ? DriftLowVol() : false;
+      if(g_live) { if(InpExportTrades) ExportDeals(); SaveState(); }
      }
    if(!g_stopped && (InpInitialBalance - AccountInfoDouble(ACCOUNT_EQUITY)) / InpInitialBalance * 100.0 >= InpTotalStopPct)
      {
-      g_stopped = true; CloseAll("total stop");
+      g_stopped = true; CloseAll("total stop"); SaveState();
       Print("[Guard] TOTAL STOP - trading disabled");
      }
    datetime m1 = iTime(_Symbol, PERIOD_M1, 0);
@@ -594,4 +739,5 @@ void OnTick()
    if(g_on[0]) XauOnM1(now);
    IdxOnM1(1, now);
    IdxOnM1(2, now);
+   if(g_live) SaveState();
   }

@@ -121,7 +121,8 @@ MT5 tester uyumu yalnızca 9 bacaklı XAU EA için yapıldı (EXP-050).
 5. EA v2.20: bacak bazında uyumlu. MT5 kârı Python'dan yüksek (+$279k vs +$234k) çünkü tester komisyonu 0 ve slipaj yok; Python daha kötümser.
 6. FX (EURUSD/USDJPY) ve gümüş: bu broker maliyetleriyle katkı yok (EXP-078..081). FundingPips spread/komisyonları
    farklıysa yeniden değerlendirilecek.
-7. Demo forward test yapılmadı (yalnızca kullanıcının ayrı demo hesabında yapılacak).
+7. Demo forward test 2026-09-27'de hazırlandı (EA v2.21, MetaQuotes demo, challenge modu $100k, `deploy/forward/KURULUM.md`);
+   sonuçlar `reports/forward/` altında haftalık izlenecek (`tools/forward_report.py --shadow`).
 8. **Reddedilen aday v2.1 (örüntü bacağı, EXP-089..098):** walk-forward örüntü seçimi portföy Sharpe'ını 1.91 → 1.96'ya
    çıkardı, ama placebo testinde (getiriler karıştırılınca) aynı veya daha iyi sonuç %11–31 olasılıkla şans eseri
    çıkıyor → istatistiksel olarak kanıtlanmadı; seçilen örüntüler büyük ölçüde mevcut bacakları (zayıf/güçlü kapanış,
@@ -142,3 +143,4 @@ MT5 tester uyumu yalnızca 9 bacaklı XAU EA için yapıldı (EXP-050).
 | 2026-09-27 | v2 (değişmedi) | v2.1 adayı (örüntü bacağı) placebo testinde anlamsız çıktı → reddedildi; v2 EA yazıldı | EXP-088..098 |
 | 2026-09-27 | v2.2 | Tampon-oranlı risk kuralı (Grossman–Zhou/CPPI tipi) — MC: challenge başarısızlık %2.2 → %0.03, funded 2 yılda hesap kaybı %5.6 → %0.03; kilitli kutu 2025–26 geçti; EA v2.20'ye eklendi | QM-008/009, QM-LOCKBOX, EXP-100 |
 | 2026-09-27 | v2.2 (değişmedi) | FX majör taraması (FXR-001..003) ve endeks genişlemesi SP500/UK100/JP225/GER40 (EXP-102) → kenar yok veya SR düşürüyor, reddedildi | FXR-001..003, EXP-102 |
+| 2026-09-27 | v2.2 (EA v2.21) | Canlı çalışma güvenlikleri: sunucu saat dilimi kontrolü, durum dosyası (yeniden başlatmaya dayanıklı), anlık işlem kaydı, haber/FOMC dosya kapsam kontrolü; tester sonucu v2.20 ile birebir aynı; demo forward test paketi | EXP-103 |

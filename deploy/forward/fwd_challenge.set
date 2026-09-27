@@ -1,0 +1,33 @@
+; v2.2 forward test - challenge mode, $100k demo (EA XauIdxPortfolio v2.21)
+; Attach to an XAUUSD chart (any timeframe). Set InpNasSymbol / InpDjSymbol to the demo server's names;
+; if the demo server has no Nasdaq-100 / Dow Jones CFD, set InpTradeNas / InpTradeDj = false.
+InpInitialBalance=100000
+InpRiskPct=0.5
+InpRiskOnInitial=false
+InpDayProfitCap=0.0
+InpDailySoftPct=2.0
+InpDailyHardPct=3.0
+InpTotalDeriskPct=6.5
+InpCushionStartPct=2.0
+InpTotalStopPct=8.0
+InpMaxPositions=6
+InpMaxOpenRiskPct=3.0
+InpMaxTradesDay=8
+InpCommXau=7.0
+InpCommIdx=0.0
+InpFirstEntryMin=65
+InpLastEntryMin=1390
+InpNewsBefore=10
+InpNewsAfter=10
+InpNewsFlatten=10
+InpNewsFile=xau_news_server.csv
+InpFomcFile=fomc_server.csv
+InpNasSymbol=NAS100.r
+InpDjSymbol=DJ30.r
+InpMagic=27092602
+InpTradeXau=true
+InpTradeNas=true
+InpTradeDj=true
+InpExportTrades=true
+InpExportPrefix=fwd
+InpCheckServerTime=true

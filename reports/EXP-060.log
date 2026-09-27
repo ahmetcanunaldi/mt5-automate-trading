@@ -1,0 +1,13 @@
+releases with a surprise: 966; initial reaction agrees with surprise: 57 %
+h+ 30m agree -> continue                n  546  -1.13 bps t -1.19 yrs+ 2/8
+h+ 30m disagree -> towards surprise     n  408  +0.29 bps t +0.27 yrs+ 4/8
+h+ 30m disagree -> continue reaction    n  408  -0.29 bps t -0.27 yrs+ 4/8
+h+ 30m all -> towards surprise          n  954  -0.53 bps t -0.74 yrs+ 4/8
+h+ 90m agree -> continue                n  546  +0.27 bps t +0.14 yrs+ 4/8
+h+ 90m disagree -> towards surprise     n  408  +2.63 bps t +1.28 yrs+ 6/8
+h+ 90m disagree -> continue reaction    n  408  -2.63 bps t -1.28 yrs+ 2/8
+h+ 90m all -> towards surprise          n  954  +1.28 bps t +0.89 yrs+ 5/8
+h+240m agree -> continue                n  546  +0.14 bps t +0.06 yrs+ 4/8
+h+240m disagree -> towards surprise     n  408  +4.42 bps t +1.62 yrs+ 6/8
+h+240m disagree -> continue reaction    n  408  -4.42 bps t -1.62 yrs+ 2/8
+h+240m all -> towards surprise          n  954  +1.97 bps t +1.07 yrs+ 6/8

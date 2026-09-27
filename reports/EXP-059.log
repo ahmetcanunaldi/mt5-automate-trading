@@ -1,0 +1,18 @@
+asia clv>0.6 -> london long                  n  491 +3.99 bps t +1.94 yrs+ 5/8
+asia clv<-0.6 -> london short                n  363 -0.00 bps t -0.00 yrs+ 4/8
+asia clv<-0.6 -> london long (fade)          n  363 +0.00 bps t +0.00 yrs+ 4/8
+asia clv>0.8 -> london long                  n  230 +3.71 bps t +1.17 yrs+ 4/8
+asia clv<-0.8 -> london short                n  140 +3.99 bps t +0.90 yrs+ 3/8
+asia clv<-0.8 -> london long (fade)          n  140 -3.99 bps t -0.90 yrs+ 5/8
+london clv>0.6 -> ny_am long                 n  444 +3.15 bps t +1.16 yrs+ 5/8
+london clv<-0.6 -> ny_am short               n  318 -1.22 bps t -0.40 yrs+ 4/8
+london clv<-0.6 -> ny_am long (fade)         n  318 +1.22 bps t +0.40 yrs+ 4/8
+london clv>0.8 -> ny_am long                 n  224 +2.66 bps t +0.70 yrs+ 4/8
+london clv<-0.8 -> ny_am short               n  142 +6.28 bps t +1.35 yrs+ 4/8
+london clv<-0.8 -> ny_am long (fade)         n  142 -6.28 bps t -1.35 yrs+ 4/8
+ny_am clv>0.6 -> ny_pm long                  n  457 +0.96 bps t +0.59 yrs+ 3/8
+ny_am clv<-0.6 -> ny_pm short                n  336 -1.79 bps t -1.08 yrs+ 2/8
+ny_am clv<-0.6 -> ny_pm long (fade)          n  336 +1.79 bps t +1.08 yrs+ 6/8
+ny_am clv>0.8 -> ny_pm long                  n  228 +0.07 bps t +0.03 yrs+ 4/8
+ny_am clv<-0.8 -> ny_pm short                n  141 -2.34 bps t -0.99 yrs+ 3/8
+ny_am clv<-0.8 -> ny_pm long (fade)          n  141 +2.34 bps t +0.99 yrs+ 5/8

@@ -1,0 +1,37 @@
+condition,n,bps,t,eras_pos,2008-12,2013-18,2019-22,2023-26
+all days (baseline),4841,4.4,2.69,3,6.3,-0.7,3.1,8.4
+"after range > 1.5 ATR, follow day direction",596,2.2,0.39,1,17.7,-3.3,-4.9,-0.2
+after up day range > 1.5 ATR (long),299,8.2,1.2,3,27.2,-2.5,8.7,10.6
+after down day range > 1.5 ATR (short),297,3.9,0.44,3,-10.7,4.3,19.1,11.4
+after down day range > 1.5 ATR (long = fade),297,-3.9,-0.44,1,10.7,-4.3,-19.1,-11.4
+"after range > 2.0 ATR, follow day direction",193,-8.0,-0.61,1,40.9,-39.2,-31.0,-31.6
+after up day range > 2.0 ATR (long),80,-3.8,-0.26,1,30.6,-33.7,-13.1,-10.7
+after down day range > 2.0 ATR (short),113,10.9,0.56,3,-47.9,45.3,42.3,44.9
+after down day range > 2.0 ATR (long = fade),113,-10.9,-0.56,1,47.9,-45.3,-42.3,-44.9
+after 3+ up days (long),641,-1.7,-0.42,1,-7.5,6.8,-5.1,-2.1
+after 3+ down days (long = fade),441,9.5,1.71,2,30.4,-2.8,-4.2,16.3
+after 3+ down days (short = follow),441,-9.5,-1.71,2,-30.4,2.8,4.2,-16.3
+after 4+ up days (long),309,-6.2,-1.01,1,-14.4,3.5,-10.0,-6.7
+after 4+ down days (long = fade),196,2.1,0.25,1,44.7,-11.2,-4.8,-7.9
+after 4+ down days (short = follow),196,-2.1,-0.25,3,-44.7,11.2,4.8,7.9
+after 5+ up days (long),154,-14.4,-1.5,1,-35.8,-10.7,-9.8,22.1
+after 5+ down days (long = fade),90,-18.9,-1.5,1,-20.2,-27.2,19.2,-33.7
+after 5+ down days (short = follow),90,18.9,1.5,3,20.2,27.2,-19.2,33.7
+close in top 10 % of range (long),532,11.8,2.64,4,13.3,12.4,5.0,13.8
+close in bottom 10 % of range (short),304,-4.1,-0.53,1,0.5,-0.1,-4.4,-9.7
+close in bottom 10 % of range (long = fade),304,4.1,0.53,3,-0.5,0.1,4.4,9.7
+close at 20-day high zone > 0.9 (long),757,8.0,2.02,4,4.4,9.8,1.5,13.3
+close at 20-day low zone < 0.1 (short),386,0.5,0.07,2,4.3,7.1,-11.3,-9.1
+close at 20-day low zone < 0.1 (long = fade),386,-0.5,-0.07,2,-4.3,-7.1,11.3,9.1
+month 01 (long),405,15.9,2.83,4,16.1,18.3,2.8,22.5
+month 02 (long),384,5.7,1.0,3,11.7,8.1,-6.5,6.8
+month 03 (long),408,-2.1,-0.35,1,-9.9,-4.0,-6.0,14.8
+month 04 (long),379,6.8,1.14,3,5.9,-1.6,10.5,15.0
+month 05 (long),396,-0.0,-0.01,2,5.4,-12.5,12.2,-3.1
+month 06 (long),390,-4.3,-0.76,1,-0.2,0.0,2.4,-21.4
+month 07 (long),423,7.1,1.61,4,4.5,1.2,15.1,9.0
+month 08 (long),418,9.0,1.72,4,9.4,8.8,2.8,15.8
+month 09 (long),406,-0.5,-0.08,2,8.6,-14.4,-16.3,10.1
+month 10 (long),422,8.1,1.25,3,10.7,-1.6,1.4,24.1
+month 11 (long),406,2.8,0.47,2,26.1,-14.6,-1.0,7.1
+month 12 (long),404,3.5,0.64,3,-11.1,2.6,18.9,1.6

@@ -1,0 +1,42 @@
+all                                  asia_early n 1997  +1.99 bps t +2.78 yrs+ 6/8
+all                                  asia       n 1997  +2.77 bps t +2.28 yrs+ 7/8
+prev clv > 0.3                       asia_early n  790  +2.21 bps t +1.94 yrs+ 6/8
+prev clv > 0.3                       asia       n  790  +3.98 bps t +2.23 yrs+ 8/8
+prev clv < -0.3                      asia_early n  671  +2.63 bps t +2.05 yrs+ 5/8
+prev clv < -0.3                      asia       n  671  +3.11 bps t +1.40 yrs+ 5/8
+prev clv > 0.6                       asia_early n  486  +4.01 bps t +2.46 yrs+ 6/8
+prev clv > 0.6                       asia       n  486  +8.52 bps t +3.61 yrs+ 7/8
+prev clv < -0.6                      asia_early n  352  +1.78 bps t +0.92 yrs+ 5/8
+prev clv < -0.6                      asia       n  352  +0.37 bps t +0.12 yrs+ 4/8
+prev day up                          asia_early n 1078  +2.25 bps t +2.40 yrs+ 7/8
+prev day up                          asia       n 1078  +2.56 bps t +1.67 yrs+ 6/8
+prev day down                        asia_early n  918  +1.69 bps t +1.52 yrs+ 6/8
+prev day down                        asia       n  918  +2.96 bps t +1.53 yrs+ 7/8
+prev NY-PM up                        asia_early n  976  +2.21 bps t +1.99 yrs+ 7/8
+prev NY-PM up                        asia       n  976  +4.40 bps t +2.46 yrs+ 7/8
+prev NY-PM down                      asia_early n 1000  +1.71 bps t +1.84 yrs+ 6/8
+prev NY-PM down                      asia       n 1000  +1.07 bps t +0.64 yrs+ 6/8
+prev Asia up                         asia_early n 1049  +1.53 bps t +1.49 yrs+ 6/8
+prev Asia up                         asia       n 1049  +0.85 bps t +0.49 yrs+ 5/8
+prev Asia down                       asia_early n  947  +2.51 bps t +2.50 yrs+ 6/8
+prev Asia down                       asia       n  947  +4.90 bps t +2.90 yrs+ 7/8
+gap up (>0)                          asia_early n 1200  +2.75 bps t +2.98 yrs+ 5/8
+gap up (>0)                          asia       n 1200  +1.48 bps t +0.97 yrs+ 6/8
+gap down (<0)                        asia_early n  785  +0.96 bps t +0.83 yrs+ 5/8
+gap down (<0)                        asia       n  785  +4.88 bps t +2.40 yrs+ 8/8
+high vol (atr > median)              asia_early n  998  +2.21 bps t +1.71 yrs+ 5/8
+high vol (atr > median)              asia       n  998  +1.41 bps t +0.65 yrs+ 5/8
+low vol                              asia_early n  999  +1.77 bps t +2.86 yrs+ 6/7
+low vol                              asia       n  999  +4.12 bps t +3.83 yrs+ 7/7
+weekday 0                            asia_early n  399  -2.22 bps t -1.05 yrs+ 2/8
+weekday 0                            asia       n  399  -2.53 bps t -0.76 yrs+ 2/8
+weekday 1                            asia_early n  403  +2.32 bps t +1.62 yrs+ 6/8
+weekday 1                            asia       n  403  +2.09 bps t +0.81 yrs+ 4/8
+weekday 2                            asia_early n  400  +4.01 bps t +2.53 yrs+ 6/8
+weekday 2                            asia       n  400  +7.71 bps t +3.05 yrs+ 6/8
+weekday 3                            asia_early n  402  +4.00 bps t +2.76 yrs+ 6/8
+weekday 3                            asia       n  402  +1.33 bps t +0.54 yrs+ 5/8
+weekday 4                            asia_early n  393  +1.84 bps t +1.40 yrs+ 5/8
+weekday 4                            asia       n  393  +5.28 bps t +2.02 yrs+ 8/8
+prev clv > 0.3 & gap >= 0            asia_early n  422  +3.80 bps t +2.24 yrs+ 5/8
+prev clv > 0.3 & gap >= 0            asia       n  422  +2.25 bps t +0.85 yrs+ 5/8

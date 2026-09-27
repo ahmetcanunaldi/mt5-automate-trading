@@ -99,7 +99,9 @@ MT5 tester uyumu (9 bacaklı EA, EXP-050): 3,111 vs 3,101 işlem, equity DD %7.7
 4. Kazanç yoğun olarak long tarafta (altın boğa piyasası 2019–26); 2013–18 tipi ayı piyasasında long bacaklar
    yatay kalıyor (EXP-051), zarar değil.
 5. v1'in 4 eki (tday900, strong_close, drift düşük-vol filtresi, season, trail 1.5×) EA'ya taşınmadı.
-6. Demo forward test yapılmadı (yalnızca kullanıcının ayrı demo hesabında yapılacak).
+6. Kapsam XAGUSD / EURUSD / USDJPY'ye genişletildi (EXP-078..081): altın bacakları taşınmıyor, bu broker maliyetleriyle
+   FX/gümüş gün içi etkileri maliyetin altında; tek aday USDJPY long momentum (~1 R/yıl). Portföye henüz eklenen yok.
+7. Demo forward test yapılmadı (yalnızca kullanıcının ayrı demo hesabında yapılacak).
 
 ## 7. Değişiklik geçmişi
 

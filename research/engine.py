@@ -67,7 +67,7 @@ class Guards:
 
 
 @njit(cache=True)
-def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
+def _run(t_min, dow, day_id, o, h, l, c, spr, cv, block, flat,
          s_idx, s_dir, s_sl, s_tp, s_hold, s_be, s_trail, s_rm,
          init_bal, risk_pct, soft, hard, derisk, tstop, max_td, first_m, last_m, flat_m, fri_m,
          comm, slip, max_pos, max_open_risk, intraday, weekend_flat, swap_l, swap_s, triple_dow, risk_on_init, pay_pct, cons_pct, pcap, reent, capdyn):
@@ -163,7 +163,7 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
                 room = hard / 100.0 * day_ref + day_pnl - open_risk
                 base = init_bal if risk_on_init else bal
                 risk_usd = min(rp * min(rm_, 1.0) / 100.0 * base, room, max_open_risk / 100.0 * base - open_risk)
-                lots = np.floor(risk_usd / (dist * 100.0 + comm) / 0.01 + 1e-9) * 0.01
+                lots = np.floor(risk_usd / (dist * cv[i] + comm) / 0.01 + 1e-9) * 0.01
                 if lots >= 0.01:
                     k = 0
                     while act[k]:
@@ -176,7 +176,7 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
                         psl[k] = ep + dist; ptp[k] = ep - tpd
                     act[k] = True; pd_[k] = d; pep[k] = ep; plot[k] = lots; pei[k] = i; pdl[k] = hold
                     pbe[k] = be_; pbed[k] = False; ptr[k] = tr_
-                    prisk[k] = lots * (dist * 100.0 + comm); pid[k] = ntr; pswap[k] = 0.0
+                    prisk[k] = lots * (dist * cv[i] + comm); pid[k] = ntr; pswap[k] = 0.0
                     pdist[k] = dist; ptpd[k] = tpd; prm[k] = rm_; psig[k] = sg
                     day_trades += 1
                     tr_ei[ntr] = i; tr_dir[ntr] = d; tr_ep[ntr] = ep; tr_lot[ntr] = lots
@@ -189,13 +189,13 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
                 any_act = True; d_all = pd_[k]
                 sum_lot += plot[k]; sum_eplot += pep[k] * plot[k]
                 wp = (l[i] - pep[k]) if pd_[k] == 1 else (pep[k] - (h[i] + sp))
-                worst_pnl += wp * plot[k] * CONTRACT - plot[k] * comm
+                worst_pnl += wp * plot[k] * cv[i] - plot[k] * comm
         guard_hit = False; cap_hit = False
         if pcap > 0 and any_act:
             fl_c = 0.0
             for k in range(K):
                 if act[k]:
-                    fl_c += ((c[i] - pep[k]) if pd_[k] == 1 else (pep[k] - (c[i] + sp))) * plot[k] * CONTRACT
+                    fl_c += ((c[i] - pep[k]) if pd_[k] == 1 else (pep[k] - (c[i] + sp))) * plot[k] * cv[i]
             cap_usd = pcap / 100.0 * day_ref
             if capdyn:
                 cap_usd = max(cap_usd, cons_pct / (100.0 - cons_pct) * (day_bal0 - init_bal))
@@ -206,9 +206,9 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
             # price where total day P&L == -hard (solve linear equation for the common exit price)
             target_open_pnl = -hard / 100.0 * day_ref - (bal - day_ref) + sum_lot * comm
             if d_all == 1:
-                px = (target_open_pnl / CONTRACT + sum_eplot) / sum_lot
+                px = (target_open_pnl / cv[i] + sum_eplot) / sum_lot
             else:
-                px = (sum_eplot - target_open_pnl / CONTRACT) / sum_lot
+                px = (sum_eplot - target_open_pnl / cv[i]) / sum_lot
         # ---- manage each position ----
         for k in range(K):
             if not act[k]:
@@ -260,7 +260,7 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
                 if reason != 0:
                     xp = c[i] if d == 1 else c[i] + sp
             if reason != 0:
-                pnl = (xp - ep) * d * plot[k] * CONTRACT - plot[k] * comm
+                pnl = (xp - ep) * d * plot[k] * cv[i] - plot[k] * comm
                 bal += pnl
                 j = pid[k]
                 tr_xi[j] = i; tr_xp[j] = xp; tr_pnl[j] = pnl + pswap[k]; tr_reason[j] = reason
@@ -280,11 +280,11 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
         for k in range(K):
             if act[k]:
                 if pd_[k] == 1:
-                    fl += (c[i] - pep[k]) * plot[k] * CONTRACT
-                    fw += (l[i] - pep[k]) * plot[k] * CONTRACT
+                    fl += (c[i] - pep[k]) * plot[k] * cv[i]
+                    fw += (l[i] - pep[k]) * plot[k] * cv[i]
                 else:
-                    fl += (pep[k] - (c[i] + sp)) * plot[k] * CONTRACT
-                    fw += (pep[k] - (h[i] + sp)) * plot[k] * CONTRACT
+                    fl += (pep[k] - (c[i] + sp)) * plot[k] * cv[i]
+                    fw += (pep[k] - (h[i] + sp)) * plot[k] * cv[i]
         eq_close[i] = bal + fl
         bal_close[i] = bal
         eq_low[i] = min(bal + fw, bal + fl)
@@ -304,16 +304,20 @@ class Result:
     params: dict = field(default_factory=dict)
 
 
-def prepare_exec(bars: pd.DataFrame, bar_minutes: int, news_block=None, news_flat=None, costs: Costs = Costs()):
+def prepare_exec(bars: pd.DataFrame, bar_minutes: int, news_block=None, news_flat=None, costs: Costs = Costs(),
+                 point: float = POINT, contract: float = CONTRACT, quote: str = "USD"):
+    """point / contract / quote describe the symbol (default XAUUSD). quote="JPY": P&L converted to USD at the
+    bar's close (USD per 1.0 price unit per lot = contract / close)."""
     idx = bars.index
     spr_pts = np.maximum(bars["spread"].to_numpy(float) * costs.spread_mult, costs.min_spread_pts)
+    cv = np.full(len(bars), contract) if quote == "USD" else contract / bars["close"].to_numpy(float)
     x = {
         "t_min": (idx.hour * 60 + idx.minute).to_numpy(np.int64),
         "dow": idx.dayofweek.to_numpy(np.int64),
         "day_id": idx.values.astype("datetime64[D]").astype(np.int64),
         "o": bars["open"].to_numpy(float), "h": bars["high"].to_numpy(float),
         "l": bars["low"].to_numpy(float), "c": bars["close"].to_numpy(float),
-        "spr": spr_pts * POINT,
+        "spr": spr_pts * point, "cv": cv, "point": point,
         "block": np.zeros(len(bars), bool) if news_block is None else news_block,
         "flat": np.zeros(len(bars), bool) if news_flat is None else news_flat,
         "index": idx, "bar_minutes": bar_minutes,
@@ -341,13 +345,13 @@ def run(exec_x: dict, signals: pd.DataFrame, guards: Guards = Guards(), costs: C
     trail = sig["trail"].to_numpy(float) if "trail" in sig else np.zeros(len(sig))
     rm = sig["risk_mult"].fillna(1.0).to_numpy(float) if "risk_mult" in sig else np.ones(len(sig))
     out = _run(exec_x["t_min"], exec_x["dow"], exec_x["day_id"], exec_x["o"], exec_x["h"], exec_x["l"],
-               exec_x["c"], exec_x["spr"], exec_x["block"], exec_x["flat"],
+               exec_x["c"], exec_x["spr"], exec_x["cv"], exec_x["block"], exec_x["flat"],
                s_idx, sig["dir"].to_numpy(np.int64), sig["sl"].to_numpy(float), sig["tp"].to_numpy(float),
                s_hold, be, trail, rm,
                guards.initial_balance, guards.risk_pct, guards.daily_soft_pct, guards.daily_hard_pct,
                guards.total_derisk_pct, guards.total_stop_pct, guards.max_trades_day,
                guards.first_entry_min, guards.last_entry_min, guards.flatten_min, guards.fri_flatten_min,
-               costs.commission_per_lot, costs.slippage_pts * POINT, guards.max_positions,
+               costs.commission_per_lot, costs.slippage_pts * exec_x.get("point", POINT), guards.max_positions,
                guards.max_open_risk_pct, guards.intraday, guards.weekend_flat, costs.swap_long, costs.swap_short,
                costs.triple_dow, guards.risk_on_initial, guards.payout_pct, guards.consistency_pct,
                guards.day_profit_cap_pct, guards.news_reentry, guards.cap_dynamic)

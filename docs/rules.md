@@ -20,3 +20,8 @@ Sources (checked 2026-09-26; the official help-center pages return 403 to automa
 ## User trading-style constraints
 - "Scalping" = intraday. Each trade targets **≥ $6** move (TP ≥ 600 points).
 - Acceptance: Sharpe ≥ 1.5 (daily, √252), daily DD < 3 %, total DD < 8 %, PF ≥ 1.3, ≥ 200 trades, Monte-Carlo 95th pct DD < 8 %.
+
+## Added 2026-09-27
+- **Weekly profit target ≥ 2 R** (≥ 1 %/week at 0.5 % risk) — FundingPips payout requires ≥ 2 % profit per payout cycle.
+- Daily loss limits are re-based every server day on that day's start reference = max(balance, equity) at 00:00;
+  equity charts show them as a per-day floor, not a static line.

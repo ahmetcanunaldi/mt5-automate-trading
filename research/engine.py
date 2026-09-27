@@ -72,7 +72,7 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
     tr_dir = np.zeros(max_tr, np.int64); tr_ep = np.zeros(max_tr); tr_xp = np.zeros(max_tr)
     tr_lot = np.zeros(max_tr); tr_pnl = np.zeros(max_tr); tr_reason = np.zeros(max_tr, np.int64)
     tr_risk = np.zeros(max_tr); tr_sig = np.full(max_tr, -1, np.int64)
-    eq_close = np.zeros(n); eq_low = np.zeros(n)
+    eq_close = np.zeros(n); eq_low = np.zeros(n); bal_close = np.zeros(n)
     K = max_pos
     act = np.zeros(K, np.bool_); pd_ = np.zeros(K, np.int64); pep = np.zeros(K); plot = np.zeros(K)
     psl = np.zeros(K); ptp = np.zeros(K); pei = np.zeros(K, np.int64); pdl = np.zeros(K, np.int64)
@@ -219,9 +219,10 @@ def _run(t_min, dow, day_id, o, h, l, c, spr, block, flat,
                     fl += (pep[k] - (c[i] + sp)) * plot[k] * CONTRACT
                     fw += (pep[k] - (h[i] + sp)) * plot[k] * CONTRACT
         eq_close[i] = bal + fl
+        bal_close[i] = bal
         eq_low[i] = min(bal + fw, bal + fl)
     return (tr_ei[:ntr], tr_xi[:ntr], tr_dir[:ntr], tr_ep[:ntr], tr_xp[:ntr], tr_lot[:ntr],
-            tr_pnl[:ntr], tr_reason[:ntr], tr_risk[:ntr], tr_sig[:ntr], eq_close, eq_low)
+            tr_pnl[:ntr], tr_reason[:ntr], tr_risk[:ntr], tr_sig[:ntr], eq_close, eq_low, bal_close)
 
 
 REASONS = {1: "SL", 2: "TP", 3: "TIME", 4: "NEWS", 5: "DAILY_GUARD", 6: "EOD"}
@@ -281,7 +282,7 @@ def run(exec_x: dict, signals: pd.DataFrame, guards: Guards = Guards(), costs: C
                costs.commission_per_lot, costs.slippage_pts * POINT, guards.max_positions,
                guards.max_open_risk_pct, guards.intraday, guards.weekend_flat, costs.swap_long, costs.swap_short,
                costs.triple_dow)
-    ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi, eq, eql = out
+    ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi, eq, eql, balc = out
     closed = xi >= 0
     ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi = (a[closed] for a in (ei, xi, dr, ep, xp, lot, pnl, rsn, risk, sgi))
     trades = pd.DataFrame({
@@ -297,5 +298,8 @@ def run(exec_x: dict, signals: pd.DataFrame, guards: Guards = Guards(), costs: C
     day = idx.normalize()
     daily = pd.DataFrame({"end": equity.groupby(day).last(),
                           "min": pd.Series(eql, index=idx).groupby(day).min()})
-    daily["start"] = daily["end"].shift(1).fillna(guards.initial_balance)
+    daily["bal_end"] = pd.Series(balc, index=idx).groupby(day).last()
+    # FundingPips daily reference: max(balance, equity) at the start of the server day
+    daily["start"] = np.maximum(daily["end"].shift(1), daily["bal_end"].shift(1)).fillna(guards.initial_balance)
+    daily["start_eq"] = daily["end"].shift(1).fillna(guards.initial_balance)   # for returns / Sharpe
     return Result(trades, equity, daily, {"guards": asdict(guards), "costs": asdict(costs)})

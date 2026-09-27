@@ -13,13 +13,15 @@ GATES = {
     "profit_factor": 1.3,
     "min_trades": 200,
     "mc_dd95_pct": 8.0,
+    "week_R_mean": 2.0,     # user target: >= 2 R (1 %) per week on average
 }
 
 
 def daily_returns(res: Result) -> pd.Series:
     d = res.daily
     d = d[d.index.dayofweek < 5]
-    return (d["end"] / d["start"] - 1.0).fillna(0.0)
+    base = d["start_eq"] if "start_eq" in d else d["start"]
+    return (d["end"] / base - 1.0).fillna(0.0)
 
 
 def summarize(res: Result, label: str = "") -> dict:
@@ -50,7 +52,23 @@ def summarize(res: Result, label: str = "") -> dict:
         "avg_hold_min": round(float((tr.exit_time - tr.entry_time).dt.total_seconds().mean() / 60), 1) if len(tr) else 0,
         "exit_reasons": tr.reason.value_counts().to_dict() if len(tr) else {},
     }
+    out.update(weekly_stats(res))
     return out
+
+
+def weekly_stats(res: Result) -> dict:
+    """Weekly P&L in R units (R = risk_pct of the initial balance): FundingPips payout needs >= 2 %/cycle,
+    the user's target is >= 2 R (1 %) per week."""
+    g = res.params["guards"]
+    init, rp = g["initial_balance"], g["risk_pct"] / 100.0
+    end = res.daily["end"]
+    wk = end.resample("W-FRI").last().dropna()
+    prev = wk.shift(1).fillna(init)
+    wr = (wk - prev) / (init * rp)
+    return {"week_R_mean": round(float(wr.mean()), 2) if len(wr) else 0.0,
+            "week_R_median": round(float(wr.median()), 2) if len(wr) else 0.0,
+            "weeks_ge_2R": round(float((wr >= 2).mean()), 3) if len(wr) else 0.0,
+            "weeks_pos": round(float((wr > 0).mean()), 3) if len(wr) else 0.0}
 
 
 def monte_carlo_dd(res: Result, n=2000, seed=7) -> dict:
@@ -77,8 +95,10 @@ def challenge_sim(res: Result, target1=8.0, target2=5.0, fp_daily=5.0, fp_total=
     fails on FP breach or on our internal limits. Phase 2 starts the day after phase 1 passes.
     Uses per-day returns and intraday min equity so intraday breaches count."""
     d = res.daily[res.daily.index.dayofweek < 5].copy()
-    ret = (d["end"] / d["start"] - 1).to_numpy()
-    low = (d["min"] / d["start"] - 1).to_numpy()
+    base = d["start_eq"] if "start_eq" in d else d["start"]
+    ret = (d["end"] / base - 1).to_numpy()                 # equity-to-equity return (compounding)
+    low = (d["min"] / base - 1).to_numpy()                 # intraday worst vs start equity
+    ref = (d["start"] / base).to_numpy()                   # FP day reference = max(bal, eq) / start equity
     tr = res.trades
     traded = pd.Series(1, index=tr.entry_time.dt.normalize()).groupby(level=0).size().reindex(d.index).fillna(0).to_numpy() > 0
 
@@ -86,7 +106,8 @@ def challenge_sim(res: Result, target1=8.0, target2=5.0, fp_daily=5.0, fp_total=
         bal = 1.0; days = 0
         for k in range(start, min(start + max_days, len(ret))):
             intraday_low = bal * (1 + low[k])
-            if (bal - intraday_low) / bal * 100 >= min(fp_daily, our_daily) or (1 - intraday_low) * 100 >= min(fp_total, our_total):
+            day_ref = bal * ref[k]
+            if (day_ref - intraday_low) / day_ref * 100 >= min(fp_daily, our_daily) or (1 - intraday_low) * 100 >= min(fp_total, our_total):
                 return "fail", k
             bal *= 1 + ret[k]
             days += traded[k]
@@ -120,6 +141,7 @@ def gate_check(m: dict) -> dict:
         "total_dd": m["max_total_dd_pct"] < GATES["max_total_dd_pct"],
         "profit_factor": m["profit_factor"] >= GATES["profit_factor"],
         "trades": m["trades"] >= GATES["min_trades"],
+        "weekly_2R": m.get("week_R_mean", 0) >= GATES["week_R_mean"],
     }
     if m.get("mc_dd95_pct") is not None:
         checks["mc_dd95"] = m["mc_dd95_pct"] < GATES["mc_dd95_pct"]

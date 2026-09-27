@@ -53,6 +53,8 @@ input string InpDjSymbol       = "DJ30.r";
 input datetime InpDriftMedStart = D'2017.12.29';   // start of the expanding median (research data start)
 input long   InpMagic          = 27092602;
 input bool   InpTradeXau = true, InpTradeNas = true, InpTradeDj = true;
+input bool   InpExportTrades = true;        // write <prefix>_entries.csv / <prefix>_deals.csv to Common\Files at the end
+input string InpExportPrefix = "xauidx";
 
 CTrade      g_trade;
 CNewsFilter g_news;
@@ -74,6 +76,7 @@ struct SPos
    string   leg;
   };
 SPos     g_pos[];
+string   g_entry_log[];                     // one CSV line per opened position (export)
 datetime g_fomc[];
 datetime g_day = 0, g_last_m1 = 0, g_last_m15 = 0, g_last_h4 = 0;
 double   g_day_ref = 0;
@@ -261,6 +264,16 @@ bool Enter(int s, int dir, double sl_dist, int hold_min, double trail, double ri
    ArrayResize(g_pos, k + 1);
    g_pos[k] = p;
    g_day_trades++;
+   if(InpExportTrades)
+     {
+      double px = dir > 0 ? SymbolInfoDouble(sym, SYMBOL_ASK) : SymbolInfoDouble(sym, SYMBOL_BID);
+      int n = ArraySize(g_entry_log);
+      ArrayResize(g_entry_log, n + 1, 4096);
+      g_entry_log[n] = StringFormat("%I64u,%s,%s,%d,%s,%.5f,%.5f,%.5f,%.2f,%.2f,%.2f,%.4f,%.3f",
+                                    p.ticket, sym, leg, dir, TimeToString(now, TIME_DATE | TIME_SECONDS), px,
+                                    dir > 0 ? px - sl_dist : px + sl_dist, sl_dist, lots, p.risk_usd, bal,
+                                    p.risk_usd / bal * 100.0, rp * MathMin(risk_mult, 1.0) / InpRiskPct);
+     }
    PrintFormat("[Entry] %s %s %s %.2f lots sl=%.2f hold=%d trail=%.2f", sym, leg, dir > 0 ? "BUY" : "SELL", lots, sl_dist, hold_min, trail);
    return true;
   }
@@ -513,6 +526,39 @@ int OnInit()
    if(!g_news.Load(InpNewsFile, InpNewsBefore, InpNewsAfter, InpNewsFlatten)) { Print("[Init] news file missing - refusing to trade"); return INIT_FAILED; }
    if((g_on[1] || g_on[2]) && !LoadFomc()) { Print("[Init] FOMC file missing - refusing to trade"); return INIT_FAILED; }
    return INIT_SUCCEEDED;
+  }
+
+void OnDeinit(const int reason)
+  {
+   if(!InpExportTrades)
+      return;
+   int h = FileOpen(InpExportPrefix + "_entries.csv", FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_COMMON);
+   if(h != INVALID_HANDLE)
+     {
+      FileWriteString(h, "position,symbol,leg,dir,time,price_at_signal,sl_price,sl_dist,lots,risk_usd,balance,risk_pct,risk_mult_used\n");
+      for(int i = 0; i < ArraySize(g_entry_log); i++) FileWriteString(h, g_entry_log[i] + "\n");
+      FileClose(h);
+     }
+   if(!HistorySelect(0, TimeCurrent() + 86400)) return;
+   h = FileOpen(InpExportPrefix + "_deals.csv", FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_COMMON);
+   if(h == INVALID_HANDLE) return;
+   FileWriteString(h, "deal,position,time,symbol,type,entry,volume,price,profit,commission,swap,reason,sl,comment\n");
+   for(int i = 0; i < HistoryDealsTotal(); i++)
+     {
+      ulong d = HistoryDealGetTicket(i);
+      if(HistoryDealGetInteger(d, DEAL_MAGIC) != InpMagic) continue;
+      FileWriteString(h, StringFormat("%I64u,%I64d,%s,%s,%d,%d,%.2f,%.5f,%.2f,%.2f,%.2f,%d,%.5f,%s\n", d,
+                                      HistoryDealGetInteger(d, DEAL_POSITION_ID),
+                                      TimeToString((datetime)HistoryDealGetInteger(d, DEAL_TIME), TIME_DATE | TIME_SECONDS),
+                                      HistoryDealGetString(d, DEAL_SYMBOL), (int)HistoryDealGetInteger(d, DEAL_TYPE),
+                                      (int)HistoryDealGetInteger(d, DEAL_ENTRY), HistoryDealGetDouble(d, DEAL_VOLUME),
+                                      HistoryDealGetDouble(d, DEAL_PRICE), HistoryDealGetDouble(d, DEAL_PROFIT),
+                                      HistoryDealGetDouble(d, DEAL_COMMISSION), HistoryDealGetDouble(d, DEAL_SWAP),
+                                      (int)HistoryDealGetInteger(d, DEAL_REASON), HistoryDealGetDouble(d, DEAL_SL),
+                                      HistoryDealGetString(d, DEAL_COMMENT)));
+     }
+   FileClose(h);
+   PrintFormat("[Export] %d entries, deals written to Common/Files/%s_*.csv", ArraySize(g_entry_log), InpExportPrefix);
   }
 
 void OnTick()

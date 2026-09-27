@@ -1,0 +1,139 @@
+{"sym": "XAUUSD", "cells": 1610, "days_acq": 978, "days_trk": 774, "max_t_acq": 5.09, "cfar_thr_acq": 4.01, "detections_acq": 3, "max_t_trk": 5.39, "cfar_thr_trk": 4.04, "detections_trk": 5, "corr_t_acq_trk": 0.199, "p_tracking": 0.03, "coherent_mean_abs_t": 0.852, "coherent_null": 0.793, "p_coherent": 0.17, "noncoh_mean_excess": 0.406, "noncoh_null": 0.098, "p_noncoherent": 0.25, "year_to_year_corr": -0.005, "year_to_year_null": 0.002, "p_year_to_year": 0.53, "whiten": true, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  12:25    5  -5.09   -0.80    0.45   2.66       -1.05
+1  04:55   15  -4.14   -1.13   -0.19  -0.75       -1.69
+2  12:35    5   4.05    0.56    0.02   0.16       -1.48
+3  07:00    5  -3.40   -0.37    0.28   2.33       -1.22
+4  05:15   15   3.33    0.55    0.22   0.93       -1.28
+5  03:55    5   3.24    0.36    0.11   0.70       -1.39
+{"sym": "XAUUSD", "cells": 1610, "days_acq": 978, "days_trk": 774, "max_t_acq": 5.25, "cfar_thr_acq": 4.02, "detections_acq": 5, "max_t_trk": 4.87, "cfar_thr_trk": 4.01, "detections_trk": 4, "corr_t_acq_trk": 0.164, "p_tracking": 0.025, "coherent_mean_abs_t": 0.826, "coherent_null": 0.8, "p_coherent": 0.41, "noncoh_mean_excess": 0.563, "noncoh_null": 0.034, "p_noncoherent": 0.17, "year_to_year_corr": -0.006, "year_to_year_null": 0.009, "p_year_to_year": 0.62, "whiten": false, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  12:25    5  -5.25   -0.80    0.45   2.66       -1.05
+1  04:55   15  -4.69   -1.13   -0.19  -0.75       -1.69
+2  12:35    5   4.32    0.56    0.02   0.16       -1.48
+3  12:30    5  -3.62   -0.74   -0.57  -3.27       -2.07
+4  05:15   15   3.18    0.55    0.22   0.93       -1.28
+5  09:15   60   3.08    1.75   -0.03  -0.04       -1.53
+{"sym": "XAUUSD", "cells": 1610, "days_acq": 978, "days_trk": 774, "max_t_acq": 5.01, "cfar_thr_acq": 3.97, "detections_acq": 2, "max_t_trk": 5.24, "cfar_thr_trk": 4.0, "detections_trk": 10, "corr_t_acq_trk": 0.22, "p_tracking": 0.03, "coherent_mean_abs_t": 0.879, "coherent_null": 0.806, "p_coherent": 0.22, "noncoh_mean_excess": 0.504, "noncoh_null": 0.126, "p_noncoherent": 0.21, "year_to_year_corr": 0.011, "year_to_year_null": -0.007, "p_year_to_year": 0.35, "whiten": true, "mid": false}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  12:25    5  -5.01   -0.78    0.45   2.65       -1.05
+1  04:55   15  -4.16   -1.13   -0.19  -0.74       -1.69
+2  12:35    5   3.80    0.51    0.02   0.11       -1.48
+3  00:35   60   3.37    0.97    1.06   2.17       -0.44
+4  07:00    5  -3.34   -0.36    0.27   2.29       -1.23
+5  05:15   15   3.29    0.54    0.22   0.92       -1.28
+{"sym": "NAS100", "cells": 1606, "days_acq": 980, "days_trk": 775, "max_t_acq": 4.6, "cfar_thr_acq": 3.99, "detections_acq": 1, "max_t_trk": 4.62, "cfar_thr_trk": 4.05, "detections_trk": 2, "corr_t_acq_trk": 0.156, "p_tracking": 0.06, "coherent_mean_abs_t": 0.902, "coherent_null": 0.79, "p_coherent": 0.09, "noncoh_mean_excess": 0.295, "noncoh_null": -0.042, "p_noncoherent": 0.23, "year_to_year_corr": 0.004, "year_to_year_null": 0.004, "p_year_to_year": 0.5, "whiten": true, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  16:55    5   4.60    2.49    0.70   1.26       -0.60
+1  21:55    5   3.94    1.11    0.38   1.06       -0.92
+2  14:30    5  -3.50   -0.84   -0.01  -0.05       -1.31
+3  22:45    5  -3.26   -1.15    0.15   0.39       -1.15
+4  21:35    5  -3.20   -0.67   -1.31  -2.78       -2.61
+5  07:30   30   3.12    1.17    0.01   0.03       -1.29
+{"sym": "NAS100", "cells": 1606, "days_acq": 980, "days_trk": 775, "max_t_acq": 4.87, "cfar_thr_acq": 3.9, "detections_acq": 1, "max_t_trk": 3.83, "cfar_thr_trk": 4.05, "detections_trk": 0, "corr_t_acq_trk": 0.03, "p_tracking": 0.43, "coherent_mean_abs_t": 0.939, "coherent_null": 0.797, "p_coherent": 0.07, "noncoh_mean_excess": 0.417, "noncoh_null": 0.073, "p_noncoherent": 0.26, "year_to_year_corr": 0.006, "year_to_year_null": -0.0, "p_year_to_year": 0.45, "whiten": false, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  16:55    5   4.87    2.49    0.70   1.26       -0.60
+1  21:55    5   3.32    1.11    0.38   1.06       -0.92
+2  14:30    5  -3.25   -0.84   -0.01  -0.05       -1.31
+3  08:55    5   3.17    0.58    0.19   1.22       -1.11
+4  21:20   15   2.93    1.66    0.34   0.47       -0.96
+5  09:25   30   2.91    1.24    0.35   0.78       -0.95
+{"sym": "NAS100", "cells": 1606, "days_acq": 980, "days_trk": 775, "max_t_acq": 4.6, "cfar_thr_acq": 3.94, "detections_acq": 2, "max_t_trk": 4.62, "cfar_thr_trk": 4.03, "detections_trk": 2, "corr_t_acq_trk": 0.154, "p_tracking": 0.085, "coherent_mean_abs_t": 0.901, "coherent_null": 0.799, "p_coherent": 0.11, "noncoh_mean_excess": 0.294, "noncoh_null": 0.091, "p_noncoherent": 0.36, "year_to_year_corr": 0.004, "year_to_year_null": -0.013, "p_year_to_year": 0.41, "whiten": true, "mid": false}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  16:55    5   4.60    2.49    0.70   1.26       -0.60
+1  21:55    5   3.94    1.11    0.38   1.06       -0.92
+2  14:30    5  -3.50   -0.84   -0.01  -0.05       -1.31
+3  22:45    5  -3.25   -1.15    0.15   0.39       -1.15
+4  21:35    5  -3.20   -0.67   -1.31  -2.78       -2.61
+5  07:30   30   3.12    1.17    0.01   0.03       -1.29
+{"sym": "DJ30", "cells": 1590, "days_acq": 980, "days_trk": 775, "max_t_acq": 4.84, "cfar_thr_acq": 3.94, "detections_acq": 2, "max_t_trk": 5.76, "cfar_thr_trk": 4.01, "detections_trk": 4, "corr_t_acq_trk": 0.052, "p_tracking": 0.33, "coherent_mean_abs_t": 0.842, "coherent_null": 0.786, "p_coherent": 0.2, "noncoh_mean_excess": 0.4, "noncoh_null": -0.029, "p_noncoherent": 0.13, "year_to_year_corr": -0.024, "year_to_year_null": -0.007, "p_year_to_year": 0.61, "whiten": true, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  23:00    5   4.84    1.07   -0.57  -2.20       -1.77
+1  16:55    5   3.83    1.44    0.59   1.77       -0.61
+2  13:20   60   3.49    1.64    0.80   1.61       -0.40
+3  21:35    5  -3.42   -0.59   -0.85  -2.66       -2.05
+4  16:25    5  -2.97   -0.42    0.18   0.58       -1.02
+5  18:35    5   2.84    0.70   -0.29  -1.03       -1.49
+{"sym": "DJ30", "cells": 1590, "days_acq": 980, "days_trk": 775, "max_t_acq": 3.61, "cfar_thr_acq": 3.89, "detections_acq": 0, "max_t_trk": 4.6, "cfar_thr_trk": 4.01, "detections_trk": 2, "corr_t_acq_trk": -0.035, "p_tracking": 0.63, "coherent_mean_abs_t": 0.868, "coherent_null": 0.796, "p_coherent": 0.15, "noncoh_mean_excess": 0.646, "noncoh_null": 0.001, "p_noncoherent": 0.12, "year_to_year_corr": -0.04, "year_to_year_null": -0.009, "p_year_to_year": 0.71, "whiten": false, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  16:55    5   3.61    1.44    0.59   1.77       -0.61
+1  23:00    5   2.98    1.07   -0.57  -2.20       -1.77
+2  14:30   15  -2.73   -0.87    0.65   2.47       -0.55
+3  13:55   15   2.65    0.96    0.20   0.71       -1.00
+4  10:00    5  -2.65   -0.80   -0.30  -1.31       -1.50
+5  16:25   30  -2.62   -3.25   -0.50  -0.46       -1.70
+{"sym": "DJ30", "cells": 1590, "days_acq": 980, "days_trk": 775, "max_t_acq": 4.82, "cfar_thr_acq": 3.96, "detections_acq": 2, "max_t_trk": 5.76, "cfar_thr_trk": 4.0, "detections_trk": 4, "corr_t_acq_trk": 0.047, "p_tracking": 0.365, "coherent_mean_abs_t": 0.839, "coherent_null": 0.786, "p_coherent": 0.27, "noncoh_mean_excess": 0.405, "noncoh_null": 0.046, "p_noncoherent": 0.28, "year_to_year_corr": -0.025, "year_to_year_null": -0.002, "p_year_to_year": 0.66, "whiten": true, "mid": false}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  23:00    5   4.82    1.07   -0.61  -2.34       -1.81
+1  16:55    5   3.83    1.44    0.59   1.77       -0.61
+2  13:20   60   3.49    1.64    0.80   1.61       -0.40
+3  21:35    5  -3.42   -0.59   -0.85  -2.66       -2.05
+4  16:25    5  -2.96   -0.42    0.18   0.58       -1.02
+5  18:35    5   2.83    0.70   -0.29  -1.03       -1.49
+{"sym": "EURUSD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 10.37, "cfar_thr_acq": 3.99, "detections_acq": 54, "max_t_trk": 6.66, "cfar_thr_trk": 3.98, "detections_trk": 9, "corr_t_acq_trk": 0.349, "p_tracking": 0.005, "coherent_mean_abs_t": 1.325, "coherent_null": 0.807, "p_coherent": 0.0, "noncoh_mean_excess": 3.648, "noncoh_null": 0.207, "p_noncoherent": 0.0, "year_to_year_corr": 0.285, "year_to_year_null": 0.001, "p_year_to_year": 0.0, "whiten": true, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  01:00    5  10.37    0.63    0.43   4.10       -1.77
+1  23:30   30  -8.37   -0.82   -0.19  -2.04       -2.39
+2  00:05   15   5.24    0.35   -0.03  -0.35       -2.23
+3  09:55    5  -5.18   -0.59    0.46   3.49       -1.74
+4  08:50   15  -4.22   -0.42    0.33   2.14       -1.87
+5  14:55    5  -4.17   -0.42    0.46   3.13       -1.74
+{"sym": "EURUSD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 10.2, "cfar_thr_acq": 3.94, "detections_acq": 51, "max_t_trk": 5.9, "cfar_thr_trk": 4.03, "detections_trk": 7, "corr_t_acq_trk": 0.332, "p_tracking": 0.015, "coherent_mean_abs_t": 1.327, "coherent_null": 0.78, "p_coherent": 0.0, "noncoh_mean_excess": 3.682, "noncoh_null": 0.079, "p_noncoherent": 0.0, "year_to_year_corr": 0.265, "year_to_year_null": -0.006, "p_year_to_year": 0.0, "whiten": false, "mid": true}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  01:00    5  10.20    0.63    0.43   4.10       -1.77
+1  23:45   15  -8.30   -0.67   -0.15  -2.41       -2.35
+2  09:55    5  -5.29   -0.59    0.46   3.49       -1.74
+3  00:00   15   4.65    0.31   -0.05  -0.54       -2.25
+4  02:55    5  -4.11   -0.22    0.18   2.58       -2.02
+5  04:25   60   4.07    0.73   -0.12  -0.53       -2.32
+{"sym": "EURUSD", "cells": 1640, "days_acq": 1037, "days_trk": 778, "max_t_acq": 17.64, "cfar_thr_acq": 3.98, "detections_acq": 67, "max_t_trk": 16.88, "cfar_thr_trk": 4.06, "detections_trk": 57, "corr_t_acq_trk": 0.662, "p_tracking": 0.0, "coherent_mean_abs_t": 1.589, "coherent_null": 0.792, "p_coherent": 0.0, "noncoh_mean_excess": 8.945, "noncoh_null": 0.041, "p_noncoherent": 0.0, "year_to_year_corr": 0.528, "year_to_year_null": -0.001, "p_year_to_year": 0.0, "whiten": true, "mid": false}
+   start  min  t_acq  acq_bp  oos_bp  oos_t  oos_net_bp
+0  01:00    5  17.64    1.11    1.14  10.72       -1.06
+1  23:45   15  -9.11   -0.74   -0.12  -1.93       -2.32
+2  00:00   60   7.80    0.72    1.43  11.52       -0.77
+3  09:55    5  -5.17   -0.58    0.46   3.49       -1.74
+4  08:50   15  -4.18   -0.41    0.33   2.15       -1.87
+5  14:55    5  -4.16   -0.42    0.46   3.14       -1.74
+       sym  thr  slots  gross_bp_day  t_gross  cost_bp_day  net_bp_day  gross_per_slot_bp
+0   XAUUSD  1.5     55          3.59     3.03         82.5      -78.91              0.065
+1   XAUUSD  2.0     25          1.67     2.26         37.5      -35.83              0.067
+2   XAUUSD  2.5     12          1.28     2.65         18.0      -16.72              0.107
+3   XAUUSD  3.0      7          0.28     0.73         10.5      -10.22              0.040
+4   NAS100  1.5     47          4.12     1.82         61.1      -56.98              0.088
+5   NAS100  2.0     20          1.15     0.67         26.0      -24.85              0.057
+6   NAS100  2.5      8          2.05     1.96         10.4       -8.35              0.256
+7   NAS100  3.0      4          1.26     1.71          5.2       -3.94              0.316
+8     DJ30  1.5     52          1.23     0.80         62.4      -61.17              0.024
+9     DJ30  2.0     15         -0.77    -0.79         18.0      -18.77             -0.051
+10    DJ30  2.5      3         -0.28    -0.58          3.6       -3.88             -0.095
+11    DJ30  3.0      1          0.59     1.77          1.2       -0.61              0.588
+12  EURUSD  1.5     90          5.73     5.38        198.0     -192.27              0.064
+13  EURUSD  2.0     46          5.05     7.03        101.2      -96.15              0.110
+14  EURUSD  2.5     25          3.38     6.30         55.0      -51.62              0.135
+15  EURUSD  3.0     13          2.48     5.99         28.6      -26.12              0.191
+      symbol           leg  trades  per_year  mean_R  cost_R  snr_trade_dB  snr_net_dB  gain_per_year_dB  t_full  t_net  trades_for_t3_net  years_for_t3_net
+0     DJ30.r       dip_clv     220      28.5   0.021   0.010         -26.6       -32.1              14.5    0.69   0.37            14690.0             516.1
+1     DJ30.r     dip_low20     101      13.1   0.066   0.008         -18.3       -19.4              11.2    1.23   1.08              783.0              59.9
+2     DJ30.r          hi20     375      48.5   0.020   0.010         -24.2       -30.3              16.9    1.20   0.59             9741.0             200.8
+3     DJ30.r           mon     399      51.6   0.043   0.006         -18.4       -19.8              17.1    2.41   2.05              855.0              16.6
+4     DJ30.r       prefomc      58       7.5   0.028   0.007         -18.9       -21.2               8.8    0.87   0.66             1187.0             158.1
+5     DJ30.r           tom      49       6.3  -0.047   0.005        -180.0         NaN               8.0   -1.97  -2.17                NaN               NaN
+6   NAS100.r       dip_clv     216      27.9  -0.009   0.007        -180.0         NaN              14.5   -0.31  -0.56                NaN               NaN
+7   NAS100.r     dip_low20      96      12.4   0.109   0.006         -14.2       -14.7              10.9    1.90   1.80              266.0              21.4
+8   NAS100.r          hi20     443      57.3   0.037   0.009         -18.2       -20.5              17.6    2.58   1.98             1017.0              17.7
+9   NAS100.r           mon     399      51.6   0.070   0.005         -14.5       -15.2              17.1    3.75   3.49              296.0               5.7
+10  NAS100.r       prefomc      59       7.6   0.065   0.005         -11.6       -12.3               8.8    2.02   1.86              154.0              20.1
+11  NAS100.r           tom      44       5.7  -0.009   0.004        -180.0         NaN               7.6   -0.42  -0.58                NaN               NaN
+12    XAUUSD         drift     404      52.3   0.055   0.020         -16.0       -20.1              17.2    3.17   2.00              913.0              17.5
+13    XAUUSD     fri_close     332      43.0   0.028   0.030         -15.3         NaN              16.3    3.14  -0.23                NaN               NaN
+14    XAUUSD        friday     368      47.6   0.037   0.007         -20.0       -21.9              16.8    1.92   1.55             1387.0              29.1
+15    XAUUSD        inside      87      11.3   0.275   0.015          -8.8        -9.3              10.5    3.37   3.19               77.0               6.8
+16    XAUUSD            lw    1129     146.1   0.029   0.011         -23.7       -27.8              21.6    2.20   1.37             5446.0              37.3
+17    XAUUSD           nr7      61       7.9  -0.020   0.017        -180.0         NaN               9.0   -0.25  -0.46                NaN               NaN
+18    XAUUSD        season     507      65.6   0.041   0.011         -21.5       -24.3              18.2    1.89   1.37             2445.0              37.3
+19    XAUUSD  strong_close     387      50.1   0.091   0.011         -14.7       -15.8              17.0    3.64   3.20              341.0               6.8
+20    XAUUSD          tday     335      43.3   0.043   0.011         -15.3       -17.9              16.4    3.14   2.33              558.0              12.9
+21    XAUUSD       tday900     206      26.7   0.048   0.011         -18.0       -20.3              14.3    1.80   1.39              961.0              36.0
+22    XAUUSD           tom      93      12.0   0.033   0.006         -18.2       -19.8              10.8    1.19   0.99              856.0              71.1
+23    XAUUSD       trendH4     262      33.9   0.056   0.015         -22.2       -24.9              15.3    1.25   0.92             2802.0              82.7
+24       ALL          book    6630     857.8   0.044   0.011         -19.6       -22.2              29.3    8.52   6.33             1491.0               1.7

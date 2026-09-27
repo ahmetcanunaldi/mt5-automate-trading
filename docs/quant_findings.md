@@ -58,3 +58,17 @@ Using only price, volume and history, **no directional model survives** walk-for
 1. volatility forecasts (HAR, rough vol) → vol-managed sizing on gold (SR 0.85 → 0.97, placebo p 0.00);
 2. optimal risk control for the prop objective → cushion-proportional sizing (failure 2.2 % → 0.03 %).
 Candidates for the one-shot lockbox test: (1) cushion rule, (2) gold vol-managed sizing.
+
+## GNSS / spread-spectrum view (QM-014)
+- The analogy holds for **detection**: correlating returns with a known time template (code phase = time of day,
+  Doppler = horizon) and integrating over ~1000 days finds structure a CFAR threshold accepts, and the whole-code
+  matched filter is significant out of sample on gold (t 3.0) and EURUSD (t 5–7).
+- It fails for **profit**: the buried component is 0.06–0.3 bp per 5-min "chip" vs 1.2–2.2 bp round-trip cost. In GNSS
+  every chip is free, so √N processing gain is pure; in trading, costs are a coherent negative signal that grows with N
+  as fast as the edge → only a per-trade net SNR > 0 can be integrated.
+- The phase is not stable: year-to-year correlation of the whole map ≈ 0, strongest single cells flip sign
+  (gold 10:25 London AM-fix window, DJ cash close) — like a code whose navigation bit flips every few months.
+- The strongest "code" (EURUSD around server midnight) is the quote process itself (rollover spread) — a spurious
+  correlation peak, removed only partially by mid-price correction.
+- The v2.2 book is already a spread-spectrum receiver: 18 weak legs at −22 dB net per-trade SNR, +29 dB/yr breadth
+  gain → t 6.3. More *independent* legs (breadth) is the only lever that behaves like processing gain.

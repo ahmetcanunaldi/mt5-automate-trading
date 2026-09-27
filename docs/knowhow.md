@@ -70,3 +70,11 @@
 - MT5 tester parity checked on the 9-leg EA (XauPortfolio.mq5): 3,111 vs 3,101 trades, equity DD 7.7 vs 7.9 %.
 - Gold structure learned: continuation/momentum weakly positive at every horizon ≥ 30 min, mean reversion negative;
   calendar effects (Asia-open drift, Friday, Friday close, turn-of-month, post-holiday) persist 2008–2026.
+
+## Current best (update 2026-09-27, EXP-069): "best13"
+- best10 legs (EXP-047 + tday 15:00) + strong-close continuation (clv > 0.6 → next-day long) + Asia drift only on
+  low-vol days + Jan/Jul/Aug season leg at half risk + trailing 1.5× stop on intraday legs.
+- 2019–26: +$138.7k on $100k (11.9 %/yr), SR 1.53, peak DD 8.6 %, worst day 2.1 %, every year positive,
+  0.69 R/week, P1+P2 within 250 d in 54 % of start dates, 0 % breaches.
+- Strong-close edge: persists 2008–2026 incl. the 2013–18 bear; realised mostly in Asian hours but holding to the
+  close is still better after costs. Weakness does NOT persist (no short counterpart).

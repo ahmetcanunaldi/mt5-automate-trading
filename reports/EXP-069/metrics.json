@@ -1,0 +1,148 @@
+{
+  "meta": {
+    "book": "best12 + season0.5 + trail1.5x intraday"
+  },
+  "results": {
+    "from_2019": {
+      "label": "best13 from 2019",
+      "from": "2019-01-02",
+      "to": "2026-09-25",
+      "trades": 4058,
+      "trades_per_week": 10.1,
+      "win_rate": 0.528,
+      "avg_R": 0.047,
+      "profit_factor": 1.404,
+      "net_pct": 138.7,
+      "cagr_pct": 11.92,
+      "sharpe": 1.531,
+      "sortino": 3.064,
+      "max_total_dd_pct": 8.57,
+      "max_daily_dd_pct": 2.14,
+      "worst_day_pct": -2.14,
+      "avg_hold_min": 683.0,
+      "exit_reasons": {
+        "NEWS": 2063,
+        "TIME": 1671,
+        "EOD": 169,
+        "SL": 155
+      },
+      "week_R_mean": 0.69,
+      "week_R_median": 0.04,
+      "weeks_ge_2R": 0.196,
+      "weeks_pos": 0.517,
+      "mc_dd50_pct": 4.66,
+      "mc_dd95_pct": 7.02,
+      "challenge": {
+        "starts": 1977,
+        "pass_rate": 0.54,
+        "fail_rate": 0.0,
+        "timeout_rate": 0.46,
+        "median_days_to_pass": 185.0
+      },
+      "gates": {
+        "sharpe": true,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": true,
+        "trades": true,
+        "weekly_2R": false,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    },
+    "from_2021": {
+      "label": "best13 from 2021",
+      "from": "2021-01-04",
+      "to": "2026-09-25",
+      "trades": 3004,
+      "trades_per_week": 10.1,
+      "win_rate": 0.546,
+      "avg_R": 0.051,
+      "profit_factor": 1.446,
+      "net_pct": 102.42,
+      "cagr_pct": 13.12,
+      "sharpe": 1.717,
+      "sortino": 3.195,
+      "max_total_dd_pct": 8.59,
+      "max_daily_dd_pct": 2.09,
+      "worst_day_pct": -2.09,
+      "avg_hold_min": 690.8,
+      "exit_reasons": {
+        "NEWS": 1490,
+        "TIME": 1264,
+        "EOD": 138,
+        "SL": 112
+      },
+      "week_R_mean": 0.69,
+      "week_R_median": 0.21,
+      "weeks_ge_2R": 0.177,
+      "weeks_pos": 0.548,
+      "mc_dd50_pct": 4.09,
+      "mc_dd95_pct": 6.03,
+      "challenge": {
+        "starts": 1460,
+        "pass_rate": 0.549,
+        "fail_rate": 0.0,
+        "timeout_rate": 0.451,
+        "median_days_to_pass": 165.0
+      },
+      "gates": {
+        "sharpe": true,
+        "daily_dd": true,
+        "total_dd": false,
+        "profit_factor": true,
+        "trades": true,
+        "weekly_2R": false,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    },
+    "from_2025": {
+      "label": "best13 from 2025",
+      "from": "2025-01-02",
+      "to": "2026-09-25",
+      "trades": 974,
+      "trades_per_week": 10.84,
+      "win_rate": 0.58,
+      "avg_R": 0.082,
+      "profit_factor": 1.63,
+      "net_pct": 42.89,
+      "cagr_pct": 22.95,
+      "sharpe": 2.567,
+      "sortino": 4.814,
+      "max_total_dd_pct": 5.04,
+      "max_daily_dd_pct": 2.01,
+      "worst_day_pct": -1.52,
+      "avg_hold_min": 724.6,
+      "exit_reasons": {
+        "NEWS": 505,
+        "TIME": 371,
+        "EOD": 55,
+        "SL": 43
+      },
+      "week_R_mean": 0.94,
+      "week_R_median": 0.51,
+      "weeks_ge_2R": 0.187,
+      "weeks_pos": 0.582,
+      "mc_dd50_pct": 2.75,
+      "mc_dd95_pct": 4.23,
+      "challenge": {
+        "starts": 428,
+        "pass_rate": 0.549,
+        "fail_rate": 0.0,
+        "timeout_rate": 0.451,
+        "median_days_to_pass": 98.0
+      },
+      "gates": {
+        "sharpe": true,
+        "daily_dd": true,
+        "total_dd": true,
+        "profit_factor": true,
+        "trades": true,
+        "weekly_2R": false,
+        "mc_dd95": true,
+        "ALL": false
+      }
+    }
+  }
+}

@@ -27,7 +27,7 @@ from numba import njit
 
 POINT = 0.01
 CONTRACT = 100.0  # oz per lot -> $1 move = $100 per lot
-MAXK = 8
+MAXK = 12
 
 
 @dataclass

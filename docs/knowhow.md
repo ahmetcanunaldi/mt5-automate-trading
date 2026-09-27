@@ -60,3 +60,13 @@
   "tick cache error 7".
 - 2026-09-27 01:37: the user's Python 3.11/3.12 installations were deleted by something outside this session
   (not by our commands). The research stack needs Python 3.11+ with pandas, numpy, numba, lightgbm, pyarrow, MetaTrader5.
+
+## Current best (2026-09-27): 10-leg portfolio = EXP-047 legs + tday900 (EXP-052/053)
+- Legs: H4 Donchian-180 long (trail 6 ATR), trend-day continuation 15:00 & 18:00, Asia-open drift (Tue–Fri),
+  Friday long, Friday-close drift, turn-of-month long, Larry-Williams breakout (k0.4 from 10:00), inside-day & NR7
+  breakouts with D1 trend. All 0.5 % risk, ≤ 6 positions, one direction, weekend flat, news rules, FP guards.
+- 2019–26: SR ≈ 1.2, ≈ 18 R/yr, peak DD ≈ 8 %, worst day 2.7 %, MC95 8.2 %, every year positive, 0 % breach,
+  P1+P2 pass ≤ 250 days ≈ 35–37 %, median ≈ 175 days. 2021–26: SR ≈ 1.56.
+- MT5 tester parity checked on the 9-leg EA (XauPortfolio.mq5): 3,111 vs 3,101 trades, equity DD 7.7 vs 7.9 %.
+- Gold structure learned: continuation/momentum weakly positive at every horizon ≥ 30 min, mean reversion negative;
+  calendar effects (Asia-open drift, Friday, Friday close, turn-of-month, post-holiday) persist 2008–2026.

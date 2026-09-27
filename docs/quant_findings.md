@@ -43,3 +43,18 @@ DEV data 2018-01..2024-12; **lockbox 2025-01..2026-09 untouched** until phase 7.
 - **Cushion-proportional sizing** (risk × (8 % − DD)/(8 % − 2 %), floor 0.1) keeps the upside and cuts the failure
   probability from 2.2 % to 0.03 % (challenge) and the 2-year funded loss probability from 5.6 % to 0.03 %, at
   ~5 extra days / −0.12 payouts per year. It never bound on the real 2019–24 path (no historical cost).
+
+## Round 2 (QM-010 … QM-013)
+- Realized skewness / kurtosis / signed jump variation carry no directional information; a naive pooled z of −5
+  on 5-day targets was fully reproduced by the placebo (overlapping targets + refitted slopes) → artefact.
+- Volatility surprises do not make intraday direction persistent.
+- Local memory is not persistent: consecutive-window VR / autocorrelation are uncorrelated → Hurst / VR regime
+  switching cannot work.
+- Diversified vol-scaled TSMOM (7 assets, 2015–24) SR ≤ 0.38 < long-only risk parity 0.78.
+
+## Bottom line after 13 model families
+Using only price, volume and history, **no directional model survives** walk-forward + placebo + drift benchmark
++ costs on XAU, XAG, NAS100, DJ30, SP500, GER40, EURUSD, USDJPY. What mathematics delivers:
+1. volatility forecasts (HAR, rough vol) → vol-managed sizing on gold (SR 0.85 → 0.97, placebo p 0.00);
+2. optimal risk control for the prop objective → cushion-proportional sizing (failure 2.2 % → 0.03 %).
+Candidates for the one-shot lockbox test: (1) cushion rule, (2) gold vol-managed sizing.

@@ -1,0 +1,27 @@
+leg,n,leg_avgR,bench_n,bench_avgR,excess_R,t_excess
+XAU strong_close,484,0.08,1944,0.029,0.051,2.04
+XAU season,512,0.037,1944,0.029,0.007,0.31
+XAU friday (bench: every day same rule),393,0.035,1946,0.019,0.016,0.82
+XAU drift (bench: Tue-Fri 01:15 w/o vol filter),439,0.047,1598,0.014,0.033,1.79
+XAU Asia 01:15 hold (bench: 10:00 same hold),1997,0.005,1997,0.001,0.004,0.26
+XAU trendH4 (bench: every day long),181,0.079,1944,0.029,0.049,0.86
+XAU lw long trades (bench: 0),719,0.019,0,0.0,0.019,1.19
+XAU lw short trades (bench: 0),564,0.014,0,0.0,0.014,0.7
+XAU tday long trades (bench: 0),286,0.05,0,0.0,0.05,3.16
+XAU tday short trades (bench: 0),82,-0.011,0,0.0,-0.011,-0.56
+XAU tday900 long trades (bench: 0),211,0.039,0,0.0,0.039,1.47
+XAU tday900 short trades (bench: 0),68,0.009,0,0.0,0.009,0.26
+XAU inside long trades (bench: 0),82,0.262,0,0.0,0.262,3.26
+XAU inside short trades (bench: 0),38,-0.084,0,0.0,-0.084,-0.81
+XAU nr7 long trades (bench: 0),94,0.144,0,0.0,0.144,1.87
+XAU nr7 short trades (bench: 0),33,0.145,0,0.0,0.145,0.85
+NAS100 mon,399,0.067,1946,0.02,0.047,2.37
+NAS100 dip_low20,125,0.119,1946,0.028,0.09,1.72
+NAS100 dip_clv,371,0.049,1946,0.028,0.021,0.72
+NAS100 hi20,550,0.048,1946,0.028,0.02,1.09
+NAS100 prefomc,61,0.065,1946,0.02,0.045,1.4
+DJ30 mon,399,0.038,1947,0.009,0.029,1.49
+DJ30 dip_low20,126,0.129,1947,0.015,0.114,2.14
+DJ30 dip_clv,365,0.061,1947,0.015,0.046,1.61
+DJ30 hi20,470,0.025,1947,0.015,0.01,0.56
+DJ30 prefomc,61,0.034,1947,0.009,0.025,0.78

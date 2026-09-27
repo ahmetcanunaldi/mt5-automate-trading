@@ -23,6 +23,7 @@ SPECS = {
     "NAS100": dict(point=0.01, contract=1.0, quote="USD", news=("usd",), vmin=0.1, vstep=0.1, file="NAS100"),
     "DJ30": dict(point=0.01, contract=1.0, quote="USD", news=("usd",), vmin=0.1, vstep=0.1, file="DJ30"),
     "GER40": dict(point=0.01, contract=1.0, quote="EUR", news=("usd", "eur"), vmin=0.1, vstep=0.1, file="GER40"),
+    "SP500": dict(point=0.01, contract=1.0, quote="USD", news=("usd",), vmin=0.1, vstep=0.1, file="SP500"),
 }
 NEWS_BEFORE, NEWS_AFTER, NEWS_FLATTEN, NEWS_EXEMPT_MIN = 10, 10, 10, 290
 COSTS = {
@@ -36,6 +37,8 @@ COSTS = {
                          swap_short=1.96, triple_dow=4),
     "GER40": engine.Costs(commission_per_lot=0.0, min_spread_pts=50.0, slippage_pts=50.0, swap_long=-4.30,
                           swap_short=0.37, triple_dow=4),
+    "SP500": engine.Costs(commission_per_lot=0.0, min_spread_pts=30.0, slippage_pts=25.0, swap_long=-1.57,
+                          swap_short=0.29, triple_dow=4),
 }
 CAL = {"usd": "calendar_usd_high.csv", "eur": "calendar_eur_high.csv", "jpy": "calendar_jpy_high.csv"}
 

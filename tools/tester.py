@@ -10,6 +10,14 @@ from deploy import MQL5_DIR  # noqa: E402
 PROFILES = MQL5_DIR / "Profiles" / "Tester"
 
 
+def no_visual(ini):
+    """tester_prepare_config writes Visual=1 (opens a chart window, slower); force a non-visual run."""
+    ini = pathlib.Path(ini)
+    t = ini.read_text(encoding="utf-16")
+    if "Visual=1" in t:
+        ini.write_text(t.replace("Visual=1", "Visual=0"), encoding="utf-16")
+
+
 def run(ex5_rel, name, symbol="XAUUSD", model="real ticks", timeframe="M1",
         from_date="2025-01-01", to_date="2026-09-26", deposit=10000, leverage=100,
         params=None, execution_delay=-1, wait_sec=3600, client=None, report_path=None):
@@ -20,6 +28,7 @@ def run(ex5_rel, name, symbol="XAUUSD", model="real ticks", timeframe="M1",
            from_date=from_date + "T00:00:00", to_date=to_date + "T00:00:00", deposit=deposit,
            deposit_currency="USD", leverage=leverage, execution_delay=execution_delay,
            optimization=False, output_path=ini)
+    no_visual(ini)
     kw = {}
     if params:
         setp = str(PROFILES / f"{name}.set")

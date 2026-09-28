@@ -102,3 +102,7 @@
 - Funded tail risk: after each payout the balance resets to $100k, so an 8 % drawdown right after a payout stops
   the account; watch this in every funded simulation (`account_breached`).
 - News rule v2: entries blocked ±10 min, flatten 10 min before; the FP 5-hour exemption adds exposure, not Sharpe.
+
+## Tester: visual mode (2026-09-28)
+`tester_prepare_config` (MCP) writes `Visual=1` into the .ini → a visual chart window opens and runs are slower.
+`tools/tester.py::no_visual(ini)` rewrites it to `Visual=0` (UTF-16 file); `tester.run` and `export_m1.py` call it.

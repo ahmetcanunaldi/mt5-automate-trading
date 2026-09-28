@@ -39,6 +39,13 @@ COSTS = {
     "XAGUSD": engine.Costs(min_spread_pts=15.0, slippage_pts=5.0, swap_long=-119.15, swap_short=10.70),
     "EURUSD": engine.Costs(min_spread_pts=5.0, slippage_pts=3.0, swap_long=-5.76, swap_short=2.50),
     "USDJPY": engine.Costs(min_spread_pts=5.0, slippage_pts=3.0, swap_long=4.30, swap_short=-13.68),
+    # other majors: same execution assumptions as EURUSD ($7/lot, 0.5 pip floor, 0.3 pip slippage/side); swaps ~0
+    # (DCC trades are closed intraday before the 00:00 rollover)
+    "GBPUSD": engine.Costs(min_spread_pts=5.0, slippage_pts=3.0, swap_long=0.0, swap_short=0.0),
+    "AUDUSD": engine.Costs(min_spread_pts=5.0, slippage_pts=3.0, swap_long=0.0, swap_short=0.0),
+    "NZDUSD": engine.Costs(min_spread_pts=5.0, slippage_pts=3.0, swap_long=0.0, swap_short=0.0),
+    "USDCHF": engine.Costs(min_spread_pts=5.0, slippage_pts=3.0, swap_long=0.0, swap_short=0.0),
+    "USDCAD": engine.Costs(min_spread_pts=5.0, slippage_pts=3.0, swap_long=0.0, swap_short=0.0),
     "NAS100": engine.Costs(commission_per_lot=0.0, min_spread_pts=50.0, slippage_pts=50.0, swap_long=-6.08,
                            swap_short=1.12, triple_dow=4),
     "DJ30": engine.Costs(commission_per_lot=0.0, min_spread_pts=100.0, slippage_pts=100.0, swap_long=-10.61,

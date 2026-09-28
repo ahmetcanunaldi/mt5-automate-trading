@@ -12,6 +12,7 @@ import pandas as pd  # noqa: E402
 
 from deploy import MQL5_DIR  # noqa: E402
 from mcp_client import MT5MCP  # noqa: E402
+from tester import no_visual  # noqa: E402
 
 COMMON = pathlib.Path(r"C:\Users\ahmet\AppData\Roaming\MetaQuotes\Terminal\Common\Files")
 DATA = pathlib.Path(__file__).resolve().parents[1] / "data"
@@ -25,6 +26,7 @@ if __name__ == "__main__":
         c.call("tester_prepare_config", mql5_program_path=ex5, symbol=sym, model="m1 ohlc", timeframe="M1",
                from_date=f"{start}T00:00:00", to_date="2026-09-26T00:00:00", deposit=10000,
                deposit_currency="USD", leverage=100, execution_delay=0, optimization=False, output_path=ini)
+        no_visual(ini)
         rid = c.call("tester_run_backtest", config_path=ini, wait=False)["run_id"]
         t0 = time.time()
         while True:

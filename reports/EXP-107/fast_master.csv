@@ -1,0 +1,6 @@
+risk/trade,trades,avg R,worst intraday day %,days with <= -5 %,hist P(pass both),hist P(fail),hist P(timeout 500d),hist median_days_to_Master,hist p90_days,hist expected_attempts,MC P(pass both),MC P(fail),MC P(timeout 500d),MC median_days_to_Master,MC p90_days,MC expected_attempts
+0.5 %,4967,0.034,-1.7,0,0.799,0.0,0.201,361,700,1.25,0.703,0.001,0.296,317,454,1.42
+1 %,6237,0.041,-3.5,0,0.91,0.036,0.054,127,365,1.1,0.941,0.057,0.003,118,245,1.06
+2 %,6584,0.041,-6.7,21,0.532,0.468,0.0,38,77,1.88,0.539,0.461,0.0,37,79,1.86
+3 %,6626,0.04,-9.3,98,0.317,0.683,0.0,18,38,3.16,0.284,0.716,0.0,17,35,3.52
+"3 %, max 2 open",4407,0.032,-5.0,29,0.404,0.596,0.0,33,60,2.48,0.447,0.553,0.0,33,68,2.24

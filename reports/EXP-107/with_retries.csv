@@ -1,0 +1,6 @@
+risk,P(pass 1st try),median total trading days to Master (incl. retries),p90 days,mean attempts,P(>=3 attempts)
+1 %,,123,273,1.06,0.004
+1.5 %,,74,175,1.35,0.071
+2 %,,56,139,1.85,0.212
+3 %,,38,101,3.39,0.504
+"3 %, max 2 open",,54,141,2.23,0.305

@@ -1,0 +1,23 @@
+{'risk/trade': '0.5 %', 'trades': 4967, 'avg R': np.float64(0.034), 'worst intraday day %': np.float64(-1.7), 'days with <= -5 %': 0, 'hist P(pass both)': np.float64(0.799), 'hist P(fail)': np.float64(0.0), 'hist P(timeout 500d)': np.float64(0.201), 'hist median_days_to_Master': 361, 'hist p90_days': 700, 'hist expected_attempts': np.float64(1.25), 'MC P(pass both)': np.float64(0.703), 'MC P(fail)': np.float64(0.001), 'MC P(timeout 500d)': np.float64(0.296), 'MC median_days_to_Master': 317, 'MC p90_days': 454, 'MC expected_attempts': np.float64(1.42)}
+{'risk/trade': '1 %', 'trades': 6237, 'avg R': np.float64(0.041), 'worst intraday day %': np.float64(-3.5), 'days with <= -5 %': 0, 'hist P(pass both)': np.float64(0.91), 'hist P(fail)': np.float64(0.036), 'hist P(timeout 500d)': np.float64(0.054), 'hist median_days_to_Master': 127, 'hist p90_days': 365, 'hist expected_attempts': np.float64(1.1), 'MC P(pass both)': np.float64(0.941), 'MC P(fail)': np.float64(0.057), 'MC P(timeout 500d)': np.float64(0.003), 'MC median_days_to_Master': 118, 'MC p90_days': 245, 'MC expected_attempts': np.float64(1.06)}
+{'risk/trade': '2 %', 'trades': 6584, 'avg R': np.float64(0.041), 'worst intraday day %': np.float64(-6.7), 'days with <= -5 %': 21, 'hist P(pass both)': np.float64(0.532), 'hist P(fail)': np.float64(0.468), 'hist P(timeout 500d)': np.float64(0.0), 'hist median_days_to_Master': 38, 'hist p90_days': 77, 'hist expected_attempts': np.float64(1.88), 'MC P(pass both)': np.float64(0.539), 'MC P(fail)': np.float64(0.461), 'MC P(timeout 500d)': np.float64(0.0), 'MC median_days_to_Master': 37, 'MC p90_days': 79, 'MC expected_attempts': np.float64(1.86)}
+{'risk/trade': '3 %', 'trades': 6626, 'avg R': np.float64(0.04), 'worst intraday day %': np.float64(-9.3), 'days with <= -5 %': 98, 'hist P(pass both)': np.float64(0.317), 'hist P(fail)': np.float64(0.683), 'hist P(timeout 500d)': np.float64(0.0), 'hist median_days_to_Master': 18, 'hist p90_days': 38, 'hist expected_attempts': np.float64(3.16), 'MC P(pass both)': np.float64(0.284), 'MC P(fail)': np.float64(0.716), 'MC P(timeout 500d)': np.float64(0.0), 'MC median_days_to_Master': 17, 'MC p90_days': 35, 'MC expected_attempts': np.float64(3.52)}
+{'risk/trade': '3 %, max 2 open', 'trades': 4407, 'avg R': np.float64(0.032), 'worst intraday day %': np.float64(-5.0), 'days with <= -5 %': 29, 'hist P(pass both)': np.float64(0.404), 'hist P(fail)': np.float64(0.596), 'hist P(timeout 500d)': np.float64(0.0), 'hist median_days_to_Master': 33, 'hist p90_days': 60, 'hist expected_attempts': np.float64(2.48), 'MC P(pass both)': np.float64(0.447), 'MC P(fail)': np.float64(0.553), 'MC P(timeout 500d)': np.float64(0.0), 'MC median_days_to_Master': 33, 'MC p90_days': 68, 'MC expected_attempts': np.float64(2.24)}
+                                0      1      2      3                4
+risk/trade                  0.5 %    1 %    2 %    3 %  3 %, max 2 open
+trades                       4967   6237   6584   6626             4407
+avg R                       0.034  0.041  0.041   0.04            0.032
+worst intraday day %         -1.7   -3.5   -6.7   -9.3             -5.0
+days with <= -5 %               0      0     21     98               29
+hist P(pass both)           0.799   0.91  0.532  0.317            0.404
+hist P(fail)                  0.0  0.036  0.468  0.683            0.596
+hist P(timeout 500d)        0.201  0.054    0.0    0.0              0.0
+hist median_days_to_Master    361    127     38     18               33
+hist p90_days                 700    365     77     38               60
+hist expected_attempts       1.25    1.1   1.88   3.16             2.48
+MC P(pass both)             0.703  0.941  0.539  0.284            0.447
+MC P(fail)                  0.001  0.057  0.461  0.716            0.553
+MC P(timeout 500d)          0.296  0.003    0.0    0.0              0.0
+MC median_days_to_Master      317    118     37     17               33
+MC p90_days                   454    245     79     35               68
+MC expected_attempts         1.42   1.06   1.86   3.52             2.24

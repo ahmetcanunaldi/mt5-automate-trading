@@ -106,3 +106,10 @@
 ## Tester: visual mode (2026-09-28)
 `tester_prepare_config` (MCP) writes `Visual=1` into the .ini → a visual chart window opens and runs are slower.
 `tools/tester.py::no_visual(ini)` rewrites it to `Visual=0` (UTF-16 file); `tester.run` and `export_m1.py` call it.
+
+## FX / metal cost model: standard vs raw spreads (2026-09-28, EXP-106b)
+The Vantage account the M1 data comes from shows **standard-account spreads** (EURUSD ≈ 1.2 pip, XAU ≈ $0.18) that
+already include the broker markup. Adding a $7/lot commission on top double-counts. For FundingPips-like raw
+accounts use raw spread (EURUSD ≈ 0.1–0.3 pip, GBP/JPY 0.3–0.4, CHF/CAD 0.5, NZD 0.6; XAU ≈ $0.10–0.15) + $5/lot +
+small slippage (≈ 0.6–1.2 pips round turn on FX). Earlier FX conclusions (FXR-001..003, QM-014, EXP-106) do not change
+(gross results ≈ 0 or negative), but v2.2's XAU results are conservative.

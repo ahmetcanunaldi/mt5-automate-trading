@@ -33,7 +33,7 @@
 //|  5 min before the symbol's trade session ends                    |
 //+------------------------------------------------------------------+
 #property copyright "mt5-automate-trading"
-#property version   "2.22"
+#property version   "2.23"
 
 #include <Trade\Trade.mqh>
 #include <XauScalper\NewsFilter.mqh>
@@ -388,6 +388,8 @@ bool Enter(int s, int dir, double sl_dist, int hold_min, double trail, double ri
    if(!ok || (g_trade.ResultRetcode() != TRADE_RETCODE_DONE && g_trade.ResultRetcode() != TRADE_RETCODE_PLACED))
      {
       PrintFormat("[Entry-fail] %s %s ret=%d", sym, leg, g_trade.ResultRetcode());
+      if(g_live && g_trade.ResultRetcode() == TRADE_RETCODE_CLIENT_DISABLES_AT)
+         Alert("XauIdxPortfolio: order rejected - Algo Trading is disabled (EA properties > Common > Allow Algo Trading, and the toolbar button)");
       return false;
      }
    SPos p;
@@ -680,6 +682,10 @@ int OnInit()
    g_live = !(bool)MQLInfoInteger(MQL_TESTER) && !(bool)MQLInfoInteger(MQL_OPTIMIZATION);
    if(g_live)
      {
+      if(!MQLInfoInteger(MQL_TRADE_ALLOWED))
+         Alert("XauIdxPortfolio: 'Allow Algo Trading' is OFF in this EA's properties (Common tab) - orders will be rejected (10027)");
+      if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED))
+         Alert("XauIdxPortfolio: the terminal's Algo Trading button is OFF - orders will be rejected (10027)");
       if(InpDemoOnly && AccountInfoInteger(ACCOUNT_TRADE_MODE) != ACCOUNT_TRADE_MODE_DEMO)
         { Print("[Init] InpDemoOnly: this is not a demo account - refusing to run"); return INIT_FAILED; }
       for(int s = 0; s < NSYM; s++)

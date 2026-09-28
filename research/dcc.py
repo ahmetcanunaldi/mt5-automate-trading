@@ -13,11 +13,12 @@ Rules (mechanical version):
               (presenter closes trades that drift into the night); weekend flat; news rule v2 (no entries +-10 min,
               flatten 10 min before) from our engine. The 2H support/resistance "confirmation" is discretionary and
               optional in the model -> not used.
-Test: XAUUSD + 7 FX majors, M1 execution 2019-01 .. 2026-09, costs (spread, slippage, $7/lot), fixed $500 risk.
+Test: XAUUSD + 7 FX majors, M1 execution 2019-01 .. 2026-09, raw-account costs (raw_costs), fixed $500 risk.
 Variants: ADX {off, >20} x k {0.9, 1.5, 2.0} x window {10-19, 01-22} = 12. Selection honesty: pick the best variant
 on 2019-2022 (pooled), report 2023-2026. Placebo / baseline: the same number of entries per day at random 5M bars of
 the same window in the direction of the 1H bias (tests whether Pull-Flip-Go timing adds anything to "trade with the
 H1 EMA bias"), 20 draws."""
+import dataclasses
 import itertools
 import pathlib
 import sys
@@ -112,9 +113,25 @@ def random_like(f, s, rng, win):
 
 
 def guards():
-    return engine.Guards(initial_balance=100_000, intraday=False, weekend_flat=True, last_entry_min=1390, flatten_min=1425,
-                         fri_flatten_min=1350, max_trades_day=2, max_positions=1, max_open_risk_pct=0.5,
-                         risk_on_initial=True, total_stop_pct=100.0, total_derisk_pct=100.0)
+    """fixed $500 risk on a practically unlimited balance: a losing symbol must not 'go bust' and stop being
+    simulated (with $100k the FX runs hit zero before 2026 and later years were silently missing - EXP-106c)."""
+    return engine.Guards(initial_balance=1e8, risk_pct=0.0005, intraday=False, weekend_flat=True, last_entry_min=1390,
+                         flatten_min=1425, fri_flatten_min=1350, max_trades_day=2, max_positions=1, max_open_risk_pct=1.0,
+                         daily_soft_pct=100.0, risk_on_initial=True, total_stop_pct=100.0, total_derisk_pct=100.0)
+
+
+RAW_PIPS = {"EURUSD": 0.2, "GBPUSD": 0.4, "USDJPY": 0.3, "USDCHF": 0.5, "AUDUSD": 0.3, "USDCAD": 0.5, "NZDUSD": 0.6}
+
+
+def raw_costs(sym):
+    """raw-account costs (EXP-106b): fixed raw spread, $5/lot round turn, 0.1 pip slippage per side; XAU $0.12 spread,
+    $0.03 slippage per side. The recorded Vantage spreads are standard-account spreads (markup included)."""
+    c, pt = symbols.COSTS[sym], symbols.SPECS[sym]["point"]
+    if sym == "XAUUSD":
+        return dataclasses.replace(c, spread_mult=0.0, min_spread_pts=12.0, slippage_pts=3.0, commission_per_lot=5.0)
+    pip = 0.01 if sym.endswith("JPY") else 0.0001
+    return dataclasses.replace(c, spread_mult=0.0, min_spread_pts=RAW_PIPS[sym] * pip / pt, slippage_pts=0.1 * pip / pt,
+                               commission_per_lot=5.0)
 
 
 def stats(t):
@@ -140,7 +157,7 @@ if __name__ == "__main__":
         ev = EV[sym] = pfg_events(f)
         for adx_min, k, win in VARIANTS:
             s = signals(f, ev, k, adx_min, win)
-            t = engine.run(x, s, guards(), symbols.COSTS[sym]).trades
+            t = engine.run(x, s, guards(), raw_costs(sym)).trades
             key = f"adx{int(adx_min)}_k{k}_w{win[0] // 60}-{win[1] // 60}"
             trades[(sym, key)] = t
             rows.append({"sym": sym, "variant": key, **stats(t)})
@@ -167,7 +184,7 @@ if __name__ == "__main__":
         rr_ = []
         for sym in SYMS:
             s = signals(F[sym], EV[sym], k, adx_min, win)
-            rr_.append(engine.run(X[sym], random_like(F[sym], s, rng, win), guards(), symbols.COSTS[sym]).trades.R)
+            rr_.append(engine.run(X[sym], random_like(F[sym], s, rng, win), guards(), raw_costs(sym)).trades.R)
         null.append(pd.concat(rr_).mean())
         print("draw", draw, round(null[-1], 4), flush=True)
     null = np.array(null)

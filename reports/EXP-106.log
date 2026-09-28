@@ -1,135 +1,135 @@
-{'sym': 'XAUUSD', 'variant': 'adx0_k0.9_w10-19', 'n': 2510, 'win': np.float64(0.422), 'avgR': np.float64(-0.029), 't': np.float64(-1.35), 'R_yr': np.float64(-9.4), 'yrs_pos': '4/8', 'R_19_22': np.float64(-62.3), 'R_23_26': np.float64(-10.1)}
-{'sym': 'XAUUSD', 'variant': 'adx0_k0.9_w1-22', 'n': 2953, 'win': np.float64(0.39), 'avgR': np.float64(-0.081), 't': np.float64(-3.89), 'R_yr': np.float64(-31.2), 'yrs_pos': '1/8', 'R_19_22': np.float64(-182.2), 'R_23_26': np.float64(-57.9)}
-{'sym': 'XAUUSD', 'variant': 'adx0_k1.5_w10-19', 'n': 2289, 'win': np.float64(0.45), 'avgR': np.float64(-0.012), 't': np.float64(-0.63), 'R_yr': np.float64(-3.5), 'yrs_pos': '5/8', 'R_19_22': np.float64(-54.7), 'R_23_26': np.float64(27.5)}
-{'sym': 'XAUUSD', 'variant': 'adx0_k1.5_w1-22', 'n': 3368, 'win': np.float64(0.435), 'avgR': np.float64(-0.025), 't': np.float64(-1.46), 'R_yr': np.float64(-10.8), 'yrs_pos': '3/8', 'R_19_22': np.float64(-103.4), 'R_23_26': np.float64(20.2)}
-{'sym': 'XAUUSD', 'variant': 'adx0_k2.0_w10-19', 'n': 2180, 'win': np.float64(0.463), 'avgR': np.float64(0.01), 't': np.float64(0.56), 'R_yr': np.float64(2.7), 'yrs_pos': '5/8', 'R_19_22': np.float64(-13.2), 'R_23_26': np.float64(33.9)}
-{'sym': 'XAUUSD', 'variant': 'adx0_k2.0_w1-22', 'n': 3263, 'win': np.float64(0.455), 'avgR': np.float64(-0.004), 't': np.float64(-0.28), 'R_yr': np.float64(-1.8), 'yrs_pos': '4/8', 'R_19_22': np.float64(-30.2), 'R_23_26': np.float64(16.6)}
-{'sym': 'XAUUSD', 'variant': 'adx20_k0.9_w10-19', 'n': 1672, 'win': np.float64(0.42), 'avgR': np.float64(-0.036), 't': np.float64(-1.37), 'R_yr': np.float64(-7.8), 'yrs_pos': '4/8', 'R_19_22': np.float64(-33.5), 'R_23_26': np.float64(-26.7)}
-{'sym': 'XAUUSD', 'variant': 'adx20_k0.9_w1-22', 'n': 2494, 'win': np.float64(0.397), 'avgR': np.float64(-0.071), 't': np.float64(-3.15), 'R_yr': np.float64(-22.9), 'yrs_pos': '2/8', 'R_19_22': np.float64(-134.6), 'R_23_26': np.float64(-41.8)}
-{'sym': 'XAUUSD', 'variant': 'adx20_k1.5_w10-19', 'n': 1523, 'win': np.float64(0.448), 'avgR': np.float64(-0.027), 't': np.float64(-1.17), 'R_yr': np.float64(-5.3), 'yrs_pos': '4/8', 'R_19_22': np.float64(-32.6), 'R_23_26': np.float64(-8.4)}
-{'sym': 'XAUUSD', 'variant': 'adx20_k1.5_w1-22', 'n': 2583, 'win': np.float64(0.434), 'avgR': np.float64(-0.032), 't': np.float64(-1.67), 'R_yr': np.float64(-10.6), 'yrs_pos': '2/8', 'R_19_22': np.float64(-61.0), 'R_23_26': np.float64(-20.9)}
-{'sym': 'XAUUSD', 'variant': 'adx20_k2.0_w10-19', 'n': 1465, 'win': np.float64(0.46), 'avgR': np.float64(-0.012), 't': np.float64(-0.61), 'R_yr': np.float64(-2.3), 'yrs_pos': '3/8', 'R_19_22': np.float64(-18.8), 'R_23_26': np.float64(0.8)}
-{'sym': 'XAUUSD', 'variant': 'adx20_k2.0_w1-22', 'n': 2465, 'win': np.float64(0.461), 'avgR': np.float64(-0.003), 't': np.float64(-0.16), 'R_yr': np.float64(-0.9), 'yrs_pos': '4/8', 'R_19_22': np.float64(-7.3), 'R_23_26': np.float64(0.5)}
-{'sym': 'EURUSD', 'variant': 'adx0_k0.9_w10-19', 'n': 1518, 'win': np.float64(0.335), 'avgR': np.float64(-0.259), 't': np.float64(-10.03), 'R_yr': np.float64(-51.0), 'yrs_pos': '0/7', 'R_19_22': np.float64(-331.5), 'R_23_26': np.float64(-61.3)}
-{'sym': 'EURUSD', 'variant': 'adx0_k0.9_w1-22', 'n': 1379, 'win': np.float64(0.323), 'avgR': np.float64(-0.264), 't': np.float64(-9.45), 'R_yr': np.float64(-47.3), 'yrs_pos': '0/7', 'R_19_22': np.float64(-338.1), 'R_23_26': np.float64(-26.3)}
-{'sym': 'EURUSD', 'variant': 'adx0_k1.5_w10-19', 'n': 2249, 'win': np.float64(0.395), 'avgR': np.float64(-0.142), 't': np.float64(-7.96), 'R_yr': np.float64(-41.6), 'yrs_pos': '0/8', 'R_19_22': np.float64(-203.4), 'R_23_26': np.float64(-116.9)}
-{'sym': 'EURUSD', 'variant': 'adx0_k1.5_w1-22', 'n': 2448, 'win': np.float64(0.381), 'avgR': np.float64(-0.145), 't': np.float64(-7.68), 'R_yr': np.float64(-46.1), 'yrs_pos': '0/8', 'R_19_22': np.float64(-209.7), 'R_23_26': np.float64(-145.0)}
-{'sym': 'EURUSD', 'variant': 'adx0_k2.0_w10-19', 'n': 2265, 'win': np.float64(0.411), 'avgR': np.float64(-0.102), 't': np.float64(-6.57), 'R_yr': np.float64(-29.9), 'yrs_pos': '1/8', 'R_19_22': np.float64(-141.1), 'R_23_26': np.float64(-89.3)}
-{'sym': 'EURUSD', 'variant': 'adx0_k2.0_w1-22', 'n': 3146, 'win': np.float64(0.411), 'avgR': np.float64(-0.099), 't': np.float64(-6.77), 'R_yr': np.float64(-40.4), 'yrs_pos': '1/8', 'R_19_22': np.float64(-146.9), 'R_23_26': np.float64(-164.2)}
-{'sym': 'EURUSD', 'variant': 'adx20_k0.9_w10-19', 'n': 1523, 'win': np.float64(0.355), 'avgR': np.float64(-0.218), 't': np.float64(-8.51), 'R_yr': np.float64(-43.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-215.6), 'R_23_26': np.float64(-116.8)}
-{'sym': 'EURUSD', 'variant': 'adx20_k0.9_w1-22', 'n': 1457, 'win': np.float64(0.33), 'avgR': np.float64(-0.253), 't': np.float64(-9.4), 'R_yr': np.float64(-48.0), 'yrs_pos': '1/7', 'R_19_22': np.float64(-301.3), 'R_23_26': np.float64(-67.9)}
-{'sym': 'EURUSD', 'variant': 'adx20_k1.5_w10-19', 'n': 1547, 'win': np.float64(0.399), 'avgR': np.float64(-0.145), 't': np.float64(-6.87), 'R_yr': np.float64(-29.1), 'yrs_pos': '0/8', 'R_19_22': np.float64(-132.9), 'R_23_26': np.float64(-90.9)}
-{'sym': 'EURUSD', 'variant': 'adx20_k1.5_w1-22', 'n': 2363, 'win': np.float64(0.391), 'avgR': np.float64(-0.137), 't': np.float64(-7.34), 'R_yr': np.float64(-42.1), 'yrs_pos': '0/8', 'R_19_22': np.float64(-160.2), 'R_23_26': np.float64(-163.7)}
-{'sym': 'EURUSD', 'variant': 'adx20_k2.0_w10-19', 'n': 1542, 'win': np.float64(0.414), 'avgR': np.float64(-0.103), 't': np.float64(-5.62), 'R_yr': np.float64(-20.6), 'yrs_pos': '0/8', 'R_19_22': np.float64(-85.9), 'R_23_26': np.float64(-72.9)}
-{'sym': 'EURUSD', 'variant': 'adx20_k2.0_w1-22', 'n': 2392, 'win': np.float64(0.409), 'avgR': np.float64(-0.101), 't': np.float64(-6.27), 'R_yr': np.float64(-31.4), 'yrs_pos': '0/8', 'R_19_22': np.float64(-111.7), 'R_23_26': np.float64(-129.9)}
-{'sym': 'GBPUSD', 'variant': 'adx0_k0.9_w10-19', 'n': 2315, 'win': np.float64(0.39), 'avgR': np.float64(-0.122), 't': np.float64(-5.56), 'R_yr': np.float64(-36.8), 'yrs_pos': '2/8', 'R_19_22': np.float64(-174.0), 'R_23_26': np.float64(-109.2)}
-{'sym': 'GBPUSD', 'variant': 'adx0_k0.9_w1-22', 'n': 2055, 'win': np.float64(0.36), 'avgR': np.float64(-0.169), 't': np.float64(-6.94), 'R_yr': np.float64(-45.2), 'yrs_pos': '1/6', 'R_19_22': np.float64(-229.0), 'R_23_26': np.float64(-119.2)}
-{'sym': 'GBPUSD', 'variant': 'adx0_k1.5_w10-19', 'n': 2265, 'win': np.float64(0.408), 'avgR': np.float64(-0.108), 't': np.float64(-5.61), 'R_yr': np.float64(-31.6), 'yrs_pos': '0/8', 'R_19_22': np.float64(-133.4), 'R_23_26': np.float64(-110.1)}
-{'sym': 'GBPUSD', 'variant': 'adx0_k1.5_w1-22', 'n': 2501, 'win': np.float64(0.381), 'avgR': np.float64(-0.136), 't': np.float64(-6.83), 'R_yr': np.float64(-44.3), 'yrs_pos': '0/8', 'R_19_22': np.float64(-172.2), 'R_23_26': np.float64(-168.8)}
-{'sym': 'GBPUSD', 'variant': 'adx0_k2.0_w10-19', 'n': 2254, 'win': np.float64(0.429), 'avgR': np.float64(-0.083), 't': np.float64(-4.99), 'R_yr': np.float64(-24.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-91.6), 'R_23_26': np.float64(-94.7)}
-{'sym': 'GBPUSD', 'variant': 'adx0_k2.0_w1-22', 'n': 3066, 'win': np.float64(0.412), 'avgR': np.float64(-0.093), 't': np.float64(-5.84), 'R_yr': np.float64(-37.2), 'yrs_pos': '1/8', 'R_19_22': np.float64(-126.0), 'R_23_26': np.float64(-160.4)}
-{'sym': 'GBPUSD', 'variant': 'adx20_k0.9_w10-19', 'n': 1525, 'win': np.float64(0.367), 'avgR': np.float64(-0.156), 't': np.float64(-5.87), 'R_yr': np.float64(-30.9), 'yrs_pos': '1/8', 'R_19_22': np.float64(-165.4), 'R_23_26': np.float64(-72.9)}
-{'sym': 'GBPUSD', 'variant': 'adx20_k0.9_w1-22', 'n': 1617, 'win': np.float64(0.34), 'avgR': np.float64(-0.21), 't': np.float64(-7.84), 'R_yr': np.float64(-44.0), 'yrs_pos': '0/7', 'R_19_22': np.float64(-236.2), 'R_23_26': np.float64(-102.9)}
-{'sym': 'GBPUSD', 'variant': 'adx20_k1.5_w10-19', 'n': 1489, 'win': np.float64(0.388), 'avgR': np.float64(-0.13), 't': np.float64(-5.59), 'R_yr': np.float64(-25.1), 'yrs_pos': '0/8', 'R_19_22': np.float64(-116.8), 'R_23_26': np.float64(-76.8)}
-{'sym': 'GBPUSD', 'variant': 'adx20_k1.5_w1-22', 'n': 2159, 'win': np.float64(0.369), 'avgR': np.float64(-0.156), 't': np.float64(-7.5), 'R_yr': np.float64(-43.8), 'yrs_pos': '0/8', 'R_19_22': np.float64(-169.6), 'R_23_26': np.float64(-167.6)}
-{'sym': 'GBPUSD', 'variant': 'adx20_k2.0_w10-19', 'n': 1452, 'win': np.float64(0.41), 'avgR': np.float64(-0.101), 't': np.float64(-5.03), 'R_yr': np.float64(-19.1), 'yrs_pos': '0/8', 'R_19_22': np.float64(-80.0), 'R_23_26': np.float64(-66.8)}
-{'sym': 'GBPUSD', 'variant': 'adx20_k2.0_w1-22', 'n': 2305, 'win': np.float64(0.399), 'avgR': np.float64(-0.11), 't': np.float64(-6.16), 'R_yr': np.float64(-32.8), 'yrs_pos': '0/8', 'R_19_22': np.float64(-130.2), 'R_23_26': np.float64(-122.2)}
-{'sym': 'USDJPY', 'variant': 'adx0_k0.9_w10-19', 'n': 1728, 'win': np.float64(0.356), 'avgR': np.float64(-0.209), 't': np.float64(-8.92), 'R_yr': np.float64(-46.9), 'yrs_pos': '0/8', 'R_19_22': np.float64(-281.8), 'R_23_26': np.float64(-79.4)}
-{'sym': 'USDJPY', 'variant': 'adx0_k0.9_w1-22', 'n': 1940, 'win': np.float64(0.361), 'avgR': np.float64(-0.18), 't': np.float64(-7.58), 'R_yr': np.float64(-45.4), 'yrs_pos': '0/7', 'R_19_22': np.float64(-281.7), 'R_23_26': np.float64(-68.1)}
-{'sym': 'USDJPY', 'variant': 'adx0_k1.5_w10-19', 'n': 2122, 'win': np.float64(0.407), 'avgR': np.float64(-0.098), 't': np.float64(-5.54), 'R_yr': np.float64(-26.9), 'yrs_pos': '1/8', 'R_19_22': np.float64(-159.8), 'R_23_26': np.float64(-47.6)}
-{'sym': 'USDJPY', 'variant': 'adx0_k1.5_w1-22', 'n': 2841, 'win': np.float64(0.392), 'avgR': np.float64(-0.113), 't': np.float64(-6.32), 'R_yr': np.float64(-41.8), 'yrs_pos': '0/8', 'R_19_22': np.float64(-205.6), 'R_23_26': np.float64(-116.1)}
-{'sym': 'USDJPY', 'variant': 'adx0_k2.0_w10-19', 'n': 2167, 'win': np.float64(0.423), 'avgR': np.float64(-0.067), 't': np.float64(-4.54), 'R_yr': np.float64(-18.7), 'yrs_pos': '3/8', 'R_19_22': np.float64(-120.4), 'R_23_26': np.float64(-23.9)}
-{'sym': 'USDJPY', 'variant': 'adx0_k2.0_w1-22', 'n': 3015, 'win': np.float64(0.403), 'avgR': np.float64(-0.083), 't': np.float64(-5.39), 'R_yr': np.float64(-32.5), 'yrs_pos': '1/8', 'R_19_22': np.float64(-170.1), 'R_23_26': np.float64(-80.1)}
-{'sym': 'USDJPY', 'variant': 'adx20_k0.9_w10-19', 'n': 1418, 'win': np.float64(0.373), 'avgR': np.float64(-0.171), 't': np.float64(-6.63), 'R_yr': np.float64(-31.4), 'yrs_pos': '1/8', 'R_19_22': np.float64(-177.3), 'R_23_26': np.float64(-64.8)}
-{'sym': 'USDJPY', 'variant': 'adx20_k0.9_w1-22', 'n': 2242, 'win': np.float64(0.383), 'avgR': np.float64(-0.131), 't': np.float64(-5.91), 'R_yr': np.float64(-38.1), 'yrs_pos': '0/8', 'R_19_22': np.float64(-207.8), 'R_23_26': np.float64(-85.3)}
-{'sym': 'USDJPY', 'variant': 'adx20_k1.5_w10-19', 'n': 1451, 'win': np.float64(0.414), 'avgR': np.float64(-0.087), 't': np.float64(-4.12), 'R_yr': np.float64(-16.3), 'yrs_pos': '1/8', 'R_19_22': np.float64(-94.4), 'R_23_26': np.float64(-31.4)}
-{'sym': 'USDJPY', 'variant': 'adx20_k1.5_w1-22', 'n': 2292, 'win': np.float64(0.395), 'avgR': np.float64(-0.114), 't': np.float64(-5.87), 'R_yr': np.float64(-33.8), 'yrs_pos': '0/8', 'R_19_22': np.float64(-167.9), 'R_23_26': np.float64(-92.5)}
-{'sym': 'USDJPY', 'variant': 'adx20_k2.0_w10-19', 'n': 1395, 'win': np.float64(0.428), 'avgR': np.float64(-0.055), 't': np.float64(-3.07), 'R_yr': np.float64(-10.0), 'yrs_pos': '2/8', 'R_19_22': np.float64(-66.2), 'R_23_26': np.float64(-10.6)}
-{'sym': 'USDJPY', 'variant': 'adx20_k2.0_w1-22', 'n': 2451, 'win': np.float64(0.409), 'avgR': np.float64(-0.073), 't': np.float64(-4.44), 'R_yr': np.float64(-23.2), 'yrs_pos': '1/8', 'R_19_22': np.float64(-125.2), 'R_23_26': np.float64(-53.5)}
-{'sym': 'USDCHF', 'variant': 'adx0_k0.9_w10-19', 'n': 1401, 'win': np.float64(0.321), 'avgR': np.float64(-0.272), 't': np.float64(-10.13), 'R_yr': np.float64(-49.4), 'yrs_pos': '0/6', 'R_19_22': np.float64(-323.9), 'R_23_26': np.float64(-56.5)}
-{'sym': 'USDCHF', 'variant': 'adx0_k0.9_w1-22', 'n': 1070, 'win': np.float64(0.308), 'avgR': np.float64(-0.306), 't': np.float64(-9.67), 'R_yr': np.float64(-42.5), 'yrs_pos': '0/5', 'R_19_22': np.float64(-323.4), 'R_23_26': np.float64(-4.0)}
-{'sym': 'USDCHF', 'variant': 'adx0_k1.5_w10-19', 'n': 2169, 'win': np.float64(0.382), 'avgR': np.float64(-0.164), 't': np.float64(-8.77), 'R_yr': np.float64(-46.3), 'yrs_pos': '0/8', 'R_19_22': np.float64(-210.7), 'R_23_26': np.float64(-146.0)}
-{'sym': 'USDCHF', 'variant': 'adx0_k1.5_w1-22', 'n': 2436, 'win': np.float64(0.387), 'avgR': np.float64(-0.137), 't': np.float64(-7.03), 'R_yr': np.float64(-43.2), 'yrs_pos': '1/8', 'R_19_22': np.float64(-257.3), 'R_23_26': np.float64(-75.7)}
-{'sym': 'USDCHF', 'variant': 'adx0_k2.0_w10-19', 'n': 2222, 'win': np.float64(0.397), 'avgR': np.float64(-0.13), 't': np.float64(-8.22), 'R_yr': np.float64(-37.6), 'yrs_pos': '0/8', 'R_19_22': np.float64(-173.5), 'R_23_26': np.float64(-116.3)}
-{'sym': 'USDCHF', 'variant': 'adx0_k2.0_w1-22', 'n': 2937, 'win': np.float64(0.414), 'avgR': np.float64(-0.099), 't': np.float64(-6.43), 'R_yr': np.float64(-37.8), 'yrs_pos': '0/8', 'R_19_22': np.float64(-177.2), 'R_23_26': np.float64(-114.1)}
-{'sym': 'USDCHF', 'variant': 'adx20_k0.9_w10-19', 'n': 1376, 'win': np.float64(0.33), 'avgR': np.float64(-0.258), 't': np.float64(-9.64), 'R_yr': np.float64(-46.1), 'yrs_pos': '0/8', 'R_19_22': np.float64(-185.3), 'R_23_26': np.float64(-169.5)}
-{'sym': 'USDCHF', 'variant': 'adx20_k0.9_w1-22', 'n': 1128, 'win': np.float64(0.301), 'avgR': np.float64(-0.319), 't': np.float64(-10.51), 'R_yr': np.float64(-46.7), 'yrs_pos': '0/6', 'R_19_22': np.float64(-334.6), 'R_23_26': np.float64(-25.3)}
-{'sym': 'USDCHF', 'variant': 'adx20_k1.5_w10-19', 'n': 1418, 'win': np.float64(0.379), 'avgR': np.float64(-0.165), 't': np.float64(-7.3), 'R_yr': np.float64(-30.4), 'yrs_pos': '0/8', 'R_19_22': np.float64(-127.4), 'R_23_26': np.float64(-106.3)}
-{'sym': 'USDCHF', 'variant': 'adx20_k1.5_w1-22', 'n': 2099, 'win': np.float64(0.374), 'avgR': np.float64(-0.166), 't': np.float64(-8.22), 'R_yr': np.float64(-45.3), 'yrs_pos': '0/8', 'R_19_22': np.float64(-189.0), 'R_23_26': np.float64(-159.6)}
-{'sym': 'USDCHF', 'variant': 'adx20_k2.0_w10-19', 'n': 1394, 'win': np.float64(0.397), 'avgR': np.float64(-0.126), 't': np.float64(-6.49), 'R_yr': np.float64(-22.9), 'yrs_pos': '0/8', 'R_19_22': np.float64(-93.7), 'R_23_26': np.float64(-82.7)}
-{'sym': 'USDCHF', 'variant': 'adx20_k2.0_w1-22', 'n': 2170, 'win': np.float64(0.411), 'avgR': np.float64(-0.108), 't': np.float64(-6.23), 'R_yr': np.float64(-30.4), 'yrs_pos': '0/8', 'R_19_22': np.float64(-129.3), 'R_23_26': np.float64(-104.4)}
-{'sym': 'AUDUSD', 'variant': 'adx0_k0.9_w10-19', 'n': 1548, 'win': np.float64(0.34), 'avgR': np.float64(-0.239), 't': np.float64(-9.7), 'R_yr': np.float64(-48.0), 'yrs_pos': '0/8', 'R_19_22': np.float64(-271.4), 'R_23_26': np.float64(-98.0)}
-{'sym': 'AUDUSD', 'variant': 'adx0_k0.9_w1-22', 'n': 1235, 'win': np.float64(0.318), 'avgR': np.float64(-0.281), 't': np.float64(-9.35), 'R_yr': np.float64(-45.0), 'yrs_pos': '0/8', 'R_19_22': np.float64(-328.9), 'R_23_26': np.float64(-17.7)}
-{'sym': 'AUDUSD', 'variant': 'adx0_k1.5_w10-19', 'n': 2186, 'win': np.float64(0.377), 'avgR': np.float64(-0.159), 't': np.float64(-9.56), 'R_yr': np.float64(-45.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-155.4), 'R_23_26': np.float64(-192.7)}
-{'sym': 'AUDUSD', 'variant': 'adx0_k1.5_w1-22', 'n': 1883, 'win': np.float64(0.36), 'avgR': np.float64(-0.186), 't': np.float64(-8.31), 'R_yr': np.float64(-45.6), 'yrs_pos': '0/8', 'R_19_22': np.float64(-290.7), 'R_23_26': np.float64(-60.3)}
-{'sym': 'AUDUSD', 'variant': 'adx0_k2.0_w10-19', 'n': 2176, 'win': np.float64(0.394), 'avgR': np.float64(-0.122), 't': np.float64(-8.64), 'R_yr': np.float64(-34.4), 'yrs_pos': '0/8', 'R_19_22': np.float64(-127.1), 'R_23_26': np.float64(-138.0)}
-{'sym': 'AUDUSD', 'variant': 'adx0_k2.0_w1-22', 'n': 2556, 'win': np.float64(0.395), 'avgR': np.float64(-0.133), 't': np.float64(-7.72), 'R_yr': np.float64(-44.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-223.8), 'R_23_26': np.float64(-116.5)}
-{'sym': 'AUDUSD', 'variant': 'adx20_k0.9_w10-19', 'n': 1360, 'win': np.float64(0.323), 'avgR': np.float64(-0.27), 't': np.float64(-10.44), 'R_yr': np.float64(-47.7), 'yrs_pos': '0/8', 'R_19_22': np.float64(-220.4), 'R_23_26': np.float64(-146.9)}
-{'sym': 'AUDUSD', 'variant': 'adx20_k0.9_w1-22', 'n': 1196, 'win': np.float64(0.311), 'avgR': np.float64(-0.297), 't': np.float64(-9.88), 'R_yr': np.float64(-46.1), 'yrs_pos': '0/8', 'R_19_22': np.float64(-332.1), 'R_23_26': np.float64(-22.8)}
-{'sym': 'AUDUSD', 'variant': 'adx20_k1.5_w10-19', 'n': 1440, 'win': np.float64(0.367), 'avgR': np.float64(-0.168), 't': np.float64(-8.27), 'R_yr': np.float64(-31.4), 'yrs_pos': '0/8', 'R_19_22': np.float64(-118.7), 'R_23_26': np.float64(-122.9)}
-{'sym': 'AUDUSD', 'variant': 'adx20_k1.5_w1-22', 'n': 1884, 'win': np.float64(0.36), 'avgR': np.float64(-0.18), 't': np.float64(-8.25), 'R_yr': np.float64(-44.0), 'yrs_pos': '0/8', 'R_19_22': np.float64(-249.3), 'R_23_26': np.float64(-89.2)}
-{'sym': 'AUDUSD', 'variant': 'adx20_k2.0_w10-19', 'n': 1422, 'win': np.float64(0.39), 'avgR': np.float64(-0.121), 't': np.float64(-7.06), 'R_yr': np.float64(-22.4), 'yrs_pos': '0/8', 'R_19_22': np.float64(-91.4), 'R_23_26': np.float64(-81.0)}
-{'sym': 'AUDUSD', 'variant': 'adx20_k2.0_w1-22', 'n': 2267, 'win': np.float64(0.391), 'avgR': np.float64(-0.134), 't': np.float64(-7.76), 'R_yr': np.float64(-39.6), 'yrs_pos': '0/8', 'R_19_22': np.float64(-178.3), 'R_23_26': np.float64(-126.3)}
-{'sym': 'USDCAD', 'variant': 'adx0_k0.9_w10-19', 'n': 1139, 'win': np.float64(0.304), 'avgR': np.float64(-0.322), 't': np.float64(-11.07), 'R_yr': np.float64(-47.7), 'yrs_pos': '1/8', 'R_19_22': np.float64(-335.1), 'R_23_26': np.float64(-32.0)}
-{'sym': 'USDCAD', 'variant': 'adx0_k0.9_w1-22', 'n': 1207, 'win': np.float64(0.315), 'avgR': np.float64(-0.284), 't': np.float64(-9.5), 'R_yr': np.float64(-44.5), 'yrs_pos': '1/8', 'R_19_22': np.float64(-323.1), 'R_23_26': np.float64(-19.8)}
-{'sym': 'USDCAD', 'variant': 'adx0_k1.5_w10-19', 'n': 2166, 'win': np.float64(0.375), 'avgR': np.float64(-0.165), 't': np.float64(-8.74), 'R_yr': np.float64(-46.4), 'yrs_pos': '0/8', 'R_19_22': np.float64(-211.7), 'R_23_26': np.float64(-145.7)}
-{'sym': 'USDCAD', 'variant': 'adx0_k1.5_w1-22', 'n': 2073, 'win': np.float64(0.367), 'avgR': np.float64(-0.181), 't': np.float64(-8.67), 'R_yr': np.float64(-48.6), 'yrs_pos': '0/8', 'R_19_22': np.float64(-280.2), 'R_23_26': np.float64(-94.3)}
-{'sym': 'USDCAD', 'variant': 'adx0_k2.0_w10-19', 'n': 2223, 'win': np.float64(0.397), 'avgR': np.float64(-0.11), 't': np.float64(-6.71), 'R_yr': np.float64(-31.7), 'yrs_pos': '0/8', 'R_19_22': np.float64(-116.8), 'R_23_26': np.float64(-127.1)}
-{'sym': 'USDCAD', 'variant': 'adx0_k2.0_w1-22', 'n': 2887, 'win': np.float64(0.405), 'avgR': np.float64(-0.113), 't': np.float64(-7.23), 'R_yr': np.float64(-42.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-212.2), 'R_23_26': np.float64(-112.9)}
-{'sym': 'USDCAD', 'variant': 'adx20_k0.9_w10-19', 'n': 1362, 'win': np.float64(0.321), 'avgR': np.float64(-0.272), 't': np.float64(-10.13), 'R_yr': np.float64(-48.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-233.2), 'R_23_26': np.float64(-137.6)}
-{'sym': 'USDCAD', 'variant': 'adx20_k0.9_w1-22', 'n': 1421, 'win': np.float64(0.326), 'avgR': np.float64(-0.26), 't': np.float64(-9.45), 'R_yr': np.float64(-48.0), 'yrs_pos': '0/8', 'R_19_22': np.float64(-296.6), 'R_23_26': np.float64(-73.1)}
-{'sym': 'USDCAD', 'variant': 'adx20_k1.5_w10-19', 'n': 1389, 'win': np.float64(0.368), 'avgR': np.float64(-0.171), 't': np.float64(-7.38), 'R_yr': np.float64(-30.9), 'yrs_pos': '0/8', 'R_19_22': np.float64(-157.7), 'R_23_26': np.float64(-80.4)}
-{'sym': 'USDCAD', 'variant': 'adx20_k1.5_w1-22', 'n': 2124, 'win': np.float64(0.378), 'avgR': np.float64(-0.155), 't': np.float64(-7.63), 'R_yr': np.float64(-42.7), 'yrs_pos': '0/8', 'R_19_22': np.float64(-202.1), 'R_23_26': np.float64(-126.4)}
-{'sym': 'USDCAD', 'variant': 'adx20_k2.0_w10-19', 'n': 1388, 'win': np.float64(0.386), 'avgR': np.float64(-0.129), 't': np.float64(-6.33), 'R_yr': np.float64(-23.3), 'yrs_pos': '0/8', 'R_19_22': np.float64(-95.3), 'R_23_26': np.float64(-83.7)}
-{'sym': 'USDCAD', 'variant': 'adx20_k2.0_w1-22', 'n': 2164, 'win': np.float64(0.395), 'avgR': np.float64(-0.118), 't': np.float64(-6.75), 'R_yr': np.float64(-33.3), 'yrs_pos': '0/8', 'R_19_22': np.float64(-157.6), 'R_23_26': np.float64(-98.8)}
-{'sym': 'NZDUSD', 'variant': 'adx0_k0.9_w10-19', 'n': 1976, 'win': np.float64(0.377), 'avgR': np.float64(-0.19), 't': np.float64(-8.61), 'R_yr': np.float64(-48.6), 'yrs_pos': '0/8', 'R_19_22': np.float64(-209.8), 'R_23_26': np.float64(-164.6)}
-{'sym': 'NZDUSD', 'variant': 'adx0_k0.9_w1-22', 'n': 1380, 'win': np.float64(0.339), 'avgR': np.float64(-0.247), 't': np.float64(-8.54), 'R_yr': np.float64(-44.3), 'yrs_pos': '0/6', 'R_19_22': np.float64(-326.5), 'R_23_26': np.float64(-14.3)}
-{'sym': 'NZDUSD', 'variant': 'adx0_k1.5_w10-19', 'n': 2204, 'win': np.float64(0.417), 'avgR': np.float64(-0.12), 't': np.float64(-6.97), 'R_yr': np.float64(-34.3), 'yrs_pos': '0/8', 'R_19_22': np.float64(-125.7), 'R_23_26': np.float64(-138.1)}
-{'sym': 'NZDUSD', 'variant': 'adx0_k1.5_w1-22', 'n': 2590, 'win': np.float64(0.393), 'avgR': np.float64(-0.13), 't': np.float64(-6.75), 'R_yr': np.float64(-43.8), 'yrs_pos': '0/8', 'R_19_22': np.float64(-211.6), 'R_23_26': np.float64(-125.5)}
-{'sym': 'NZDUSD', 'variant': 'adx0_k2.0_w10-19', 'n': 2182, 'win': np.float64(0.429), 'avgR': np.float64(-0.087), 't': np.float64(-5.98), 'R_yr': np.float64(-24.6), 'yrs_pos': '0/8', 'R_19_22': np.float64(-85.5), 'R_23_26': np.float64(-104.0)}
-{'sym': 'NZDUSD', 'variant': 'adx0_k2.0_w1-22', 'n': 3046, 'win': np.float64(0.418), 'avgR': np.float64(-0.084), 't': np.float64(-5.39), 'R_yr': np.float64(-33.1), 'yrs_pos': '0/8', 'R_19_22': np.float64(-156.2), 'R_23_26': np.float64(-98.6)}
-{'sym': 'NZDUSD', 'variant': 'adx20_k0.9_w10-19', 'n': 1478, 'win': np.float64(0.377), 'avgR': np.float64(-0.188), 't': np.float64(-7.41), 'R_yr': np.float64(-36.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-146.0), 'R_23_26': np.float64(-132.4)}
-{'sym': 'NZDUSD', 'variant': 'adx20_k0.9_w1-22', 'n': 1524, 'win': np.float64(0.348), 'avgR': np.float64(-0.225), 't': np.float64(-8.31), 'R_yr': np.float64(-44.6), 'yrs_pos': '0/7', 'R_19_22': np.float64(-269.5), 'R_23_26': np.float64(-73.6)}
-{'sym': 'NZDUSD', 'variant': 'adx20_k1.5_w10-19', 'n': 1443, 'win': np.float64(0.419), 'avgR': np.float64(-0.12), 't': np.float64(-5.69), 'R_yr': np.float64(-22.6), 'yrs_pos': '1/8', 'R_19_22': np.float64(-82.3), 'R_23_26': np.float64(-91.5)}
-{'sym': 'NZDUSD', 'variant': 'adx20_k1.5_w1-22', 'n': 2309, 'win': np.float64(0.406), 'avgR': np.float64(-0.106), 't': np.float64(-5.33), 'R_yr': np.float64(-31.9), 'yrs_pos': '0/8', 'R_19_22': np.float64(-161.0), 'R_23_26': np.float64(-84.4)}
-{'sym': 'NZDUSD', 'variant': 'adx20_k2.0_w10-19', 'n': 1412, 'win': np.float64(0.428), 'avgR': np.float64(-0.094), 't': np.float64(-5.28), 'R_yr': np.float64(-17.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-62.0), 'R_23_26': np.float64(-70.3)}
-{'sym': 'NZDUSD', 'variant': 'adx20_k2.0_w1-22', 'n': 2310, 'win': np.float64(0.423), 'avgR': np.float64(-0.085), 't': np.float64(-4.92), 'R_yr': np.float64(-25.4), 'yrs_pos': '0/8', 'R_19_22': np.float64(-121.2), 'R_23_26': np.float64(-74.7)}
+{'sym': 'XAUUSD', 'variant': 'adx0_k0.9_w10-19', 'n': 2507, 'win': np.float64(0.426), 'avgR': np.float64(-0.016), 't': np.float64(-0.74), 'R_yr': np.float64(-5.2), 'yrs_pos': '5/8', 'R_19_22': np.float64(-42.4), 'R_23_26': np.float64(2.2)}
+{'sym': 'XAUUSD', 'variant': 'adx0_k0.9_w1-22', 'n': 3687, 'win': np.float64(0.401), 'avgR': np.float64(-0.051), 't': np.float64(-2.73), 'R_yr': np.float64(-24.5), 'yrs_pos': '1/8', 'R_19_22': np.float64(-162.0), 'R_23_26': np.float64(-26.5)}
+{'sym': 'XAUUSD', 'variant': 'adx0_k1.5_w10-19', 'n': 2286, 'win': np.float64(0.454), 'avgR': np.float64(-0.003), 't': np.float64(-0.15), 'R_yr': np.float64(-0.9), 'yrs_pos': '5/8', 'R_19_22': np.float64(-43.7), 'R_23_26': np.float64(37.1)}
+{'sym': 'XAUUSD', 'variant': 'adx0_k1.5_w1-22', 'n': 3452, 'win': np.float64(0.438), 'avgR': np.float64(-0.019), 't': np.float64(-1.11), 'R_yr': np.float64(-8.3), 'yrs_pos': '3/8', 'R_19_22': np.float64(-88.2), 'R_23_26': np.float64(24.0)}
+{'sym': 'XAUUSD', 'variant': 'adx0_k2.0_w10-19', 'n': 2180, 'win': np.float64(0.467), 'avgR': np.float64(0.015), 't': np.float64(0.87), 'R_yr': np.float64(4.2), 'yrs_pos': '5/8', 'R_19_22': np.float64(-4.9), 'R_23_26': np.float64(37.0)}
+{'sym': 'XAUUSD', 'variant': 'adx0_k2.0_w1-22', 'n': 3264, 'win': np.float64(0.458), 'avgR': np.float64(0.001), 't': np.float64(0.08), 'R_yr': np.float64(0.5), 'yrs_pos': '4/8', 'R_19_22': np.float64(-17.8), 'R_23_26': np.float64(22.0)}
+{'sym': 'XAUUSD', 'variant': 'adx20_k0.9_w10-19', 'n': 1669, 'win': np.float64(0.424), 'avgR': np.float64(-0.023), 't': np.float64(-0.88), 'R_yr': np.float64(-5.0), 'yrs_pos': '4/8', 'R_19_22': np.float64(-21.6), 'R_23_26': np.float64(-17.2)}
+{'sym': 'XAUUSD', 'variant': 'adx20_k0.9_w1-22', 'n': 2783, 'win': np.float64(0.401), 'avgR': np.float64(-0.056), 't': np.float64(-2.63), 'R_yr': np.float64(-20.2), 'yrs_pos': '1/8', 'R_19_22': np.float64(-115.8), 'R_23_26': np.float64(-39.8)}
+{'sym': 'XAUUSD', 'variant': 'adx20_k1.5_w10-19', 'n': 1522, 'win': np.float64(0.452), 'avgR': np.float64(-0.018), 't': np.float64(-0.79), 'R_yr': np.float64(-3.6), 'yrs_pos': '4/8', 'R_19_22': np.float64(-25.5), 'R_23_26': np.float64(-2.3)}
+{'sym': 'XAUUSD', 'variant': 'adx20_k1.5_w1-22', 'n': 2582, 'win': np.float64(0.436), 'avgR': np.float64(-0.026), 't': np.float64(-1.35), 'R_yr': np.float64(-8.6), 'yrs_pos': '3/8', 'R_19_22': np.float64(-51.3), 'R_23_26': np.float64(-14.7)}
+{'sym': 'XAUUSD', 'variant': 'adx20_k2.0_w10-19', 'n': 1466, 'win': np.float64(0.464), 'avgR': np.float64(-0.006), 't': np.float64(-0.28), 'R_yr': np.float64(-1.1), 'yrs_pos': '6/8', 'R_19_22': np.float64(-11.1), 'R_23_26': np.float64(2.8)}
+{'sym': 'XAUUSD', 'variant': 'adx20_k2.0_w1-22', 'n': 2465, 'win': np.float64(0.464), 'avgR': np.float64(0.004), 't': np.float64(0.21), 'R_yr': np.float64(1.1), 'yrs_pos': '4/8', 'R_19_22': np.float64(3.4), 'R_23_26': np.float64(5.3)}
+{'sym': 'EURUSD', 'variant': 'adx0_k0.9_w10-19', 'n': 2654, 'win': np.float64(0.362), 'avgR': np.float64(-0.182), 't': np.float64(-9.3), 'R_yr': np.float64(-62.9), 'yrs_pos': '0/8', 'R_19_22': np.float64(-298.4), 'R_23_26': np.float64(-185.9)}
+{'sym': 'EURUSD', 'variant': 'adx0_k0.9_w1-22', 'n': 3774, 'win': np.float64(0.345), 'avgR': np.float64(-0.195), 't': np.float64(-11.35), 'R_yr': np.float64(-95.7), 'yrs_pos': '0/8', 'R_19_22': np.float64(-379.3), 'R_23_26': np.float64(-357.9)}
+{'sym': 'EURUSD', 'variant': 'adx0_k1.5_w10-19', 'n': 2440, 'win': np.float64(0.403), 'avgR': np.float64(-0.118), 't': np.float64(-6.83), 'R_yr': np.float64(-37.4), 'yrs_pos': '1/8', 'R_19_22': np.float64(-172.7), 'R_23_26': np.float64(-115.0)}
+{'sym': 'EURUSD', 'variant': 'adx0_k1.5_w1-22', 'n': 3592, 'win': np.float64(0.393), 'avgR': np.float64(-0.117), 't': np.float64(-7.56), 'R_yr': np.float64(-54.5), 'yrs_pos': '0/8', 'R_19_22': np.float64(-182.7), 'R_23_26': np.float64(-237.2)}
+{'sym': 'EURUSD', 'variant': 'adx0_k2.0_w10-19', 'n': 2334, 'win': np.float64(0.418), 'avgR': np.float64(-0.086), 't': np.float64(-5.62), 'R_yr': np.float64(-26.2), 'yrs_pos': '1/8', 'R_19_22': np.float64(-118.0), 'R_23_26': np.float64(-83.5)}
+{'sym': 'EURUSD', 'variant': 'adx0_k2.0_w1-22', 'n': 3450, 'win': np.float64(0.417), 'avgR': np.float64(-0.079), 't': np.float64(-5.67), 'R_yr': np.float64(-35.3), 'yrs_pos': '1/8', 'R_19_22': np.float64(-110.1), 'R_23_26': np.float64(-161.4)}
+{'sym': 'EURUSD', 'variant': 'adx20_k0.9_w10-19', 'n': 1753, 'win': np.float64(0.362), 'avgR': np.float64(-0.188), 't': np.float64(-7.79), 'R_yr': np.float64(-42.7), 'yrs_pos': '0/8', 'R_19_22': np.float64(-184.6), 'R_23_26': np.float64(-144.4)}
+{'sym': 'EURUSD', 'variant': 'adx20_k0.9_w1-22', 'n': 2800, 'win': np.float64(0.351), 'avgR': np.float64(-0.185), 't': np.float64(-9.42), 'R_yr': np.float64(-67.4), 'yrs_pos': '0/8', 'R_19_22': np.float64(-275.6), 'R_23_26': np.float64(-243.3)}
+{'sym': 'EURUSD', 'variant': 'adx20_k1.5_w10-19', 'n': 1611, 'win': np.float64(0.404), 'avgR': np.float64(-0.124), 't': np.float64(-5.95), 'R_yr': np.float64(-26.0), 'yrs_pos': '0/8', 'R_19_22': np.float64(-112.9), 'R_23_26': np.float64(-87.2)}
+{'sym': 'EURUSD', 'variant': 'adx20_k1.5_w1-22', 'n': 2629, 'win': np.float64(0.392), 'avgR': np.float64(-0.12), 't': np.float64(-6.82), 'R_yr': np.float64(-40.9), 'yrs_pos': '0/8', 'R_19_22': np.float64(-130.4), 'R_23_26': np.float64(-184.4)}
+{'sym': 'EURUSD', 'variant': 'adx20_k2.0_w10-19', 'n': 1544, 'win': np.float64(0.422), 'avgR': np.float64(-0.086), 't': np.float64(-4.68), 'R_yr': np.float64(-17.3), 'yrs_pos': '0/8', 'R_19_22': np.float64(-70.8), 'R_23_26': np.float64(-62.2)}
+{'sym': 'EURUSD', 'variant': 'adx20_k2.0_w1-22', 'n': 2535, 'win': np.float64(0.413), 'avgR': np.float64(-0.085), 't': np.float64(-5.44), 'R_yr': np.float64(-27.9), 'yrs_pos': '0/8', 'R_19_22': np.float64(-86.5), 'R_23_26': np.float64(-128.1)}
+{'sym': 'GBPUSD', 'variant': 'adx0_k0.9_w10-19', 'n': 2646, 'win': np.float64(0.392), 'avgR': np.float64(-0.099), 't': np.float64(-4.81), 'R_yr': np.float64(-34.1), 'yrs_pos': '1/8', 'R_19_22': np.float64(-155.6), 'R_23_26': np.float64(-106.8)}
+{'sym': 'GBPUSD', 'variant': 'adx0_k0.9_w1-22', 'n': 3771, 'win': np.float64(0.364), 'avgR': np.float64(-0.147), 't': np.float64(-8.19), 'R_yr': np.float64(-72.1), 'yrs_pos': '1/8', 'R_19_22': np.float64(-228.2), 'R_23_26': np.float64(-327.0)}
+{'sym': 'GBPUSD', 'variant': 'adx0_k1.5_w10-19', 'n': 2416, 'win': np.float64(0.412), 'avgR': np.float64(-0.089), 't': np.float64(-4.77), 'R_yr': np.float64(-27.8), 'yrs_pos': '1/8', 'R_19_22': np.float64(-109.1), 'R_23_26': np.float64(-104.8)}
+{'sym': 'GBPUSD', 'variant': 'adx0_k1.5_w1-22', 'n': 3556, 'win': np.float64(0.395), 'avgR': np.float64(-0.109), 't': np.float64(-6.58), 'R_yr': np.float64(-50.3), 'yrs_pos': '1/8', 'R_19_22': np.float64(-144.7), 'R_23_26': np.float64(-242.8)}
+{'sym': 'GBPUSD', 'variant': 'adx0_k2.0_w10-19', 'n': 2277, 'win': np.float64(0.436), 'avgR': np.float64(-0.069), 't': np.float64(-4.2), 'R_yr': np.float64(-20.5), 'yrs_pos': '0/8', 'R_19_22': np.float64(-79.2), 'R_23_26': np.float64(-79.0)}
+{'sym': 'GBPUSD', 'variant': 'adx0_k2.0_w1-22', 'n': 3377, 'win': np.float64(0.418), 'avgR': np.float64(-0.079), 't': np.float64(-5.28), 'R_yr': np.float64(-34.8), 'yrs_pos': '1/8', 'R_19_22': np.float64(-104.4), 'R_23_26': np.float64(-163.8)}
+{'sym': 'GBPUSD', 'variant': 'adx20_k0.9_w10-19', 'n': 1697, 'win': np.float64(0.377), 'avgR': np.float64(-0.122), 't': np.float64(-4.77), 'R_yr': np.float64(-26.9), 'yrs_pos': '0/8', 'R_19_22': np.float64(-154.8), 'R_23_26': np.float64(-52.1)}
+{'sym': 'GBPUSD', 'variant': 'adx20_k0.9_w1-22', 'n': 2766, 'win': np.float64(0.354), 'avgR': np.float64(-0.171), 't': np.float64(-8.36), 'R_yr': np.float64(-61.5), 'yrs_pos': '0/8', 'R_19_22': np.float64(-236.3), 'R_23_26': np.float64(-237.2)}
+{'sym': 'GBPUSD', 'variant': 'adx20_k1.5_w10-19', 'n': 1541, 'win': np.float64(0.397), 'avgR': np.float64(-0.105), 't': np.float64(-4.59), 'R_yr': np.float64(-21.1), 'yrs_pos': '0/8', 'R_19_22': np.float64(-100.5), 'R_23_26': np.float64(-61.9)}
+{'sym': 'GBPUSD', 'variant': 'adx20_k1.5_w1-22', 'n': 2590, 'win': np.float64(0.382), 'avgR': np.float64(-0.132), 't': np.float64(-7.02), 'R_yr': np.float64(-44.4), 'yrs_pos': '0/8', 'R_19_22': np.float64(-154.8), 'R_23_26': np.float64(-186.9)}
+{'sym': 'GBPUSD', 'variant': 'adx20_k2.0_w10-19', 'n': 1451, 'win': np.float64(0.418), 'avgR': np.float64(-0.088), 't': np.float64(-4.38), 'R_yr': np.float64(-16.6), 'yrs_pos': '0/8', 'R_19_22': np.float64(-71.7), 'R_23_26': np.float64(-56.3)}
+{'sym': 'GBPUSD', 'variant': 'adx20_k2.0_w1-22', 'n': 2461, 'win': np.float64(0.408), 'avgR': np.float64(-0.094), 't': np.float64(-5.53), 'R_yr': np.float64(-30.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-116.2), 'R_23_26': np.float64(-116.3)}
+{'sym': 'USDJPY', 'variant': 'adx0_k0.9_w10-19', 'n': 2494, 'win': np.float64(0.378), 'avgR': np.float64(-0.142), 't': np.float64(-7.18), 'R_yr': np.float64(-45.9), 'yrs_pos': '0/8', 'R_19_22': np.float64(-247.2), 'R_23_26': np.float64(-106.5)}
+{'sym': 'USDJPY', 'variant': 'adx0_k0.9_w1-22', 'n': 3769, 'win': np.float64(0.373), 'avgR': np.float64(-0.13), 't': np.float64(-7.48), 'R_yr': np.float64(-63.5), 'yrs_pos': '0/8', 'R_19_22': np.float64(-292.1), 'R_23_26': np.float64(-196.7)}
+{'sym': 'USDJPY', 'variant': 'adx0_k1.5_w10-19', 'n': 2252, 'win': np.float64(0.419), 'avgR': np.float64(-0.07), 't': np.float64(-4.11), 'R_yr': np.float64(-20.6), 'yrs_pos': '2/8', 'R_19_22': np.float64(-128.6), 'R_23_26': np.float64(-30.2)}
+{'sym': 'USDJPY', 'variant': 'adx0_k1.5_w1-22', 'n': 3580, 'win': np.float64(0.405), 'avgR': np.float64(-0.085), 't': np.float64(-5.43), 'R_yr': np.float64(-39.7), 'yrs_pos': '0/8', 'R_19_22': np.float64(-207.9), 'R_23_26': np.float64(-97.6)}
+{'sym': 'USDJPY', 'variant': 'adx0_k2.0_w10-19', 'n': 2166, 'win': np.float64(0.434), 'avgR': np.float64(-0.05), 't': np.float64(-3.38), 'R_yr': np.float64(-13.9), 'yrs_pos': '3/8', 'R_19_22': np.float64(-99.8), 'R_23_26': np.float64(-7.5)}
+{'sym': 'USDJPY', 'variant': 'adx0_k2.0_w1-22', 'n': 3423, 'win': np.float64(0.419), 'avgR': np.float64(-0.057), 't': np.float64(-4.03), 'R_yr': np.float64(-25.5), 'yrs_pos': '1/8', 'R_19_22': np.float64(-142.5), 'R_23_26': np.float64(-53.6)}
+{'sym': 'USDJPY', 'variant': 'adx20_k0.9_w10-19', 'n': 1586, 'win': np.float64(0.387), 'avgR': np.float64(-0.126), 't': np.float64(-5.12), 'R_yr': np.float64(-26.0), 'yrs_pos': '1/8', 'R_19_22': np.float64(-139.7), 'R_23_26': np.float64(-60.6)}
+{'sym': 'USDJPY', 'variant': 'adx20_k0.9_w1-22', 'n': 2746, 'win': np.float64(0.385), 'avgR': np.float64(-0.104), 't': np.float64(-5.19), 'R_yr': np.float64(-37.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-186.4), 'R_23_26': np.float64(-99.8)}
+{'sym': 'USDJPY', 'variant': 'adx20_k1.5_w10-19', 'n': 1448, 'win': np.float64(0.425), 'avgR': np.float64(-0.061), 't': np.float64(-2.88), 'R_yr': np.float64(-11.5), 'yrs_pos': '3/8', 'R_19_22': np.float64(-70.1), 'R_23_26': np.float64(-18.2)}
+{'sym': 'USDJPY', 'variant': 'adx20_k1.5_w1-22', 'n': 2600, 'win': np.float64(0.406), 'avgR': np.float64(-0.085), 't': np.float64(-4.7), 'R_yr': np.float64(-28.6), 'yrs_pos': '1/8', 'R_19_22': np.float64(-147.1), 'R_23_26': np.float64(-73.2)}
+{'sym': 'USDJPY', 'variant': 'adx20_k2.0_w10-19', 'n': 1393, 'win': np.float64(0.437), 'avgR': np.float64(-0.04), 't': np.float64(-2.21), 'R_yr': np.float64(-7.2), 'yrs_pos': '3/8', 'R_19_22': np.float64(-53.7), 'R_23_26': np.float64(-1.7)}
+{'sym': 'USDJPY', 'variant': 'adx20_k2.0_w1-22', 'n': 2486, 'win': np.float64(0.419), 'avgR': np.float64(-0.057), 't': np.float64(-3.47), 'R_yr': np.float64(-18.3), 'yrs_pos': '1/8', 'R_19_22': np.float64(-104.5), 'R_23_26': np.float64(-36.3)}
+{'sym': 'USDCHF', 'variant': 'adx0_k0.9_w10-19', 'n': 2731, 'win': np.float64(0.342), 'avgR': np.float64(-0.219), 't': np.float64(-11.28), 'R_yr': np.float64(-77.6), 'yrs_pos': '0/8', 'R_19_22': np.float64(-321.6), 'R_23_26': np.float64(-276.3)}
+{'sym': 'USDCHF', 'variant': 'adx0_k0.9_w1-22', 'n': 3766, 'win': np.float64(0.34), 'avgR': np.float64(-0.217), 't': np.float64(-12.51), 'R_yr': np.float64(-106.3), 'yrs_pos': '0/8', 'R_19_22': np.float64(-476.2), 'R_23_26': np.float64(-342.1)}
+{'sym': 'USDCHF', 'variant': 'adx0_k1.5_w10-19', 'n': 2465, 'win': np.float64(0.392), 'avgR': np.float64(-0.136), 't': np.float64(-7.73), 'R_yr': np.float64(-43.6), 'yrs_pos': '0/8', 'R_19_22': np.float64(-192.4), 'R_23_26': np.float64(-143.2)}
+{'sym': 'USDCHF', 'variant': 'adx0_k1.5_w1-22', 'n': 3517, 'win': np.float64(0.393), 'avgR': np.float64(-0.122), 't': np.float64(-7.64), 'R_yr': np.float64(-55.6), 'yrs_pos': '0/8', 'R_19_22': np.float64(-227.8), 'R_23_26': np.float64(-200.5)}
+{'sym': 'USDCHF', 'variant': 'adx0_k2.0_w10-19', 'n': 2339, 'win': np.float64(0.407), 'avgR': np.float64(-0.111), 't': np.float64(-7.17), 'R_yr': np.float64(-33.8), 'yrs_pos': '0/8', 'R_19_22': np.float64(-152.5), 'R_23_26': np.float64(-107.6)}
+{'sym': 'USDCHF', 'variant': 'adx0_k2.0_w1-22', 'n': 3337, 'win': np.float64(0.426), 'avgR': np.float64(-0.08), 't': np.float64(-5.59), 'R_yr': np.float64(-34.5), 'yrs_pos': '0/8', 'R_19_22': np.float64(-146.7), 'R_23_26': np.float64(-119.0)}
+{'sym': 'USDCHF', 'variant': 'adx20_k0.9_w10-19', 'n': 1620, 'win': np.float64(0.349), 'avgR': np.float64(-0.206), 't': np.float64(-8.2), 'R_yr': np.float64(-43.3), 'yrs_pos': '0/8', 'R_19_22': np.float64(-161.6), 'R_23_26': np.float64(-172.0)}
+{'sym': 'USDCHF', 'variant': 'adx20_k0.9_w1-22', 'n': 2619, 'win': np.float64(0.329), 'avgR': np.float64(-0.244), 't': np.float64(-12.03), 'R_yr': np.float64(-83.0), 'yrs_pos': '0/8', 'R_19_22': np.float64(-334.3), 'R_23_26': np.float64(-304.8)}
+{'sym': 'USDCHF', 'variant': 'adx20_k1.5_w10-19', 'n': 1465, 'win': np.float64(0.392), 'avgR': np.float64(-0.136), 't': np.float64(-6.07), 'R_yr': np.float64(-25.9), 'yrs_pos': '0/8', 'R_19_22': np.float64(-105.7), 'R_23_26': np.float64(-93.4)}
+{'sym': 'USDCHF', 'variant': 'adx20_k1.5_w1-22', 'n': 2416, 'win': np.float64(0.382), 'avgR': np.float64(-0.144), 't': np.float64(-7.74), 'R_yr': np.float64(-45.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-169.5), 'R_23_26': np.float64(-178.3)}
+{'sym': 'USDCHF', 'variant': 'adx20_k2.0_w10-19', 'n': 1404, 'win': np.float64(0.41), 'avgR': np.float64(-0.108), 't': np.float64(-5.55), 'R_yr': np.float64(-19.7), 'yrs_pos': '1/8', 'R_19_22': np.float64(-79.3), 'R_23_26': np.float64(-72.2)}
+{'sym': 'USDCHF', 'variant': 'adx20_k2.0_w1-22', 'n': 2301, 'win': np.float64(0.422), 'avgR': np.float64(-0.091), 't': np.float64(-5.43), 'R_yr': np.float64(-27.0), 'yrs_pos': '0/8', 'R_19_22': np.float64(-105.3), 'R_23_26': np.float64(-103.0)}
+{'sym': 'AUDUSD', 'variant': 'adx0_k0.9_w10-19', 'n': 2569, 'win': np.float64(0.357), 'avgR': np.float64(-0.192), 't': np.float64(-9.98), 'R_yr': np.float64(-64.1), 'yrs_pos': '0/8', 'R_19_22': np.float64(-226.0), 'R_23_26': np.float64(-267.9)}
+{'sym': 'AUDUSD', 'variant': 'adx0_k0.9_w1-22', 'n': 3809, 'win': np.float64(0.334), 'avgR': np.float64(-0.221), 't': np.float64(-12.75), 'R_yr': np.float64(-109.3), 'yrs_pos': '0/8', 'R_19_22': np.float64(-431.1), 'R_23_26': np.float64(-410.5)}
+{'sym': 'AUDUSD', 'variant': 'adx0_k1.5_w10-19', 'n': 2305, 'win': np.float64(0.391), 'avgR': np.float64(-0.132), 't': np.float64(-8.04), 'R_yr': np.float64(-39.5), 'yrs_pos': '0/8', 'R_19_22': np.float64(-123.4), 'R_23_26': np.float64(-181.0)}
+{'sym': 'AUDUSD', 'variant': 'adx0_k1.5_w1-22', 'n': 3601, 'win': np.float64(0.377), 'avgR': np.float64(-0.143), 't': np.float64(-8.99), 'R_yr': np.float64(-67.1), 'yrs_pos': '0/8', 'R_19_22': np.float64(-265.2), 'R_23_26': np.float64(-251.1)}
+{'sym': 'AUDUSD', 'variant': 'adx0_k2.0_w10-19', 'n': 2210, 'win': np.float64(0.406), 'avgR': np.float64(-0.106), 't': np.float64(-7.56), 'R_yr': np.float64(-30.4), 'yrs_pos': '0/8', 'R_19_22': np.float64(-107.3), 'R_23_26': np.float64(-127.1)}
+{'sym': 'AUDUSD', 'variant': 'adx0_k2.0_w1-22', 'n': 3424, 'win': np.float64(0.402), 'avgR': np.float64(-0.113), 't': np.float64(-7.8), 'R_yr': np.float64(-50.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-203.7), 'R_23_26': np.float64(-182.9)}
+{'sym': 'AUDUSD', 'variant': 'adx20_k0.9_w10-19', 'n': 1655, 'win': np.float64(0.348), 'avgR': np.float64(-0.209), 't': np.float64(-8.73), 'R_yr': np.float64(-45.0), 'yrs_pos': '0/8', 'R_19_22': np.float64(-191.8), 'R_23_26': np.float64(-154.3)}
+{'sym': 'AUDUSD', 'variant': 'adx20_k0.9_w1-22', 'n': 2806, 'win': np.float64(0.332), 'avgR': np.float64(-0.225), 't': np.float64(-11.37), 'R_yr': np.float64(-82.0), 'yrs_pos': '0/8', 'R_19_22': np.float64(-355.0), 'R_23_26': np.float64(-276.7)}
+{'sym': 'AUDUSD', 'variant': 'adx20_k1.5_w10-19', 'n': 1485, 'win': np.float64(0.386), 'avgR': np.float64(-0.137), 't': np.float64(-6.73), 'R_yr': np.float64(-26.4), 'yrs_pos': '0/8', 'R_19_22': np.float64(-98.0), 'R_23_26': np.float64(-104.9)}
+{'sym': 'AUDUSD', 'variant': 'adx20_k1.5_w1-22', 'n': 2606, 'win': np.float64(0.375), 'avgR': np.float64(-0.149), 't': np.float64(-8.21), 'R_yr': np.float64(-50.5), 'yrs_pos': '0/8', 'R_19_22': np.float64(-220.0), 'R_23_26': np.float64(-169.1)}
+{'sym': 'AUDUSD', 'variant': 'adx20_k2.0_w10-19', 'n': 1425, 'win': np.float64(0.401), 'avgR': np.float64(-0.105), 't': np.float64(-6.06), 'R_yr': np.float64(-19.3), 'yrs_pos': '0/8', 'R_19_22': np.float64(-78.6), 'R_23_26': np.float64(-70.3)}
+{'sym': 'AUDUSD', 'variant': 'adx20_k2.0_w1-22', 'n': 2468, 'win': np.float64(0.401), 'avgR': np.float64(-0.113), 't': np.float64(-6.88), 'R_yr': np.float64(-36.3), 'yrs_pos': '0/8', 'R_19_22': np.float64(-153.1), 'R_23_26': np.float64(-126.0)}
+{'sym': 'USDCAD', 'variant': 'adx0_k0.9_w10-19', 'n': 2651, 'win': np.float64(0.341), 'avgR': np.float64(-0.215), 't': np.float64(-10.89), 'R_yr': np.float64(-73.9), 'yrs_pos': '0/8', 'R_19_22': np.float64(-325.9), 'R_23_26': np.float64(-243.1)}
+{'sym': 'USDCAD', 'variant': 'adx0_k0.9_w1-22', 'n': 3738, 'win': np.float64(0.345), 'avgR': np.float64(-0.203), 't': np.float64(-11.67), 'R_yr': np.float64(-98.5), 'yrs_pos': '0/8', 'R_19_22': np.float64(-436.4), 'R_23_26': np.float64(-322.2)}
+{'sym': 'USDCAD', 'variant': 'adx0_k1.5_w10-19', 'n': 2398, 'win': np.float64(0.389), 'avgR': np.float64(-0.134), 't': np.float64(-7.42), 'R_yr': np.float64(-41.8), 'yrs_pos': '0/8', 'R_19_22': np.float64(-172.5), 'R_23_26': np.float64(-149.4)}
+{'sym': 'USDCAD', 'variant': 'adx0_k1.5_w1-22', 'n': 3458, 'win': np.float64(0.397), 'avgR': np.float64(-0.119), 't': np.float64(-7.38), 'R_yr': np.float64(-53.2), 'yrs_pos': '1/8', 'R_19_22': np.float64(-264.8), 'R_23_26': np.float64(-145.2)}
+{'sym': 'USDCAD', 'variant': 'adx0_k2.0_w10-19', 'n': 2283, 'win': np.float64(0.411), 'avgR': np.float64(-0.089), 't': np.float64(-5.47), 'R_yr': np.float64(-26.4), 'yrs_pos': '0/8', 'R_19_22': np.float64(-99.0), 'R_23_26': np.float64(-104.5)}
+{'sym': 'USDCAD', 'variant': 'adx0_k2.0_w1-22', 'n': 3311, 'win': np.float64(0.414), 'avgR': np.float64(-0.086), 't': np.float64(-6.0), 'R_yr': np.float64(-37.1), 'yrs_pos': '1/8', 'R_19_22': np.float64(-195.2), 'R_23_26': np.float64(-90.5)}
+{'sym': 'USDCAD', 'variant': 'adx20_k0.9_w10-19', 'n': 1622, 'win': np.float64(0.332), 'avgR': np.float64(-0.228), 't': np.float64(-9.07), 'R_yr': np.float64(-47.9), 'yrs_pos': '0/8', 'R_19_22': np.float64(-225.5), 'R_23_26': np.float64(-143.6)}
+{'sym': 'USDCAD', 'variant': 'adx20_k0.9_w1-22', 'n': 2631, 'win': np.float64(0.342), 'avgR': np.float64(-0.206), 't': np.float64(-10.04), 'R_yr': np.float64(-70.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-325.3), 'R_23_26': np.float64(-215.5)}
+{'sym': 'USDCAD', 'variant': 'adx20_k1.5_w10-19', 'n': 1472, 'win': np.float64(0.376), 'avgR': np.float64(-0.155), 't': np.float64(-6.84), 'R_yr': np.float64(-29.7), 'yrs_pos': '0/8', 'R_19_22': np.float64(-134.3), 'R_23_26': np.float64(-94.6)}
+{'sym': 'USDCAD', 'variant': 'adx20_k1.5_w1-22', 'n': 2421, 'win': np.float64(0.385), 'avgR': np.float64(-0.134), 't': np.float64(-7.14), 'R_yr': np.float64(-42.3), 'yrs_pos': '0/8', 'R_19_22': np.float64(-185.5), 'R_23_26': np.float64(-140.1)}
+{'sym': 'USDCAD', 'variant': 'adx20_k2.0_w10-19', 'n': 1408, 'win': np.float64(0.398), 'avgR': np.float64(-0.11), 't': np.float64(-5.43), 'R_yr': np.float64(-20.1), 'yrs_pos': '0/8', 'R_19_22': np.float64(-82.3), 'R_23_26': np.float64(-72.8)}
+{'sym': 'USDCAD', 'variant': 'adx20_k2.0_w1-22', 'n': 2323, 'win': np.float64(0.402), 'avgR': np.float64(-0.103), 't': np.float64(-6.11), 'R_yr': np.float64(-31.0), 'yrs_pos': '0/8', 'R_19_22': np.float64(-139.5), 'R_23_26': np.float64(-99.1)}
+{'sym': 'NZDUSD', 'variant': 'adx0_k0.9_w10-19', 'n': 2530, 'win': np.float64(0.381), 'avgR': np.float64(-0.156), 't': np.float64(-7.93), 'R_yr': np.float64(-51.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-169.7), 'R_23_26': np.float64(-224.6)}
+{'sym': 'NZDUSD', 'variant': 'adx0_k0.9_w1-22', 'n': 3778, 'win': np.float64(0.367), 'avgR': np.float64(-0.159), 't': np.float64(-9.03), 'R_yr': np.float64(-78.1), 'yrs_pos': '0/8', 'R_19_22': np.float64(-300.6), 'R_23_26': np.float64(-300.6)}
+{'sym': 'NZDUSD', 'variant': 'adx0_k1.5_w10-19', 'n': 2285, 'win': np.float64(0.425), 'avgR': np.float64(-0.1), 't': np.float64(-5.89), 'R_yr': np.float64(-29.7), 'yrs_pos': '0/8', 'R_19_22': np.float64(-93.1), 'R_23_26': np.float64(-135.7)}
+{'sym': 'NZDUSD', 'variant': 'adx0_k1.5_w1-22', 'n': 3553, 'win': np.float64(0.406), 'avgR': np.float64(-0.096), 't': np.float64(-5.97), 'R_yr': np.float64(-44.5), 'yrs_pos': '0/8', 'R_19_22': np.float64(-171.7), 'R_23_26': np.float64(-171.2)}
+{'sym': 'NZDUSD', 'variant': 'adx0_k2.0_w10-19', 'n': 2196, 'win': np.float64(0.439), 'avgR': np.float64(-0.071), 't': np.float64(-4.85), 'R_yr': np.float64(-20.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-65.8), 'R_23_26': np.float64(-89.7)}
+{'sym': 'NZDUSD', 'variant': 'adx0_k2.0_w1-22', 'n': 3369, 'win': np.float64(0.426), 'avgR': np.float64(-0.07), 't': np.float64(-4.83), 'R_yr': np.float64(-30.6), 'yrs_pos': '0/8', 'R_19_22': np.float64(-122.8), 'R_23_26': np.float64(-112.9)}
+{'sym': 'NZDUSD', 'variant': 'adx20_k0.9_w10-19', 'n': 1610, 'win': np.float64(0.388), 'avgR': np.float64(-0.153), 't': np.float64(-6.15), 'R_yr': np.float64(-31.9), 'yrs_pos': '1/8', 'R_19_22': np.float64(-104.6), 'R_23_26': np.float64(-141.1)}
+{'sym': 'NZDUSD', 'variant': 'adx20_k0.9_w1-22', 'n': 2757, 'win': np.float64(0.369), 'avgR': np.float64(-0.163), 't': np.float64(-8.01), 'R_yr': np.float64(-58.2), 'yrs_pos': '0/8', 'R_19_22': np.float64(-230.1), 'R_23_26': np.float64(-218.1)}
+{'sym': 'NZDUSD', 'variant': 'adx20_k1.5_w10-19', 'n': 1456, 'win': np.float64(0.434), 'avgR': np.float64(-0.095), 't': np.float64(-4.47), 'R_yr': np.float64(-18.0), 'yrs_pos': '1/8', 'R_19_22': np.float64(-60.6), 'R_23_26': np.float64(-77.8)}
+{'sym': 'NZDUSD', 'variant': 'adx20_k1.5_w1-22', 'n': 2547, 'win': np.float64(0.418), 'avgR': np.float64(-0.082), 't': np.float64(-4.39), 'R_yr': np.float64(-27.2), 'yrs_pos': '2/8', 'R_19_22': np.float64(-127.0), 'R_23_26': np.float64(-82.5)}
+{'sym': 'NZDUSD', 'variant': 'adx20_k2.0_w10-19', 'n': 1412, 'win': np.float64(0.445), 'avgR': np.float64(-0.074), 't': np.float64(-4.13), 'R_yr': np.float64(-13.6), 'yrs_pos': '1/8', 'R_19_22': np.float64(-50.0), 'R_23_26': np.float64(-54.4)}
+{'sym': 'NZDUSD', 'variant': 'adx20_k2.0_w1-22', 'n': 2413, 'win': np.float64(0.432), 'avgR': np.float64(-0.068), 't': np.float64(-4.09), 'R_yr': np.float64(-21.4), 'yrs_pos': '0/8', 'R_19_22': np.float64(-95.9), 'R_23_26': np.float64(-69.1)}
 
 POOLED (8 symbols) by variant, sorted by 2019-22 avg R:
            variant     n   win   avgR      t   R_yr yrs_pos  R_19_22  R_23_26  avgR_19_22  avgR_23_26  t_23_26
-  adx0_k2.0_w1-22 23916 0.415 -0.087 -15.74 -269.2     0/8  -1242.5   -830.3      -0.092      -0.080    -9.43
- adx0_k2.0_w10-19 17669 0.418 -0.087 -15.67 -198.5     0/8   -869.2   -659.4      -0.092      -0.080    -9.93
- adx20_k2.0_w1-22 18524 0.413 -0.090 -14.93 -216.9     0/8   -961.0   -709.3      -0.094      -0.085    -9.36
-adx20_k2.0_w10-19 11470 0.414 -0.092 -13.77 -137.7     0/8   -593.4   -467.1      -0.097      -0.088    -8.87
- adx0_k1.5_w10-19 17650 0.402 -0.120 -18.71 -275.9     0/8  -1254.8   -869.6      -0.130      -0.109   -11.36
-  adx0_k1.5_w1-22 20140 0.390 -0.124 -18.15 -324.2     0/8  -1730.7   -765.7      -0.130      -0.112    -9.46
- adx20_k1.5_w1-22 17813 0.390 -0.127 -18.00 -294.1     0/8  -1360.0   -904.4      -0.133      -0.119   -10.90
-adx20_k1.5_w10-19 11700 0.398 -0.126 -16.16 -191.1     0/8   -862.9   -608.7      -0.135      -0.115    -9.89
-adx20_k0.9_w10-19 11714 0.360 -0.192 -20.63 -291.5     0/8  -1376.5   -867.7      -0.206      -0.172   -12.11
- adx0_k0.9_w10-19 14135 0.365 -0.184 -21.51 -337.8     0/8  -1989.9   -611.2      -0.207      -0.136    -8.83
-  adx0_k0.9_w1-22 13219 0.348 -0.201 -21.42 -345.5     1/8  -2332.9   -327.4      -0.211      -0.151    -6.31
- adx20_k0.9_w1-22 13079 0.351 -0.199 -21.42 -338.4     0/8  -2112.7   -492.7      -0.217      -0.147    -7.83
+  adx0_k2.0_w1-22 26955 0.422 -0.071 -13.81 -247.4     0/8  -1043.1   -862.2      -0.074      -0.067    -9.01
+ adx0_k2.0_w10-19 17985 0.427 -0.072 -13.03 -167.3     0/8   -726.4   -562.0      -0.077      -0.066    -8.28
+ adx20_k2.0_w1-22 19452 0.420 -0.076 -12.90 -190.9     0/8   -797.6   -672.6      -0.078      -0.073    -8.56
+adx20_k2.0_w10-19 11503 0.424 -0.077 -11.43 -114.9     0/8   -497.5   -387.3      -0.081      -0.072    -7.31
+ adx0_k1.5_w10-19 18847 0.410 -0.099 -15.76 -241.3     0/8  -1035.5   -822.2      -0.105      -0.092   -10.12
+  adx0_k1.5_w1-22 28309 0.400 -0.102 -17.86 -373.3     0/8  -1552.9  -1321.5      -0.106      -0.097   -11.84
+ adx20_k1.5_w1-22 20391 0.397 -0.109 -16.62 -287.6     0/8  -1185.5  -1029.1      -0.111      -0.106   -11.21
+adx20_k1.5_w10-19 12000 0.408 -0.104 -13.42 -162.1     0/8   -707.6   -540.5      -0.111      -0.096    -8.48
+ adx0_k0.9_w10-19 20782 0.372 -0.154 -21.76 -415.0     0/8  -1786.7  -1409.0      -0.165      -0.142   -13.87
+adx20_k0.9_w10-19 13212 0.371 -0.157 -17.71 -268.8     0/8  -1184.2   -885.4      -0.169      -0.143   -11.02
+  adx0_k0.9_w1-22 30092 0.358 -0.166 -26.59 -648.0     0/8  -2706.1  -2283.5      -0.173      -0.158   -17.51
+ adx20_k0.9_w1-22 21908 0.358 -0.169 -23.46 -479.7     0/8  -2058.7  -1635.3      -0.180      -0.157   -14.99
 
 selected on 2019-22: adx0_k2.0_w1-22; its 2023-26 result is the honest out-of-sample estimate
-draw 0 -0.0703
-draw 1 -0.0728
-draw 2 -0.069
-draw 3 -0.0662
-draw 4 -0.0703
-draw 5 -0.0695
-draw 6 -0.0689
-draw 7 -0.0632
-draw 8 -0.0678
-draw 9 -0.0634
-draw 10 -0.0706
-draw 11 -0.0738
-draw 12 -0.0606
-draw 13 -0.0647
-draw 14 -0.0653
-draw 15 -0.0683
-draw 16 -0.0634
-draw 17 -0.0677
-draw 18 -0.0688
-draw 19 -0.0667
+draw 0 -0.0564
+draw 1 -0.0585
+draw 2 -0.0541
+draw 3 -0.052
+draw 4 -0.0532
+draw 5 -0.0539
+draw 6 -0.0527
+draw 7 -0.0489
+draw 8 -0.0543
+draw 9 -0.0493
+draw 10 -0.0537
+draw 11 -0.0577
+draw 12 -0.0471
+draw 13 -0.05
+draw 14 -0.0509
+draw 15 -0.054
+draw 16 -0.0495
+draw 17 -0.0523
+draw 18 -0.055
+draw 19 -0.0505
 
-selected variant avg R -0.087 vs random-timing-with-bias baseline mean -0.068 (95 % -0.063); p = 1.00
+selected variant avg R -0.071 vs random-timing-with-bias baseline mean -0.053 (95 % -0.049); p = 1.00

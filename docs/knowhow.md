@@ -113,3 +113,8 @@ already include the broker markup. Adding a $7/lot commission on top double-coun
 accounts use raw spread (EURUSD ≈ 0.1–0.3 pip, GBP/JPY 0.3–0.4, CHF/CAD 0.5, NZD 0.6; XAU ≈ $0.10–0.15) + $5/lot +
 small slippage (≈ 0.6–1.2 pips round turn on FX). Earlier FX conclusions (FXR-001..003, QM-014, EXP-106) do not change
 (gross results ≈ 0 or negative), but v2.2's XAU results are conservative.
+
+## Engine: losing books "go bust" and stop trading (2026-09-28, EXP-106c)
+`engine.run` stops opening trades once the balance is exhausted. Standalone tests of losing strategies at $100k with
+fixed $500 risk therefore silently drop later years (averages OK, yearly / out-of-sample splits wrong). For
+standalone R statistics use `Guards(initial_balance=1e8, risk_pct=0.0005, risk_on_initial=True)` (see `research/dcc.py::guards`).

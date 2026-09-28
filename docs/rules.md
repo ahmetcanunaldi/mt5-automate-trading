@@ -11,7 +11,7 @@ Sources (checked 2026-09-26; the official help-center pages return 403 to automa
 | Profit target | Phase 1: 8 %, Phase 2: 5 % | Once reached, risk off; remaining minimum days with 0.01 lot |
 | Daily loss | **3 % or 5 %** (chosen at purchase; 3 % add-on = no minimum trading days) of max(day-open balance, day-open equity), reset 00:00 server (UTC+3), floating included | **3 % hard** (force close), 2 % soft (no new entries); new trade's full risk must fit inside the 3 % room |
 | Max loss | 10 % static ($90,000 floor on $100k) | **8 % hard ($92,000)**; cushion rule: risk × (8 − DD)/(8 − 2) above 2 % static DD (min ×0.1) |
-| Risk per trade | "Risk Per Trade Idea" rule **removed 2026-07-24** (new purchases); Striking System only in the Monthly 100 % cycle (1 % of account per trade idea) | **≤ 0.5 %** of balance, server-side SL on every order, lot rounded down |
+| Risk per trade | **Risk Per Trade Idea, Striking System and Profit Concentration removed** for new purchases (evaluations + Master; not ZERO, not existing accounts) — FundingPips blog "CFDs glory days are back: three rules gone" | **≤ 0.5 %** of balance, server-side SL on every order, lot rounded down |
 | Minimum days | 3 trading days per phase; no time limit; 30 days inactivity = breach | calendar check |
 | Prohibited | HFT, tick scalping, hedging, latency/arbitrage, gap trading, toxic flow, all-or-nothing sizing, server spamming | one position at a time, never opposite positions, no grid/martingale/averaging, ≤ 5 trades/day |
 | News | see "News rule" below | **No new position −10…+10 min around any high-impact event of the symbol's currencies (every phase); positions opened < 5 h before the event are closed 10 min before it** |
@@ -58,12 +58,17 @@ Removed:
 - **SUME** ("Significant Unscheduled Market Event" profit deduction, which had replaced a "Trump post" clause) — removed Aug 2026 after backlash.
 - **Risk Per Trade Idea** — removed 24 Jul 2026 06:00 (UTC+3) for 2 Step Standard (new purchases; existing accounts/ZERO keep their terms).
 - **Profit Concentration** (one trade idea > 60 % of the target → extra conditions on Master) — removed for new purchases.
+- **Striking System** (1.2 % / 1 % loss per trade idea → warnings, split cuts, breach) — removed for new purchases
+  (official blog "CFDs glory days are back: three rules gone", summarised by forexpropreviews.com; the blog itself is
+  behind a bot checkpoint). The help-centre "2 Step Standard" page still mentions it inside the Monthly cycle on
+  2026-09-28 — probably not updated yet; confirm on the dashboard at purchase.
 - **10 % Phase-1 target option** — no longer offered since 24 Jul 2026.
 - Subjective behaviour / "trading flow" reviews — removed 23 Feb 2026.
 - Minimum trading days — none when the 3 % daily-loss configuration is bought.
 Still in force / added:
-- Striking System — only in the new **Monthly 100 %** cycle (purchases ≥ 15 Aug 2026): 1 % loss per trade idea = warning;
-  2nd halves the split, 3rd → 20 %, 4th → breach. Monthly also needs 35 % consistency + 7 days ≥ 0.5 % profit.
+- New **Monthly 100 %** cycle (purchases ≥ 15 Aug 2026): 35 % consistency + 7 days ≥ 0.5 % profit (the help page
+  also lists a 1 % Striking trigger there — superseded by the removal above for new purchases).
+- New: **Faster to Master** route and **customizable Daily Loss** (3 % / 5 %).
 - 35 % consistency: On Demand (90 %, min 2 %) and Monthly only; Weekly 60 % / Bi-Weekly 80 % have none.
 - Master news: ±5 min around high-impact news, speeches 10 min before start → 10 min after end (profit deduction);
   5-hour exemption; evaluation has no news restriction ("purposely trading news" still prohibited).

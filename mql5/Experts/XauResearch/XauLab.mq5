@@ -31,9 +31,12 @@
 //|  refuse to start; broker session end respected: no entries in    |
 //|  the last 15 min, same-day positions and the Friday book closed  |
 //|  5 min before the symbol's trade session ends                    |
+//| v2.24: lot sizing from OrderCalcProfit (the server's own P&L     |
+//|  formula) - MetaQuotes-Demo reports XAUUSD tick value 0.10 for   |
+//|  a 100 oz contract (true 1.00), which made v2.23 size 10x (5 %)  |
 //+------------------------------------------------------------------+
 #property copyright "mt5-automate-trading"
-#property version   "2.23"
+#property version   "2.24"
 
 #include <Trade\Trade.mqh>
 #include <XauScalper\NewsFilter.mqh>
@@ -105,6 +108,17 @@ bool     g_live = false;                    // not in the strategy tester
 
 //--------------------------------------------------------------- live helpers (v2.21)
 string StateFile() { return InpExportPrefix + "_state.csv"; }
+
+// account-currency loss of 1.0 lot if the stop (sl_dist away from the current entry side) is hit; uses the server's
+// own profit formula (OrderCalcProfit) and falls back to tick value / tick size only if that fails
+double LossPerLot(string sym, int dir, double sl_dist)
+  {
+   double px = dir > 0 ? SymbolInfoDouble(sym, SYMBOL_ASK) : SymbolInfoDouble(sym, SYMBOL_BID), pl = 0.0;
+   if(px > 0 && OrderCalcProfit(dir > 0 ? ORDER_TYPE_BUY : ORDER_TYPE_SELL, sym, 1.0, px, dir > 0 ? px - sl_dist : px + sl_dist, pl) && pl < 0)
+      return -pl;
+   double tv = SymbolInfoDouble(sym, SYMBOL_TRADE_TICK_VALUE_LOSS), ts = SymbolInfoDouble(sym, SYMBOL_TRADE_TICK_SIZE);
+   return (tv > 0 && ts > 0) ? sl_dist / ts * tv : 0.0;
+  }
 
 // end of the symbol's last trade session of the day containing t (0 = unknown / open until midnight)
 datetime SessionEnd(string sym, datetime t)
@@ -364,10 +378,10 @@ bool Enter(int s, int dir, double sl_dist, int hold_min, double trail, double ri
    double base = InpRiskOnInitial ? InpInitialBalance : bal;
    double room = InpDailyHardPct / 100.0 * g_day_ref + day_pnl - open_risk;
    double risk = MathMin(MathMin(rp * MathMin(risk_mult, 1.0) / 100.0 * base, room), InpMaxOpenRiskPct / 100.0 * base - open_risk);
-   double tv = SymbolInfoDouble(sym, SYMBOL_TRADE_TICK_VALUE_LOSS), ts = SymbolInfoDouble(sym, SYMBOL_TRADE_TICK_SIZE);
    double step = SymbolInfoDouble(sym, SYMBOL_VOLUME_STEP), vmin = SymbolInfoDouble(sym, SYMBOL_VOLUME_MIN);
-   if(tv <= 0 || ts <= 0) return false;
-   double per_lot = sl_dist / ts * tv + g_comm[s];
+   double loss1 = LossPerLot(sym, dir, sl_dist);
+   if(loss1 <= 0) return false;
+   double per_lot = loss1 + g_comm[s];
    double lots = MathFloor(risk / per_lot / step + 1e-9) * step;
    if(lots < vmin - 1e-9) return false;
    lots = NormalizeDouble(lots, 2);
@@ -706,6 +720,9 @@ int OnInit()
          PrintFormat("[Init] WARNING news file ends %s - update it (tools/export_news.py)", TimeToString(g_news.LastEvent()));
       if((g_on[1] || g_on[2]) && g_fomc[ArraySize(g_fomc) - 1] < TimeCurrent())
          Print("[Init] WARNING no future FOMC decision in the FOMC file - prefomc leg inactive until it is updated");
+      for(int s = 0; s < NSYM; s++)
+         if(g_on[s]) PrintFormat("[Init] %s loss of 1 lot per 1.0 price move: OrderCalcProfit %.2f vs tick value %.2f", g_sym[s],
+                                 LossPerLot(g_sym[s], 1, 1.0), SymbolInfoDouble(g_sym[s], SYMBOL_TRADE_TICK_VALUE_LOSS) / SymbolInfoDouble(g_sym[s], SYMBOL_TRADE_TICK_SIZE));
       for(int s = 0; s < NSYM; s++)
          if(g_on[s]) PrintFormat("[Init] %s tick value %.5f, tick size %.5f, vol min %.2f step %.2f, filling %d", g_sym[s],
                                  SymbolInfoDouble(g_sym[s], SYMBOL_TRADE_TICK_VALUE_LOSS), SymbolInfoDouble(g_sym[s], SYMBOL_TRADE_TICK_SIZE),

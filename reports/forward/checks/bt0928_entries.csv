@@ -1,0 +1,2 @@
+position,symbol,leg,dir,time,price_at_signal,sl_price,sl_dist,lots,risk_usd,balance,risk_pct,risk_mult_used
+2,XAUUSD,lw,-1,2026.09.28 10:15:00,4161.07000,4257.03892,95.96892,0.51,493.01,100000.00,0.4930,1.000
